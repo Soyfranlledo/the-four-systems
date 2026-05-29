@@ -163,34 +163,74 @@ If any item fails, fix it and re-run the check before handing the draft to the u
 ### STEP 6 (post-review): SAVE AND HAND OFF
 
 1. Compute the slug: use `suggested_slug` from the queue item.
-2. Write the post to `output/posts/<YYYY-MM-DD>-<slug>.md` with full front-matter:
+
+2. Write TWO files to `output/posts/`:
+
+   **a) `<YYYY-MM-DD>-<slug>.md`** with frontmatter that **mirrors the destination
+   content-collection schema** (read `context/publishing.json` if present to
+   identify the schema; for Astro the canonical fields are below). This file is
+   what gets copied verbatim to the Astro repo at publish time, so it MUST be
+   valid against the destination schema or the build fails.
 
    ```yaml
    ---
-   id: 2026-05-06-how-to-rank-in-ai-overviews
    title: "How to rank in AI Overviews: a 2026 SEO playbook"
-   slug: how-to-rank-in-ai-overviews
-   primary_keyword: how to rank in ai overviews
-   intent: informational
-   target_word_count: 1800
-   word_count: 1842
-   sources_cited:
-     - https://blog.google/products/search/...
-     - https://developers.google.com/...
-   internal_links:
-     - https://www.your-site.com/blog/query-fan-out-ai-search/
-   fan_out_covered:
-     - how to optimize for ai overviews
+   description: "Meta description, ~155 chars, no fluff."
+   pubDate: 2026-05-06
+   keyword: how to rank in ai overviews
+   secondaryKeywords:
      - what is ai overviews
-   fan_out_dropped:
-     - ai overviews seo: "commercial intent, belongs on a product page"
-   experience_mode: research-only   # or "first-person" if a story was used
-   created_at: 2026-05-06T11:14:00Z
-   author: "Your Name"
+     - how to optimize for ai overviews
+   sourceEmails: []
+   draft: false
+   tags: ["IA", "Negocios"]
    ---
 
    <post body in clean markdown>
    ```
+
+   Field rules:
+   - `keyword` is the primary keyword (same value as the queue item's
+     `primary_keyword`); the Astro schema names this field `keyword`, NOT
+     `primary_keyword`.
+   - `tags` MUST come from the destination site's canonical taxonomy (e.g.
+     `src/lib/tags.ts` in the Astro repo). Use display names, not slugs.
+     Read that file before writing the post if you have repo access; otherwise
+     ask the user.
+   - Never invent fields that aren't in the destination schema. Extras like
+     `primary_keyword`, `sources_cited`, etc. go to the sidecar in 2b, not here.
+
+   **b) `<YYYY-MM-DD>-<slug>.meta.json`** sidecar with the workflow metadata
+   that the SEO pipeline tracks (auditing, dashboard, lint targets):
+
+   ```json
+   {
+     "id": "2026-05-06-how-to-rank-in-ai-overviews",
+     "primary_keyword": "how to rank in ai overviews",
+     "intent": "informational",
+     "target_word_count": 1800,
+     "sources_cited": [
+       "https://blog.google/products/search/..."
+     ],
+     "internal_links": [
+       "https://www.your-site.com/blog/query-fan-out-ai-search/"
+     ],
+     "fan_out_covered": [
+       "how to optimize for ai overviews",
+       "what is ai overviews"
+     ],
+     "fan_out_dropped": [
+       "ai overviews seo: commercial intent, belongs on a product page"
+     ],
+     "experience_mode": "research-only",
+     "author": "Your Name",
+     "created_at": "2026-05-06T11:14:00Z"
+   }
+   ```
+
+   The sidecar lives next to the `.md` (same slug, `.meta.json` suffix) and
+   is what `lint-post.py` reads for `target_word_count` and `primary_keyword`.
+   Word count is always computed live from the body, not stored.
 
 3. **Run the post linter.** This is a hard gate; do not skip it.
    ```bash

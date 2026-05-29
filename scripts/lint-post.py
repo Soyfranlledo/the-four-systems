@@ -10,8 +10,18 @@ Rules checked:
   3. No excluded competitor names from brand-guidelines.md
   4. Every markdown link has anchor text of 1-3 words (excluding numbers/symbols)
   5. H2 capsule ratio is between 60% and 70% (capsules end with "?")
-  6. Word count within +/- 15% of target_word_count from front-matter
-  7. Three Kings: primary_keyword in title, first paragraph, AND >=2 H2s
+  6. Word count within +/- 15% of target_word_count (from sidecar .meta.json)
+  7. Three Kings: primary keyword in title, first paragraph, AND >=2 H2s
+
+Frontmatter contract (post-refactor):
+  The .md frontmatter mirrors the destination content collection schema
+  (eg Astro: `keyword`, `tags`, `pubDate`). Workflow metadata lives in a
+  sidecar `<slug>.meta.json` next to the .md with: primary_keyword,
+  target_word_count, sources_cited, fan_out_*, etc. The linter reads both.
+
+Legacy fallback: if a sidecar is missing, the linter falls back to reading
+`primary_keyword` / `target_word_count` from the .md frontmatter for
+backward-compat with posts written before the refactor.
 
 The Content Writer's coordinator calls this AFTER the post is saved.
 On failure, the coordinator marks the queue item status='needs_review'.
@@ -22,6 +32,7 @@ Usage:
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -84,6 +95,17 @@ def split_front_matter(text: str) -> tuple[dict, str]:
     return fm, parts[2]
 
 
+def load_meta_sidecar(md_path: Path) -> dict:
+    """Load <slug>.meta.json sidecar next to the post if it exists."""
+    sidecar = md_path.with_suffix(".meta.json")
+    if not sidecar.exists():
+        return {}
+    try:
+        return json.loads(sidecar.read_text())
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
 def count_anchor_words(anchor: str) -> int:
     # Hyphenated terms count as one word (AI-specific is 1, not 2)
     cleaned = re.sub(r"[^\w\s\-]", " ", anchor)
@@ -108,6 +130,7 @@ def lint(path: Path) -> list[str]:
     failures: list[str] = []
     text = path.read_text()
     fm, body = split_front_matter(text)
+    meta = load_meta_sidecar(path)
     rules = load_brand_rules()
 
     # Rule 1: em-dashes
@@ -156,9 +179,11 @@ def lint(path: Path) -> list[str]:
             )
 
     # Rule 6: word count within +/-15% of target
+    # Read target from sidecar .meta.json first, fall back to legacy frontmatter.
+    # Actual word count is always computed from the body for consistency.
     try:
-        target = int(fm.get("target_word_count", "0"))
-        actual = int(fm.get("word_count", str(len(body.split()))))
+        target = int(meta.get("target_word_count") or fm.get("target_word_count") or 0)
+        actual = len(body.split())
         if target:
             delta = abs(actual - target) / target
             if delta > 0.15:
@@ -169,7 +194,13 @@ def lint(path: Path) -> list[str]:
         pass
 
     # Rule 7: Three Kings extended
-    primary = fm.get("primary_keyword", "").lower().strip()
+    # Read primary keyword from new frontmatter `keyword` first (Astro-native
+    # schema), fall back to legacy `primary_keyword` or sidecar for old posts.
+    primary = (
+        fm.get("keyword")
+        or meta.get("primary_keyword")
+        or fm.get("primary_keyword", "")
+    ).lower().strip()
     if primary:
         title = fm.get("title", "").lower()
         first_para = ""

@@ -5,13 +5,27 @@ This is a no-op if context/publishing.json does not exist. Most users skip this
 and upload markdown by hand. For users on Astro+Cloudflare it commits the post
 to a draft branch (or main, per their config) and pushes.
 
+Contract (post-refactor):
+  The content-writer writes the .md with frontmatter that already matches the
+  destination Astro content-collection schema (eg `keyword`, not
+  `primary_keyword`). Workflow metadata lives in a sidecar <slug>.meta.json
+  next to the .md, which this script does NOT copy.
+
+  Before pushing, this script runs `npm run build` in the destination repo as
+  a fail-fast guard. If the build rejects the frontmatter (Zod schema mismatch,
+  invalid date, unknown tag, etc.) the publish aborts WITHOUT pushing, leaving
+  the queue item ready for `mark-queue-item.py --status needs_review`.
+
+  Set publishing.json `prepublish_build: false` to skip the build guard (faster
+  but loses the schema check; only use for low-stakes drafts).
+
 Usage:
   publish-to-astro.py <markdown-path>
 
 Returns:
   exit 0 + prints the published URL on success
   exit 0 + prints "SKIPPED" on no-publishing-config
-  exit 1 on error
+  exit 1 on error (build failed, schema mismatch, git push failed, etc.)
 """
 
 from __future__ import annotations
@@ -75,8 +89,8 @@ def main() -> int:
     branch_prefix = cfg.get("draft_branch_prefix", "claude/post-")
     slug = md_path.stem
 
-    def run(cmd: list[str], check: bool = True) -> str:
-        r = subprocess.run(cmd, cwd=repo_path, capture_output=True, text=True)
+    def run(cmd: list[str], check: bool = True, cwd: Path | None = None) -> str:
+        r = subprocess.run(cmd, cwd=cwd or repo_path, capture_output=True, text=True)
         if check and r.returncode != 0:
             print(f"ERROR ({' '.join(cmd)}): {r.stderr.strip()}", file=sys.stderr)
             sys.exit(1)
@@ -89,6 +103,28 @@ def main() -> int:
         run(["git", "checkout", "main"])
 
     run(["git", "add", str(target.relative_to(repo_path))])
+
+    # Fail-fast guard: run the destination's build to catch schema mismatches
+    # (Zod validation, invalid tags, malformed dates) BEFORE we commit/push.
+    # The 404 on 2026-05-29 happened because we skipped this step.
+    if cfg.get("prepublish_build", True):
+        build_cmd = cfg.get("prepublish_build_cmd", ["npm", "run", "build"])
+        print(f"Pre-publish build: {' '.join(build_cmd)} ...")
+        result = subprocess.run(build_cmd, cwd=repo_path, capture_output=True, text=True)
+        if result.returncode != 0:
+            # Revert the staged file before bailing so we don't leave the repo
+            # in a half-staged state.
+            run(["git", "reset", "HEAD", str(target.relative_to(repo_path))], check=False)
+            target.unlink(missing_ok=True)
+            print(
+                f"PUBLISH_ABORTED: prepublish build failed. The post was NOT "
+                f"committed. Mark the queue item as needs_review and review the "
+                f"build output:\n{result.stderr.strip() or result.stdout.strip()}",
+                file=sys.stderr,
+            )
+            return 1
+        print("Pre-publish build: OK")
+
     run(["git", "commit", "-m", f"post: {slug}"], check=False)
     run(["git", "push", "-u", "origin", "HEAD"], check=False)
 

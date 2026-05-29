@@ -76,3 +76,16 @@ A typical run is 25 to 40 minutes wall-clock (most of that is you waiting for th
 - Never edit `state/keyword-bank.json` (that's System 1's territory).
 - Update `state/content-queue.json` only via `scripts/mark-queue-item.py`.
 - Never use em dashes anywhere.
+
+## Output contract (Astro destinations)
+
+The `.md` frontmatter **must match the destination content-collection schema**
+(eg the Zod schema in the Astro repo's `src/content.config.ts`). Workflow
+metadata (sources_cited, fan_out_covered, primary_keyword, etc.) goes to a
+sidecar `<slug>.meta.json` next to the `.md`. The full Step 6 spec covers
+field names and the sidecar shape.
+
+`publish-to-astro.py` runs the destination's build BEFORE pushing as a
+fail-fast guard. If you see `PUBLISH_ABORTED: prepublish build failed`, read
+the Zod error, fix the frontmatter in `output/posts/<slug>.md`, and re-run.
+Do not bypass the build guard.
