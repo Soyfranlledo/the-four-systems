@@ -1,6 +1,275 @@
 {
   "schema_version": 2,
   "description": "Read by content-writer (System 2). Each item has a status. content-writer picks the next status='queued' item, writes the post, then sets status='written' or 'needs_review'.",
-  "status_values": ["queued", "in_progress", "written", "needs_review", "skipped"],
-  "items": []
+  "status_values": [
+    "queued",
+    "in_progress",
+    "written",
+    "needs_review",
+    "skipped"
+  ],
+  "items": [
+    {
+      "id": "2026-05-21-marketing-funnel-para-solopreneurs",
+      "status": "written",
+      "queued_at": "2026-05-21T15:00:00Z",
+      "written_at": "2026-05-21T15:14:26Z",
+      "post_url": "./output/posts/2026-05-21-marketing-funnel-para-solopreneurs.md",
+      "primary_keyword": "marketing funnel",
+      "secondary_keywords": [
+        "funnel marketing",
+        "funnel marketing digital",
+        "etapas del marketing funnel"
+      ],
+      "intent": "commercial",
+      "volume": 1000,
+      "kd": 4,
+      "fan_out_cluster": [
+        "marketing funnel",
+        "funnel marketing",
+        "funnel marketing digital",
+        "etapas del embudo de ventas",
+        "funnel de conversi\u00f3n",
+        "partes del funnel de ventas"
+      ],
+      "suggested_slug": "marketing-funnel-para-solopreneurs",
+      "suggested_title": "Marketing funnel: qu\u00e9 es y c\u00f3mo aplicarlo en un negocio de una sola persona",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/",
+        "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "https://franlledo.com/blog/no-vendes-servicios-revisa-tu-embudo/"
+      ],
+      "external_authority_candidates": [
+        "https://www.ibm.com/es-es/think/topics/sales-funnel",
+        "https://www.infoautonomos.com/marketing-y-ventas/embudo-ventas/",
+        "https://www.hubspot.com/es"
+      ],
+      "notes": "KD 4, rid\u00edculamente f\u00e1cil. Combinar 'marketing funnel' y 'funnel marketing' (mismo intento de b\u00fasqueda, palabras invertidas). Tratamiento educativo aunque la intent es commercial, porque Fran no enlaza a productos. Anclar en realidad solopreneur, no enterprise. Aprovechar el universo Cazatarjetas (Embudo Cazatarjetas, Ritual del Dat\u00e1fono) con cuentagotas."
+    },
+    {
+      "id": "2026-05-21-funnel-de-conversion-las-etapas-que-importan",
+      "status": "written",
+      "queued_at": "2026-05-21T15:00:00Z",
+      "written_at": "2026-05-22T08:47:21Z",
+      "post_url": "./output/posts/2026-05-22-funnel-de-conversion-etapas-que-importan.md",
+      "primary_keyword": "funnel de conversi\u00f3n",
+      "secondary_keywords": [
+        "embudo de conversi\u00f3n",
+        "embudo de conversi\u00f3n marketing digital",
+        "funnel de conversi\u00f3n etapas"
+      ],
+      "intent": "commercial",
+      "volume": 480,
+      "kd": 2,
+      "fan_out_cluster": [
+        "funnel de conversi\u00f3n",
+        "embudo de conversi\u00f3n marketing digital",
+        "funnel de conversi\u00f3n etapas",
+        "embudo de conversi\u00f3n tofu mofu bofu",
+        "para qu\u00e9 sirve un sistema crm en un funnel de conversi\u00f3n",
+        "embudo de ventas tofu"
+      ],
+      "suggested_slug": "funnel-de-conversion-etapas-que-importan",
+      "suggested_title": "Funnel de conversi\u00f3n: las etapas que de verdad importan en un negocio online peque\u00f1o",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/",
+        "https://franlledo.com/blog/no-vendes-servicios-revisa-tu-embudo/",
+        "https://franlledo.com/blog/por-que-hacer-email-marketing/"
+      ],
+      "external_authority_candidates": [
+        "https://www.ibm.com/es-es/think/topics/sales-funnel",
+        "https://www.infoautonomos.com/marketing-y-ventas/embudo-ventas/"
+      ],
+      "notes": "KD 2, oportunidad de victoria r\u00e1pida. Posicionar contra contenido gen\u00e9rico que recita TOFU/MOFU/BOFU sin opini\u00f3n. \u00c1ngulo Fran: la mayor\u00eda de funnels para solopreneurs sobran 3 de las 5 etapas. Ejemplo concreto con cifras reales (lanzamiento 10-12K\u20ac con secuencia de emails)."
+    },
+    {
+      "id": "2026-05-21-sales-funnel-para-solopreneurs",
+      "status": "written",
+      "queued_at": "2026-05-21T15:00:00Z",
+      "written_at": "2026-05-25T11:03:09Z",
+      "post_url": "https://franlledo.com/blog/sales-funnel-para-solopreneurs/",
+      "primary_keyword": "sales funnel",
+      "secondary_keywords": [
+        "sales funnel ejemplo",
+        "sales funnel para servicios",
+        "sales funnel sin software"
+      ],
+      "intent": "commercial",
+      "volume": 390,
+      "kd": 17,
+      "fan_out_cluster": [
+        "sales funnel",
+        "sales funnel ejemplo",
+        "funnel de ventas",
+        "funnel de ventas ejemplo",
+        "embudo de ventas marketing digital"
+      ],
+      "suggested_slug": "sales-funnel-para-solopreneurs",
+      "suggested_title": "Sales funnel para solopreneurs: la versi\u00f3n simple que funciona sin equipo ni software caro",
+      "target_word_count": 1600,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/",
+        "https://franlledo.com/blog/que-herramienta-de-email-marketing-elegir/"
+      ],
+      "external_authority_candidates": [
+        "https://www.ibm.com/es-es/think/topics/sales-funnel"
+      ],
+      "notes": "Audiencia t\u00e9cnica/mixed (busca t\u00e9rmino en ingl\u00e9s desde Espa\u00f1a). \u00c1ngulo: la mayor\u00eda de contenido sobre sales funnels asume ClickFunnels + Kajabi + GoHighLevel + equipo. Aqu\u00ed mostrar la versi\u00f3n real para 1 persona: form + secuencia email + checkout. Cero stack-shaming pero clar\u00edsimo en simplicidad. KD 17, viable."
+    },
+    {
+      "id": "2026-05-22-email-marketing-ejemplos",
+      "primary_keyword": "email marketing ejemplos",
+      "secondary_keywords": [
+        "ejemplos de email marketing",
+        "email marketing ejemplos de mailings creativos",
+        "ejemplos de email para captar clientes"
+      ],
+      "intent": "informational",
+      "volume": 260,
+      "kd": null,
+      "fan_out_cluster": [
+        "email marketing ejemplos",
+        "email marketing ejemplos de mailings creativos",
+        "ejemplos de email para captar clientes",
+        "email comercial ejemplos",
+        "email marketing plantillas"
+      ],
+      "suggested_slug": "email-marketing-ejemplos-de-correos-que-venden",
+      "suggested_title": "Email marketing ejemplos: 7 correos que han vendido de verdad en mi lista",
+      "target_word_count": 2000,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "https://franlledo.com/blog/como-escribir-emails-que-vendan/",
+        "https://franlledo.com/blog/como-escribir-asuntos-de-email/",
+        "https://franlledo.com/blog/cada-cuanto-enviar-emails-lista/"
+      ],
+      "external_authority_candidates": [
+        "https://mailchimp.com/es/resources/email-marketing-benchmarks/",
+        "https://www.litmus.com/blog/email-marketing-roi"
+      ],
+      "notes": "\u00c1ngulo Fran: 7 ejemplos REALES de su lista (no plantillas gen\u00e9ricas) con asunto, cuerpo abreviado, qu\u00e9 vendi\u00f3, ratio de conversi\u00f3n. Cifras reales: 1.500+ correos enviados, 2.000 suscriptores, 35% open. Diferenciador frente al SERP saturado de listicles tipo 'descarga 50 plantillas'. Cubre cluster informational con alto potencial de captaci\u00f3n.",
+      "status": "written",
+      "queued_at": "2026-05-22T08:54:46Z",
+      "written_at": "2026-05-22T09:38:10Z",
+      "post_url": "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/"
+    },
+    {
+      "id": "2026-05-22-campanas-email-marketing-lista-pequena",
+      "primary_keyword": "campa\u00f1as de email marketing",
+      "secondary_keywords": [
+        "campa\u00f1as email marketing",
+        "tipos de campa\u00f1as email",
+        "campa\u00f1a email lanzamiento"
+      ],
+      "intent": "commercial",
+      "volume": 140,
+      "kd": 18,
+      "fan_out_cluster": [
+        "campa\u00f1as de email marketing",
+        "tipos de email marketing",
+        "ventajas email marketing",
+        "email marketing plantillas",
+        "email marketing caracter\u00edsticas"
+      ],
+      "suggested_slug": "campanas-email-marketing-lista-pequena",
+      "suggested_title": "Campa\u00f1as de email marketing para listas peque\u00f1as: las 4 que s\u00ed venden",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "https://franlledo.com/blog/por-que-hacer-email-marketing/",
+        "https://franlledo.com/blog/cada-cuanto-enviar-emails-lista/",
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/"
+      ],
+      "external_authority_candidates": [
+        "https://www.litmus.com/blog/email-marketing-roi",
+        "https://mailchimp.com/es/resources/email-marketing-benchmarks/"
+      ],
+      "notes": "KD 18 + vol 140 = ratio inmejorable. \u00c1ngulo: ignora la lista infinita de tipos de campa\u00f1a que recitan los blogs corporate. Solo 4 funcionan en listas <5K: bienvenida autom\u00e1tica, newsletter recurrente, secuencia de lanzamiento (5-7 emails), reactivaci\u00f3n de inactivos. Anclar en lanzamiento 10-12K\u20ac con UNA secuencia.",
+      "status": "written",
+      "queued_at": "2026-05-22T08:54:46Z",
+      "written_at": "2026-05-22T09:38:10Z",
+      "post_url": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/"
+    },
+    {
+      "id": "2026-05-29-que-son-los-infoproductos",
+      "status": "queued",
+      "queued_at": "2026-05-29T16:25:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "infoproductos",
+      "secondary_keywords": [
+        "qu\u00e9 son los infoproductos",
+        "infoproductos ejemplos",
+        "como crear infoproductos",
+        "tipos de infoproductos"
+      ],
+      "intent": "commercial",
+      "volume": 390,
+      "kd": null,
+      "fan_out_cluster": [
+        "infoproductos",
+        "infoproductos ejemplos",
+        "como crear infoproductos",
+        "venta de infoproductos",
+        "validar idea infoproducto",
+        "preventa infoproducto",
+        "lanzamiento de infoproducto"
+      ],
+      "suggested_slug": "que-son-los-infoproductos",
+      "suggested_title": "Infoproductos: qu\u00e9 son, qu\u00e9 tipos hay y c\u00f3mo lanzar el primero sin enfangarte un a\u00f1o",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/",
+        "https://franlledo.com/blog/sales-funnel-para-solopreneurs/",
+        "https://franlledo.com/blog/mejor-modelo-de-negocio-online-para-empezar/"
+      ],
+      "external_authority_candidates": [
+        "https://www.hotmart.com/es",
+        "https://www.shopify.com/es/blog/productos-digitales",
+        "https://www.gumroad.com"
+      ],
+      "notes": "Vol 390, KD null (probable LOW-MEDIUM por competition 0.34). SERP con AI Overview, OG y PAA - oportunidad de capturarlos. \u00c1ngulo Fran: 'tipos' es el subtema con m\u00e1s confusi\u00f3n (curso, ebook, plantilla, membres\u00eda, comunidad) - desambiguar y dar criterio de elecci\u00f3n por momento del negocio. Cifra ancla: lanzamientos 10-12K\u20ac con secuencia de emails (no enterprise, solopreneur). No enlazar a producto - solo a posts y al EmailCapture."
+    },
+    {
+      "id": "2026-05-29-infoproductos-con-ia",
+      "status": "written",
+      "queued_at": "2026-05-29T16:25:00Z",
+      "written_at": "2026-05-29T15:59:35Z",
+      "post_url": "https://franlledo.com/blog/2026-05-29-infoproductos-con-ia/",
+      "primary_keyword": "infoproductos con ia",
+      "secondary_keywords": [
+        "crear infoproductos con ia",
+        "productos digitales con ia",
+        "ia para crear cursos online",
+        "claude para infoproductos"
+      ],
+      "intent": "commercial",
+      "volume": 110,
+      "kd": null,
+      "fan_out_cluster": [
+        "infoproductos con ia",
+        "crear infoproductos con ia",
+        "productos digitales con ia",
+        "claude para solopreneurs",
+        "ia para validar idea de infoproducto",
+        "ia para esqueleto de curso",
+        "ia para guion de webinar"
+      ],
+      "suggested_slug": "infoproductos-con-ia",
+      "suggested_title": "Infoproductos con IA: c\u00f3mo uso Claude para crear, validar y lanzar m\u00e1s r\u00e1pido (sin que el contenido huela a robot)",
+      "target_word_count": 2000,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/mejor-modelo-de-negocio-online-para-empezar/",
+        "https://franlledo.com/blog/como-escribir-emails-que-vendan/",
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/"
+      ],
+      "external_authority_candidates": [
+        "https://www.anthropic.com/news",
+        "https://platform.openai.com/docs"
+      ],
+      "notes": "Vol 110, yearly trend -93 (cay\u00f3 tras hype 2024). Pero on-brand fuerte para Fran (claude para solopreneurs seed). \u00c1ngulo: NO 'la IA te lo hace todo en 5 minutos' (eso es el contenido gen\u00e9rico que rankea peor por baja calidad). M\u00e1s bien: workflow real de Fran con Claude \u2014 qu\u00e9 hace la IA bien (esqueletos, primeras versiones, brainstorm), qu\u00e9 hace mal (voz, opini\u00f3n, ejemplos con cifras reales). Honestidad sobre lo que NO funciona tambi\u00e9n. Referenciar el sistema de seo-agents como ejemplo si encaja."
+    }
+  ]
 }
