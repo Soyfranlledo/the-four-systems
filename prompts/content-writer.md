@@ -141,6 +141,7 @@ While drafting:
 Run through this checklist and FIX any failure before declaring done. In Mode A, report results to the user; in Mode B, write the report into `reports/<date>-content-writer.md`.
 
 - [ ] TL;DR present at top with 3 to 5 key takeaways
+- [ ] **Four-questions test**: the post answers each of these in one sentence somewhere in the first 30% of the body (TL;DR + first 1-2 sections). What problem does this solve? Who is it for? What happens if you apply it (concrete outcome / example)? What does NOT work and why? You do not have to label these explicitly, but a reader (or an LLM extracting an answer) must be able to find each in plain language. This is the AI-agent-readiness check: a clear, machine-extractable answer to the obvious question.
 - [ ] Every factual claim is supported by an approved source from Step 2
 - [ ] Sources cited inline as `[anchor](url)`, anchor text 1-3 contextual words, no reference list at bottom
 - [ ] Internal links use same `[anchor](url)` format with 1-3 word anchor text
@@ -149,14 +150,14 @@ Run through this checklist and FIX any failure before declaring done. In Mode A,
 - [ ] No banned word or phrase from `brand-guidelines.md` appears
 - [ ] No competitor named in `brand-guidelines.md` appears
 - [ ] No regulated claim violation
-- [ ] 60-70% of H2s use the Content Capsule format
+- [ ] 60-70% of H2s use the Content Capsule format. **Capsules feed FAQ schema**: the Astro destination auto-generates a `FAQPage` JSON-LD from every H2 ending in `?` plus its first paragraph. So each capsule's first sentence must be a clean, self-contained answer, not a cliffhanger or "we will see below". Treat the first sentence after a `?` H2 as the canonical extracted answer.
 - [ ] 3 to 5 internal links from `internal_link_targets` or sitemap, naturally placed
 - [ ] Voice matches `tone-of-voice.md`
 - [ ] Target keyword appears in title, first paragraph, AND at least 2 H2s (Three Kings extended)
 - [ ] No em dashes anywhere in the post
 - [ ] Word count within ±15% of `target_word_count`
-- [ ] Every fan-out variation from `fan_out_cluster` is either covered or recorded as dropped (in front-matter)
-- [ ] Front-matter complete: `id`, `title`, `slug`, `primary_keyword`, `intent`, `target_word_count`, `word_count`, `sources_cited`, `internal_links`, `fan_out_covered`, `fan_out_dropped`, `experience_mode`, `created_at`, `author`
+- [ ] Every fan-out variation from `fan_out_cluster` is either covered or recorded as dropped (in `<slug>.meta.json`)
+- [ ] Frontmatter (`.md`) matches the destination content-collection schema (eg Astro: `title`, `description`, `pubDate`, `keyword`, `secondaryKeywords`, `sourceEmails`, `draft`, `tags`). Sidecar (`<slug>.meta.json`) complete: `id`, `primary_keyword`, `intent`, `target_word_count`, `sources_cited`, `internal_links`, `fan_out_covered`, `fan_out_dropped`, `experience_mode`, `created_at`, `author`.
 
 If any item fails, fix it and re-run the check before handing the draft to the user.
 

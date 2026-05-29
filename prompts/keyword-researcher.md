@@ -83,12 +83,44 @@ Rule of thumb: if the searcher would expect a product page, it's transactional/c
 
 ### Step 4: Score priority
 
-Score each keyword 1 (highest) to 3 (lowest):
-- **1** — informational with volume ≥ 100/mo and kd ≤ 35, no existing coverage on your-site.com, fits site-config in-scope topics, matches AI-SEO operator audience
-- **2** — same as 1 but volume < 100 OR kd 36–55 OR partial coverage exists
-- **3** — interesting but low volume, high difficulty, or weak topical fit. Park in keyword-bank but do not queue.
+Score each keyword 1 (highest) to 3 (lowest). The scoring below is calibrated
+for the post-AI-Overview SERP: Google's AI Overview now resolves most pure
+informational queries directly in the SERP (no click). The opportunity has
+shifted toward:
+
+- **Commercial / transactional intent** (user wants to decide or buy): click
+  intent survives, AI Overview is less dominant, LLMs still cite these pages
+  when answering shopping/comparison queries.
+- **Informational with hands-on / opinionated / first-party angle**: even when
+  the SERP shows an AI Overview, LLMs (ChatGPT, Claude, Perplexity) cite
+  authority sources when answering follow-ups. A well-structured informational
+  post with original data, citations, and Content Capsules can be the cited
+  source even if it loses some direct clicks. Do not abandon informational; do
+  abandon generic informational with no angle.
+
+Scoring rules:
+
+- **1** — Any of the following, AND in-scope, AND no existing coverage on
+  your-site.com, AND fits the site's audience:
+  - **commercial or transactional** intent with volume ≥ 50/mo and kd ≤ 45
+  - **informational** with volume ≥ 100/mo and kd ≤ 35 AND a clear differentiated
+    angle (first-party experience, original data, polarising opinion, niche the
+    competitors don't cover). Generic informational = drop to P2.
+- **2** — same as P1 but volume below the threshold, OR kd 36-55, OR partial
+  coverage exists, OR informational without a strong differentiation angle.
+- **3** — Interesting but low volume, high difficulty, weak topical fit, or
+  pure brand-aware queries with no transactional follow-on. Park in
+  keyword-bank but do not queue.
 
 Skip entirely (do not add): out-of-scope per site-config, kd > 70, or volume = 0.
+
+**Why this matters:** the goal is no longer just "rank on page 1 for an
+informational keyword and get the click". It's also "be the source the LLM
+quotes when its user asks the follow-up question". Both objectives reward
+the same underlying signals (structured content, original data, freshness,
+authority), but the keyword mix that's worth chasing has shifted toward
+commercial/transactional + differentiated informational, and away from
+generic informational.
 
 ### Step 5: Coverage check
 
