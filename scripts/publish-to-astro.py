@@ -33,6 +33,8 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -134,6 +136,38 @@ def main() -> int:
         site = cfg.get("public_url_base", "").rstrip("/")
         url = f"{site}/blog/{slug}/" if site else f"published to main as {slug}"
         print(f"PUBLISHED_LIVE {url}")
+
+        # IndexNow ping: notifica a Bing, Yandex y demás motores compatibles
+        # de la URL nueva sin esperar al crawl natural. ChatGPT Search se
+        # alimenta de Bing, así que esto acelera la visibilidad en LLMs.
+        # Si el ping falla no abortamos: el deploy ya está hecho, IndexNow es
+        # un "best effort" que retrying complica más de lo que aporta.
+        indexnow_cfg = cfg.get("indexnow")
+        if indexnow_cfg and site:
+            key = indexnow_cfg.get("key")
+            host = indexnow_cfg.get("host") or site.replace("https://", "").replace("http://", "").rstrip("/")
+            key_location = indexnow_cfg.get("key_location") or f"{site}/{key}.txt"
+            if key:
+                payload = json.dumps({
+                    "host": host,
+                    "key": key,
+                    "keyLocation": key_location,
+                    "urlList": [url],
+                }).encode("utf-8")
+                req = urllib.request.Request(
+                    "https://api.indexnow.org/IndexNow",
+                    data=payload,
+                    headers={"Content-Type": "application/json; charset=utf-8"},
+                    method="POST",
+                )
+                try:
+                    with urllib.request.urlopen(req, timeout=10) as resp:
+                        code = resp.getcode()
+                        print(f"INDEXNOW ok ({code}) for {url}")
+                except urllib.error.HTTPError as exc:
+                    print(f"INDEXNOW http_error ({exc.code}) for {url}: {exc.reason}", file=sys.stderr)
+                except (urllib.error.URLError, OSError) as exc:
+                    print(f"INDEXNOW network_error for {url}: {exc}", file=sys.stderr)
 
     return 0
 
