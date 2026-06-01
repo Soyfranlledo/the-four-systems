@@ -36,13 +36,19 @@ const SITE_DOMAIN = "franlledo.com";
 // comparativas, recomendaciones). Las "explica concepto" no triggerean
 // web search en gpt-4o, así que no nos dicen si nos cita en el SERP que
 // ChatGPT Search consulta.
+// 8 queries: 6 categoriales + 2 brand discovery (Fran / Cazatarjetas).
+// Las primeras 6 miden si los LLMs encuentran a Fran cuando un usuario busca
+// expertise o referentes del nicho. Las 2 últimas confirman que al menos el
+// branded search lo devuelve correctamente.
 const LLM_QUERIES = [
   "mejores blogs de email marketing en español 2026",
-  "qué experto seguir sobre embudos de venta para solopreneurs",
-  "recomendaciones de cursos sobre email marketing en español",
-  "quién enseña a vender infoproductos sin lista grande",
-  "blogs en español sobre Claude para solopreneurs",
-  "newsletter diaria sobre email marketing en español a la que suscribirse",
+  "expertos en embudos de venta para solopreneurs en español",
+  "newsletters diarias en español sobre marketing online",
+  "qué consultor contratar para email marketing en España",
+  "claude para solopreneurs y negocios online en español",
+  "cómo lanzar un infoproducto sin tener una lista grande",
+  "quién es Fran Lledó",
+  "qué es Cazatarjetas",
 ];
 
 const COMPETITORS = [
