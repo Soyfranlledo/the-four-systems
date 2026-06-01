@@ -129,10 +129,11 @@ main() {
 
   # refresh-recommender is a hybrid agent: Python pulls GSC decay, then Claude classifies.
   if [[ "$AGENT_NAME" == "refresh-recommender" ]]; then
-    # En esta instalación usamos el system Python (no hay venv dedicado para GSC).
-    # Las credenciales GSC se cargan vía OAuth del Dashboard project; ver
-    # scripts/refresh-scorer.py para detalles.
-    local py_bin="python3"
+    # Usa el venv local (.venv/) que tiene google-api-python-client + google-auth.
+    # Las credenciales GSC se cargan dentro del script vía OAuth del Dashboard
+    # project; ver scripts/refresh-scorer.py para detalles.
+    local py_bin="$SCRIPT_DIR/.venv/bin/python"
+    [[ ! -x "$py_bin" ]] && py_bin="python3"
     echo "Phase 1: sitemap + GSC indexing scan..."
     "$py_bin" "$SCRIPT_DIR/scripts/refresh-scorer.py" 2>&1 | tee "$REPORT_FILE"
     local layer1_exit=${PIPESTATUS[0]}

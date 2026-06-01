@@ -15,10 +15,13 @@ We flag:
 Output: state/refresh-candidates.json (consumed by the layer-2 Claude prompt
 that adds per-URL action recommendations and produces refresh-queue.json).
 
-Auth reuses the helpers from SEO-Access/mcp-gsc/gsc_server.py.
+Auth: usa el OAuth refresh token del Dashboard project, mismo método que
+weekly-seo-report.mjs. Carga las env vars de Dashboard Fran Lledó/.env.local
+y construye el cliente de Search Console con google-api-python-client desde
+el venv local (.venv/).
 
 Usage:
-  refresh-scorer.py [--site https://www.your-site.com/] [--include /blog/] [--max-urls 60]
+  .venv/bin/python scripts/refresh-scorer.py [--site https://franlledo.com/] [--include /blog/] [--max-urls 60]
 """
 
 from __future__ import annotations
@@ -42,14 +45,41 @@ except ImportError:
     SSL_CTX = ssl.create_default_context()
 
 ROOT = Path(__file__).resolve().parent.parent
-GSC_PATH = Path("/path/to/the-four-systems/SEO-Access/mcp-gsc")
-sys.path.insert(0, str(GSC_PATH))
+DASH_ENV_PATH = Path("/Users/franlledo/Documents/Claude/Projects/Dashboard Fran Lledó/.env.local")
 
 try:
-    from gsc_server import get_gsc_service  # type: ignore
+    from google.oauth2.credentials import Credentials
+    from google.auth.transport.requests import Request as GoogleAuthRequest
+    from googleapiclient.discovery import build as build_google_service
 except Exception as e:
-    print(f"ERROR: cannot import gsc_server auth helpers: {e}", file=sys.stderr)
+    print(f"ERROR: missing google API client libs. Run: .venv/bin/pip install google-api-python-client google-auth google-auth-httplib2", file=sys.stderr)
+    print(f"  detail: {e}", file=sys.stderr)
     sys.exit(1)
+
+
+def get_gsc_service():
+    """Build a Search Console client using the Dashboard project's OAuth refresh token.
+
+    Reuses the same OAuth refresh token that weekly-seo-report.mjs uses. Scope
+    webmasters.readonly is enough for the URL inspection API.
+    """
+    if not DASH_ENV_PATH.exists():
+        raise RuntimeError(f"OAuth .env.local not found at {DASH_ENV_PATH}")
+    env = {}
+    for line in DASH_ENV_PATH.read_text().splitlines():
+        m = re.match(r"^(GOOGLE_OAUTH_[A-Z_]+)=(.*)$", line)
+        if m:
+            env[m.group(1)] = m.group(2).strip().strip('"').strip("'")
+    creds = Credentials(
+        token=None,
+        refresh_token=env["GOOGLE_OAUTH_REFRESH_TOKEN"],
+        token_uri="https://oauth2.googleapis.com/token",
+        client_id=env["GOOGLE_OAUTH_CLIENT_ID"],
+        client_secret=env["GOOGLE_OAUTH_CLIENT_SECRET"],
+        scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
+    )
+    creds.refresh(GoogleAuthRequest())
+    return build_google_service("searchconsole", "v1", credentials=creds, cache_discovery=False)
 
 UA = "Mozilla/5.0 (compatible; the-four-systems/refresh-scorer)"
 SITEMAP_NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
@@ -256,18 +286,29 @@ def score(candidate: dict, today: dt.date) -> dict:
 
 def main() -> int:
     p = argparse.ArgumentParser()
-    p.add_argument("--site", default=os.environ.get("REFRESH_SITE", "https://www.your-site.com/"))
+    p.add_argument("--site", default=os.environ.get("REFRESH_SITE", "sc-domain:franlledo.com"))
     p.add_argument("--include", default=os.environ.get("REFRESH_INCLUDE", "/blog/"),
                    help="Substring URLs must contain to be considered (e.g. /blog/)")
     p.add_argument("--max-urls", type=int, default=int(os.environ.get("REFRESH_MAX_URLS", "60")))
     args = p.parse_args()
 
+    # GSC supports two siteUrl formats:
+    #   - "sc-domain:franlledo.com" for Domain properties (covers all schemes)
+    #   - "https://www.example.com/" for URL-prefix properties
+    # For discovery of the sitemap we always need an HTTPS root, so we derive it.
     site = args.site
-    print(f"Site: {site}")
+    if site.startswith("sc-domain:"):
+        site_gsc = site
+        site_http = f"https://{site.split(':', 1)[1]}"
+    else:
+        site_gsc = site
+        site_http = site
+    print(f"Site (GSC):  {site_gsc}")
+    print(f"Site (HTTP): {site_http}")
     print(f"Include filter: {args.include!r}")
     print(f"Max URLs: {args.max_urls}")
 
-    sitemaps = discover_sitemaps(site)
+    sitemaps = discover_sitemaps(site_http)
     if not sitemaps:
         print(f"ERROR: could not find a sitemap for {site}", file=sys.stderr)
         return 1
@@ -304,8 +345,8 @@ def main() -> int:
             dates = extract_dates(html)
         except Exception as e:
             print(f"  fetch failed: {e}")
-        # GSC inspection
-        insp = summarise_inspection(inspect_url(svc, site, loc))
+        # GSC inspection (siteUrl must match the GSC property format)
+        insp = summarise_inspection(inspect_url(svc, site_gsc, loc))
         c = {
             "url": loc,
             "sitemap_lastmod": u.get("lastmod"),
@@ -322,7 +363,8 @@ def main() -> int:
     out = {
         "schema_version": 1,
         "generated_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "site": site,
+        "site": site_gsc,
+        "site_http": site_http,
         "include_filter": args.include,
         "totals": {
             "urls_evaluated": len(candidates),
@@ -344,7 +386,7 @@ def main() -> int:
     # Raw markdown report (b-roll)
     raw = ROOT / "reports" / f"{today}-refresh-raw.md"
     lines = [
-        f"# Refresh raw scan, {site}, {today}",
+        f"# Refresh raw scan, {site_gsc}, {today}",
         "",
         f"- URLs evaluated: {len(candidates)}",
         f"- Flagged: {len(flagged)}",
