@@ -119,10 +119,17 @@ CONSULT `services.md`. Flag any sections where business-specific facts will appe
 
 Write the full post following the approved outline.
 
-Open with a **TL;DR block** above the introduction:
+Open with a **summary block** above the introduction, written as an H2 with
+the exact heading `En 30 segundos` (the previous convention was `TL;DR` but
+the audience is hispanic and that jargon does not land; "En 30 segundos"
+makes the promise explicit). The block contains:
 - 3 to 5 bullets summarising the most useful takeaways
 - Plain language, the payoff, no marketing fluff
 - This is for skim readers, Featured Snippets, and AI extractors
+
+The linter excludes both `TL;DR` and `En 30 segundos` headings from the
+capsule ratio calculation, so use the current convention without worrying
+about breaking the 60-70% rule.
 
 While drafting:
 

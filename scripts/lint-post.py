@@ -169,7 +169,11 @@ def lint(path: Path) -> list[str]:
 
     # Rule 5: H2 capsule ratio (capsules phrased as questions)
     h2s = re.findall(r"^## (.+)$", body, flags=re.MULTILINE)
-    h2s = [h for h in h2s if h.strip().upper() != "TL;DR"]
+    # Excluir encabezados de resumen del cálculo del capsule ratio. Aceptamos
+    # tanto el legacy "TL;DR" como el actual "En 30 segundos" (decisión
+    # editorial 2026-06-01: la audiencia hispana no reconoce la jerga TL;DR).
+    summary_headings = {"tl;dr", "en 30 segundos"}
+    h2s = [h for h in h2s if h.strip().lower() not in summary_headings]
     if h2s:
         capsules = sum(1 for h in h2s if h.strip().endswith("?"))
         ratio = capsules / len(h2s)
