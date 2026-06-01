@@ -6,9 +6,11 @@
 
 set -euo pipefail
 
-# Ensure launchd has access to required tools
-export PATH="/Applications/cmux.app/Contents/Resources/bin:/path/to/.local/bin:/path/to/.npm-global/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:$PATH"
-export HOME="/path/to"
+# Ensure launchd has access to required tools.
+# HOME se infiere del entorno (launchd lo setea correctamente al usuario que
+# carga el agent). Si por algún motivo no llega, fallback al path del usuario.
+export HOME="${HOME:-/Users/franlledo}"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -127,9 +129,10 @@ main() {
 
   # refresh-recommender is a hybrid agent: Python pulls GSC decay, then Claude classifies.
   if [[ "$AGENT_NAME" == "refresh-recommender" ]]; then
-    local gsc_venv="/path/to/the-four-systems/SEO-Access/mcp-gsc/venv/bin/python"
-    local py_bin="$gsc_venv"
-    [[ ! -x "$py_bin" ]] && py_bin="python3"
+    # En esta instalación usamos el system Python (no hay venv dedicado para GSC).
+    # Las credenciales GSC se cargan vía OAuth del Dashboard project; ver
+    # scripts/refresh-scorer.py para detalles.
+    local py_bin="python3"
     echo "Phase 1: sitemap + GSC indexing scan..."
     "$py_bin" "$SCRIPT_DIR/scripts/refresh-scorer.py" 2>&1 | tee "$REPORT_FILE"
     local layer1_exit=${PIPESTATUS[0]}

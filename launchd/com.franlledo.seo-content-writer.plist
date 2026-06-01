@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.franlledo.seo-content-writer</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>-lc</string>
+        <string>cd "/Users/franlledo/Documents/Claude/Projects/seo-franlledo" &amp;&amp; ./coordinator.sh content-writer</string>
+    </array>
+
+    <!-- Martes, jueves y sábado a las 10:00. Pilla el siguiente item queued
+         del content-queue, lo escribe en modo auto-pilot (MODE: AUTO),
+         pasa el linter, publica via publish-to-astro y dispara IndexNow. -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Weekday</key>
+            <integer>2</integer>
+            <key>Hour</key>
+            <integer>10</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>4</integer>
+            <key>Hour</key>
+            <integer>10</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>6</integer>
+            <key>Hour</key>
+            <integer>10</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/seo-content-writer.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/seo-content-writer.stderr</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.franlledo.seo-keyword-researcher</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>-lc</string>
+        <string>cd "/Users/franlledo/Documents/Claude/Projects/seo-franlledo" &amp;&amp; ./coordinator.sh keyword-researcher</string>
+    </array>
+
+    <!-- Lunes y miércoles a las 9:00. Pilla el siguiente seed no
+         investigado (o el más antiguo) de state/seed-keywords.txt, hace
+         fan-out con DataForSEO, dedup contra keyword-bank y queue, mete
+         los P1 nuevos en content-queue.json. Mantiene la queue llena
+         para el content-writer del día siguiente. -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Weekday</key>
+            <integer>1</integer>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>3</integer>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/seo-keyword-researcher.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/seo-keyword-researcher.stderr</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
