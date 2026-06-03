@@ -1,0 +1,578 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-06-01T10:24:29Z",
+  "site": "sc-domain:franlledo.com",
+  "site_http": "https://franlledo.com",
+  "include_filter": "/blog/",
+  "totals": {
+    "urls_evaluated": 25,
+    "urls_flagged": 17,
+    "by_flag": {
+      "not_indexed": 8,
+      "index_warning": 9,
+      "stale_12mo": 0,
+      "aging": 0
+    }
+  },
+  "candidates": [
+    {
+      "url": "https://franlledo.com/blog/como-escribir-emails-que-vendan/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "Discovered - currently not indexed",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "not_indexed"
+      ],
+      "age_days": 13,
+      "priority": 1
+    },
+    {
+      "url": "https://franlledo.com/blog/embudo-de-ventas-no-lo-invento-russell-brunson/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "Discovered - currently not indexed",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "not_indexed"
+      ],
+      "age_days": 13,
+      "priority": 1
+    },
+    {
+      "url": "https://franlledo.com/blog/etiqueta/ensayos/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": null,
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "Discovered - currently not indexed",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "not_indexed"
+      ],
+      "age_days": 13,
+      "priority": 1
+    },
+    {
+      "url": "https://franlledo.com/blog/mentalidad-para-emprender/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "Discovered - currently not indexed",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "not_indexed"
+      ],
+      "age_days": 13,
+      "priority": 1
+    },
+    {
+      "url": "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-22",
+        "modified": "2026-05-22",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "Discovered - currently not indexed",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "not_indexed"
+      ],
+      "age_days": 10,
+      "priority": 1
+    },
+    {
+      "url": "https://franlledo.com/blog/funnel-de-conversion-etapas-que-importan/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-22",
+        "modified": "2026-05-22",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "Discovered - currently not indexed",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "not_indexed"
+      ],
+      "age_days": 10,
+      "priority": 1
+    },
+    {
+      "url": "https://franlledo.com/blog/etiqueta/ia/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-06-01",
+        "modified": null,
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "Discovered - currently not indexed",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "not_indexed"
+      ],
+      "age_days": 0,
+      "priority": 1
+    },
+    {
+      "url": "https://franlledo.com/blog/etiqueta/negocios/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-06-01",
+        "modified": null,
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "Discovered - currently not indexed",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "not_indexed"
+      ],
+      "age_days": 0,
+      "priority": 1
+    },
+    {
+      "url": "https://franlledo.com/blog/como-escribir-asuntos-de-email/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 13,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/mejor-modelo-de-negocio-online-para-empezar/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 13,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/no-vendes-servicios-revisa-tu-embudo/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 13,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/etiqueta/marketing/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-21",
+        "modified": null,
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 11,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-22",
+        "modified": "2026-05-22",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 10,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/etiqueta/email-marketing/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-22",
+        "modified": null,
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 10,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/sales-funnel-para-solopreneurs/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-25",
+        "modified": "2026-05-25",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 7,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-06-01",
+        "modified": null,
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 0,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/2026-06-01-claude-para-solopreneurs/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-06-01",
+        "modified": "2026-06-01",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "NEUTRAL",
+        "coverage_state": "URL is unknown to Google",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl_time": null,
+        "google_canonical": null,
+        "user_canonical": null,
+        "error": null
+      },
+      "flags": [
+        "index_warning"
+      ],
+      "age_days": 0,
+      "priority": 3
+    },
+    {
+      "url": "https://franlledo.com/blog/cada-cuanto-enviar-emails-lista/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl_time": "2026-05-22T03:46:14Z",
+        "google_canonical": "https://franlledo.com/blog/cada-cuanto-enviar-emails-lista/",
+        "user_canonical": "https://franlledo.com/blog/cada-cuanto-enviar-emails-lista/",
+        "error": null
+      },
+      "flags": [],
+      "age_days": 13,
+      "priority": 9
+    },
+    {
+      "url": "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl_time": "2026-05-22T03:47:05Z",
+        "google_canonical": "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "user_canonical": "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "error": null
+      },
+      "flags": [],
+      "age_days": 13,
+      "priority": 9
+    },
+    {
+      "url": "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl_time": "2026-05-22T03:47:57Z",
+        "google_canonical": "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/",
+        "user_canonical": "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/",
+        "error": null
+      },
+      "flags": [],
+      "age_days": 13,
+      "priority": 9
+    },
+    {
+      "url": "https://franlledo.com/blog/por-que-hacer-email-marketing/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl_time": "2026-05-23T13:08:13Z",
+        "google_canonical": "https://franlledo.com/blog/por-que-hacer-email-marketing/",
+        "user_canonical": "https://franlledo.com/blog/por-que-hacer-email-marketing/",
+        "error": null
+      },
+      "flags": [],
+      "age_days": 13,
+      "priority": 9
+    },
+    {
+      "url": "https://franlledo.com/blog/que-herramienta-de-email-marketing-elegir/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-19",
+        "modified": "2026-05-19",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl_time": "2026-06-01T09:35:19Z",
+        "google_canonical": "https://franlledo.com/blog/que-herramienta-de-email-marketing-elegir/",
+        "user_canonical": "https://franlledo.com/blog/que-herramienta-de-email-marketing-elegir/",
+        "error": null
+      },
+      "flags": [],
+      "age_days": 13,
+      "priority": 9
+    },
+    {
+      "url": "https://franlledo.com/blog/2026-05-21-marketing-funnel-para-solopreneurs/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-21",
+        "modified": "2026-05-21",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl_time": "2026-06-01T08:34:34Z",
+        "google_canonical": "https://franlledo.com/blog/2026-05-21-marketing-funnel-para-solopreneurs/",
+        "user_canonical": "https://franlledo.com/blog/2026-05-21-marketing-funnel-para-solopreneurs/",
+        "error": null
+      },
+      "flags": [],
+      "age_days": 11,
+      "priority": 9
+    },
+    {
+      "url": "https://franlledo.com/blog/etiqueta/embudos/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-22",
+        "modified": null,
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl_time": "2026-05-23T19:49:06Z",
+        "google_canonical": "https://franlledo.com/blog/etiqueta/embudos/",
+        "user_canonical": "https://franlledo.com/blog/etiqueta/embudos/",
+        "error": null
+      },
+      "flags": [],
+      "age_days": 10,
+      "priority": 9
+    },
+    {
+      "url": "https://franlledo.com/blog/2026-05-29-infoproductos-con-ia/",
+      "sitemap_lastmod": null,
+      "dates": {
+        "published": "2026-05-29",
+        "modified": "2026-05-29",
+        "source": "json_ld_published"
+      },
+      "indexing": {
+        "verdict": "PASS",
+        "coverage_state": "Submitted and indexed",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl_time": "2026-06-01T08:36:36Z",
+        "google_canonical": "https://franlledo.com/blog/2026-05-29-infoproductos-con-ia/",
+        "user_canonical": "https://franlledo.com/blog/2026-05-29-infoproductos-con-ia/",
+        "error": null
+      },
+      "flags": [],
+      "age_days": 3,
+      "priority": 9
+    }
+  ]
+}

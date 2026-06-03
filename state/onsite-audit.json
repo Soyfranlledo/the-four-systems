@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-21T16:14:53Z",
+  "site": "franlledo.com",
+  "audited_urls": [
+    {
+      "url": "https://franlledo.com/",
+      "verdict": "green",
+      "scores": {
+        "performance": 100,
+        "accessibility": 95,
+        "best_practices": 100,
+        "seo": 100
+      },
+      "core_web_vitals": {
+        "LCP_ms": 596,
+        "CLS": 0.011,
+        "TBT_ms": 16
+      },
+      "lighthouse_issues": [
+        {
+          "id": "render-blocking-resources",
+          "title": "Has render-blocking stylesheets (2)",
+          "severity": "low",
+          "estimated_savings_ms": null,
+          "category": "performance"
+        },
+        {
+          "id": "accessibility-subscore",
+          "title": "Accessibility category at 95 (not 100); specific audit not exposed",
+          "severity": "low",
+          "category": "accessibility"
+        }
+      ],
+      "onpage_issues": [
+        {
+          "id": "title_too_long",
+          "title": "Title is 67 characters (Google truncates at ~60)",
+          "severity": "low"
+        }
+      ],
+      "onpage_score": 98.17
+    },
+    {
+      "url": "https://franlledo.com/blog/",
+      "verdict": "green",
+      "scores": {
+        "performance": 100,
+        "accessibility": 95,
+        "best_practices": 100,
+        "seo": 100
+      },
+      "core_web_vitals": {
+        "LCP_ms": 498,
+        "CLS": 0.001,
+        "TBT_ms": 16
+      },
+      "lighthouse_issues": [
+        {
+          "id": "render-blocking-resources",
+          "title": "Has render-blocking stylesheet (1)",
+          "severity": "low",
+          "category": "performance"
+        },
+        {
+          "id": "accessibility-subscore",
+          "title": "Accessibility category at 95 (not 100)",
+          "severity": "low",
+          "category": "accessibility"
+        }
+      ],
+      "onpage_issues": [
+        {
+          "id": "title_too_short",
+          "title": "Title 'Blog — Fran Lledó' is only 17 characters",
+          "severity": "medium"
+        },
+        {
+          "id": "low_content_rate",
+          "title": "Content-to-code ratio low (3.1%, normal for index pages)",
+          "severity": "low"
+        }
+      ],
+      "onpage_score": 97.07
+    },
+    {
+      "url": "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+      "verdict": "green",
+      "scores": {
+        "performance": 100,
+        "accessibility": 95,
+        "best_practices": 100,
+        "seo": 100
+      },
+      "core_web_vitals": {
+        "LCP_ms": 476,
+        "CLS": null,
+        "TBT_ms": 16
+      },
+      "lighthouse_issues": [
+        {
+          "id": "render-blocking-resources",
+          "title": "Has render-blocking stylesheet (1)",
+          "severity": "low",
+          "category": "performance"
+        },
+        {
+          "id": "accessibility-subscore",
+          "title": "Accessibility category at 95 (not 100)",
+          "severity": "low",
+          "category": "accessibility"
+        }
+      ],
+      "onpage_issues": [
+        {
+          "id": "title_too_long",
+          "title": "Title is 89 characters (Google truncates at ~60)",
+          "severity": "medium"
+        },
+        {
+          "id": "dom_node_60_childs",
+          "title": "Has node with more than 60 children (DOM size warning)",
+          "severity": "low"
+        }
+      ],
+      "onpage_score": 98.17
+    }
+  ],
+  "site_rollup": {
+    "avg_scores": {
+      "performance": 100,
+      "accessibility": 95,
+      "best_practices": 100,
+      "seo": 100
+    },
+    "avg_core_web_vitals": {
+      "LCP_ms": 523,
+      "CLS": 0.006,
+      "TBT_ms": 16
+    },
+    "verdict": "green",
+    "template_issues": [
+      {
+        "id": "render-blocking-resources",
+        "affected_urls": 3,
+        "severity": "low",
+        "note": "All pages have 1-2 render-blocking stylesheets. Not critical because LCP is already excellent (<600ms)."
+      },
+      {
+        "id": "accessibility-subscore",
+        "affected_urls": 3,
+        "severity": "low",
+        "note": "All pages score 95 instead of 100 in accessibility. Specific failing audit not exposed by the API."
+      },
+      {
+        "id": "title_length_issues",
+        "affected_urls": 2,
+        "severity": "medium",
+        "note": "/blog/ has too short title (17 chars). Post has too long title (89 chars). Google truncates at ~60."
+      }
+    ],
+    "money_page_alerts": []
+  },
+  "cost_usd": 0.15
+}
