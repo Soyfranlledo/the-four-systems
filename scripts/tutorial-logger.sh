@@ -9,7 +9,10 @@ STATUS="${2:-?}"
 DETAIL="${3:-}"
 REPORT="${4:-}"
 
-LOG_DIR="/path/to/the-four-systems/Content/youtube-tutorial-the-four-systems"
+# Rutas relativas al repo (antes apuntaban a /path/to/... placeholders de la
+# plantilla upstream, lo que provocaba "mkdir: /path: Read-only file system").
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LOG_DIR="$REPO_ROOT/tutorial"
 LOG_FILE="$LOG_DIR/build-log.md"
 
 mkdir -p "$LOG_DIR"
@@ -39,9 +42,9 @@ TIMESTAMP="$(date '+%Y-%m-%d %H:%M:%S')"
   # Per-agent extras
   case "$AGENT" in
     keyword-researcher)
-      LATEST_CSV="$(ls -t "/path/to/the-four-systems/ai-ranking-automations/seo-agents/output/keywords/" 2>/dev/null | head -1 || true)"
+      LATEST_CSV="$(ls -t "$REPO_ROOT/output/keywords/" 2>/dev/null | head -1 || true)"
       [[ -n "$LATEST_CSV" ]] && echo "- B-roll: screen-record opening \`output/keywords/$LATEST_CSV\`"
-      QUEUE_LEN="$(python3 -c "import json; print(len(json.load(open('/path/to/the-four-systems/ai-ranking-automations/seo-agents/state/content-queue.json'))['items']))" 2>/dev/null || echo '?')"
+      QUEUE_LEN="$(python3 -c "import json; print(len(json.load(open('$REPO_ROOT/state/content-queue.json'))['items']))" 2>/dev/null || echo '?')"
       echo "- Content queue length: $QUEUE_LEN items"
       ;;
     content-writer)

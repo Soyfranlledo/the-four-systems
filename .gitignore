@@ -36,3 +36,7 @@ node_modules/
 
 # Misc
 *.log
+
+# Tutorial build-log (output generado cada run del coordinator)
+tutorial/
+.claude/launch.json
