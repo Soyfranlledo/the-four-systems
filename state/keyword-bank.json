@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "franlledo.com",
-  "last_updated": "2026-05-29",
+  "last_updated": "2026-06-03",
   "seeds_researched": [
     {
       "seed": "embudos de venta",
@@ -14,6 +14,10 @@
     {
       "seed": "lanzamientos infoproductos",
       "last_researched": "2026-05-29"
+    },
+    {
+      "seed": "claude para solopreneurs",
+      "last_researched": "2026-06-03"
     }
   ],
   "keywords": [
@@ -694,6 +698,104 @@
       "discovered": "2026-05-29",
       "source": "manual_seed",
       "notes": "Seed original. DFS no devolvió data útil (algoritmo se va a 'lanzamientos espaciales/ps3'). Como targetting keyword no merece la pena."
+    },
+    {
+      "keyword": "claude para solopreneurs",
+      "seed": "claude para solopreneurs",
+      "intent": "commercial",
+      "volume": null,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "claude para solopreneurs",
+      "covered_by": "/blog/claude-para-solopreneurs/",
+      "discovered": "2026-06-03",
+      "source": "manual_seed",
+      "notes": "Seed. Post escrito (content-queue 2026-06-01). DFS devuelve 0 resultados relacionados útiles en español para este seed niche."
+    },
+    {
+      "keyword": "claude ai precios",
+      "seed": "claude para solopreneurs",
+      "intent": "commercial",
+      "volume": 320,
+      "kd": null,
+      "cpc": 1.78,
+      "priority": 3,
+      "fan_out_parent": "claude para solopreneurs",
+      "covered_by": "/blog/claude-para-solopreneurs/",
+      "discovered": "2026-06-03",
+      "source": "dataforseo_labs_google_keyword_ideas",
+      "notes": "Vol 320, trend +1900% anual. Competition LOW 0.11. Intent commercial/navigational: searcher quiere la página de precios de Anthropic. Cubierto por post pillar claude-para-solopreneurs (incluye 'cuánto cuesta claude' en su cluster)."
+    },
+    {
+      "keyword": "inteligencia artificial para emprendedores",
+      "seed": "claude para solopreneurs",
+      "intent": "commercial",
+      "volume": 20,
+      "kd": null,
+      "cpc": 3.89,
+      "priority": 3,
+      "fan_out_parent": "claude para solopreneurs",
+      "covered_by": null,
+      "discovered": "2026-06-03",
+      "source": "dataforseo_labs_google_related_keywords",
+      "notes": "Vol 20, competition HIGH 0.74, trend -50%. Poco volumen y audiencia genérica. No suficiente para P1 o P2."
+    },
+    {
+      "keyword": "ia para solopreneurs",
+      "seed": "claude para solopreneurs",
+      "intent": "commercial",
+      "volume": null,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "claude para solopreneurs",
+      "covered_by": null,
+      "discovered": "2026-06-03",
+      "source": "ai_optimization_chat_gpt_scraper",
+      "notes": "Sin datos DFS. Concepto extraído de la descomposición del scraper ChatGPT. Monitorear cuando el volumen crezca."
+    },
+    {
+      "keyword": "claude para email marketing",
+      "seed": "claude para solopreneurs",
+      "intent": "informational",
+      "volume": null,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "claude para solopreneurs",
+      "covered_by": null,
+      "discovered": "2026-06-03",
+      "source": "ai_optimization_chat_gpt_scraper",
+      "notes": "Sin datos DFS. Uso de Claude para redactar emails de marketing. On-brand para Fran. Potencial post si crece el volumen."
+    },
+    {
+      "keyword": "prompts claude para emprendedores",
+      "seed": "claude para solopreneurs",
+      "intent": "informational",
+      "volume": null,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "claude para solopreneurs",
+      "covered_by": null,
+      "discovered": "2026-06-03",
+      "source": "ai_optimization_chat_gpt_scraper",
+      "notes": "Sin datos DFS. Alta relevancia temática para la audiencia. Candidato a P1 si el espacio madura y DFS registra volumen."
+    },
+    {
+      "keyword": "automatizacion con claude",
+      "seed": "claude para solopreneurs",
+      "intent": "transactional",
+      "volume": null,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "claude para solopreneurs",
+      "covered_by": null,
+      "discovered": "2026-06-03",
+      "source": "ai_optimization_chat_gpt_scraper",
+      "notes": "Sin datos DFS. Automatización de workflows con Claude (agentes, Claude Code). Candidato para post sobre automatización con IA para solopreneurs cuando madure el volumen."
     }
   ]
 }
