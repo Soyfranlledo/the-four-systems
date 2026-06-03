@@ -1,5 +1,6 @@
 # Local credentials, never commit
 .mcp.json
+.env.local
 .claude/settings.local.json
 
 # Private business context (8 files per System 0)
@@ -30,7 +31,7 @@ __pycache__/
 .venv/
 venv/
 
-# Node (symlink al node_modules del Dashboard project para scripts/*.mjs)
+# Node (instalación local para scripts/*.mjs — ver package.json)
 node_modules/
 
 # Misc

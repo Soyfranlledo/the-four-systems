@@ -1,0 +1,7 @@
+# SEO agent — Python deps para scripts/*.py (refresh-scorer, render-html-report).
+# Recrea el venv local con:  python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+google-api-python-client==2.197.0
+google-auth==2.53.0
+google-auth-httplib2==0.4.0
+certifi==2026.5.20
+requests==2.34.2

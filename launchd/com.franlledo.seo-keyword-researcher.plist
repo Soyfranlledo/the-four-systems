@@ -9,8 +9,17 @@
     <array>
         <string>/bin/zsh</string>
         <string>-lc</string>
-        <string>cd "/Users/franlledo/Documents/Claude/Projects/seo-franlledo" &amp;&amp; ./coordinator.sh keyword-researcher</string>
+        <string>cd "/Users/franlledo/Projects/seo-franlledo" &amp;&amp; ./coordinator.sh keyword-researcher</string>
     </array>
+
+    <!-- PATH explícito: launchd no carga nvm (shell no-interactivo), así que
+         node y la CLI `claude` no estarían en el PATH. Apuntamos al bin de la
+         versión nvm por defecto. Si actualizas node con nvm, actualiza esta ruta. -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/franlledo/.nvm/versions/node/v22.22.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
 
     <!-- Lunes y miércoles a las 9:00. Pilla el siguiente seed no
          investigado (o el más antiguo) de state/seed-keywords.txt, hace

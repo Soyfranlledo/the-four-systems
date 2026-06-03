@@ -45,7 +45,10 @@ except ImportError:
     SSL_CTX = ssl.create_default_context()
 
 ROOT = Path(__file__).resolve().parent.parent
-DASH_ENV_PATH = Path("/Users/franlledo/Documents/Claude/Projects/Dashboard Fran Lledó/.env.local")
+# Credenciales OAuth locales al proyecto (mínimo privilegio: solo GOOGLE_OAUTH_*).
+# Antes leía Dashboard Fran Lledó/.env.local, pero ese path vivía en ~/Documents,
+# que macOS Sequoia bloquea para procesos de launchd (TCC). Ahora es local.
+DASH_ENV_PATH = ROOT / ".env.local"
 
 try:
     from google.oauth2.credentials import Credentials

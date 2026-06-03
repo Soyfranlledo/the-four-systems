@@ -12,11 +12,10 @@
 // - Competitor: pulls ranked_keywords para los 3 competidores directos.
 //
 // Ejecutar:
-//   cd "/Users/franlledo/Documents/Claude/Projects/Dashboard Fran Lledó"
-//   node /Users/franlledo/Documents/Claude/Projects/seo-franlledo/scripts/weekly-seo-report.mjs
+//   node <repo>/scripts/weekly-seo-report.mjs
 //
-// (El cd al dashboard es para que Node resuelva `googleapis` del node_modules
-//  de ese proyecto. Puede automatizarse con un wrapper bash si interesa.)
+// (`googleapis` se resuelve del node_modules local del repo — ya no depende
+//  del Dashboard project. Credenciales OAuth en <repo>/.env.local.)
 
 import { google } from "googleapis";
 import fs from "fs";
@@ -59,7 +58,10 @@ const COMPETITORS = [
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 const REPORTS_DIR = path.join(REPO_ROOT, "reports");
-const DASH_ENV_PATH = "/Users/franlledo/Documents/Claude/Projects/Dashboard Fran Lledó/.env.local";
+// Credenciales OAuth locales al proyecto (mínimo privilegio: solo GOOGLE_OAUTH_*).
+// Antes leía Dashboard Fran Lledó/.env.local en ~/Documents, que macOS Sequoia
+// bloquea para procesos de launchd (TCC). Ahora vive dentro del repo.
+const DASH_ENV_PATH = path.join(REPO_ROOT, ".env.local");
 const DFS_MCP_JSON = path.join(REPO_ROOT, ".mcp.json");
 
 // ----- Date helpers -----

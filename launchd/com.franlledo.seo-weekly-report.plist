@@ -9,7 +9,7 @@
     <array>
         <string>/bin/zsh</string>
         <string>-lc</string>
-        <string>node /Users/franlledo/Documents/Claude/Projects/seo-franlledo/scripts/weekly-seo-report.mjs</string>
+        <string>node /Users/franlledo/Projects/seo-franlledo/scripts/weekly-seo-report.mjs</string>
     </array>
 
     <!-- Weekly Monday 08:00. Genera reports/&lt;date&gt;-seo-weekly.md con GSC + GA4 + LLM citation tracking + competitor monitoring. -->
@@ -28,10 +28,13 @@
     <key>StandardErrorPath</key>
     <string>/tmp/seo-weekly-report.stderr</string>
 
+    <!-- PATH explícito con el bin de nvm primero: launchd no carga nvm en shell
+         no-interactivo, así que `node` no estaría disponible. Si actualizas node
+         con nvm, actualiza esta ruta. -->
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin</string>
+        <string>/Users/franlledo/.nvm/versions/node/v22.22.2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     </dict>
 
     <key>RunAtLoad</key>
