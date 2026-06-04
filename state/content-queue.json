@@ -313,6 +313,44 @@
       ],
       "notes": "PILLAR. Hueco competitivo claro: SERP dominado por 'Claude for Small Business' corporate. \u00c1ngulo \u00fanico: solopreneur sin QuickBooks/HubSpot/PayPal. Reddit thread r/Anthropic confirma la demanda. Word count 3072, lint OK.",
       "post_type": "pillar"
+    },
+    {
+      "id": "2026-06-04-vibe-coding-en-espanol",
+      "status": "queued",
+      "queued_at": "2026-06-04T10:30:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "vibe coding en español",
+      "secondary_keywords": [
+        "vibe coding que es y para que sirve",
+        "vibe coding herramientas",
+        "vibe coding ejemplos",
+        "vibe coding para no programadores"
+      ],
+      "intent": "informational",
+      "volume": 480,
+      "kd": 18,
+      "fan_out_cluster": [
+        "vibe coding que es y para que sirve",
+        "vibe coding herramientas",
+        "vibe coding ejemplos",
+        "riesgos del vibe coding",
+        "vibe coding como usar",
+        "vibe coding para solopreneurs"
+      ],
+      "suggested_slug": "vibe-coding-en-espanol",
+      "suggested_title": "Vibe coding en español: qué es, para qué sirve y cómo lo uso en mi negocio online",
+      "target_word_count": 2000,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/claude-para-solopreneurs/",
+        "https://franlledo.com/blog/2026-05-29-infoproductos-con-ia/"
+      ],
+      "external_authority_candidates": [
+        "https://en.wikipedia.org/wiki/Vibe_coding",
+        "https://www.merriam-webster.com/dictionary/vibe%20coding",
+        "https://builtin.com/articles/vibe-coding"
+      ],
+      "notes": "KD 18, vol 480, competition LOW. SERP para 'vibe coding en español' tiene solo 45 resultados (campo casi virgen). Trend +2500% anual. Ángulo Fran: guía de vibe coding para solopreneurs hispanos sin conocimientos de programación, usando Claude y Replit. Cubrir también 'vibe coding que es y para que sirve' (KD 4, vol 140) en el mismo post como H2. Diferenciador: perspectiva solopreneur hispanohablante con ejemplos reales de automatización de negocio (no de ingeniería de software). Incluir sección honesta sobre riesgos (código que no se entiende, bugs ocultos) al estilo de Fran."
     }
   ]
 }
