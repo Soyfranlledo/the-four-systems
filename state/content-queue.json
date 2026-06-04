@@ -316,11 +316,11 @@
     },
     {
       "id": "2026-06-04-vibe-coding-en-espanol",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-04T10:30:00Z",
-      "written_at": null,
-      "post_url": null,
-      "primary_keyword": "vibe coding en español",
+      "written_at": "2026-06-04T08:52:16Z",
+      "post_url": "https://franlledo.com/blog/2026-06-04-vibe-coding-en-espanol/",
+      "primary_keyword": "vibe coding en espa\u00f1ol",
       "secondary_keywords": [
         "vibe coding que es y para que sirve",
         "vibe coding herramientas",
@@ -339,7 +339,7 @@
         "vibe coding para solopreneurs"
       ],
       "suggested_slug": "vibe-coding-en-espanol",
-      "suggested_title": "Vibe coding en español: qué es, para qué sirve y cómo lo uso en mi negocio online",
+      "suggested_title": "Vibe coding en espa\u00f1ol: qu\u00e9 es, para qu\u00e9 sirve y c\u00f3mo lo uso en mi negocio online",
       "target_word_count": 2000,
       "internal_link_targets": [
         "https://franlledo.com/blog/claude-para-solopreneurs/",
@@ -350,7 +350,7 @@
         "https://www.merriam-webster.com/dictionary/vibe%20coding",
         "https://builtin.com/articles/vibe-coding"
       ],
-      "notes": "KD 18, vol 480, competition LOW. SERP para 'vibe coding en español' tiene solo 45 resultados (campo casi virgen). Trend +2500% anual. Ángulo Fran: guía de vibe coding para solopreneurs hispanos sin conocimientos de programación, usando Claude y Replit. Cubrir también 'vibe coding que es y para que sirve' (KD 4, vol 140) en el mismo post como H2. Diferenciador: perspectiva solopreneur hispanohablante con ejemplos reales de automatización de negocio (no de ingeniería de software). Incluir sección honesta sobre riesgos (código que no se entiende, bugs ocultos) al estilo de Fran."
+      "notes": "KD 18, vol 480, competition LOW. SERP para 'vibe coding en espa\u00f1ol' tiene solo 45 resultados (campo casi virgen). Trend +2500% anual. \u00c1ngulo Fran: gu\u00eda de vibe coding para solopreneurs hispanos sin conocimientos de programaci\u00f3n, usando Claude y Replit. Cubrir tambi\u00e9n 'vibe coding que es y para que sirve' (KD 4, vol 140) en el mismo post como H2. Diferenciador: perspectiva solopreneur hispanohablante con ejemplos reales de automatizaci\u00f3n de negocio (no de ingenier\u00eda de software). Incluir secci\u00f3n honesta sobre riesgos (c\u00f3digo que no se entiende, bugs ocultos) al estilo de Fran."
     }
   ]
 }
