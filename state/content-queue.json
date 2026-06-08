@@ -351,6 +351,73 @@
         "https://builtin.com/articles/vibe-coding"
       ],
       "notes": "KD 18, vol 480, competition LOW. SERP para 'vibe coding en espa\u00f1ol' tiene solo 45 resultados (campo casi virgen). Trend +2500% anual. \u00c1ngulo Fran: gu\u00eda de vibe coding para solopreneurs hispanos sin conocimientos de programaci\u00f3n, usando Claude y Replit. Cubrir tambi\u00e9n 'vibe coding que es y para que sirve' (KD 4, vol 140) en el mismo post como H2. Diferenciador: perspectiva solopreneur hispanohablante con ejemplos reales de automatizaci\u00f3n de negocio (no de ingenier\u00eda de software). Incluir secci\u00f3n honesta sobre riesgos (c\u00f3digo que no se entiende, bugs ocultos) al estilo de Fran."
+    },
+    {
+      "id": "2026-06-08-marketing-automation-para-solopreneurs",
+      "status": "queued",
+      "queued_at": "2026-06-08T10:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "marketing automation",
+      "intent": "commercial",
+      "volume": 590,
+      "kd": 12,
+      "fan_out_cluster": [
+        "marketing automation",
+        "automatizacion de marketing",
+        "que es marketing automation",
+        "email automation",
+        "automatizacion email marketing",
+        "marketing automation ejemplos"
+      ],
+      "suggested_slug": "marketing-automation-para-solopreneurs",
+      "suggested_title": "Marketing automation para solopreneurs: automatiza sin CRM ni software caro",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/",
+        "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/"
+      ],
+      "external_authority_candidates": [
+        "https://mailchimp.com/es/resources/marketing-automation/",
+        "https://www.hubspot.com/marketing-automation",
+        "https://www.activecampaign.com/es"
+      ],
+      "notes": "Vol 590, KD 12. T\u00e9rmino en ingl\u00e9s muy buscado desde Espa\u00f1a (solopreneurs y peque\u00f1as agencias). \u00c1ngulo Fran: el 99% del contenido sobre marketing automation asume que tienes un equipo, un CRM con 10 workflows y un budget de herramientas de 500\u20ac/mes. La versi\u00f3n solopreneur es radicalmente m\u00e1s simple: 3 automatizaciones bastan (bienvenida, lanzamiento, reactivaci\u00f3n). Mostrar el stack real de Fran (MailerLite + Claude). Cubrir 'que es marketing automation' como H2 introductorio y 'email automation' como subsecci\u00f3n. Clave: no es un tutorial de configurar MailerLite (fuera de scope), sino la estrategia detr\u00e1s de qu\u00e9 automatizar y por qu\u00e9."
+    },
+    {
+      "id": "2026-06-08-lead-nurturing-con-email-marketing",
+      "status": "queued",
+      "queued_at": "2026-06-08T10:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "lead nurturing",
+      "intent": "informational",
+      "volume": 390,
+      "kd": 6,
+      "fan_out_cluster": [
+        "lead nurturing",
+        "lead nurturing que es",
+        "email nurturing",
+        "secuencia de bienvenida email",
+        "correo de bienvenida",
+        "secuencia de emails de venta",
+        "email de reactivacion"
+      ],
+      "suggested_slug": "lead-nurturing-con-email-marketing",
+      "suggested_title": "Lead nurturing con email: c\u00f3mo nutrir tu lista hasta que est\u00e1 lista para comprar",
+      "target_word_count": 2000,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+        "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/"
+      ],
+      "external_authority_candidates": [
+        "https://mailchimp.com/es/resources/lead-nurturing/",
+        "https://blog.hubspot.com/blog/tabid/6307/bid/26518/the-ultimate-guide-to-lead-nurturing.aspx"
+      ],
+      "notes": "Vol 390, KD 6. SERP dominado por contenido corporate que describe frameworks abstractos (TOFU/MOFU/BOFU, buyer journey stages). \u00c1ngulo diferenciado: Fran tiene 2.000 suscriptores, 35% open rate, y ha generado lanzamientos de 10-12K\u20ac con una sola secuencia de emails. El post debe mostrar su sistema REAL: (1) email de bienvenida inmediato + primeras 3-5 piezas de valor, (2) cadencia semanal que educa y genera confianza, (3) secuencia de lanzamiento 5-7 emails. Distinguir entre nutrir antes del lanzamiento vs. nutrir para mantener vivo el inter\u00e9s. Incluir m\u00e9tricas reales (35% open = double del benchmark del sector)."
     }
   ]
 }
