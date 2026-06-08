@@ -170,15 +170,25 @@ If any item fails, fix it and re-run the check before handing the draft to the u
 
 ### STEP 6 (post-review): SAVE AND HAND OFF
 
-1. Compute the slug: use `suggested_slug` from the queue item.
+1. Compute the slug: use `suggested_slug` from the queue item. The slug MUST be
+   clean — only lowercase keywords separated by hyphens. **NEVER put a date,
+   number prefix, or any non-keyword token in the slug.** On Astro the filename
+   becomes `post.id`, which becomes both the public URL and the `<link
+   rel=canonical>`. A date in an evergreen URL signals "stale content" to Google,
+   dilutes the keyword slug, and can only be undone with a 301 redirect. The
+   `<YYYY-MM-DD>-` prefix below is a LOCAL sorting convention for `output/posts/`
+   ONLY; `publish-to-astro.py` strips it before copying to the Astro repo, so the
+   published URL is `/blog/<slug>/` with no date. (Incident 2026-06-08: 9 posts
+   shipped with dated URLs because this boundary was not enforced. Do not repeat.)
 
 2. Write TWO files to `output/posts/`:
 
    **a) `<YYYY-MM-DD>-<slug>.md`** with frontmatter that **mirrors the destination
    content-collection schema** (read `context/publishing.json` if present to
    identify the schema; for Astro the canonical fields are below). This file is
-   what gets copied verbatim to the Astro repo at publish time, so it MUST be
-   valid against the destination schema or the build fails.
+   what gets copied to the Astro repo at publish time (with the date prefix
+   stripped from the filename), so it MUST be valid against the destination
+   schema or the build fails.
 
    ```yaml
    ---

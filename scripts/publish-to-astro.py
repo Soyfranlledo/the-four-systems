@@ -31,6 +31,7 @@ Returns:
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import urllib.error
@@ -83,13 +84,26 @@ def main() -> int:
         print(f"ERROR: content dir does not exist: {content_dir}", file=sys.stderr)
         return 1
 
-    target = content_dir / md_path.name
+    # CRITICAL: the destination filename IS the public URL slug AND the canonical
+    # (Astro's glob loader derives post.id from the filename, and the blog route
+    # builds both `params.slug` and `<link rel=canonical>` from post.id).
+    #
+    # The local artifact in output/posts/ is named "<YYYY-MM-DD>-<slug>.md" so
+    # posts sort chronologically in the editor. But that date prefix must NEVER
+    # reach the published filename: a date in an evergreen URL signals "stale
+    # content", bloats the slug with non-keyword characters, and is irreversible
+    # without a 301. So we strip a leading ISO date here, at the publish boundary.
+    # This keeps local sorting AND clean public URLs. (Incident 2026-06-08.)
+    clean_slug = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", md_path.stem)
+    dest_name = f"{clean_slug}.md"
+
+    target = content_dir / dest_name
     target.write_bytes(md_path.read_bytes())
-    print(f"Copied: {md_path.name} -> {target}")
+    print(f"Copied: {md_path.name} -> {target} (public slug: {clean_slug})")
 
     branch_strategy = cfg.get("branch_strategy", "draft")
     branch_prefix = cfg.get("draft_branch_prefix", "claude/post-")
-    slug = md_path.stem
+    slug = clean_slug
 
     def run(cmd: list[str], check: bool = True, cwd: Path | None = None) -> str:
         r = subprocess.run(cmd, cwd=cwd or repo_path, capture_output=True, text=True)
