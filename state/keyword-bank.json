@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "franlledo.com",
-  "last_updated": "2026-06-08",
+  "last_updated": "2026-06-10",
   "seeds_researched": [
     {
       "seed": "embudos de venta",
@@ -26,6 +26,10 @@
     {
       "seed": "secuencias de email",
       "last_researched": "2026-06-08"
+    },
+    {
+      "seed": "ia para negocios pequeños",
+      "last_researched": "2026-06-10"
     }
   ],
   "keywords": [
@@ -1305,6 +1309,160 @@
       "discovered": "2026-06-08",
       "source": "ai_optimization_chat_gpt_scraper",
       "notes": "Sin datos DFS. Término anglosajón. El equivalente hispano con volumen es 'marketing automation'. Monitorear si crece."
+    },
+    {
+      "keyword": "automatizacion con ia",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 260,
+      "kd": null,
+      "cpc": 8.06,
+      "priority": 1,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 260, competition MEDIUM 63. KD null (término relativamente nuevo, thin SERP). Mejor keyword del cluster. Ángulo Fran: automatización real de un negocio solopreneur con Claude, desde primera persona. Diferencia de 'marketing-automation-para-solopreneurs': ese post cubre email automation; este cubre IA automation en sentido amplio (contenido, SEO, operaciones, emails)."
+    },
+    {
+      "keyword": "inteligencia artificial para negocios",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 70,
+      "kd": null,
+      "cpc": 3.19,
+      "priority": 2,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 70, competition LOW 17. Sin KD confirmado. Término broad sin ángulo diferenciado claro. Bundlable como H2 en post de automatización con IA."
+    },
+    {
+      "keyword": "ia para negocios",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 70,
+      "kd": null,
+      "cpc": 7.09,
+      "priority": 2,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 70, competition MEDIUM 63, CPC 7.09. Variante corta del seed. Bundlable en post de automatización."
+    },
+    {
+      "keyword": "ia para autonomos",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 20,
+      "kd": 10,
+      "cpc": 2.94,
+      "priority": 3,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 20, KD 10, competition HIGH 68. Vol demasiado bajo para P1. Audiencia autónomos hispanohablantes. Park hasta que crezca el volumen."
+    },
+    {
+      "keyword": "ia para crear contenido",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 30,
+      "kd": null,
+      "cpc": 2.48,
+      "priority": 3,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 30, competition HIGH 69. Genérico. Parcialmente cubierto por infoproductos-con-ia y claude-para-solopreneurs. Park."
+    },
+    {
+      "keyword": "ia para email marketing",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": 36.37,
+      "priority": 3,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": "/blog/como-hacer-email-marketing-que-venda/",
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 10, CPC 36.37 altísimo (sector SaaS de email). Cobertura parcial via post email marketing. Park."
+    },
+    {
+      "keyword": "ia copywriting",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 10, competition MEDIUM 36. Vol demasiado bajo. Park."
+    },
+    {
+      "keyword": "chatgpt para negocios",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": "/blog/claude-para-solopreneurs/",
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 10, competition HIGH 100. Cobertura parcial via claude-para-solopreneurs. Park."
+    },
+    {
+      "keyword": "herramientas ia marketing",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "kw_data_google_ads_search_volume",
+      "notes": "Vol 10, competition MEDIUM 46. Demasiado bajo. Park."
+    },
+    {
+      "keyword": "automatizacion ia negocios",
+      "seed": "ia para negocios pequeños",
+      "intent": "commercial",
+      "volume": null,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "ai_optimization_chat_gpt_scraper",
+      "notes": "Sin datos GAS. Variante sin artículo de 'automatizacion con ia'. Monitorear."
+    },
+    {
+      "keyword": "ia para negocios pequeños",
+      "seed": "ia para negocios pequeños",
+      "intent": "informational",
+      "volume": null,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "ia para negocios pequeños",
+      "covered_by": null,
+      "discovered": "2026-06-10",
+      "source": "manual_seed",
+      "notes": "Seed original. Sin volumen confirmado en GAS España. El concepto no tiene masa crítica de búsqueda como frase exacta. El cluster de valor es 'automatizacion con ia' (260 vol)."
     }
   ]
 }

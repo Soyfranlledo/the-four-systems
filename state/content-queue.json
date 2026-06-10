@@ -418,6 +418,40 @@
         "https://blog.hubspot.com/blog/tabid/6307/bid/26518/the-ultimate-guide-to-lead-nurturing.aspx"
       ],
       "notes": "Vol 390, KD 6. SERP dominado por contenido corporate que describe frameworks abstractos (TOFU/MOFU/BOFU, buyer journey stages). \u00c1ngulo diferenciado: Fran tiene 2.000 suscriptores, 35% open rate, y ha generado lanzamientos de 10-12K\u20ac con una sola secuencia de emails. El post debe mostrar su sistema REAL: (1) email de bienvenida inmediato + primeras 3-5 piezas de valor, (2) cadencia semanal que educa y genera confianza, (3) secuencia de lanzamiento 5-7 emails. Distinguir entre nutrir antes del lanzamiento vs. nutrir para mantener vivo el inter\u00e9s. Incluir m\u00e9tricas reales (35% open = double del benchmark del sector)."
+    },
+    {
+      "id": "2026-06-10-automatizacion-con-ia-para-solopreneurs",
+      "status": "queued",
+      "queued_at": "2026-06-10T00:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "automatizacion con ia",
+      "intent": "commercial",
+      "volume": 260,
+      "kd": null,
+      "fan_out_cluster": [
+        "automatizacion con ia",
+        "automatizacion ia negocios",
+        "ia para automatizar tareas",
+        "ia para negocios peque\u00f1os",
+        "inteligencia artificial para negocios",
+        "herramientas ia automatizacion",
+        "automatizar negocio con claude",
+        "ia para productividad solopreneur"
+      ],
+      "suggested_slug": "automatizacion-con-ia-para-solopreneurs",
+      "suggested_title": "Automatizaci\u00f3n con IA: lo que automatic\u00e9 en mi negocio online (y lo que no merece la pena)",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/marketing-automation-para-solopreneurs/",
+        "https://franlledo.com/blog/claude-para-solopreneurs/",
+        "https://franlledo.com/blog/vibe-coding-en-espanol/"
+      ],
+      "external_authority_candidates": [
+        "https://www.anthropic.com/news",
+        "https://zapier.com/blog/ai-automation"
+      ],
+      "notes": "Vol 260, KD null (thin SERP, likely muy bajo). Diferenciador clave: Fran tiene un sistema de automatizaci\u00f3n con IA real y funcionando (este mismo repo seo-franlledo). El \u00e1ngulo es hands-on, no te\u00f3rico: qu\u00e9 tareas automatiza en su negocio de 1 persona, c\u00f3mo las automatiza con Claude y Claude Code, y ser honesto sobre d\u00f3nde la IA no vale la pena. Contrastar con el contenido corporativo que asume CRM + n8n + stack de 500\u20ac/mes. Hay solapamiento conceptual con marketing-automation-para-solopreneurs (que cubre automation en email) pero este post cubre IA automation m\u00e1s amplio: contenido, SEO, operaciones. Enlazar al post hermano de email automation desde la secci\u00f3n correspondiente."
     }
   ]
 }
