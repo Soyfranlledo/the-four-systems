@@ -387,10 +387,10 @@
     },
     {
       "id": "2026-06-08-lead-nurturing-con-email-marketing",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-08T10:00:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-06-11T08:09:08Z",
+      "post_url": "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
       "primary_keyword": "lead nurturing",
       "intent": "informational",
       "volume": 390,
