@@ -273,16 +273,38 @@ If any item fails, fix it and re-run the check before handing the draft to the u
    ```
    If it begins with `SKIPPED`, do nothing more (the user is on markdown-only mode and will upload by hand).
 
-6. Regenerate the dashboard:
+6. **Weave inbound links to the new post.** Only when step 5 returned
+   `PUBLISHED_LIVE`. A new post with zero inbound internal links is an orphan,
+   and Google leaves orphans as "Discovered - currently not indexed" (on
+   2026-06-11 an audit found 13 of 22 posts orphaned, including all 6 the
+   index refused; do not let this regrow). The post's own outbound links
+   (Step 3) only weave new→old; this step weaves old→new.
+
+   In the Astro repo (`repo_path` from `context/publishing.json`):
+   - Pick 2-3 existing posts in `src/content/blog/` that are thematically
+     closest to the new post (shared tags, same keyword cluster).
+   - In each, add ONE contextual link to `/blog/<slug>/` of the new post.
+     Same craft rules as all internal links here, plus: prefer converting an
+     existing sentence into the anchor; if there is no natural spot, add one
+     short sentence in that post's voice (never a "related posts" list). The
+     anchor should carry the new post's keyword. Relative URL with trailing
+     slash, NO date. Max 1 link per paragraph; never inside headings or the
+     post's first paragraph. Skip a source post that already links there.
+   - Verify with `npm run build` in the Astro repo, then commit and push to
+     `main` (Coolify deploys). Commit message: `seo: enlaces internos hacia
+     <slug>`.
+
+7. Regenerate the dashboard:
    ```bash
    python3 scripts/render-html-report.py
    ```
 
-7. Print a final summary:
+8. Print a final summary:
    ```
    Drafted: output/posts/<file>.md (<word_count> words)
    Queue item: <id> -> status: written
    Published: <PUBLISHED_LIVE / PUBLISHED_DRAFT / SKIPPED>
+   Inbound links: <N> added from <slugs> / SKIPPED (not published live)
    Dashboard: output/keywords/dashboard.html
 
    Open with: open output/posts/<file>.md
@@ -356,6 +378,11 @@ When no relevant experience is available:
 - At Step 5 review, mark "Personal experience" as **N/A** and set front-matter `experience_mode: research-only`.
 
 ## Internal Linking
+
+Linking is bidirectional: the draft links out to existing posts (this
+section), and after publishing you add inbound links from existing posts to
+the new one (Step 6 of SAVE AND HAND OFF). Both halves are mandatory; a post
+that only links outward still ends up an orphan.
 
 Source from the queue item's `internal_link_targets` first. Augment with a fresh sitemap fetch if the post needs more or different links than what System 1 pre-resolved.
 
