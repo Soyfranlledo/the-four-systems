@@ -134,6 +134,10 @@ about breaking the 60-70% rule.
 While drafting:
 
 - Pull stories and opinions from `experience-notes.md` and any inline user story. Never invent.
+- Every quantified first-person claim (time saved, cost, revenue, conversion,
+  number of clients, usage frequency) must appear explicitly in `context/`.
+  Never estimate it from the repo or infer it from the workflow. If the exact
+  figure is absent, remove the number or mark `[TK: confirm]`.
 - For any factual claim about the business itself (services, pricing, process, what's included), use `services.md` verbatim.
 - Match `tone-of-voice.md`. Read the sample paragraph there before drafting and after drafting check your prose against it.
 - Verify no banned word or phrase from `brand-guidelines.md` appears.
@@ -150,6 +154,8 @@ Run through this checklist and FIX any failure before declaring done. In Mode A,
 - [ ] TL;DR present at top with 3 to 5 key takeaways
 - [ ] **Four-questions test**: the post answers each of these in one sentence somewhere in the first 30% of the body (TL;DR + first 1-2 sections). What problem does this solve? Who is it for? What happens if you apply it (concrete outcome / example)? What does NOT work and why? You do not have to label these explicitly, but a reader (or an LLM extracting an answer) must be able to find each in plain language. This is the AI-agent-readiness check: a clear, machine-extractable answer to the obvious question.
 - [ ] Every factual claim is supported by an approved source from Step 2
+- [ ] Statistics come from primary research, official documentation, or the
+      original dataset/report. Do not cite statistics aggregators or listicles.
 - [ ] Sources cited inline as `[anchor](url)`, anchor text 1-3 contextual words, no reference list at bottom
 - [ ] Internal links use same `[anchor](url)` format with 1-3 word anchor text
 - [ ] At least one personal experience from `experience-notes.md` is included (mark **N/A: research-only mode** if no relevant story exists)
