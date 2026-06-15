@@ -63,6 +63,15 @@ y regenera el sitemap), y confirma que NO queda ninguna URL con fecha en
 `dist/sitemap*.xml` ni en `dist/llms*.txt`. En producción, comprueba que la URL
 vieja da 301 y la nueva 200.
 
+### 5. Los ensayos duplicados en Substack no se indexan en franlledo.com.
+
+Los ensayos individuales de `https://franlledo.com/ensayos/<slug>/` se publican
+con el mismo contenido en Substack y en la web. La copia de franlledo.com debe
+seguir accesible para lectores, pero lleva `noindex, follow` y queda fuera del
+sitemap XML. No usar canonical externo ni añadir enlaces automáticos a Substack.
+La portada `/ensayos/` sí puede indexarse porque es una página original de
+navegación.
+
 ---
 
 ## Arquitectura (los cuatro sistemas)
