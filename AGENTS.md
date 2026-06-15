@@ -15,6 +15,44 @@ español del nicho. Fran lo considera su proyecto principal.
 
 ---
 
+## Memoria operativa obligatoria
+
+Este repositorio conserva memoria entre sesiones. Ningún agente debe empezar a
+trabajar basándose solo en el chat actual.
+
+### Al comenzar una sesión
+
+Leer, en este orden:
+
+1. `AGENTS.md`: reglas e invariantes.
+2. `PROJECT_STATUS.md`: fotografía actual, tareas pendientes y próximos hitos.
+3. Las últimas entradas de `docs/session-log.md`: decisiones y contexto reciente.
+4. `git status` y los últimos commits de este repo y del repo web
+   `~/Documents/Claude/franlledo-web`.
+5. Los JSON de `state/` que afecten a la tarea. Son la fuente de verdad
+   operativa para cola, keywords, auditoría e indexación.
+
+### Al cerrar una sesión con cambios relevantes
+
+1. Actualizar `PROJECT_STATUS.md`: debe describir el estado que queda, no narrar
+   todo lo ocurrido.
+2. Añadir una entrada fechada a `docs/session-log.md` con decisiones, acciones,
+   verificaciones, commits y trabajo pendiente.
+3. No duplicar informes automáticos completos: enlazarlos desde la bitácora.
+4. No guardar secretos, tokens, credenciales ni datos personales.
+5. Validar y hacer commit/push de la documentación junto con el estado final.
+
+### Jerarquía de fuentes
+
+- Reglas permanentes: `AGENTS.md`.
+- Estado humano actual y siguiente acción: `PROJECT_STATUS.md`.
+- Estado estructurado de los agentes: `state/*.json`.
+- Historial de decisiones entre sesiones: `docs/session-log.md`.
+- Salidas detalladas de ejecuciones: `reports/` y `output/`.
+- Historial técnico definitivo: commits de Git en ambos repositorios.
+
+---
+
 ## ⛔ INVARIANTES SEO — nunca violar
 
 Estas reglas son no-negociables. Un fallo aquí degrada el SEO de forma difícil

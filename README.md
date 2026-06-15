@@ -1,79 +1,90 @@
-# The Four Systems
+# SEO/GEO de franlledo.com
 
-Four SEO skills you trigger from Claude Code. Each one updates a shared dashboard. Optional bonus: schedule them with cron / launchd to run hands-off.
+Sistema autónomo de investigación, publicación, auditoría y seguimiento SEO para
+`franlledo.com`. Este repositorio coordina los agentes; el sitio publicado vive
+en `~/Documents/Claude/franlledo-web`.
 
-1. **Keyword research** with AI fan-out
-2. **Content writer** (Three Kings, Content Capsules, inline citations, lint-gated)
-3. **Onsite audit** (Lighthouse + on-page health on your homepage and money pages)
-4. **Refresh recommender** (finds posts older than 12 months and URLs Google has not indexed, tells you what to do about each)
+## Empieza aquí
 
-> **Use Claude Code, not Claude Desktop.** Desktop is a chat UI; it can't run skills against your project files or be invoked by cron. See `docs/00-prerequisites.md` for the full why.
+Antes de tocar nada:
 
-## Quickstart (15 minutes, skill mode only)
+1. Lee [`AGENTS.md`](AGENTS.md): invariantes y protocolo de trabajo.
+2. Lee [`PROJECT_STATUS.md`](PROJECT_STATUS.md): estado actual y próximos hitos.
+3. Revisa las últimas entradas de
+   [`docs/session-log.md`](docs/session-log.md): memoria cronológica.
 
-1. Clone:
+## Sistemas
 
-   ```bash
-   git clone https://github.com/NicoSKOOL/the-four-systems
-   cd the-four-systems
-   ```
+| Sistema | Función | Estado principal |
+| --- | --- | --- |
+| `keyword-researcher` | Descubre oportunidades y alimenta la cola | `state/keyword-bank.json`, `state/content-queue.json` |
+| `content-writer` | Investiga, redacta, lintea y publica | `output/posts/`, repo web |
+| `onsite-audit` | Revisa Lighthouse y SEO on-page | `state/onsite-audit.json` |
+| `refresh-recommender` | Comprueba indexación y decay | `state/refresh-candidates.json` |
+| Informe semanal | Compara GSC, GA4 y suscripciones | `reports/*-seo-weekly.md` |
 
-2. Read prerequisites: `docs/00-prerequisites.md` covers Claude Code, DataForSEO, GSC, Python.
+Todos se ejecutan mediante:
 
-3. Set up credentials and the optional tool allowlist:
+```bash
+./coordinator.sh <keyword-researcher|content-writer|onsite-audit|refresh-recommender>
+```
 
-   ```bash
-   cp .mcp.json.example .mcp.json                                   # add your DataForSEO + GSC creds
-   cp .claude/settings.local.json.example .claude/settings.local.json
-   ```
+## Publicación
 
-4. The skills are already in `.claude/skills/`. They include:
-   - `context-bootstrapper` — interviews you to generate the 8 business-context files
-   - `keyword-researcher` — System 1
-   - `content-writer` — System 2
-   - `onsite-audit` — System 3
-   - `refresh-recommender` — System 4
+El redactor genera primero un artefacto local:
 
-5. Bootstrap your business context. Open this folder in Claude Code and say:
+```text
+output/posts/YYYY-MM-DD-slug.md
+```
 
-   ```
-   bootstrap my context folder
-   ```
+Después `scripts/publish-to-astro.py` elimina la fecha y publica:
 
-   Claude interviews you for 15-20 minutes, fetches your website, writes all 8 context files into `context/`.
+```text
+https://franlledo.com/blog/slug/
+```
 
-6. Run System 1:
+El repo web se despliega al hacer push a `main` mediante Coolify. Lee los
+invariantes de URL y redirects en `AGENTS.md` antes de cambiar la publicación.
 
-   ```
-   research keywords for <your seed>
-   ```
+## Automatización
 
-7. Open the dashboard:
+Las tareas reales de Fran están en `launchd/com.franlledo.*.plist`. Para ver qué
+agentes están cargados:
 
-   ```bash
-   open output/keywords/dashboard.html
-   ```
+```bash
+launchctl list | rg 'com\.franlledo\.seo-'
+```
 
-That's the whole flow. From here you trigger any of the four skills whenever you need them. The dashboard accumulates run after run.
+Los ficheros `com.example.*` son ejemplos y no describen necesariamente la
+programación activa.
 
-A reference dashboard with placeholder data is at `dashboard-example.html` so you can see the layout before your first real run.
+## Comprobaciones útiles
 
-## Going hands-off (optional bonus)
+```bash
+# Validar un artículo
+python3 scripts/lint-post.py output/posts/YYYY-MM-DD-slug.md
 
-If you'd rather have the systems run on their own (so you wake up to a full dashboard without invoking anything), each system has a `launchd/com.example.seo-*.plist` you can install. See the "Going hands-off (optional)" section at the bottom of each `docs/0X-*.md` for setup. The trade-off is documented there: scheduled runs use `--dangerously-skip-permissions` because no human is there to approve tool calls.
+# Construir y validar el sitio publicado
+cd ~/Documents/Claude/franlledo-web
+npm run build
 
-## Costs
+# Detectar URLs antiguas con fecha
+rg 'blog/2026-[0-9]{2}-[0-9]{2}-' src dist/sitemap*.xml dist/llms*.txt
 
-About **$2 to $3 per month** total for all four systems combined, in DataForSEO + Anthropic API spend. See `docs/00-prerequisites.md` for the per-system breakdown.
+# Ver el siguiente contenido pendiente
+node -e "const q=require('./state/content-queue.json'); console.log(q.items.filter(x=>x.status==='queued'))"
+```
 
-## Companion video
+## Documentación
 
-[YouTube tutorial: The Four Systems](#) (link will be added when the video drops)
+- `docs/00-prerequisites.md`: dependencias y credenciales.
+- `docs/01-keyword-research.md`: investigación.
+- `docs/02-content-writer.md`: redacción y publicación.
+- `docs/03-onsite-audit.md`: auditoría.
+- `docs/04-refresh-recommender.md`: indexación y refresh.
+- `docs/session-log.md`: historial de sesiones y decisiones.
 
-## License
+## Seguridad
 
-MIT. Use this however you want.
-
-## Credits
-
-Built by [@NicoSKOOL](https://github.com/NicoSKOOL). Companion repo to the Your Community community: an AI-SEO operator community on Skool teaching how to build automations like these.
+Los secretos viven en archivos ignorados como `.env.local` y `.mcp.json`.
+Nunca deben copiarse a documentación, informes ni commits.
