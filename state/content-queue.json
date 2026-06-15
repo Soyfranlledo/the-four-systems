@@ -452,6 +452,73 @@
         "https://zapier.com/blog/ai-automation"
       ],
       "notes": "Vol 260, KD null (thin SERP, likely muy bajo). Diferenciador clave: Fran tiene un sistema de automatizaci\u00f3n con IA real y funcionando (este mismo repo seo-franlledo). El \u00e1ngulo es hands-on, no te\u00f3rico: qu\u00e9 tareas automatiza en su negocio de 1 persona, c\u00f3mo las automatiza con Claude y Claude Code, y ser honesto sobre d\u00f3nde la IA no vale la pena. Contrastar con el contenido corporativo que asume CRM + n8n + stack de 500\u20ac/mes. Hay solapamiento conceptual con marketing-automation-para-solopreneurs (que cubre automation en email) pero este post cubre IA automation m\u00e1s amplio: contenido, SEO, operaciones. Enlazar al post hermano de email automation desde la secci\u00f3n correspondiente."
+    },
+    {
+      "id": "2026-06-15-newsletter-guia-para-solopreneurs",
+      "status": "queued",
+      "queued_at": "2026-06-15T12:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "newsletter",
+      "intent": "commercial",
+      "volume": 12100,
+      "kd": 12,
+      "fan_out_cluster": [
+        "newsletter",
+        "newsletter que es",
+        "que es una newsletter",
+        "como crear una newsletter",
+        "newsletter marketing",
+        "lista de suscriptores",
+        "hacer una newsletter"
+      ],
+      "suggested_slug": "newsletter-guia-para-solopreneurs",
+      "suggested_title": "Newsletter: qu\u00e9 es, c\u00f3mo crearla y usarla para vender",
+      "target_word_count": 2200,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+        "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
+        "https://franlledo.com/blog/marketing-automation-para-solopreneurs/"
+      ],
+      "external_authority_candidates": [
+        "https://mailchimp.com/es/resources/what-is-a-newsletter/",
+        "https://www.litmus.com/blog/email-marketing-roi"
+      ],
+      "notes": "Vol 12100, KD 12, competition LOW. Oportunidad m\u00e1s grande del run. SERP para 'newsletter' en Espa\u00f1a probablemente dominado por herramientas (Mailchimp, Substack) y gu\u00edas gen\u00e9ricas. \u00c1ngulo Fran: newsletter NO como 'publicaci\u00f3n peri\u00f3dica' sino como canal propio de captaci\u00f3n y venta para solopreneurs. Anclar en los datos reales: 2.000 suscriptores, 35% open rate, lanzamientos de 10.000 a 12.000 euros con una secuencia. Cubrir 'newsletter que es' (vol 2400, KD 11) como secci\u00f3n introductoria fuerte. Diferencia de un post de email marketing: aqu\u00ed el foco es el canal newsletter como negocio, no el email marketing gen\u00e9rico."
+    },
+    {
+      "id": "2026-06-15-newsletter-ejemplos-que-venden",
+      "status": "queued",
+      "queued_at": "2026-06-15T12:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "newsletter ejemplos",
+      "intent": "informational",
+      "volume": 320,
+      "kd": null,
+      "fan_out_cluster": [
+        "newsletter ejemplos",
+        "newsletter que es",
+        "newsletter marketing",
+        "tipos de newsletter",
+        "como hacer una newsletter efectiva",
+        "newsletter con buena tasa de apertura"
+      ],
+      "suggested_slug": "newsletter-ejemplos-que-venden",
+      "suggested_title": "Newsletter ejemplos: qu\u00e9 enviar para que tu lista compre",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
+        "https://franlledo.com/blog/como-escribir-emails-que-vendan/",
+        "https://franlledo.com/blog/como-escribir-asuntos-de-email/",
+        "https://franlledo.com/blog/cada-cuanto-enviar-emails-lista/"
+      ],
+      "external_authority_candidates": [
+        "https://mailchimp.com/es/resources/email-marketing-benchmarks/",
+        "https://www.litmus.com/blog/email-newsletters"
+      ],
+      "notes": "Vol 320, KD null (competition LOW 19). Paralelo directo al post de 'email marketing ejemplos' que funcion\u00f3 bien. Cubrir formatos concretos de newsletter y explicar cu\u00e1ndo usar cada uno. Usar ejemplos reales solo si aparecen completos en context/ o llegan identificados en sourceEmails; no inventar asuntos, m\u00e9tricas individuales ni ventas atribuidas. Diferenciador clave vs. SERP gen\u00e9rico: el criterio de primera persona de Fran sobre qu\u00e9 hace que una newsletter venda, apoyado en los datos generales documentados de su lista y su cadencia casi diaria."
     }
   ]
 }
