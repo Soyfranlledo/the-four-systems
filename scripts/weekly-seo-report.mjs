@@ -161,7 +161,7 @@ async function gscSection(auth) {
 async function ga4Section(auth) {
   const ga = google.analyticsdata({ version: "v1beta", auth });
 
-  const [byChannel, daily] = await Promise.all([
+  const [byChannel, daily, signupsByChannel] = await Promise.all([
     ga.properties.runReport({
       property: GA4_PROPERTY,
       requestBody: {
@@ -184,6 +184,24 @@ async function ga4Section(auth) {
         orderBys: [{ dimension: { dimensionName: "date" } }],
       },
     }),
+    ga.properties.runReport({
+      property: GA4_PROPERTY,
+      requestBody: {
+        dateRanges: [{ startDate: fmt(lookbackStart), endDate: fmt(today) }],
+        dimensions: [
+          { name: "sessionDefaultChannelGroup" },
+          { name: "landingPagePlusQueryString" },
+        ],
+        metrics: [{ name: "eventCount" }, { name: "totalUsers" }],
+        dimensionFilter: {
+          filter: {
+            fieldName: "eventName",
+            stringFilter: { matchType: "EXACT", value: "newsletter_signup" },
+          },
+        },
+        orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+      },
+    }),
   ]);
 
   let out = `### Sessions by channel (${fmt(lookbackStart)} → today)\n\n| Channel | Sessions | Users | Pageviews |\n|---|---:|---:|---:|\n`;
@@ -195,6 +213,13 @@ async function ga4Section(auth) {
     const d = row.dimensionValues[0].value;
     const date = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
     out += `| ${date} | ${row.metricValues[0].value} | ${row.metricValues[1].value} |\n`;
+  }
+  out += `\n### Newsletter signups by channel\n\n| Channel | Landing page | Signups | Users |\n|---|---|---:|---:|\n`;
+  for (const row of signupsByChannel.data.rows || []) {
+    out += `| ${row.dimensionValues[0].value} | ${row.dimensionValues[1].value} | ${row.metricValues[0].value} | ${row.metricValues[1].value} |\n`;
+  }
+  if (!(signupsByChannel.data.rows || []).length) {
+    out += `| — | — | 0 | 0 |\n`;
   }
   return out;
 }
