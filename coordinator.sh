@@ -24,6 +24,7 @@ REPORT_DIR="$SCRIPT_DIR/reports"
 DATE_STAMP="$(date +%Y-%m-%d)"
 TIME_STAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 SEED_ARG="${2:-}"
+CLAUDE_MODEL="${SEO_CLAUDE_MODEL:-sonnet}"
 
 VALID_AGENTS=("keyword-researcher" "content-writer" "onsite-audit" "refresh-recommender")
 
@@ -105,6 +106,7 @@ main() {
   echo "Agent: $AGENT_NAME"
   echo "Time:  $TIME_STAMP"
   echo "Seed:  ${SEED_ARG:-<none>}"
+  echo "Model: $CLAUDE_MODEL"
   echo "================================="
 
   local start; start=$(date +%s)
@@ -157,6 +159,7 @@ main() {
   fi
 
   claude -p "$prompt_body" \
+    --model "$CLAUDE_MODEL" \
     --dangerously-skip-permissions \
     2>&1 | tee -a "$REPORT_FILE" || exit_code=$?
 
