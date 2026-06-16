@@ -1,6 +1,6 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-06-15, 14:32 CEST
+Última actualización: 2026-06-16, 10:10 CEST
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
@@ -12,9 +12,9 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   on-site se ejecuta manualmente.
 - El fallo de los agentes por el modelo inválido `claude-fable-5[1m]` está
   corregido. El coordinador usa `sonnet` por defecto.
-- El blog tiene 23 artículos publicados. El último es
-  `/blog/automatizacion-con-ia-para-solopreneurs/`.
-- Hay dos artículos en cola: `newsletter` y `newsletter ejemplos`.
+- El blog tiene 24 artículos publicados. El último es
+  `/blog/newsletter-guia-para-solopreneurs/` (publicado 2026-06-16, 2.000 palabras).
+- Queda un artículo en cola: `newsletter ejemplos`.
 - Las solicitudes manuales de indexación de las dos URLs pendientes se enviaron
   en Search Console el 15 de junio de 2026. No volver a solicitarlas salvo que
   siga sin haber rastreo tras varios días.
@@ -79,11 +79,9 @@ Cola actual:
 
 | Orden | Keyword | Volumen | KD | Título de trabajo |
 | ---: | --- | ---: | ---: | --- |
-| 1 | `newsletter` | 12.100 | 12 | Newsletter: qué es, cómo crearla y usarla para vender |
-| 2 | `newsletter ejemplos` | 320 | sin dato | Newsletter ejemplos: qué enviar para que tu lista compre |
+| 1 | `newsletter ejemplos` | 320 | sin dato | Newsletter ejemplos: qué enviar para que tu lista compre |
 
-El primer artículo está previsto para el siguiente run del redactor. Las notas
-de cola prohíben inventar asuntos, métricas individuales o ventas atribuidas.
+Las notas de cola prohíben inventar asuntos, métricas individuales o ventas atribuidas.
 
 Nuevas semillas disponibles:
 
@@ -119,8 +117,7 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 1. Verificar el resultado de las dos solicitudes de indexación entre el 18 y el
    22 de junio.
-2. Revisar el artículo automático de `newsletter` tras su publicación: fuentes,
-   afirmaciones personales, enlaces entrantes, canonical, sitemap y título.
+2. Solicitar indexación de `/blog/newsletter-guia-para-solopreneurs/` en Search Console.
 3. Medir CTR de los snippets modificados a partir de finales de junio.
 4. Medir sesiones y suscripciones orgánicas con una ventana de 6-8 semanas.
 5. Regenerar `state/refresh-candidates.json` antes de la próxima revisión manual
@@ -138,9 +135,8 @@ Repo SEO:
 
 Repo web:
 
+- `8359134`: enlaces internos hacia newsletter-guia-para-solopreneurs.
+- commit generado por publish-to-astro.py: publicación del artículo de newsletter.
 - `c2fc583`: rigor y snippet del artículo de automatización.
 - `8a8f188`: enlaces entrantes al artículo de automatización.
 - `1ea5aef`: publicación del artículo de automatización.
-- `416c8b9`: mejora del snippet de asuntos de email.
-- `84bdec1`: evento GA4 para altas de newsletter.
-- `117db1d`: `noindex` para ensayos duplicados en Substack.

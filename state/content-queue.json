@@ -455,10 +455,10 @@
     },
     {
       "id": "2026-06-15-newsletter-guia-para-solopreneurs",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-15T12:00:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-06-16T08:09:33Z",
+      "post_url": "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
       "primary_keyword": "newsletter",
       "intent": "commercial",
       "volume": 12100,

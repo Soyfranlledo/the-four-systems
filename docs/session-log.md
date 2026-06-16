@@ -3,6 +3,28 @@
 Registro cronológico append-only de decisiones y cambios relevantes. El estado
 vigente y las próximas acciones viven en [`../PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
+## 2026-06-16: publicación de "newsletter" (keyword vol 12.100, KD 12)
+
+### Acciones
+
+- Artículo redactado: `output/posts/2026-06-16-newsletter-guia-para-solopreneurs.md` (2.000 palabras).
+- Publicado en `https://franlledo.com/blog/newsletter-guia-para-solopreneurs/`. IndexNow OK.
+- 2 enlaces entrantes tejidos: `como-hacer-email-marketing-que-venda.md` y `por-que-hacer-email-marketing.md`. Build OK, push a main.
+- Dashboard regenerado.
+
+### Decisiones
+
+- Ángulo: newsletter como canal de venta propio (no guía de herramientas). La SERP está dominada por Mailjet, Mailrelay, EAE, herramientas; el hueco es el punto de vista solopreneur con datos reales.
+- Fuente externa única: Litmus State of Email 2025 (ROI stat verificada vía WebFetch). No se usó Mailchimp (404).
+- Experience mode: real. Se usó "El descubrimiento de la promesa" en sección de venta y "Efecto Microondas" en sección de error.
+- Tags: "Email marketing" y "Negocios" (taxonomía canónica).
+
+### Pendiente
+
+- Solicitar indexación de la nueva URL en Search Console.
+
+---
+
 ## 2026-06-15: indexación, CTR, automatización y nueva cola
 
 ### Contexto
