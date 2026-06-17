@@ -519,6 +519,72 @@
         "https://www.litmus.com/blog/email-newsletters"
       ],
       "notes": "Vol 320, KD null (competition LOW 19). Paralelo directo al post de 'email marketing ejemplos' que funcion\u00f3 bien. Cubrir formatos concretos de newsletter y explicar cu\u00e1ndo usar cada uno. Usar ejemplos reales solo si aparecen completos en context/ o llegan identificados en sourceEmails; no inventar asuntos, m\u00e9tricas individuales ni ventas atribuidas. Diferenciador clave vs. SERP gen\u00e9rico: el criterio de primera persona de Fran sobre qu\u00e9 hace que una newsletter venda, apoyado en los datos generales documentados de su lista y su cadencia casi diaria."
+    },
+    {
+      "id": "2026-06-17-lead-magnet-que-es-y-como-crear-uno",
+      "status": "queued",
+      "queued_at": "2026-06-17T10:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "lead magnet",
+      "intent": "commercial",
+      "volume": 1000,
+      "kd": null,
+      "fan_out_cluster": [
+        "que es un lead magnet",
+        "lead magnet tipos",
+        "lead magnet ejemplos",
+        "como crear un lead magnet",
+        "lead magnet efectivo",
+        "lead magnet para newsletter"
+      ],
+      "suggested_slug": "lead-magnet-que-es-y-como-crear-uno",
+      "suggested_title": "Lead magnet: qu\u00e9 es, tipos y c\u00f3mo crear uno que llene tu lista",
+      "target_word_count": 2000,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
+        "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
+        "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/"
+      ],
+      "external_authority_candidates": [
+        "https://mailchimp.com/es/resources/what-is-a-lead-magnet/",
+        "https://blog.hubspot.com/marketing/lead-magnet"
+      ],
+      "notes": "Vol 1000, KD null. SERP solo 69 resultados, sin AI Overview. Campo casi virgen. CPC 10.79 confirma intent comercial fuerte. \u00c1ngulo Fran: de 0 a 2000 suscriptores con lead magnets reales (no PDFs gen\u00e9ricos de 50 p\u00e1ginas). Cubrir 'que es un lead magnet' como H2 introductorio, tipos (ebook, checklist, webinar, quiz) con criterio de cu\u00e1l elegir seg\u00fan momento del negocio, y c\u00f3mo crear uno en 1 d\u00eda sin dise\u00f1o. Incluir el lead magnet propio de Fran como ejemplo ancla. No inventar m\u00e9tricas de conversi\u00f3n individuales no documentadas."
+    },
+    {
+      "id": "2026-06-17-que-es-un-lead",
+      "status": "queued",
+      "queued_at": "2026-06-17T10:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "que es un lead",
+      "intent": "informational",
+      "volume": 1300,
+      "kd": 2,
+      "fan_out_cluster": [
+        "que es un lead en marketing",
+        "que es un lead magnet",
+        "tipos de leads",
+        "lead cualificado",
+        "diferencia entre lead y suscriptor",
+        "como conseguir leads para tu negocio"
+      ],
+      "suggested_slug": "que-es-un-lead",
+      "suggested_title": "Qu\u00e9 es un lead y por qu\u00e9 conseguirlos deber\u00eda ser tu obsesi\u00f3n si vendes online",
+      "target_word_count": 1600,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/",
+        "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
+        "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
+        "https://franlledo.com/blog/como-montar-embudo-de-ventas-sencillo/"
+      ],
+      "external_authority_candidates": [
+        "https://www.hubspot.com/es/marketing/lead",
+        "https://mailchimp.com/es/resources/lead-generation/"
+      ],
+      "notes": "Vol 1300, KD 2. SERP solo 128 resultados, AI Overview presente. Audiencia amplia (la query sirve tambi\u00e9n para periodismo y m\u00fasica) pero el post debe declarar desde el primer p\u00e1rrafo el \u00e1ngulo de marketing digital/captaci\u00f3n. Diferenciador: no la definici\u00f3n gen\u00e9rica que ya da el AI Overview, sino la perspectiva solopreneur de primera persona: qu\u00e9 es un lead en un negocio de 1 persona, por qu\u00e9 una lista de 2000 bien cualificados vale m\u00e1s que 20.000 fr\u00edos, la diferencia entre lead y suscriptor. Conectar con el post de lead magnet (post hermano en el cluster de captaci\u00f3n)."
     }
   ]
 }
