@@ -489,10 +489,10 @@
     },
     {
       "id": "2026-06-15-newsletter-ejemplos-que-venden",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-15T12:00:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-06-18T08:08:31Z",
+      "post_url": "https://franlledo.com/blog/newsletter-ejemplos-que-venden/",
       "primary_keyword": "newsletter ejemplos",
       "intent": "informational",
       "volume": 320,
