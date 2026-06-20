@@ -1,6 +1,6 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-06-18, 10:10 CEST
+Última actualización: 2026-06-20, 10:10 CEST
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
@@ -12,9 +12,9 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   on-site se ejecuta manualmente.
 - El fallo de los agentes por el modelo inválido `claude-fable-5[1m]` está
   corregido. El coordinador usa `sonnet` por defecto.
-- El blog tiene 25 artículos publicados. El último es
-  `/blog/newsletter-ejemplos-que-venden/` (publicado 2026-06-18, ~1.700 palabras).
-- La cola está vacía. Las semillas disponibles son la próxima fuente para nuevos posts.
+- El blog tiene 26 artículos publicados. El último es
+  `/blog/lead-magnet-que-es-y-como-crear-uno/` (publicado 2026-06-20, ~2.000 palabras).
+- La cola tiene items pendientes. Ver `state/content-queue.json`.
 - Las solicitudes manuales de indexación de las dos URLs pendientes se enviaron
   en Search Console el 15 de junio de 2026. No volver a solicitarlas salvo que
   siga sin haber rastreo tras varios días.
@@ -75,14 +75,12 @@ sus totales como estado actual.
 
 ## Contenido
 
-Cola actual: **vacía**. Próxima acción: ejecutar keyword-researcher con las semillas disponibles para rellenarla.
+El post `lead-magnet-que-es-y-como-crear-uno` ha sido marcado como `written` y publicado en vivo. Ver cola para el siguiente item.
 
 Las notas de cola prohíben inventar asuntos, métricas individuales o ventas atribuidas.
 
-Nuevas semillas disponibles:
+Semillas pendientes de investigar:
 
-- `lista de suscriptores` (investigada el 15 de junio)
-- `lead magnet`
 - `monetizar newsletter`
 - `claude code`
 - `agentes de ia`
@@ -113,24 +111,25 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 1. Verificar el resultado de las dos solicitudes de indexación enviadas el 15 de junio
    (automatizacion-con-ia y mejor-modelo-de-negocio).
-2. Solicitar indexación de `/blog/newsletter-guia-para-solopreneurs/` y
-   `/blog/newsletter-ejemplos-que-venden/` en Search Console.
-3. Ejecutar keyword-researcher para rellenar la cola (semillas: lista de suscriptores,
-   lead magnet, monetizar newsletter, claude code, agentes de ia).
-4. Medir CTR de los snippets modificados a partir de finales de junio.
-5. Regenerar `state/refresh-candidates.json` antes de la próxima revisión manual
+2. Solicitar indexación de `/blog/lead-magnet-que-es-y-como-crear-uno/` en Search Console.
+3. Solicitar indexación de `/blog/newsletter-guia-para-solopreneurs/` y
+   `/blog/newsletter-ejemplos-que-venden/` si todavía no están indexadas.
+4. Ejecutar keyword-researcher para las semillas restantes (monetizar newsletter,
+   claude code, agentes de ia).
+5. Medir CTR de los snippets modificados a partir de finales de junio.
+6. Regenerar `state/refresh-candidates.json` antes de la próxima revisión manual
    de indexación.
 
 ## Últimos commits relevantes
 
 Repo SEO:
 
-- `(este run)`: publicación de newsletter-ejemplos-que-venden, estado y bitácora.
+- `(este run)`: publicación de lead-magnet-que-es-y-como-crear-uno, estado y bitácora.
+- `7f406b0`: publicación de newsletter-ejemplos-que-venden.
 - `e13d92e`: investigación de `lista de suscriptores` y cola de newsletter.
-- `7359a66`: enlaces finales sin fechas en la cola.
 
 Repo web:
 
+- `254a9b4`: enlaces entrantes desde email-marketing, newsletter y lead-nurturing hacia lead-magnet.
+- `66f2e82`: publicación de lead-magnet-que-es-y-como-crear-uno (por publish-to-astro.py).
 - `fae0112`: enlaces entrantes desde newsletter-guia y email-marketing-ejemplos.
-- `da62fa9`: publicación de newsletter-ejemplos-que-venden (por publish-to-astro.py).
-- `8359134`: enlaces internos hacia newsletter-guia-para-solopreneurs.

@@ -522,10 +522,10 @@
     },
     {
       "id": "2026-06-17-lead-magnet-que-es-y-como-crear-uno",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-17T10:00:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-06-20T08:08:57Z",
+      "post_url": "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/",
       "primary_keyword": "lead magnet",
       "intent": "commercial",
       "volume": 1000,
