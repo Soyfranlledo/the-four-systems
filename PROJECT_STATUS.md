@@ -14,7 +14,7 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   corregido. El coordinador usa `sonnet` por defecto.
 - El blog tiene 26 artículos publicados. El último es
   `/blog/lead-magnet-que-es-y-como-crear-uno/` (publicado 2026-06-20, ~2.000 palabras).
-- La cola tiene 3 items pendientes: `que-es-un-lead`, `como-monetizar-una-newsletter`, y `claude-code-sin-programar` (añadido hoy). Ver `state/content-queue.json`.
+- La cola tiene 6 items pendientes: `que-es-un-lead`, `como-monetizar-una-newsletter`, `claude-code-sin-programar`, `agentes-de-ia-para-solopreneurs`, `ia-agentica-que-es-y-como-usarla`, `agentes-ia-sin-codigo-para-emprendedores`. Ver `state/content-queue.json`.
 - Las solicitudes manuales de indexación de las dos URLs pendientes se enviaron
   en Search Console el 15 de junio de 2026. No volver a solicitarlas salvo que
   siga sin haber rastreo tras varios días.
@@ -81,7 +81,7 @@ Las notas de cola prohíben inventar asuntos, métricas individuales o ventas at
 
 Semillas pendientes de investigar:
 
-- `agentes de ia` (única restante de la lista)
+- Ninguna. Todas las semillas de `state/seed-keywords.txt` han sido investigadas. Próxima acción: añadir nuevas semillas o iniciar segunda vuelta de las más antiguas (embudos de venta, 2026-05-21; email marketing, 2026-05-22).
 
 ## Programación activa
 
@@ -114,7 +114,7 @@ Zona horaria del equipo: `Europe/Madrid`.
    `/blog/newsletter-ejemplos-que-venden/` si todavía no están indexadas.
 4. Content writer: procesar `que-es-un-lead`, `como-monetizar-una-newsletter` y
    `claude-code-sin-programar` de la cola.
-5. Keyword researcher: investigar semilla `agentes de ia` (única restante).
+5. Keyword researcher: todas las semillas agotadas. Añadir nuevas semillas a `state/seed-keywords.txt` o iniciar segunda vuelta (embudos de venta / email marketing, >30 días).
 6. Medir CTR de los snippets modificados a partir de finales de junio.
 7. Regenerar `state/refresh-candidates.json` antes de la próxima revisión manual
    de indexación.

@@ -3,6 +3,33 @@
 Registro cronológico append-only de decisiones y cambios relevantes. El estado
 vigente y las próximas acciones viven en [`../PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
+## 2026-06-25: keyword-researcher — semilla "agentes de ia"
+
+### Acciones
+
+- Semilla investigada: `agentes de ia` (primera vez; última semilla de la lista de `seed-keywords.txt`).
+- DataForSEO no disponible (tercera sesión seguida). Fallback a WebSearch: 6 búsquedas (definicion, negocios pequeños, emprendedores, ia agentica, sin codigo, email marketing).
+- Sitemap de franlledo.com verificado: 26 posts publicados, ninguno cubre "agentes de ia" como primary keyword.
+- 32 variaciones evaluadas. 7 dropped (duplicados banco: ia para solopreneurs, ia para autonomos, herramientas ia marketing, automatizacion ia negocios, chatgpt para negocios, inteligencia artificial para emprendedores, ia para negocios pequeños). 1 dropped (out-of-scope: mejores agentes ia = comparativa). 24 keywords añadidas al banco.
+- 3 items añadidos a cola: `2026-06-25-agentes-de-ia-para-solopreneurs`, `2026-06-25-ia-agentica-que-es-y-como-usarla`, `2026-06-25-agentes-ia-sin-codigo-para-emprendedores`.
+- CSV generado: `output/keywords/2026-06-25-agentes-de-ia.csv`.
+- `state/keyword-bank.json` actualizado: semilla registrada, 24 entradas nuevas.
+- `PROJECT_STATUS.md` y esta bitácora actualizados.
+
+### Decisiones
+
+- Primary keyword del seed: "agentes de ia" (vol est. 1000-2000/mo por densidad SERP). Pilar del cluster. SERP dominado por tech giants (Google Cloud, AWS, IBM) sin perspectiva solopreneur. El diferenciador de Fran: ha construido y usa un sistema real de agentes (seo-franlledo = proof-of-concept tangible).
+- "ia agentica" elegido como post separado: aunque conceptualmente solapado con "agentes de ia", sirve un intent distinto (entender el paradigma vs. entender la herramienta). Vol est. 200-400/mo, KD muy bajo, primer-mover advantage en español.
+- "agentes ia sin codigo" elegido como tercer post: companion práctico. SERP con guías técnicas sin perspectiva solopreneur. Bundla "crear agente ia sin programar" + "como crear un agente ia".
+- "mejores agentes ia" parkeado (P3) por ser comparativa de herramientas (out-of-scope por site-config).
+- Con esto se agota la lista `seed-keywords.txt` completa. Próximo ciclo: renovar semillas o empezar segundo ciclo de las seeds más antiguas (embudos de venta, 2026-05-21, >30 días).
+
+### Pendiente
+
+- DFS no disponible: verificar volúmenes reales de "agentes de ia" e "ia agentica" cuando vuelva la herramienta.
+- Content writer: 6 items pendientes en cola (que-es-un-lead, como-monetizar-una-newsletter, claude-code-sin-programar + los 3 nuevos de agentes ia).
+- Keyword researcher: todas las semillas agotadas. Opciones: (1) segunda vuelta de semillas antiguas (embudos, email marketing), (2) añadir nuevas semillas a seed-keywords.txt.
+
 ## 2026-06-25: keyword-researcher — semilla "claude code"
 
 ### Acciones

@@ -654,6 +654,105 @@
         "https://laboratoriodeperiodismo.org/cuanto-dinero-se-puede-ganar-con-una-newsletter/"
       ],
       "notes": "Hueco claro en el blog: existen posts sobre 'qu\u00e9 es una newsletter' y 'ejemplos de newsletter' pero ninguno sobre c\u00f3mo ganar dinero con ella. SERP dominado por listicles gen\u00e9ricos (MailerLite, GoDaddy, Nomada Digital) con 5-10 m\u00e9todos sin datos reales de primera persona. \u00c1ngulo Fran: su sistema concreto (newsletter gratuita, emails casi diarios, secuencia de lanzamiento 5-7 emails, infoproductos propios) diferenciado de newsletter de pago y patrocinios. Datos ancla verificables: 100K EUR/a\u00f1o de negocio, 2000 suscriptores, 35% open rate, lanzamientos de 10-12K EUR con una sola secuencia. Preguntas clave a responder: cu\u00e1ntos suscriptores necesito (respuesta contraintuitiva), qu\u00e9 modelos existen (y cu\u00e1l eligi\u00f3 Fran y por qu\u00e9), c\u00f3mo es una secuencia de venta real. No inventar m\u00e9tricas individuales no documentadas."
+    },
+    {
+      "id": "2026-06-25-agentes-de-ia-para-solopreneurs",
+      "status": "queued",
+      "queued_at": "2026-06-25T09:30:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "agentes de ia",
+      "intent": "commercial",
+      "volume": null,
+      "kd": null,
+      "fan_out_cluster": [
+        "que es un agente de ia",
+        "tipos de agentes de ia",
+        "agentes ia ejemplos",
+        "agentes ia para emprendedores",
+        "ia agentica",
+        "empleados digitales ia",
+        "agentes ia para ventas"
+      ],
+      "suggested_slug": "agentes-de-ia-para-solopreneurs",
+      "suggested_title": "Agentes de IA para solopreneurs: qu\u00e9 son y c\u00f3mo uso uno en mi negocio de una persona",
+      "target_word_count": 2200,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/automatizacion-con-ia-para-solopreneurs/",
+        "https://franlledo.com/blog/claude-para-solopreneurs/",
+        "https://franlledo.com/blog/vibe-coding-en-espanol/",
+        "https://franlledo.com/blog/infoproductos-con-ia/"
+      ],
+      "external_authority_candidates": [
+        "https://cloud.google.com/discover/what-are-ai-agents",
+        "https://aws.amazon.com/what-is/ai-agents/",
+        "https://www.ibm.com/think/topics/ai-agents"
+      ],
+      "notes": "SERP dominado por tech giants (Google Cloud, AWS, IBM, Wikipedia) y contenido corporativo sin perspectiva solopreneur. Hueco claro: Fran ha construido y usa un sistema real de agentes IA en su negocio (el repo seo-franlledo: agentes de keyword research, content writer y refresh recommender que corren aut\u00f3nomos con Claude). La prueba tangible distingue este post de la teor\u00eda gen\u00e9rica. Estructurar: (1) qu\u00e9 es un agente de IA en lenguaje llano, diferencia con chatbot, (2) tipos principales de agentes, (3) qu\u00e9 automatizo YO con agentes en mi negocio de 1 persona, (4) c\u00f3mo empezar sin ser t\u00e9cnico. Anclar en datos reales del repo y no en cifras inventadas. Conectar con vibe-coding-en-espanol (Claude Code como herramienta de agentes) y automatizacion-con-ia."
+    },
+    {
+      "id": "2026-06-25-ia-agentica-que-es-y-como-usarla",
+      "status": "queued",
+      "queued_at": "2026-06-25T09:31:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "ia agentica",
+      "intent": "informational",
+      "volume": null,
+      "kd": null,
+      "fan_out_cluster": [
+        "ia agentica que es",
+        "ia agentica para negocios",
+        "diferencia entre agente ia y chatbot",
+        "ia que actua sola",
+        "sistemas agenticos",
+        "ia autonoma para emprendedores"
+      ],
+      "suggested_slug": "ia-agentica-que-es-y-como-usarla",
+      "suggested_title": "IA ag\u00e9ntica: qu\u00e9 es, por qu\u00e9 es el salto que cambia todo en 2026 y qu\u00e9 puedes hacer con ella hoy",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/automatizacion-con-ia-para-solopreneurs/",
+        "https://franlledo.com/blog/claude-para-solopreneurs/",
+        "https://franlledo.com/blog/vibe-coding-en-espanol/"
+      ],
+      "external_authority_candidates": [
+        "https://ecosistemastartup.com/ia-agentica-2026-reduce-40-costes-operativos-en-tu-startup/",
+        "https://nachoconesa.com/blog/agentes-ia-2026-como-funcionan"
+      ],
+      "notes": "Buzzword de 2026 que ning\u00fan solopreneur hispano entiende bien todav\u00eda. SERP actual: art\u00edculos corporativos y t\u00e9cnicos (ecosistemastartup, itsitio, startups-espanolas, nachoconesa). Vol estimado 200-400/mo por densidad SERP. \u00c1ngulo Fran: la IA ag\u00e9ntica es la raz\u00f3n por la que su sistema seo-franlledo funciona sin supervisi\u00f3n constante. Diferencia clave a explicar: chatbot = responde cuando le preguntan; agente = act\u00faa sin que se lo pidan. Estructurar: (1) definici\u00f3n sin jerga, (2) qu\u00e9 la diferencia de la IA de chat, (3) casos de uso reales para un solopreneur HOY, (4) el sistema de Fran como ejemplo concreto. Publicar DESPU\u00c9S del post pillar 'agentes de ia' para que el enlace interno funcione."
+    },
+    {
+      "id": "2026-06-25-agentes-ia-sin-codigo-para-emprendedores",
+      "status": "queued",
+      "queued_at": "2026-06-25T09:32:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "agentes ia sin codigo",
+      "intent": "commercial",
+      "volume": null,
+      "kd": null,
+      "fan_out_cluster": [
+        "crear agente ia sin programar",
+        "como crear un agente ia",
+        "agentes ia make",
+        "agentes ia n8n",
+        "agentes ia zapier",
+        "agentes ia para autonomos"
+      ],
+      "suggested_slug": "agentes-ia-sin-codigo-para-emprendedores",
+      "suggested_title": "Agentes de IA sin c\u00f3digo: c\u00f3mo crear el tuyo aunque no sepas programar (gu\u00eda para solopreneurs)",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/automatizacion-con-ia-para-solopreneurs/",
+        "https://franlledo.com/blog/claude-para-solopreneurs/",
+        "https://franlledo.com/blog/vibe-coding-en-espanol/"
+      ],
+      "external_authority_candidates": [
+        "https://keepcoding.io/blog/agentes-de-ia-sin-codigo/",
+        "https://www.naxia.es/blog/agentes-ia-herramientas-no-code-empresas/"
+      ],
+      "notes": "SERP con gu\u00edas t\u00e9cnicas de comparativa de herramientas (keepcoding, naxia, agentaya) sin perspectiva solopreneur. Angulo Fran: criterio de elecci\u00f3n de herramienta NO-CODE para agentes IA (Make vs n8n vs Zapier vs Claude Code) desde la experiencia real. NO es un tutorial de configuraci\u00f3n de la herramienta (fuera de scope) sino la gu\u00eda estrat\u00e9gica de qu\u00e9 elegir, cu\u00e1nto cuesta, y qu\u00e9 casos de uso son realistas para 1 persona. Estructurar: (1) qu\u00e9 diferencia un agente IA de una automatizaci\u00f3n normal, (2) herramientas no-code principales para crear agentes, (3) por cu\u00e1l empezar seg\u00fan tu nivel y caso de uso, (4) ejemplo concreto de un agente que Fran tiene funcionando. Publicar DESPU\u00c9S del post pillar 'agentes de ia'. Enlazar al post de vibe coding (Claude Code como opci\u00f3n para los que quieren ir m\u00e1s all\u00e1)."
     }
   ]
 }
