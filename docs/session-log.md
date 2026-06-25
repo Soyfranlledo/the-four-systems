@@ -3,6 +3,68 @@
 Registro cronológico append-only de decisiones y cambios relevantes. El estado
 vigente y las próximas acciones viven en [`../PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
+## 2026-06-25: keyword research completo + 3 posts + refresh
+
+### Contexto
+
+Fran preguntó por el estado general del SEO. El sistema llevaba 5 días sin
+correr agentes. La cola estaba vacía y 3 semillas sin investigar.
+
+### Fix previo necesario
+
+El coordinador fallaba con `ERROR: claude CLI not authenticated` porque el
+binario `claude` no estaba en el PATH. La causa: `claude` solo existía como
+binario nativo de la extensión VSCode en una ruta no estándar. Solución:
+`ln -s ~/.vscode/extensions/anthropic.claude-code-*/resources/native-binary/claude ~/.local/bin/claude`.
+El coordinador ya incluye `$HOME/.local/bin` en su PATH. Esto también arregla
+los runs automáticos de launchd.
+
+### Acciones
+
+**Keyword researcher × 3** (semillas pendientes):
+- `monetizar newsletter` → 20 keywords al banco, 1 item en cola:
+  `como-monetizar-una-newsletter` (escrito y publicado en el mismo run).
+- `claude code` → 20 keywords al banco (4 dedup), 1 item en cola:
+  `claude-code-sin-programar` (escrito y publicado en el mismo run).
+- `agentes de ia` → 24 keywords al banco (7 dedup), 3 items en cola:
+  `agentes-de-ia-para-solopreneurs`, `ia-agentica`, `agentes-ia-sin-codigo`.
+
+**Content writer × 3**:
+1. `que-es-un-lead` — 1.450 palabras — https://franlledo.com/blog/que-es-un-lead/ (IndexNow OK)
+2. `claude-code-sin-programar` — 2.010 palabras — https://franlledo.com/blog/claude-code-sin-programar/ (IndexNow OK)
+3. `como-monetizar-una-newsletter` — 1.800 palabras — https://franlledo.com/blog/como-monetizar-una-newsletter/ (IndexNow OK)
+
+**Refresh recommender** (35 URLs, 5 flagged):
+
+| Prioridad | URL | Estado |
+|---|---|---|
+| P2 ⚠️ | `/blog/mejor-modelo-de-negocio-online-para-empezar/` | Discovered - not indexed (37d) |
+| P2 | `/blog/etiqueta/email-marketing/` | Discovered - not indexed |
+| P3 | `/blog/claude-code-sin-programar/` | Unknown (publicado hoy) |
+| P3 | `/blog/como-monetizar-una-newsletter/` | Unknown (publicado hoy) |
+| P3 | `/blog/que-es-un-lead/` | Unknown (publicado hoy) |
+
+### Decisiones
+
+- El post `claude-code-sin-programar` usa el propio repo seo-franlledo como
+  prueba de primera persona. Ángulo deliberado: el SERP en español está lleno
+  de guías técnicas para programadores; Fran es el único solopreneur con un
+  sistema de agentes funcionando y documentado.
+- `como-monetizar-una-newsletter`: título directo con cifra real (100K con
+  2.000 suscriptores). La SERP son listicles de SaaS. El diferenciador es la
+  prueba verificable de primera mano.
+- Todas las semillas de `seed-keywords.txt` agotadas. El keyword-researcher
+  automático de launchd volverá a rotar, pero conviene añadir semillas nuevas
+  o pedir segunda vuelta de las más antiguas (>30d).
+
+### Pendiente
+
+- Fran debe solicitar indexación en GSC para las 5 URLs flagged, empezando por
+  `mejor-modelo-de-negocio-online-para-empezar` (P2, 37 días sin indexar).
+- Content writer: 3 items en cola (`agentes-de-ia`, `ia-agentica`,
+  `agentes-ia-sin-codigo`).
+- Añadir semillas nuevas a `state/seed-keywords.txt`.
+
 ## 2026-06-25: keyword-researcher — semilla "agentes de ia"
 
 ### Acciones

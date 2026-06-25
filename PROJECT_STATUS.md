@@ -8,80 +8,62 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 ## Resumen
 
 - El sistema está operativo. Los cuatro jobs programados (investigación,
-  redacción, refresh e informe) están cargados en `launchd`; la auditoría
-  on-site se ejecuta manualmente.
-- El fallo de los agentes por el modelo inválido `claude-fable-5[1m]` está
-  corregido. El coordinador usa `sonnet` por defecto.
-- El blog tiene 26 artículos publicados. El último es
-  `/blog/lead-magnet-que-es-y-como-crear-uno/` (publicado 2026-06-20, ~2.000 palabras).
-- La cola tiene 6 items pendientes: `que-es-un-lead`, `como-monetizar-una-newsletter`, `claude-code-sin-programar`, `agentes-de-ia-para-solopreneurs`, `ia-agentica-que-es-y-como-usarla`, `agentes-ia-sin-codigo-para-emprendedores`. Ver `state/content-queue.json`.
-- Las solicitudes manuales de indexación de las dos URLs pendientes se enviaron
-  en Search Console el 15 de junio de 2026. No volver a solicitarlas salvo que
-  siga sin haber rastreo tras varios días.
-- Los ensayos duplicados con Substack permanecen accesibles, pero usan
-  `noindex, follow` y no aparecen en el sitemap.
+  redacción, refresh e informe) están cargados en `launchd`.
+- **Fix CLI 2026-06-25:** el binario `claude` no estaba en el PATH del
+  coordinador. Solucionado con symlink `~/.local/bin/claude` → binario nativo de
+  la extensión VSCode. Los runs automáticos de launchd también se benefician.
+- El blog tiene **29 artículos publicados**. Los tres últimos son:
+  - `/blog/que-es-un-lead/` (2026-06-25, ~1.450 palabras)
+  - `/blog/claude-code-sin-programar/` (2026-06-25, ~2.010 palabras)
+  - `/blog/como-monetizar-una-newsletter/` (2026-06-25, ~1.800 palabras)
+- La cola tiene **3 items pendientes**: `agentes-de-ia-para-solopreneurs`,
+  `ia-agentica-que-es-y-como-usarla`, `agentes-ia-sin-codigo`. Ver
+  `state/content-queue.json`.
+- Todas las semillas de `state/seed-keywords.txt` están investigadas. Próxima
+  acción: añadir semillas nuevas o iniciar segunda vuelta de las más antiguas
+  (>30 días: embudos de venta 2026-05-21, email marketing 2026-05-22).
+- Los ensayos duplicados con Substack usan `noindex, follow` y no aparecen en
+  el sitemap.
 
 ## Rendimiento observado
 
-Última comparación verificada: 6-12 de junio de 2026 frente a 30 de mayo-5 de
-junio de 2026.
+Última lectura del informe semanal automático: semana 13-19 de junio de 2026.
 
-| Métrica | Periodo actual | Periodo anterior |
-| --- | ---: | ---: |
-| Impresiones del sitio | 500 | 77 |
-| Clics del sitio | 10 | 5 |
-| Impresiones del blog | 466 | 40 |
-| Clics del blog | 4 | 0 |
-| URLs de contenido con visibilidad | 18 | 3 |
-| Sesiones orgánicas en GA4 | 8 | 8 |
+| Métrica | 13-19 jun | 6-12 jun | 30 may-5 jun |
+| --- | ---: | ---: | ---: |
+| Impresiones del sitio | 845 | 500 | 77 |
+| Clics del sitio | 11 | 10 | 5 |
+| CTR | 1,30% | 2,00% | 6,49% |
+| Posición media | 17,1 | — | — |
+| Sesiones orgánicas (GA4) | 15 | 8 | 8 |
 
-Lectura: la visibilidad está creciendo con claridad, pero todavía no se ha
-traducido en más sesiones orgánicas. Se identificó al menos una alta probable
-desde Google el 11 de junio, con entrada por
-`/blog/como-hacer-email-marketing-que-venda/` y paso a `/falta-confirmar/`.
+Las impresiones crecen con claridad (×11 en tres semanas). El post estrella
+es `/blog/como-escribir-asuntos-de-email/` (337 imp, posición 13, CTR 0,3%).
 
-La web ya emite el evento GA4 `newsletter_signup`. El informe semanal incluye
-altas por canal, de modo que las próximas sesiones no dependerán de inferencias.
+GEO: ChatGPT reconoce "Fran Lledó" y "Cazatarjetas" en consultas directas,
+pero aún no cita franlledo.com en queries de nicho.
 
 ## CTR
 
-Cambios ya desplegados:
+Cambios ya desplegados (no tocar hasta finales de junio-julio):
 
-- `/blog/como-escribir-asuntos-de-email/`: título SEO corto
-  `Cómo escribir mejores asuntos de email` y descripción revisada. Era la
-  oportunidad inmediata: 241 impresiones en 28 días, posición media 10,8.
-- `/blog/automatizacion-con-ia-para-solopreneurs/`: título SEO
-  `Automatización con IA para negocios pequeños`, descripción más concreta,
-  fuentes primarias y eliminación de cifras personales no medidas.
-
-No volver a cambiar estos snippets hasta acumular al menos 2-4 semanas de datos,
-salvo error evidente.
+- `/blog/como-escribir-asuntos-de-email/`: título SEO corto y descripción revisada.
+- `/blog/automatizacion-con-ia-para-solopreneurs/`: título SEO y descripción más concreta.
 
 ## Indexación
 
-Solicitudes enviadas manualmente el 15 de junio de 2026:
+Estado a 2026-06-25 (refresh-recommender corrió hoy, 35 URLs analizadas):
 
-1. `https://franlledo.com/blog/automatizacion-con-ia-para-solopreneurs/`
-2. `https://franlledo.com/blog/mejor-modelo-de-negocio-online-para-empezar/`
+| Prioridad | URL | Estado GSC | Acción |
+| --- | --- | --- | --- |
+| P2 ⚠️ | `/blog/mejor-modelo-de-negocio-online-para-empezar/` | Discovered - not indexed (37d) | Solicitar indexación **urgente** |
+| P2 | `/blog/etiqueta/email-marketing/` | Discovered - not indexed | Solicitar indexación |
+| P3 | `/blog/claude-code-sin-programar/` | Unknown to Google (publicado hoy) | Solicitar indexación |
+| P3 | `/blog/como-monetizar-una-newsletter/` | Unknown to Google (publicado hoy) | Solicitar indexación |
+| P3 | `/blog/que-es-un-lead/` | Unknown to Google (publicado hoy) | Solicitar indexación |
 
-En la comprobación previa ambas figuraban como `URL is unknown to Google`.
-Próxima acción: comprobar de nuevo entre el 18 y el 22 de junio. Solicitar
-indexación no garantiza inclusión; evaluar rastreo, canonical y cobertura antes
-de repetir la solicitud.
-
-`state/refresh-candidates.json` fue generado el 11 de junio y puede estar
-desactualizado respecto a las solicitudes recientes. Regenerarlo antes de usar
-sus totales como estado actual.
-
-## Contenido
-
-El post `lead-magnet-que-es-y-como-crear-uno` ha sido marcado como `written` y publicado en vivo. Ver cola para el siguiente item.
-
-Las notas de cola prohíben inventar asuntos, métricas individuales o ventas atribuidas.
-
-Semillas pendientes de investigar:
-
-- Ninguna. Todas las semillas de `state/seed-keywords.txt` han sido investigadas. Próxima acción: añadir nuevas semillas o iniciar segunda vuelta de las más antiguas (embudos de venta, 2026-05-21; email marketing, 2026-05-22).
+Nota: `/blog/newsletter-guia-para-solopreneurs/` y
+`/blog/newsletter-ejemplos-que-venden/` no aparecen en los flagged del refresh de hoy, lo que sugiere que ya están indexadas o al menos rastreadas. Confirmar en GSC.
 
 ## Programación activa
 
@@ -96,41 +78,39 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Incidencias conocidas
 
-- El informe automático del 15 de junio no pudo conectarse a OAuth/Internet
-  (`EADDRNOTAVAIL`). Después se hizo una consulta manual correcta de GSC y GA4.
-  Si vuelve a ocurrir, revisar red y entorno de `launchd`, no las credenciales a
-  ciegas.
+- **CLI PATH (resuelto 2026-06-25):** `claude` no estaba instalado como comando
+  global (solo existía como binario nativo de la extensión VSCode). Se creó
+  `~/.local/bin/claude` → symlink al binario nativo. El coordinador ya lo
+  encuentra a través de `$HOME/.local/bin` en su PATH.
 - Los informes HTML históricos de `output/keywords/` pueden contener URLs con
   fecha del incidente del 8 de junio. Son snapshots, no fuentes activas.
-- Algunos artefactos locales antiguos de `output/posts/` también conservan
-  enlaces históricos. La web publicada y la cola activa apuntan a URLs finales.
+- DataForSEO (`mcp__dfs-mcp`) no disponible en ningún run de keyword-researcher
+  desde el 17 de junio. Los volúmenes y KD son estimaciones por WebSearch.
+  Cuando vuelva, priorizar verificación de `agentes de ia` (vol estimado
+  1000-2000/mo) y `claude code en español`.
 
 ## Próximos hitos
 
-1. Verificar el resultado de las solicitudes de indexación enviadas el 15 de junio
-   (automatizacion-con-ia y mejor-modelo-de-negocio).
-2. Solicitar indexación de `/blog/lead-magnet-que-es-y-como-crear-uno/` en Search Console.
-3. Solicitar indexación de `/blog/newsletter-guia-para-solopreneurs/` y
-   `/blog/newsletter-ejemplos-que-venden/` si todavía no están indexadas.
-4. Content writer: procesar `que-es-un-lead`, `como-monetizar-una-newsletter` y
-   `claude-code-sin-programar` de la cola.
-5. Keyword researcher: todas las semillas agotadas. Añadir nuevas semillas a `state/seed-keywords.txt` o iniciar segunda vuelta (embudos de venta / email marketing, >30 días).
-6. Medir CTR de los snippets modificados a partir de finales de junio.
-7. Regenerar `state/refresh-candidates.json` antes de la próxima revisión manual
-   de indexación.
-8. Cuando DataForSEO vuelva a estar disponible: verificar volúmenes de
-   `claude code en español` y `que es claude code` para valorar post standalone.
+1. **Indexación (Fran, manual en GSC):** solicitar indexación para las 5 URLs
+   del refresh de hoy, empezando por `mejor-modelo-de-negocio-online-para-empezar`
+   (P2, 37 días sin indexar) y los 3 posts publicados hoy.
+2. Content writer: procesar los 3 items en cola (`agentes-de-ia`,
+   `ia-agentica`, `agentes-ia-sin-codigo`).
+3. Keyword researcher: añadir nuevas semillas a `state/seed-keywords.txt`
+   (candidatas: `monetizar con ia`, `prompts para negocio`, `automatizar ventas`)
+   o iniciar segunda vuelta de las más antiguas.
+4. Medir CTR de los snippets modificados a finales de junio.
+5. Confirmar en GSC si `newsletter-guia` y `newsletter-ejemplos` ya están indexadas.
 
 ## Últimos commits relevantes
 
 Repo SEO:
 
-- `(este run)`: publicación de lead-magnet-que-es-y-como-crear-uno, estado y bitácora.
-- `7f406b0`: publicación de newsletter-ejemplos-que-venden.
-- `e13d92e`: investigación de `lista de suscriptores` y cola de newsletter.
+- `a51e91e`: refresh-recommender run 2026-06-25 (5 URLs flagged).
+- `ba192a4`, `bd11a49`, `2b47392`: content-writer run 2026-06-25 (3 posts).
+- `306856a`, `871b94d`, `6db5e27`: keyword-researcher run 2026-06-25 (3 semillas).
 
-Repo web:
+Repo web (actualizado por publish-to-astro.py en cada content-writer run):
 
-- `254a9b4`: enlaces entrantes desde email-marketing, newsletter y lead-nurturing hacia lead-magnet.
-- `66f2e82`: publicación de lead-magnet-que-es-y-como-crear-uno (por publish-to-astro.py).
-- `fae0112`: enlaces entrantes desde newsletter-guia y email-marketing-ejemplos.
+- Posts publicados hoy: `que-es-un-lead`, `claude-code-sin-programar`,
+  `como-monetizar-una-newsletter`.
