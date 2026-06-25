@@ -585,6 +585,41 @@
         "https://mailchimp.com/es/resources/lead-generation/"
       ],
       "notes": "Vol 1300, KD 2. SERP solo 128 resultados, AI Overview presente. Audiencia amplia (la query sirve tambi\u00e9n para periodismo y m\u00fasica) pero el post debe declarar desde el primer p\u00e1rrafo el \u00e1ngulo de marketing digital/captaci\u00f3n. Diferenciador: no la definici\u00f3n gen\u00e9rica que ya da el AI Overview, sino la perspectiva solopreneur de primera persona: qu\u00e9 es un lead en un negocio de 1 persona, por qu\u00e9 una lista de 2000 bien cualificados vale m\u00e1s que 20.000 fr\u00edos, la diferencia entre lead y suscriptor. Conectar con el post de lead magnet (post hermano en el cluster de captaci\u00f3n)."
+    },
+    {
+      "id": "2026-06-25-como-monetizar-una-newsletter",
+      "status": "queued",
+      "queued_at": "2026-06-25T00:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "como monetizar una newsletter",
+      "intent": "informational",
+      "volume": null,
+      "kd": null,
+      "fan_out_cluster": [
+        "como monetizar una newsletter",
+        "ganar dinero con una newsletter",
+        "monetizar newsletter",
+        "cuantos suscriptores para monetizar newsletter",
+        "newsletter de pago",
+        "newsletter patrocinios",
+        "newsletter para vender infoproductos"
+      ],
+      "suggested_slug": "como-monetizar-una-newsletter",
+      "suggested_title": "C\u00f3mo monetizar una newsletter: el sistema que me gener\u00f3 100.000 euros con 2.000 suscriptores",
+      "target_word_count": 2000,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
+        "https://franlledo.com/blog/newsletter-ejemplos-que-venden/",
+        "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/",
+        "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+        "https://franlledo.com/blog/que-son-los-infoproductos/"
+      ],
+      "external_authority_candidates": [
+        "https://creandonewsletters.com/ganar-dinero-con-newsletter/",
+        "https://laboratoriodeperiodismo.org/cuanto-dinero-se-puede-ganar-con-una-newsletter/"
+      ],
+      "notes": "Hueco claro en el blog: existen posts sobre 'qu\u00e9 es una newsletter' y 'ejemplos de newsletter' pero ninguno sobre c\u00f3mo ganar dinero con ella. SERP dominado por listicles gen\u00e9ricos (MailerLite, GoDaddy, Nomada Digital) con 5-10 m\u00e9todos sin datos reales de primera persona. \u00c1ngulo Fran: su sistema concreto (newsletter gratuita, emails casi diarios, secuencia de lanzamiento 5-7 emails, infoproductos propios) diferenciado de newsletter de pago y patrocinios. Datos ancla verificables: 100K EUR/a\u00f1o de negocio, 2000 suscriptores, 35% open rate, lanzamientos de 10-12K EUR con una sola secuencia. Preguntas clave a responder: cu\u00e1ntos suscriptores necesito (respuesta contraintuitiva), qu\u00e9 modelos existen (y cu\u00e1l eligi\u00f3 Fran y por qu\u00e9), c\u00f3mo es una secuencia de venta real. No inventar m\u00e9tricas individuales no documentadas."
     }
   ]
 }
