@@ -622,10 +622,10 @@
     },
     {
       "id": "2026-06-25-como-monetizar-una-newsletter",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-25T00:00:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-06-25T16:36:38Z",
+      "post_url": "https://franlledo.com/blog/como-monetizar-una-newsletter/",
       "primary_keyword": "como monetizar una newsletter",
       "intent": "informational",
       "volume": null,
