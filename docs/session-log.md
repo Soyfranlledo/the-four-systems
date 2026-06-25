@@ -3,6 +3,32 @@
 Registro cronológico append-only de decisiones y cambios relevantes. El estado
 vigente y las próximas acciones viven en [`../PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
+## 2026-06-25: keyword-researcher — semilla "claude code"
+
+### Acciones
+
+- Semilla investigada: `claude code` (primera vez; semillas `monetizar newsletter` ya investigada hoy mismo por run anterior).
+- DataForSEO no disponible (segunda sesión seguida). Fallback a WebSearch: 4 búsquedas paralelas (que es, solopreneurs, vs cursor, sin programar, precio, automatizacion).
+- 28 variaciones evaluadas. 4 dropped (duplicados banco). 2 dropped (out-of-scope: comparativa vs cursor, tutorial instalación). 20 keywords añadidas al banco.
+- 1 item añadido a cola: `2026-06-25-claude-code-sin-programar`.
+- CSV generado: `output/keywords/2026-06-25-claude-code.csv`.
+- `state/keyword-bank.json` actualizado: semilla registrada, 20 entradas nuevas.
+- `PROJECT_STATUS.md` y esta bitácora actualizados.
+
+### Decisiones
+
+- Primary keyword elegido: "claude code sin programar" (vol est. 150-300/mo, KD est. 15-20). El ángulo genérico "que es claude code" ya está saturado (10+ artículos en 2026). El gap real es el solopreneur no técnico que quiere usarlo para su negocio.
+- Ángulo diferenciador clave: Fran usa Claude Code en el repo seo-franlledo (estos mismos agentes de keyword research y content writer). Es la prueba más tangible en español del uso real por un solopreneur.
+- "claude code en español" podría ser P1 (análogo a "vibe coding en español" vol 480 KD 18 que fue P1), pero sin DFS se conserva como P2 pendiente de verificación.
+- "claude code vs cursor" parkeado como out-of-scope (comparativa de herramientas, prohibido por site-config).
+- El post a escribir debería cubrir: qué es Claude Code vs el chat de Claude, ejemplos reales del sistema SEO de Fran, por qué no hace falta saber programar, y precio honesto (Pro $20 incluye Claude Code).
+
+### Pendiente
+
+- DFS no disponible: en el próximo run con DFS activo, verificar volumen de "claude code en español" y "que es claude code" para posible post standalone.
+- Content writer: los 3 items de la cola (`que-es-un-lead`, `como-monetizar-una-newsletter`, `claude-code-sin-programar`) están listos.
+- Keyword researcher: investigar semilla `agentes de ia` (última restante de la lista).
+
 ## 2026-06-20: publicación de "lead magnet" (keyword vol 1000, intent commercial)
 
 ### Acciones

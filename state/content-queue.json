@@ -587,6 +587,40 @@
       "notes": "Vol 1300, KD 2. SERP solo 128 resultados, AI Overview presente. Audiencia amplia (la query sirve tambi\u00e9n para periodismo y m\u00fasica) pero el post debe declarar desde el primer p\u00e1rrafo el \u00e1ngulo de marketing digital/captaci\u00f3n. Diferenciador: no la definici\u00f3n gen\u00e9rica que ya da el AI Overview, sino la perspectiva solopreneur de primera persona: qu\u00e9 es un lead en un negocio de 1 persona, por qu\u00e9 una lista de 2000 bien cualificados vale m\u00e1s que 20.000 fr\u00edos, la diferencia entre lead y suscriptor. Conectar con el post de lead magnet (post hermano en el cluster de captaci\u00f3n)."
     },
     {
+      "id": "2026-06-25-claude-code-sin-programar",
+      "status": "queued",
+      "queued_at": "2026-06-25T12:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "claude code sin programar",
+      "intent": "informational",
+      "volume": null,
+      "kd": null,
+      "fan_out_cluster": [
+        "claude code sin programar",
+        "que es claude code",
+        "claude code para emprendedores",
+        "como usar claude code",
+        "claude code automatizacion",
+        "claude code ejemplos",
+        "claude code en español"
+      ],
+      "suggested_slug": "claude-code-sin-programar",
+      "suggested_title": "Claude Code sin programar: cómo lo uso en mi negocio online (y lo que automatizo con él)",
+      "target_word_count": 2000,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/claude-para-solopreneurs/",
+        "https://franlledo.com/blog/vibe-coding-en-espanol/",
+        "https://franlledo.com/blog/automatizacion-con-ia-para-solopreneurs/",
+        "https://franlledo.com/blog/infoproductos-con-ia/"
+      ],
+      "external_authority_candidates": [
+        "https://www.anthropic.com/news/claude-code",
+        "https://code.claude.com/docs/es/overview"
+      ],
+      "notes": "Vol estimado 150-300/mo (DFS no disponible, estimado por densidad SERP). KD estimado 15-20. Angulo diferenciador clave: Fran usa Claude Code en su propio negocio y tiene prueba tangible (el repo seo-franlledo: agentes de keyword research y content writer que corren con Claude Code). El SERP esta lleno de guias tecnicas de programadores; falta la perspectiva del solopreneur no tecnico que lo usa para automatizar su negocio real. No confundir con el post existente 'claude-para-solopreneurs' (cubre Claude en general); este post cubre Claude Code especificamente como herramienta agentic de terminal. Estructura sugerida: (1) que es Claude Code y en que se diferencia del chat normal, (2) lo que automatice en mi negocio con el (ejemplos reales del sistema SEO), (3) por que no necesitas saber programar para usarlo, (4) primeros pasos honesto con precio incluido. Incluir la historia real: Fran corrio este mismo sistema de keyword research y escritura de posts con Claude Code."
+    },
+    {
       "id": "2026-06-25-como-monetizar-una-newsletter",
       "status": "queued",
       "queued_at": "2026-06-25T00:00:00Z",

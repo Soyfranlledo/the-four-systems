@@ -1,6 +1,6 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-06-20, 10:10 CEST
+Última actualización: 2026-06-25
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
@@ -14,7 +14,7 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   corregido. El coordinador usa `sonnet` por defecto.
 - El blog tiene 26 artículos publicados. El último es
   `/blog/lead-magnet-que-es-y-como-crear-uno/` (publicado 2026-06-20, ~2.000 palabras).
-- La cola tiene items pendientes. Ver `state/content-queue.json`.
+- La cola tiene 3 items pendientes: `que-es-un-lead`, `como-monetizar-una-newsletter`, y `claude-code-sin-programar` (añadido hoy). Ver `state/content-queue.json`.
 - Las solicitudes manuales de indexación de las dos URLs pendientes se enviaron
   en Search Console el 15 de junio de 2026. No volver a solicitarlas salvo que
   siga sin haber rastreo tras varios días.
@@ -81,9 +81,7 @@ Las notas de cola prohíben inventar asuntos, métricas individuales o ventas at
 
 Semillas pendientes de investigar:
 
-- `monetizar newsletter`
-- `claude code`
-- `agentes de ia`
+- `agentes de ia` (única restante de la lista)
 
 ## Programación activa
 
@@ -109,16 +107,19 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Próximos hitos
 
-1. Verificar el resultado de las dos solicitudes de indexación enviadas el 15 de junio
+1. Verificar el resultado de las solicitudes de indexación enviadas el 15 de junio
    (automatizacion-con-ia y mejor-modelo-de-negocio).
 2. Solicitar indexación de `/blog/lead-magnet-que-es-y-como-crear-uno/` en Search Console.
 3. Solicitar indexación de `/blog/newsletter-guia-para-solopreneurs/` y
    `/blog/newsletter-ejemplos-que-venden/` si todavía no están indexadas.
-4. Ejecutar keyword-researcher para las semillas restantes (monetizar newsletter,
-   claude code, agentes de ia).
-5. Medir CTR de los snippets modificados a partir de finales de junio.
-6. Regenerar `state/refresh-candidates.json` antes de la próxima revisión manual
+4. Content writer: procesar `que-es-un-lead`, `como-monetizar-una-newsletter` y
+   `claude-code-sin-programar` de la cola.
+5. Keyword researcher: investigar semilla `agentes de ia` (única restante).
+6. Medir CTR de los snippets modificados a partir de finales de junio.
+7. Regenerar `state/refresh-candidates.json` antes de la próxima revisión manual
    de indexación.
+8. Cuando DataForSEO vuelva a estar disponible: verificar volúmenes de
+   `claude code en español` y `que es claude code` para valorar post standalone.
 
 ## Últimos commits relevantes
 
