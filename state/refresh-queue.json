@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-06-25T16:45:00Z",
+  "site": "https://franlledo.com",
+  "totals": {
+    "total_actions": 5,
+    "by_action": {
+      "request_indexing": 5,
+      "fix_canonical": 0,
+      "refresh": 0,
+      "audit_then_decide": 0
+    }
+  },
+  "items": [
+    {
+      "id": "a3f9e1",
+      "url": "https://franlledo.com/blog/mejor-modelo-de-negocio-online-para-empezar/",
+      "action": "request_indexing",
+      "primary_flag": "not_indexed",
+      "coverage_state": "Discovered - currently not indexed",
+      "age_days": 37,
+      "is_money_page": false,
+      "recommendation": "Open GSC (search.google.com/search-console), paste this URL in the URL Inspection bar, and click 'Request Indexing'. Coverage state 'Discovered - currently not indexed' means Google found the URL (likely via sitemap or internal links) but has queued it without crawling for 37 days. Verify the page returns 200, has no noindex meta tag, and that the canonical self-references the correct URL. If indexing is still not triggered after 2 weeks, check whether Googlebot is being rate-limited across the blog.",
+      "priority": 2,
+      "status": "queued",
+      "queued_at": "2026-06-25T16:45:00Z",
+      "completed_at": null
+    },
+    {
+      "id": "b7c2d4",
+      "url": "https://franlledo.com/blog/etiqueta/email-marketing/",
+      "action": "request_indexing",
+      "primary_flag": "not_indexed",
+      "coverage_state": "Discovered - currently not indexed",
+      "age_days": 0,
+      "is_money_page": false,
+      "recommendation": "Open GSC, paste this URL in the URL Inspection bar, and click 'Request Indexing'. Coverage state 'Discovered - currently not indexed' on a tag page created today is expected. Notably, the four other tag pages (/etiqueta/embudos/, /etiqueta/ia/, /etiqueta/marketing/, /etiqueta/negocios/) are all indexed and passing. Confirm this tag page is included in the sitemap-index and has at least 2-3 posts linking to it. If the email-marketing tag was recently added to Astro, it may take an extra crawl cycle.",
+      "priority": 2,
+      "status": "queued",
+      "queued_at": "2026-06-25T16:45:00Z",
+      "completed_at": null
+    },
+    {
+      "id": "c1e8f5",
+      "url": "https://franlledo.com/blog/claude-code-sin-programar/",
+      "action": "request_indexing",
+      "primary_flag": "index_warning",
+      "coverage_state": "URL is unknown to Google",
+      "age_days": 0,
+      "is_money_page": false,
+      "recommendation": "Open GSC, paste this URL in the URL Inspection bar, and click 'Request Indexing'. Coverage state 'URL is unknown to Google' means no Googlebot visit has occurred - expected for a post published today. Verify the post appears in the XML sitemap (run npm run build in the web repo and check dist/sitemap*.xml), that the canonical tag points to https://franlledo.com/blog/claude-code-sin-programar/, and that there is no noindex meta tag. IndexNow ping (via the automatic post-publish step) should also accelerate Bing/ChatGPT Search discovery.",
+      "priority": 3,
+      "status": "queued",
+      "queued_at": "2026-06-25T16:45:00Z",
+      "completed_at": null
+    },
+    {
+      "id": "d5b3a6",
+      "url": "https://franlledo.com/blog/como-monetizar-una-newsletter/",
+      "action": "request_indexing",
+      "primary_flag": "index_warning",
+      "coverage_state": "URL is unknown to Google",
+      "age_days": 0,
+      "is_money_page": false,
+      "recommendation": "Open GSC, paste this URL in the URL Inspection bar, and click 'Request Indexing'. Coverage state 'URL is unknown to Google' is expected for a post published today. Same checklist as other new posts: sitemap presence, self-canonical, no noindex. This post targets high-intent query 'como monetizar una newsletter' and is a cluster hub for the newsletter topic group - internal links from /newsletter-guia-para-solopreneurs/ and /newsletter-ejemplos-que-venden/ will help Googlebot discover it faster once those pages are recrawled.",
+      "priority": 3,
+      "status": "queued",
+      "queued_at": "2026-06-25T16:45:00Z",
+      "completed_at": null
+    },
+    {
+      "id": "e2d7c9",
+      "url": "https://franlledo.com/blog/que-es-un-lead/",
+      "action": "request_indexing",
+      "primary_flag": "index_warning",
+      "coverage_state": "URL is unknown to Google",
+      "age_days": 0,
+      "is_money_page": false,
+      "recommendation": "Open GSC, paste this URL in the URL Inspection bar, and click 'Request Indexing'. Coverage state 'URL is unknown to Google' is expected for a post published today. Verify sitemap presence, self-canonical, no noindex. This post (vol 1300, KD 2) has four planned internal links from lead-magnet, lead-nurturing, newsletter-guia, and como-montar-embudo posts - confirm those internal links are live and pointing correctly to /blog/que-es-un-lead/ to accelerate crawl via link equity.",
+      "priority": 3,
+      "status": "queued",
+      "queued_at": "2026-06-25T16:45:00Z",
+      "completed_at": null
+    }
+  ]
+}
