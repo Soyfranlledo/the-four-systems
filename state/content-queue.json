@@ -555,10 +555,10 @@
     },
     {
       "id": "2026-06-17-que-es-un-lead",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-17T10:00:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-06-25T16:16:09Z",
+      "post_url": "https://franlledo.com/blog/que-es-un-lead/",
       "primary_keyword": "que es un lead",
       "intent": "informational",
       "volume": 1300,
@@ -603,10 +603,10 @@
         "como usar claude code",
         "claude code automatizacion",
         "claude code ejemplos",
-        "claude code en español"
+        "claude code en espa\u00f1ol"
       ],
       "suggested_slug": "claude-code-sin-programar",
-      "suggested_title": "Claude Code sin programar: cómo lo uso en mi negocio online (y lo que automatizo con él)",
+      "suggested_title": "Claude Code sin programar: c\u00f3mo lo uso en mi negocio online (y lo que automatizo con \u00e9l)",
       "target_word_count": 2000,
       "internal_link_targets": [
         "https://franlledo.com/blog/claude-para-solopreneurs/",
