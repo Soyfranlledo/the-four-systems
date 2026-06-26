@@ -56,14 +56,15 @@ Estado a 2026-06-25 (refresh-recommender corrió hoy, 35 URLs analizadas):
 
 | Prioridad | URL | Estado GSC | Acción |
 | --- | --- | --- | --- |
-| P2 ⚠️ | `/blog/mejor-modelo-de-negocio-online-para-empezar/` | Discovered - not indexed (37d) | Solicitar indexación **urgente** |
+| ✅ | `/blog/mejor-modelo-de-negocio-online-para-empezar/` | **Indexada** (confirmado GSC 2026-06-26) | — |
 | P2 | `/blog/etiqueta/email-marketing/` | Discovered - not indexed | Solicitar indexación |
-| P3 | `/blog/claude-code-sin-programar/` | Unknown to Google (publicado hoy) | Solicitar indexación |
-| P3 | `/blog/como-monetizar-una-newsletter/` | Unknown to Google (publicado hoy) | Solicitar indexación |
-| P3 | `/blog/que-es-un-lead/` | Unknown to Google (publicado hoy) | Solicitar indexación |
+| P3 | `/blog/claude-code-sin-programar/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
+| P3 | `/blog/como-monetizar-una-newsletter/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
+| P3 | `/blog/que-es-un-lead/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
 
 Nota: `/blog/newsletter-guia-para-solopreneurs/` y
-`/blog/newsletter-ejemplos-que-venden/` no aparecen en los flagged del refresh de hoy, lo que sugiere que ya están indexadas o al menos rastreadas. Confirmar en GSC.
+`/blog/newsletter-ejemplos-que-venden/` no aparecen en los flagged del refresh,
+lo que sugiere que ya están indexadas. Confirmar en GSC.
 
 ## Programación activa
 
@@ -91,9 +92,9 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Próximos hitos
 
-1. **Indexación (Fran, manual en GSC):** solicitar indexación para las 5 URLs
-   del refresh de hoy, empezando por `mejor-modelo-de-negocio-online-para-empezar`
-   (P2, 37 días sin indexar) y los 3 posts publicados hoy.
+1. **Indexación (Fran, manual en GSC):** `mejor-modelo-de-negocio-online-para-empezar`
+   ya indexada (confirmado 2026-06-26). Quedan: `/etiqueta/email-marketing/` (P2)
+   y los 3 posts del 25 de junio (P3).
 2. Content writer: procesar los 3 items en cola (`agentes-de-ia`,
    `ia-agentica`, `agentes-ia-sin-codigo`).
 3. Keyword researcher: añadir nuevas semillas a `state/seed-keywords.txt`
