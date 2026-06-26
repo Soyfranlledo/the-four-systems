@@ -1,6 +1,6 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-06-25
+Última actualización: 2026-06-26
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
@@ -107,11 +107,13 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
-- `a51e91e`: refresh-recommender run 2026-06-25 (5 URLs flagged).
+- `b7de3e7`: indexación de mejor-modelo-de-negocio confirmada (GSC 2026-06-26).
+- `4e47088`: estado y bitácora tras run completo 2026-06-25.
+- `a51e91e`: refresh-recommender run 2026-06-25.
 - `ba192a4`, `bd11a49`, `2b47392`: content-writer run 2026-06-25 (3 posts).
 - `306856a`, `871b94d`, `6db5e27`: keyword-researcher run 2026-06-25 (3 semillas).
 
-Repo web (actualizado por publish-to-astro.py en cada content-writer run):
+Repo web (actualizado por publish-to-astro.py):
 
-- Posts publicados hoy: `que-es-un-lead`, `claude-code-sin-programar`,
-  `como-monetizar-una-newsletter`.
+- Posts del 25 de junio: `que-es-un-lead`, `claude-code-sin-programar`,
+  `como-monetizar-una-newsletter` — publicados y en sitemap.

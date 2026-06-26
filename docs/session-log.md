@@ -3,6 +3,58 @@
 Registro cronológico append-only de decisiones y cambios relevantes. El estado
 vigente y las próximas acciones viven en [`../PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
+## 2026-06-26: indexación confirmada + investigación FAQ schema + CTR
+
+### Contexto
+
+Continuación de sesión del día anterior. Fran revisó en GSC las URLs flagged
+y preguntó por formas de mejorar el CTR.
+
+### Acciones
+
+- **Indexación confirmada:** `/blog/mejor-modelo-de-negocio-online-para-empezar/`
+  aparece como "La URL está en Google" en GSC. Llevaba 37 días como
+  "Discovered - not indexed". Probablemente se desbloqueó gracias al enlace
+  interno añadido desde `lead-magnet` el 20 de junio.
+
+- **Investigación FAQ schema:** Se auditó el repo web para evaluar si valía la
+  pena añadir marcado FAQ. Hallazgos:
+  - El sistema YA emite FAQPage automáticamente desde `src/lib/faq.ts`: cualquier
+    H2 que termine en "?" se extrae como pregunta y la siguiente párrafo como
+    respuesta. Si hay ≥2 FAQs, se emite el schema.
+  - HowTo schema también funciona: listas numeradas con ≥3 items.
+  - **No hay nada que implementar.** La infraestructura está construida y activa.
+  - Google dejó de mostrar FAQ rich results para la mayoría de sitios en
+    septiembre de 2023 (solo los muestra para salud y gobierno). El schema se
+    emite y Google lo lee, pero las expansiones visuales en SERP no aparecen.
+
+### Decisiones
+
+- **CTR:** El 1,3% no es ridículo dado que la posición media es 17,1.
+  A esa posición el CTR esperado es 0,5-1,5%. La palanca no es reescribir
+  títulos — es subir a posiciones 1-5, que se consigue con tiempo y contenido.
+  El único post donde el snippet importa ya (`asuntos-de-email`, posición 13)
+  tiene el título actualizado desde mediados de junio; hay que esperar datos.
+- **FAQ schema:** descartado como acción — ya está implementado y Google no lo
+  muestra para sitios como franlledo.com desde 2023.
+- **Próxima palanca real:** los posts de `agentes de ia` que entran en cola
+  tienen KD estimado 10-20 y Fran tiene prueba de primera mano con el repo
+  seo-franlledo. Son los candidatos a llegar a top 5 y generar CTR estructural.
+
+### Pendiente al cerrar sesión
+
+- Fran: solicitar indexación en GSC para `/etiqueta/email-marketing/` (P2) y
+  los 3 posts del 25 de junio (P3). Los 3 post puede que ya los haya indexado
+  IndexNow, pero conviene confirmar.
+- Sistema automático: content writer procesará los 3 items en cola
+  (`agentes-de-ia`, `ia-agentica`, `agentes-ia-sin-codigo`) en los próximos
+  runs de launchd (martes, jueves, sábado a las 10:00).
+- Cuando DataForSEO vuelva: verificar volúmenes reales de `agentes de ia`
+  (estimado 1.000-2.000/mo) — si confirma, es el cluster más importante del
+  momento.
+
+---
+
 ## 2026-06-25: keyword research completo + 3 posts + refresh
 
 ### Contexto
