@@ -1,6 +1,6 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-06-26
+Última actualización: 2026-06-28
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
@@ -12,13 +12,12 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - **Fix CLI 2026-06-25:** el binario `claude` no estaba en el PATH del
   coordinador. Solucionado con symlink `~/.local/bin/claude` → binario nativo de
   la extensión VSCode. Los runs automáticos de launchd también se benefician.
-- El blog tiene **29 artículos publicados**. Los tres últimos son:
-  - `/blog/que-es-un-lead/` (2026-06-25, ~1.450 palabras)
+- El blog tiene **30 artículos publicados**. Los tres últimos son:
+  - `/blog/agentes-de-ia-para-solopreneurs/` (2026-06-28, ~2.150 palabras)
   - `/blog/claude-code-sin-programar/` (2026-06-25, ~2.010 palabras)
   - `/blog/como-monetizar-una-newsletter/` (2026-06-25, ~1.800 palabras)
-- La cola tiene **3 items pendientes**: `agentes-de-ia-para-solopreneurs`,
-  `ia-agentica-que-es-y-como-usarla`, `agentes-ia-sin-codigo`. Ver
-  `state/content-queue.json`.
+- La cola tiene **2 items pendientes**: `ia-agentica-que-es-y-como-usarla`,
+  `agentes-ia-sin-codigo`. Ver `state/content-queue.json`.
 - Todas las semillas de `state/seed-keywords.txt` están investigadas. Próxima
   acción: añadir semillas nuevas o iniciar segunda vuelta de las más antiguas
   (>30 días: embudos de venta 2026-05-21, email marketing 2026-05-22).
@@ -61,6 +60,7 @@ Estado a 2026-06-25 (refresh-recommender corrió hoy, 35 URLs analizadas):
 | P3 | `/blog/claude-code-sin-programar/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
 | P3 | `/blog/como-monetizar-una-newsletter/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
 | P3 | `/blog/que-es-un-lead/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
+| P3 | `/blog/agentes-de-ia-para-solopreneurs/` | Unknown (publicado 2026-06-28) | Solicitar indexación |
 
 Nota: `/blog/newsletter-guia-para-solopreneurs/` y
 `/blog/newsletter-ejemplos-que-venden/` no aparecen en los flagged del refresh,
@@ -95,8 +95,8 @@ Zona horaria del equipo: `Europe/Madrid`.
 1. **Indexación (Fran, manual en GSC):** `mejor-modelo-de-negocio-online-para-empezar`
    ya indexada (confirmado 2026-06-26). Quedan: `/etiqueta/email-marketing/` (P2)
    y los 3 posts del 25 de junio (P3).
-2. Content writer: procesar los 3 items en cola (`agentes-de-ia`,
-   `ia-agentica`, `agentes-ia-sin-codigo`).
+2. Content writer: procesar los 2 items restantes en cola (`ia-agentica-que-es-y-como-usarla`,
+   `agentes-ia-sin-codigo`).
 3. Keyword researcher: añadir nuevas semillas a `state/seed-keywords.txt`
    (candidatas: `monetizar con ia`, `prompts para negocio`, `automatizar ventas`)
    o iniciar segunda vuelta de las más antiguas.
@@ -107,13 +107,15 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- (este run): content-writer 2026-06-28: `agentes-de-ia-para-solopreneurs`.
 - `b7de3e7`: indexación de mejor-modelo-de-negocio confirmada (GSC 2026-06-26).
 - `4e47088`: estado y bitácora tras run completo 2026-06-25.
 - `a51e91e`: refresh-recommender run 2026-06-25.
 - `ba192a4`, `bd11a49`, `2b47392`: content-writer run 2026-06-25 (3 posts).
-- `306856a`, `871b94d`, `6db5e27`: keyword-researcher run 2026-06-25 (3 semillas).
 
-Repo web (actualizado por publish-to-astro.py):
+Repo web:
 
+- `f5d37e9`: seo: enlaces internos hacia agentes-de-ia-para-solopreneurs.
+- `401ec50`: post: agentes-de-ia-para-solopreneurs.
 - Posts del 25 de junio: `que-es-un-lead`, `claude-code-sin-programar`,
   `como-monetizar-una-newsletter` — publicados y en sitemap.

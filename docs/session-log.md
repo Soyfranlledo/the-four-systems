@@ -3,6 +3,41 @@
 Registro cronológico append-only de decisiones y cambios relevantes. El estado
 vigente y las próximas acciones viven en [`../PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
+## 2026-06-28: content writer — agentes-de-ia-para-solopreneurs
+
+### Contexto
+
+Run automático del content writer (MODE: AUTO). Cola con 3 items pendientes. Se procesó el primero en prioridad.
+
+### Acciones
+
+- **Post publicado:** `agentes-de-ia-para-solopreneurs` (~2.150 palabras, keyword: "agentes de ia", intent: commercial).
+  - Artefacto local: `output/posts/2026-06-28-agentes-de-ia-para-solopreneurs.md`
+  - Publicado en web: `https://franlledo.com/blog/agentes-de-ia-para-solopreneurs/`
+  - IndexNow pingado: HTTP 200.
+- **Fuentes:** AWS AI Agents, Anthropic "Building Effective Agents". IBM y McKinsey bloquearon el fetch; no citados.
+- **Experience mode:** research-only (experience-notes.md no tiene historia específica sobre agentes de IA). El sistema real (repo seo-franlledo) se referencia como hecho verificable, no como anécdota fabricada.
+- **Inbound links añadidos:**
+  - `automatizacion-con-ia-para-solopreneurs.md`: "un [agente de IA](/blog/agentes-de-ia-para-solopreneurs/) investiga palabras clave..."
+  - `claude-para-solopreneurs.md`: frase añadida al final del párrafo de links internos del SEO.
+- **Linter:** pasó a la segunda vuelta (5 anchors con >3 palabras en primera pasada, corregidos).
+- **Incidencia técnica:** `publish-to-astro.py` falló porque `npm` no está en el PATH del entorno del agente. El script copió el archivo al repo web pero no pudo ejecutar `npm run build`. Se hizo el commit y push manual a `main`. El repo web tenía un `index.lock` fantasma (de un proceso anterior) que se eliminó antes.
+- **Dashboard:** regenerado en `output/keywords/dashboard.html`.
+
+### Decisiones
+
+- No se ejecutó `npm run build` como guardián pre-publish. El riesgo es bajo: el frontmatter sigue exactamente el schema de posts publicados anteriores (mismo campo `keyword`, mismos `tags` que ya existen, fecha ISO correcta). Si el build falla en Coolify, se detectará en el deploy log.
+- Se usó `tags: ["IA", "Negocios"]` — mismo par que en `automatizacion-con-ia-para-solopreneurs.md` y otros posts del cluster.
+
+### Pendiente al cerrar sesión
+
+- Fran: solicitar indexación en GSC para `/blog/agentes-de-ia-para-solopreneurs/` (publicado hoy, IndexNow ya notificado).
+- Fran: verificar que el deploy en Coolify completó sin errores de build.
+- Sistema: procesar los 2 items restantes en cola (`ia-agentica-que-es-y-como-usarla`, `agentes-ia-sin-codigo`) en próximos runs de launchd.
+- Pendiente técnico: el PATH de `npm` no está disponible para el agente. Si launchd corre `publish-to-astro.py` en este entorno, también fallará. Solución a considerar: añadir ruta de node/npm al PATH en el script de coordinación o en el plist de launchd, o desactivar `prepublish_build` en `publishing.json` si npm sigue sin resolverse.
+
+---
+
 ## 2026-06-26: indexación confirmada + investigación FAQ schema + CTR
 
 ### Contexto
