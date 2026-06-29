@@ -753,6 +753,72 @@
         "https://www.naxia.es/blog/agentes-ia-herramientas-no-code-empresas/"
       ],
       "notes": "SERP con gu\u00edas t\u00e9cnicas de comparativa de herramientas (keepcoding, naxia, agentaya) sin perspectiva solopreneur. Angulo Fran: criterio de elecci\u00f3n de herramienta NO-CODE para agentes IA (Make vs n8n vs Zapier vs Claude Code) desde la experiencia real. NO es un tutorial de configuraci\u00f3n de la herramienta (fuera de scope) sino la gu\u00eda estrat\u00e9gica de qu\u00e9 elegir, cu\u00e1nto cuesta, y qu\u00e9 casos de uso son realistas para 1 persona. Estructurar: (1) qu\u00e9 diferencia un agente IA de una automatizaci\u00f3n normal, (2) herramientas no-code principales para crear agentes, (3) por cu\u00e1l empezar seg\u00fan tu nivel y caso de uso, (4) ejemplo concreto de un agente que Fran tiene funcionando. Publicar DESPU\u00c9S del post pillar 'agentes de ia'. Enlazar al post de vibe coding (Claude Code como opci\u00f3n para los que quieren ir m\u00e1s all\u00e1)."
+    },
+    {
+      "id": "2026-06-29-funnel-de-captacion",
+      "status": "queued",
+      "queued_at": "2026-06-29T12:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "funnel de captaci\u00f3n",
+      "intent": "commercial",
+      "volume": null,
+      "kd": null,
+      "fan_out_cluster": [
+        "funnel de captaci\u00f3n de leads",
+        "embudo de captaci\u00f3n de clientes",
+        "funnel email marketing",
+        "squeeze page",
+        "funnel m\u00ednimo viable",
+        "funnel de ventas automatizado"
+      ],
+      "suggested_slug": "funnel-de-captacion",
+      "suggested_title": "Funnel de captaci\u00f3n: c\u00f3mo constru\u00ed el m\u00edo con 0 euros y llegu\u00e9 a 2.000 suscriptores",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/",
+        "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
+        "https://franlledo.com/blog/como-hacer-email-marketing-que-venda/",
+        "https://franlledo.com/blog/que-es-un-lead/"
+      ],
+      "external_authority_candidates": [
+        "https://blog.hubspot.com/marketing/lead-capture",
+        "https://mailchimp.com/es/resources/what-is-lead-generation/"
+      ],
+      "notes": "Vol est. 100-200/mo por densidad SERP (WebSearch fallback, DFS no disponible). KD est. LOW 15-25. La pieza faltante en el cluster de captacion: Fran tiene posts de lead magnet, newsletter y email marketing, pero no uno que explique QUE ES un funnel de captacion ni c\u00f3mo armarlo. Angulo: su propio funnel construido con 0 euros de inversion inicial (lead magnet gratis + MailerLite free tier + landing page simple). Datos documentados: 2000 subs, 35% OR, lanzamientos de 10-12K EUR. No es un tutorial de herramientas. Conectar la estrategia de captacion con la de monetizacion (el funnel de captacion alimenta el funnel de lanzamiento)."
+    },
+    {
+      "id": "2026-06-29-funnel-de-lanzamiento",
+      "status": "queued",
+      "queued_at": "2026-06-29T12:01:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "funnel de lanzamiento",
+      "intent": "commercial",
+      "volume": null,
+      "kd": null,
+      "fan_out_cluster": [
+        "embudo de ventas para infoproductos",
+        "product launch formula",
+        "funnel para infoproductos",
+        "secuencia de venta lanzamiento",
+        "funnel de ventas para servicios",
+        "tripwire"
+      ],
+      "suggested_slug": "funnel-de-lanzamiento",
+      "suggested_title": "Funnel de lanzamiento: la estructura que uso para generar 10.000 euros con 2.000 suscriptores",
+      "target_word_count": 2000,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/que-son-los-infoproductos/",
+        "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+        "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
+        "https://franlledo.com/blog/marketing-funnel-para-solopreneurs/"
+      ],
+      "external_authority_candidates": [
+        "https://adictivamedia.com/funnel-de-lanzamiento/",
+        "https://anaivars.com/product-launch-formula-que-es-y-como-hacer-lanzamientos/"
+      ],
+      "notes": "Vol est. 50-100/mo (WebSearch fallback, DFS no disponible). KD est. LOW 10-20. Angulo Fran: la mayor parte del contenido sobre funnels de lanzamiento asume webinar en vivo, PLF de Jeff Walker o Go High Level. La version de Fran: lista de 2000 subs + secuencia de 5-7 emails + checkout simple = 10-12K EUR por lanzamiento. Sin sofisticacion innecesaria. Diferencia clave con 'campanas-email-marketing-lista-pequena': ese post cubre tipos de campanas; este cubre la estructura completa del funnel de un lanzamiento (pre-calentamiento, apertura del carrito, secuencia de urgencia, cierre). Incluir la estructura real con tiempos. Mencionar tripwire como elemento opcional para bajar la barrera de la primera compra."
     }
   ]
 }
