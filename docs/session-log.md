@@ -3,6 +3,32 @@
 Registro cronológico append-only de decisiones y cambios relevantes. El estado
 vigente y las próximas acciones viven en [`../PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
+## 2026-06-30: content writer — ia-agentica-que-es-y-como-usarla
+
+### Contexto
+
+Run automático del content writer (MODE: AUTO). Cola con 2 items pendientes. Se procesó el primero en prioridad.
+
+### Acciones
+
+- **Post publicado:** `ia-agentica-que-es-y-como-usarla` (~1.800 palabras, keyword: "ia agéntica", intent: informational).
+  - Artefacto local: `output/posts/2026-06-30-ia-agentica-que-es-y-como-usarla.md`
+  - Publicado en web: `https://franlledo.com/blog/ia-agentica-que-es-y-como-usarla/`
+  - Commit repo web: `ef4ec00` — Coolify deploya en ~2 min.
+- **Fuentes:** MIT Sloan ("Agentic AI, explained"), Slack (KPMG Spain + Gartner stats + Wiley case), Ecosistema Startup (20-40% cost reduction), BizTech (startup use cases).
+- **Experience mode:** partial — no hay historia específica en experience-notes.md, pero el sistema SEO de Fran (seo-franlledo) se usa como ejemplo concreto verificable. No se fabricó ninguna anécdota.
+- **Linter:** falló en primera pasada (3 anchors >3 palabras + Three Kings por mismatch acento en keyword "ia agentica" vs texto "ia agéntica"). Fix: keyword → "ia agéntica" en frontmatter + 3 anchors acortados. Segunda pasada: LINT OK.
+- **Inbound links añadidos (2 posts):**
+  - `agentes-de-ia-para-solopreneurs.md`: "La [IA agéntica](/blog/ia-agentica-que-es-y-como-usarla/) es el nombre del paradigma..."
+  - `automatizacion-con-ia-para-solopreneurs.md`: párrafo nuevo "La pieza que une todo esto es la [IA agéntica](/blog/ia-agentica-que-es-y-como-usarla/)..."
+- **Dashboard:** regenerado en `output/keywords/dashboard.html`.
+
+### Decisiones
+
+- `keyword: ia agéntica` (con acento) en frontmatter para que el linter pueda comparar contra el texto español correcto. El campo es solo interno; no afecta al slug ni al targeting real de Google.
+- `npm run build` no ejecutado (npm no disponible en el PATH del agente). Schema validado manualmente contra `content.config.ts` (Zod). Riesgo bajo: frontmatter idéntico en estructura al de posts que ya pasan el build de Coolify.
+- `publish-to-astro.py` no ejecutado porque `publishing.json` apunta a la ruta antigua (`~/Documents/Claude/franlledo-web`). La ruta real es `~/Projects/franlledo-web`. Pendiente actualizar `publishing.json` en una sesión de mantenimiento (la constraint "no modificar context/ durante un run" impidió hacerlo aquí).
+
 ## 2026-06-28: content writer — agentes-de-ia-para-solopreneurs
 
 ### Contexto
