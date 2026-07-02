@@ -724,7 +724,7 @@
     },
     {
       "id": "2026-06-25-agentes-ia-sin-codigo-para-emprendedores",
-      "status": "queued",
+      "status": "needs_review",
       "queued_at": "2026-06-25T09:32:00Z",
       "written_at": null,
       "post_url": null,
@@ -756,10 +756,10 @@
     },
     {
       "id": "2026-06-29-funnel-de-captacion",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-29T12:00:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-07-02T09:23:46Z",
+      "post_url": "./output/posts/2026-07-02-funnel-de-captacion.md",
       "primary_keyword": "funnel de captaci\u00f3n",
       "intent": "commercial",
       "volume": null,

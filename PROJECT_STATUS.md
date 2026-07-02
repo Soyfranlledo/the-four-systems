@@ -1,22 +1,28 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-06-30
+Última actualización: 2026-07-02
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
-- El sistema está operativo. Los cuatro jobs programados (investigación,
-  redacción, refresh e informe) están cargados en `launchd`.
+- **Publicación automática BLOQUEADA desde ~1 de julio.** `context/publishing.json`
+  apunta a un `repo_path` que ya no existe. Ver "Incidencias conocidas": es la
+  acción más urgente antes del próximo run de content-writer.
 - **Fix CLI 2026-06-25:** el binario `claude` no estaba en el PATH del
   coordinador. Solucionado con symlink `~/.local/bin/claude` → binario nativo de
   la extensión VSCode. Los runs automáticos de launchd también se benefician.
-- El blog tiene **31 artículos publicados**. Los tres últimos son:
+- El blog tiene **31 artículos publicados** en producción. Los tres últimos son:
   - `/blog/ia-agentica-que-es-y-como-usarla/` (2026-06-30, ~1.800 palabras)
   - `/blog/agentes-de-ia-para-solopreneurs/` (2026-06-28, ~2.150 palabras)
   - `/blog/claude-code-sin-programar/` (2026-06-25, ~2.010 palabras)
-- La cola tiene **1 item pendiente**: `agentes-ia-sin-codigo`. Ver `state/content-queue.json`.
+- Hay **1 post redactado con lint OK pendiente de publicar** por el bloqueo de
+  arriba: `output/posts/2026-07-02-funnel-de-captacion.md` (1.621 palabras).
+- Cola: `funnel-de-lanzamiento` (`queued`, siguiente tras publicar captación) y
+  `agentes-ia-sin-codigo-para-emprendedores` en `needs_review` (solapamiento
+  fuerte detectado con dos posts de IA ya publicados, ver "Incidencias
+  conocidas"). Ver `state/content-queue.json`.
 - Todas las semillas de `state/seed-keywords.txt` están investigadas. Próxima
   acción: añadir semillas nuevas o iniciar segunda vuelta de las más antiguas
   (>30 días: embudos de venta 2026-05-21, email marketing 2026-05-22).
@@ -79,34 +85,60 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Incidencias conocidas
 
+- **`context/publishing.json` con `repo_path` obsoleto (detectado 2026-07-02,
+  BLOQUEANTE):** apunta a `~/Documents/Claude/franlledo-web`, que ya no
+  existe. El repo web real vive ahora en `~/Projects/franlledo-web` (mismo
+  historial de commits, confirmado incluyendo `ef4ec00` del 30 de junio). La
+  carpeta se movió aparentemente el 1 de julio. `scripts/publish-to-astro.py`
+  falla con `ERROR: content dir does not exist` hasta que se corrija.
+  Ya se había detectado una vez (nota técnica en
+  `reports/2026-06-30-content-writer.md`) pero no llegó a este documento y se
+  perdió; de ahí que el run de hoy se topara otra vez con el bloqueo.
+  **Acción:** editar `context/publishing.json`, campo `repo_path` →
+  `/Users/franlledo/Projects/franlledo-web`. Es una sesión con permiso para
+  tocar `context/` (el content-writer tiene prohibido hacerlo dentro de su
+  propio run). Después, publicar `output/posts/2026-07-02-funnel-de-captacion.md`
+  con `scripts/publish-to-astro.py`.
 - **CLI PATH (resuelto 2026-06-25):** `claude` no estaba instalado como comando
   global (solo existía como binario nativo de la extensión VSCode). Se creó
   `~/.local/bin/claude` → symlink al binario nativo. El coordinador ya lo
   encuentra a través de `$HOME/.local/bin` en su PATH.
 - Los informes HTML históricos de `output/keywords/` pueden contener URLs con
   fecha del incidente del 8 de junio. Son snapshots, no fuentes activas.
-- DataForSEO (`mcp__dfs-mcp`) no disponible en ningún run de keyword-researcher
-  desde el 17 de junio. Los volúmenes y KD son estimaciones por WebSearch.
-  Cuando vuelva, priorizar verificación de `agentes de ia` (vol estimado
-  1000-2000/mo) y `claude code en español`.
+- DataForSEO (`mcp__dfs-mcp`) volvió a estar disponible el 2026-07-02 (se usó
+  para SERP de `funnel de captación`). No disponible en ningún run de
+  keyword-researcher entre el 17 y el 30 de junio; los volúmenes/KD de esa
+  ventana son estimaciones por WebSearch.
 
 ## Próximos hitos
 
-1. **Indexación (Fran, manual en GSC):** `mejor-modelo-de-negocio-online-para-empezar`
+1. **Corregir `context/publishing.json`** (ver Incidencias conocidas) y
+   publicar `funnel-de-captacion`. Es el bloqueo más urgente: sin esto no hay
+   publicación automática para ningún post futuro.
+2. **Indexación (Fran, manual en GSC):** `mejor-modelo-de-negocio-online-para-empezar`
    ya indexada (confirmado 2026-06-26). Quedan: `/etiqueta/email-marketing/` (P2)
-   y los 3 posts del 25 de junio (P3).
-2. Content writer: procesar el item restante en cola (`agentes-ia-sin-codigo`).
-3. Keyword researcher: añadir nuevas semillas a `state/seed-keywords.txt`
+   y los 3 posts del 25 de junio (P3). Cuando se publique `funnel-de-captacion`,
+   añadirla a la cola de indexación manual también.
+3. **Decidir sobre `agentes-ia-sin-codigo-para-emprendedores` (`needs_review`):**
+   retirar de la cola, fusionar como sección ampliada de un post existente, o
+   replantear con ángulo no cubierto (ver detalle en
+   `reports/2026-07-02-content-writer.md`).
+4. Content writer: siguiente item limpio en cola es `funnel-de-lanzamiento`
+   (conecta explícitamente con `funnel-de-captacion`).
+5. Keyword researcher: añadir nuevas semillas a `state/seed-keywords.txt`
    (candidatas: `monetizar con ia`, `prompts para negocio`, `automatizar ventas`)
    o iniciar segunda vuelta de las más antiguas.
-4. Medir CTR de los snippets modificados a finales de junio.
-5. Confirmar en GSC si `newsletter-guia` y `newsletter-ejemplos` ya están indexadas.
+6. Medir CTR de los snippets modificados a finales de junio.
+7. Confirmar en GSC si `newsletter-guia` y `newsletter-ejemplos` ya están indexadas.
 
 ## Últimos commits relevantes
 
 Repo SEO:
 
-- (este run): content-writer 2026-06-30: `ia-agentica-que-es-y-como-usarla`.
+- (este run): content-writer 2026-07-02: `funnel-de-captacion` redactado (lint
+  OK), publicación bloqueada por `repo_path` obsoleto. `agentes-ia-sin-codigo`
+  pasado a `needs_review` por solapamiento.
+- content-writer 2026-06-30: `ia-agentica-que-es-y-como-usarla`.
 - `bf74a47`: keyword-researcher run 2026-06-29.
 - content-writer 2026-06-28: `agentes-de-ia-para-solopreneurs`.
 - `b7de3e7`: indexación de mejor-modelo-de-negocio confirmada (GSC 2026-06-26).

@@ -3,6 +3,83 @@
 Registro cronológico append-only de decisiones y cambios relevantes. El estado
 vigente y las próximas acciones viven en [`../PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
+## 2026-07-02: content writer — funnel-de-captacion + hallazgo de publicación bloqueada
+
+### Contexto
+
+Run automático del content writer (MODE: AUTO). `pick-next-queue-item.py`
+seleccionó `agentes-ia-sin-codigo-para-emprendedores`, pero se detectó
+solapamiento fuerte con contenido ya publicado antes de escribir nada.
+
+### Decisión: cambio de item en cola
+
+Los dos posts de IA más recientes (`agentes-de-ia-para-solopreneurs`,
+2026-06-28, y `automatizacion-con-ia-para-solopreneurs`, 2026-06-15) ya cubren
+los cuatro puntos que pedía el brief de `agentes-ia-sin-codigo`: diferencia
+agente/automatización, comparativa Make vs n8n vs Zapier vs Claude Code, guía
+de por dónde empezar, y el ejemplo concreto del propio sistema de agentes de
+Fran. Redactar el post tal cual estaba planteado habría producido contenido
+casi duplicado con riesgo de canibalización entre `agentes ia sin codigo` y
+`agentes de ia` / `automatizacion con ia`.
+
+Se marcó `2026-06-25-agentes-ia-sin-codigo-para-emprendedores` como
+`needs_review` sin redactar, y se procesó en su lugar el siguiente item limpio
+de la cola: `2026-06-29-funnel-de-captacion`. Se verificó primero que no
+solapa con los 10 posts existentes de la familia funnel/embudo (cada uno
+cubre una variante de keyword distinta; ninguno trata la fase de captación
+como pieza propia).
+
+### Acciones
+
+- **Post redactado:** `funnel-de-captacion` (1.621 palabras, keyword: "funnel
+  de captación", intent: commercial). Lint OK tras un intento de corrección
+  (anchors largos + Three Kings en primer párrafo).
+  - Artefacto local: `output/posts/2026-07-02-funnel-de-captacion.md`
+  - Sidecar: `output/posts/2026-07-02-funnel-de-captacion.meta.json`
+- Experience mode: real. Se usó la opinión "primero sistema (oferta +
+  captación + venta)", las cifras de 2.000 suscriptores / 35% open rate, la
+  opinión sobre abandono prematuro, y el patrón "Estrés del Multi-Puerto".
+- Fuentes citadas: Unbounce Conversion Benchmark Report (conversión media
+  landing 6,6%, 41.000 páginas), GetResponse Email Marketing Benchmarks (open
+  rate email de bienvenida 83,63% vs 40,08% newsletter), eMarketer (26,9% de
+  marketers señala el email como canal de mejor ROI).
+- 5 enlaces internos: `que-es-un-lead`, `funnel-de-conversion-etapas-que-importan`,
+  `lead-magnet-que-es-y-como-crear-uno`, `newsletter-guia-para-solopreneurs`,
+  `como-hacer-email-marketing-que-venda`.
+- Queue item `funnel-de-captacion` → status `written`.
+
+### Hallazgo: publicación automática bloqueada
+
+`scripts/publish-to-astro.py` falló: `ERROR: content dir does not exist:
+/Users/franlledo/Documents/Claude/franlledo-web/src/content/blog`.
+
+`context/publishing.json` sigue apuntando a `~/Documents/Claude/franlledo-web`,
+pero el repo web se movió (aparentemente el 1 de julio) a
+`~/Projects/franlledo-web`. Se verificó que es el mismo repo por historial de
+commits compartido (incluye `ef4ec00`, el post del 30 de junio, referenciado
+en `PROJECT_STATUS.md`).
+
+Este mismo problema ya se había detectado el 2026-06-30 (nota técnica en
+`reports/2026-06-30-content-writer.md`), pero no se trasladó a
+`PROJECT_STATUS.md` ni a esta bitácora, así que se perdió y el run de hoy
+volvió a chocar con él. Corregido ahora en ambos documentos para que no se
+repita una tercera vez.
+
+El content-writer no editó `context/publishing.json` (regla dura: no tocar
+`context/` desde dentro de su propio run). Queda como acción pendiente de la
+próxima sesión: cambiar `repo_path` a `/Users/franlledo/Projects/franlledo-web`
+y publicar el post ya redactado.
+
+### Pendiente
+
+- Corregir `context/publishing.json` y publicar `funnel-de-captacion`.
+- Decidir sobre `agentes-ia-sin-codigo-para-emprendedores` (`needs_review`):
+  retirar, fusionar con un post existente, o replantear ángulo.
+- Siguiente item limpio en cola: `funnel-de-lanzamiento`.
+- Informe completo del run: `reports/2026-07-02-content-writer.md`.
+
+---
+
 ## 2026-06-30: content writer — ia-agentica-que-es-y-como-usarla
 
 ### Contexto
