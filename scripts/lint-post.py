@@ -227,6 +227,27 @@ def lint(path: Path) -> list[str]:
                 f"Three Kings: keyword head {head!r} in only {h2_hits} H2 (need >=2)"
             )
 
+    # Rule 8: longitudes de snippet SERP (auditoría CTR 2026-07-03).
+    # El layout del blog compone `${seoTitle ?? title} — Fran Lledó` (sufijo de
+    # 13 caracteres), así que el título efectivo en la SERP debe caber en ~60:
+    # seoTitle obligatorio y <=47, salvo que el title ya sea corto. La
+    # description es el otro 50% del snippet: 120-160 caracteres.
+    SUFFIX = 13  # " — Fran Lledó"
+    serp_title = fm.get("seoTitle") or fm.get("title", "")
+    if len(serp_title) + SUFFIX > 60:
+        campo = "seoTitle" if fm.get("seoTitle") else "title (sin seoTitle)"
+        failures.append(
+            f"SERP title: {campo} de {len(serp_title)} car. + sufijo 13 = "
+            f"{len(serp_title) + SUFFIX} (max 60); anade seoTitle <=47 con "
+            f"keyword delante y un numero/dato"
+        )
+    desc = fm.get("description", "")
+    if desc and not (120 <= len(desc) <= 160):
+        failures.append(
+            f"description de {len(desc)} car. (objetivo 120-160): "
+            f"{'se trunca en la SERP' if len(desc) > 160 else 'desaprovecha el snippet'}"
+        )
+
     return failures
 
 

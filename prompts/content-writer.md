@@ -101,6 +101,13 @@ CONSULT `brand-guidelines.md` and `competitors.md` before listing: do not includ
 Build the outline:
 
 1. **Title**, must contain `primary_keyword`. Default to `suggested_title` from the queue item. You can refine but the keyword stays.
+   **Also a `seoTitle` (OBLIGATORIO, auditoría CTR 2026-07-03):** máximo 47
+   caracteres (el layout añade " — Fran Lledó", 13 car., y Google trunca a ~60),
+   keyword al principio, y un número o dato de prueba real dentro (ej.:
+   "Asuntos de email: los 3 formatos que más abren"). El `title` largo se queda
+   como H1; el `seoTitle` es lo que compite en la SERP. Sin número o promesa
+   concreta, el snippet pierde contra los listicles: en las SERPs del nicho el
+   100% de los títulos ganadores lleva cifra. `lint-post.py` lo verifica.
 2. **All H2s and H3s**, each with a one-line note on what it covers.
 3. **Mark capsule sections with `[CAPSULE]`.** Aim for 60-70% of H2s.
 4. **Fan-out coverage**: every variation in `fan_out_cluster` must either become a section or be explicitly marked `dropped: <reason>`. Track this in the front-matter.

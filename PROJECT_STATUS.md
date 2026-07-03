@@ -1,31 +1,33 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-02
+Última actualización: 2026-07-03
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
-- **Publicación automática BLOQUEADA desde ~1 de julio.** `context/publishing.json`
-  apunta a un `repo_path` que ya no existe. Ver "Incidencias conocidas": es la
-  acción más urgente antes del próximo run de content-writer.
-- **Fix CLI 2026-06-25:** el binario `claude` no estaba en el PATH del
-  coordinador. Solucionado con symlink `~/.local/bin/claude` → binario nativo de
-  la extensión VSCode. Los runs automáticos de launchd también se benefician.
-- El blog tiene **31 artículos publicados** en producción. Los tres últimos son:
-  - `/blog/ia-agentica-que-es-y-como-usarla/` (2026-06-30, ~1.800 palabras)
-  - `/blog/agentes-de-ia-para-solopreneurs/` (2026-06-28, ~2.150 palabras)
-  - `/blog/claude-code-sin-programar/` (2026-06-25, ~2.010 palabras)
-- Hay **1 post redactado con lint OK pendiente de publicar** por el bloqueo de
-  arriba: `output/posts/2026-07-02-funnel-de-captacion.md` (1.621 palabras).
-- Cola: `funnel-de-lanzamiento` (`queued`, siguiente tras publicar captación) y
+- **Auditoría SEO integral + implementación el 2026-07-03** (multi-agente,
+  informe completo en `reports/2026-07-03-auditoria-seo.md`): 12 seoTitles/metas
+  reescritos y desplegados, sitemap con `<lastmod>`, redirects de barra final a
+  1 salto, `.htaccess` muerto eliminado, favicons, IndexNow ×2. La acción
+  manual pendiente es de Fran: solicitar indexación en GSC (lista priorizada en
+  el informe; la #1 es la URL VIEJA `/blog/2026-05-21-marketing-funnel-para-solopreneurs/`,
+  que Google tiene indexada en paralelo a la limpia desde antes de los 301).
+- **Publicación automática DESBLOQUEADA** (2026-07-03): `context/publishing.json`
+  corregido a `~/Projects/franlledo-web` y publicado
+  `/blog/funnel-de-captacion/` (build OK, IndexNow 200, 200 en producción).
+- El blog tiene **32 artículos publicados** en producción. Último:
+  `/blog/funnel-de-captacion/` (2026-07-02, 1.621 palabras).
+- Cola: `funnel-de-lanzamiento` (`queued`, siguiente) y
   `agentes-ia-sin-codigo-para-emprendedores` en `needs_review` (solapamiento
-  fuerte detectado con dos posts de IA ya publicados, ver "Incidencias
-  conocidas"). Ver `state/content-queue.json`.
+  fuerte con dos posts de IA ya publicados). Ver `state/content-queue.json`.
+- **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
+  número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
+  `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
+  título SERP ≤60, description 120-160).
 - Todas las semillas de `state/seed-keywords.txt` están investigadas. Próxima
-  acción: añadir semillas nuevas o iniciar segunda vuelta de las más antiguas
-  (>30 días: embudos de venta 2026-05-21, email marketing 2026-05-22).
+  acción: añadir semillas nuevas o iniciar segunda vuelta de las más antiguas.
 - Los ensayos duplicados con Substack usan `noindex, follow` y no aparecen en
   el sitemap.
 
@@ -49,28 +51,44 @@ pero aún no cita franlledo.com en queries de nicho.
 
 ## CTR
 
-Cambios ya desplegados (no tocar hasta finales de junio-julio):
+Diagnóstico 2026-07-03 (GSC 28 días): CTR global 1,1%, pero **no-marca 0,24%**
+(9 de los 12 clics por query son de "fran lledo"). Causa raíz: titles de 64-109
+caracteres sin número que Google truncaba, frente a SERPs donde el 100% de los
+títulos ganadores lleva cifra. Caso extremo: #1 orgánico en "cómo escribir
+mejores asuntos de email" (198 impr, pos 5,7) con 0 clics.
 
-- `/blog/como-escribir-asuntos-de-email/`: título SEO corto y descripción revisada.
-- `/blog/automatizacion-con-ia-para-solopreneurs/`: título SEO y descripción más concreta.
+Cambios desplegados 2026-07-03 (**no tocar snippets hasta ~17 de julio**, 2
+semanas de datos): seoTitle ≤47 car. con número/prueba en los 12 posts con
+impresiones + descriptions ≤155 + `updatedDate` fresco. Tabla completa de
+antes/después en `reports/2026-07-03-auditoria-seo.md`. Esta iteración supera
+a la de junio en asuntos-de-email (el calco de la query posicionaba pero no
+ganaba el clic).
+
+Expectativa realista: recuperar el CTR esperable por posición en las 5 URLs
+top-10 son ~15-25 clics/28d adicionales (hoy: 31). Las URLs en pos 20+ no
+darán clics hasta subir a página 1: ahí la palanca es ranking, no snippet.
 
 ## Indexación
 
-Estado a 2026-06-25 (refresh-recommender corrió hoy, 35 URLs analizadas):
+Estado a 2026-07-03 (URL Inspection API, ver informe de auditoría):
 
 | Prioridad | URL | Estado GSC | Acción |
 | --- | --- | --- | --- |
-| ✅ | `/blog/mejor-modelo-de-negocio-online-para-empezar/` | **Indexada** (confirmado GSC 2026-06-26) | — |
+| **P1** | `/blog/2026-05-21-marketing-funnel-para-solopreneurs/` (VIEJA) | **Indexada con canonical a sí misma** (crawl 1 jun, anterior a los 301) — canibaliza a la limpia | Solicitar indexación (fuerza recrawl del 301) |
+| P1 | `/blog/funnel-de-captacion/` | Unknown (publicado 2026-07-02) | Solicitar indexación |
+| P2 | `/blog/como-escribir-asuntos-de-email/` | Indexada; title nuevo desplegado hoy | Solicitar indexación (acelera snippet nuevo) |
 | P2 | `/blog/etiqueta/email-marketing/` | Discovered - not indexed | Solicitar indexación |
-| P3 | `/blog/claude-code-sin-programar/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
-| P3 | `/blog/como-monetizar-una-newsletter/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
-| P3 | `/blog/que-es-un-lead/` | Unknown (publicado 2026-06-25) | Solicitar indexación |
-| P3 | `/blog/agentes-de-ia-para-solopreneurs/` | Unknown (publicado 2026-06-28) | Solicitar indexación |
-| P3 | `/blog/ia-agentica-que-es-y-como-usarla/` | Unknown (publicado 2026-06-30) | Solicitar indexación |
+| P3 | `/blog/claude-code-sin-programar/`, `/blog/que-es-un-lead/`, `/blog/agentes-de-ia-para-solopreneurs/`, `/blog/ia-agentica-que-es-y-como-usarla/` | Unknown/pendiente desde junio | Solicitar indexación |
 
-Nota: `/blog/newsletter-guia-para-solopreneurs/` y
-`/blog/newsletter-ejemplos-que-venden/` no aparecen en los flagged del refresh,
-lo que sugiere que ya están indexadas. Confirmar en GSC.
+Los otros 8 pares fecha→limpia del incidente de junio están consolidados
+("Page with redirect") o son desconocidos para Google. `como-monetizar-una-newsletter`
+ya está indexada (aparece en GSC con impresiones a pos 9). El AI Overview de
+"infoproductos con ia" aún cita la URL vieja (Google consolidó el 28 de junio;
+debería corregirse solo — vigilar).
+
+Aceleradores desplegados hoy: `<lastmod>` en sitemap, IndexNow con 19 URLs
+(pares vieja/nueva) + 14 (snippets nuevos), `updatedDate` fresco en los posts
+retocados.
 
 ## Programación activa
 
@@ -85,20 +103,14 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Incidencias conocidas
 
-- **`context/publishing.json` con `repo_path` obsoleto (detectado 2026-07-02,
-  BLOQUEANTE):** apunta a `~/Documents/Claude/franlledo-web`, que ya no
-  existe. El repo web real vive ahora en `~/Projects/franlledo-web` (mismo
-  historial de commits, confirmado incluyendo `ef4ec00` del 30 de junio). La
-  carpeta se movió aparentemente el 1 de julio. `scripts/publish-to-astro.py`
-  falla con `ERROR: content dir does not exist` hasta que se corrija.
-  Ya se había detectado una vez (nota técnica en
-  `reports/2026-06-30-content-writer.md`) pero no llegó a este documento y se
-  perdió; de ahí que el run de hoy se topara otra vez con el bloqueo.
-  **Acción:** editar `context/publishing.json`, campo `repo_path` →
-  `/Users/franlledo/Projects/franlledo-web`. Es una sesión con permiso para
-  tocar `context/` (el content-writer tiene prohibido hacerlo dentro de su
-  propio run). Después, publicar `output/posts/2026-07-02-funnel-de-captacion.md`
-  con `scripts/publish-to-astro.py`.
+- **`context/publishing.json` (RESUELTO 2026-07-03):** `repo_path` corregido a
+  `/Users/franlledo/Projects/franlledo-web` y `funnel-de-captacion` publicado.
+  `context/` está gitignored: si se cambia de máquina o se mueve el repo web,
+  hay que corregirlo a mano otra vez.
+- **`public/.htaccess` eliminado (2026-07-03):** nginx no lo leía y contenía
+  reglas obsoletas sin ninguno de los 9 redirects reales; era la trampa del
+  próximo incidente. Los comentarios de `docker/nginx.conf` y
+  `astro.config.mjs` que lo señalaban como fuente de verdad están corregidos.
 - **CLI PATH (resuelto 2026-06-25):** `claude` no estaba instalado como comando
   global (solo existía como binario nativo de la extensión VSCode). Se creó
   `~/.local/bin/claude` → symlink al binario nativo. El coordinador ya lo
@@ -112,32 +124,39 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Próximos hitos
 
-1. **Corregir `context/publishing.json`** (ver Incidencias conocidas) y
-   publicar `funnel-de-captacion`. Es el bloqueo más urgente: sin esto no hay
-   publicación automática para ningún post futuro.
-2. **Indexación (Fran, manual en GSC):** `mejor-modelo-de-negocio-online-para-empezar`
-   ya indexada (confirmado 2026-06-26). Quedan: `/etiqueta/email-marketing/` (P2)
-   y los 3 posts del 25 de junio (P3). Cuando se publique `funnel-de-captacion`,
-   añadirla a la cola de indexación manual también.
-3. **Decidir sobre `agentes-ia-sin-codigo-para-emprendedores` (`needs_review`):**
-   retirar de la cola, fusionar como sección ampliada de un post existente, o
-   replantear con ángulo no cubierto (ver detalle en
-   `reports/2026-07-02-content-writer.md`).
-4. Content writer: siguiente item limpio en cola es `funnel-de-lanzamiento`
-   (conecta explícitamente con `funnel-de-captacion`).
-5. Keyword researcher: añadir nuevas semillas a `state/seed-keywords.txt`
+1. **Indexación (Fran, manual en GSC):** la tabla de "Indexación" de arriba,
+   en orden. La P1 (URL vieja de marketing-funnel) es la que más equity
+   recupera.
+2. **Imágenes OG para los 21 posts con `og-default.jpg`** (incluye
+   funnel-de-captacion): `scripts/og/generate-og.mjs` del repo web exige
+   Playwright aparte. Integrarlo en el pipeline de publicación tolerante a
+   fallos.
+3. **seoTitle en batch para los ~20 posts restantes** (sin impresiones aún);
+   los 12 con tráfico ya lo tienen.
+4. **Sección "asuntos para correos: 25 ejemplos listos para copiar"** en
+   asuntos-de-email, con tasas de apertura reales: captura la intención
+   "ejemplos" que domina esa SERP (contenido para content-writer o Fran).
+5. **Decidir sobre `agentes-ia-sin-codigo-para-emprendedores` (`needs_review`):**
+   retirar, fusionar o replantear (ver `reports/2026-07-02-content-writer.md`).
+6. Content writer: siguiente item limpio en cola es `funnel-de-lanzamiento`.
+7. Keyword researcher: añadir nuevas semillas a `state/seed-keywords.txt`
    (candidatas: `monetizar con ia`, `prompts para negocio`, `automatizar ventas`)
    o iniciar segunda vuelta de las más antiguas.
-6. Medir CTR de los snippets modificados a finales de junio.
-7. Confirmar en GSC si `newsletter-guia` y `newsletter-ejemplos` ya están indexadas.
+8. **Medir CTR de los snippets del 3 de julio a partir del ~17 de julio.**
+9. Semana: pivotar vibe-coding a guía práctica; capturas con alt en
+   newsletter-ejemplos; diagrama propio en funnel-de-captacion (los packs de
+   imágenes salen 2-3 veces en esas SERPs).
 
 ## Últimos commits relevantes
 
 Repo SEO:
 
-- (este run): content-writer 2026-07-02: `funnel-de-captacion` redactado (lint
-  OK), publicación bloqueada por `repo_path` obsoleto. `agentes-ia-sin-codigo`
-  pasado a `needs_review` por solapamiento.
+- 2026-07-03: auditoría SEO integral + implementación (informe, lint Regla 8,
+  prompt content-writer con seoTitle obligatorio, cola marcada, docs).
+- `d54b53d`: funnel-de-captacion publicado, item marcado written.
+- content-writer 2026-07-02: `funnel-de-captacion` redactado (lint
+  OK), publicación bloqueada por `repo_path` obsoleto (resuelto el 03).
+  `agentes-ia-sin-codigo` pasado a `needs_review` por solapamiento.
 - content-writer 2026-06-30: `ia-agentica-que-es-y-como-usarla`.
 - `bf74a47`: keyword-researcher run 2026-06-29.
 - content-writer 2026-06-28: `agentes-de-ia-para-solopreneurs`.
@@ -148,6 +167,9 @@ Repo SEO:
 
 Repo web:
 
+- `88c0ebf` (2026-07-03): auditoría SEO — 12 seoTitles/metas, lastmod en
+  sitemap, absolute_redirect off, favicons, .htaccess eliminado.
+- (2026-07-03): post: funnel-de-captacion.
 - `ef4ec00`: post + enlaces: ia-agentica-que-es-y-como-usarla (2026-06-30).
 - `f5d37e9`: seo: enlaces internos hacia agentes-de-ia-para-solopreneurs.
 - `401ec50`: post: agentes-de-ia-para-solopreneurs.

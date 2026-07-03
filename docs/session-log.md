@@ -491,3 +491,73 @@ Se formalizó un sistema de memoria duradera:
 La documentación distingue reglas permanentes, estado humano, estado
 estructurado, informes automáticos e historial Git para evitar fuentes de verdad
 contradictorias.
+
+## 2026-07-03 — Auditoría SEO integral + implementación mismo día
+
+Sesión a petición de Fran: entender la marca, auditar el proyecto, implementar
+hoy lo que acelere el posicionamiento de las URLs que se van indexando, y
+atacar el CTR (<1% en sus últimos análisis). Informe completo:
+[`reports/2026-07-03-auditoria-seo.md`](../reports/2026-07-03-auditoria-seo.md).
+
+### Desbloqueo previo
+
+- `context/publishing.json` corregido (`repo_path` → `~/Projects/franlledo-web`)
+  y publicado `funnel-de-captacion` (build OK, IndexNow 200, HTTP 200 en
+  producción). Item de cola marcado `written`. Commit SEO `d54b53d`.
+
+### Método
+
+- Auditoría multi-agente (24 agentes): marca/ICP desde la web pública, análisis
+  GSC 28 días (por página, query, página+query, dispositivo), SERPs reales de
+  6 queries prioritarias con DataForSEO, autoridad del dominio, auditoría del
+  repo web, verificación en producción de redirects/sitemap/robots/llms, y
+  verificación adversarial de cada hallazgo implementable hoy (reproduciendo
+  evidencia con curl/Read). Datos frescos de GSC vía OAuth de `.env.local`;
+  inspección de URLs vía URL Inspection API (solo lectura).
+
+### Diagnóstico clave
+
+- CTR no-marca real: 0,24% (el 1,1% global lo sostiene la query de marca).
+- Somos #1 orgánico en "cómo escribir mejores asuntos de email" (198 impr,
+  pos 5,7, 0 clics): title calco de la query, único de la SERP sin número,
+  bajo AI Overview + vídeos.
+- 9 de 12 titles >60 caracteres (el layout añade " — Fran Lledó"): el gancho
+  se truncaba. Cero rich results en el sitio (byAppearance vacío).
+- Par roto de indexación: la URL VIEJA `/blog/2026-05-21-marketing-funnel-…/`
+  sigue indexada con canonical a sí misma (crawl anterior a los 301):
+  canibaliza a la limpia. El AI Overview de "infoproductos con ia" cita la URL
+  vieja (consolidada el 28-jun; debería corregirse sola).
+- Redirect de barra final degradaba a http y encadenaba 2 saltos (301→307).
+
+### Implementado y verificado en producción (repo web `88c0ebf`)
+
+- seoTitle ≤47 car. con número/prueba en los 12 posts con impresiones +
+  6 descriptions reescritas + meta_description propia de la home +
+  `updatedDate: 2026-07-03` en los retocados.
+- Sitemap con `<lastmod>` (updatedDate ?? pubDate, solo /blog/); nginx
+  `absolute_redirect off` + cabeceras de seguridad en location html/xml;
+  enlaces internos de navegación con barra final; robots
+  `max-image-preview:large`; og:site_name + og:image:width/height;
+  favicon.ico + apple-touch-icon (daban 404); enlace interno
+  asuntos-de-email → newsletter-ejemplos.
+- `public/.htaccess` ELIMINADO (muerto; era la trampa del próximo incidente).
+- IndexNow: batch de 19 URLs (pares vieja/nueva) + 14 tras el deploy.
+
+### Prevención de regresión (repo SEO)
+
+- `lint-post.py` Regla 8: título SERP ≤60 (seoTitle ?? title + sufijo 13) y
+  description 120-160. `prompts/content-writer.md`: seoTitle obligatorio.
+- Artefacto local de funnel-de-captacion sincronizado con su seoTitle.
+
+### Pendiente de Fran (manual, GSC)
+
+Solicitar indexación por este orden: (1) la URL VIEJA de marketing-funnel,
+(2) funnel-de-captacion, (3) como-escribir-asuntos-de-email, (4) la limpia de
+marketing-funnel, (5) los pendientes de junio. Lista en PROJECT_STATUS.md.
+
+### Verificaciones al cierre
+
+- `npm run build` OK; título nuevo servido en producción; redirect sin barra
+  = 1 salto relativo; 32 `<lastmod>` en sitemap vivo; favicons 200; cero URLs
+  con fecha en sitemap/llms.
+- No tocar los snippets del 3 de julio hasta ~17 de julio (ventana de medición).
