@@ -12,3 +12,11 @@ lead magnet
 monetizar newsletter
 claude code
 agentes de ia
+# Semillas nuevas 2026-07-09 (abrir clústers no cubiertos por los 32 posts
+# actuales; el researcher deduplica contra keyword-bank en cada run).
+copywriting para vender
+pagina de ventas que convierte
+vender cursos online
+prompts para negocio
+monetizar con ia
+automatizar ventas

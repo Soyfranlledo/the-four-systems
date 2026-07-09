@@ -1,12 +1,26 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-03
+Última actualización: 2026-07-09
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Pipeline autónomo desatascado el 2026-07-09.** La publicación llevaba
+  parada desde el 2 jul: el content-writer programado se disparaba puntual pero
+  cada run era un `no-op` de ~30s (leía el contexto y preguntaba "¿qué quieres
+  hacer?" en vez de escribir, ignorando el `MODE: AUTO`). Causa: el marco "de
+  sesión con humano" de CLAUDE.md pisaba la orden de auto-pilot. **Corregido en
+  `coordinator.sh`** con una cabecera no-interactiva contundente, aplicada
+  también al keyword-researcher. Se publicó `funnel-de-lanzamiento` y se
+  resembró la cola (6 semillas nuevas). Ver bitácora 2026-07-09.
+- **Aprendizajes SEO/GEO de la entrevista a Luis Villanueva (Webpositer)
+  aplicados al content-writer (2026-07-09):** cada post debe (1) cubrir la
+  microtemática/subpreguntas completas del clúster (no solo variantes de
+  keyword) y (2) incluir ≥1 dato propio y extraíble que fuerce la cita por IAs
+  generativas. Solo se aplicaron los consejos SEO, no los de negocio (decisión
+  de Fran).
 - **Auditoría SEO integral + implementación el 2026-07-03** (multi-agente,
   informe completo en `reports/2026-07-03-auditoria-seo.md`): 12 seoTitles/metas
   reescritos y desplegados, sitemap con `<lastmod>`, redirects de barra final a
@@ -17,11 +31,15 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - **Publicación automática DESBLOQUEADA** (2026-07-03): `context/publishing.json`
   corregido a `~/Projects/franlledo-web` y publicado
   `/blog/funnel-de-captacion/` (build OK, IndexNow 200, 200 en producción).
-- El blog tiene **32 artículos publicados** en producción. Último:
-  `/blog/funnel-de-captacion/` (2026-07-02, 1.621 palabras).
-- Cola: `funnel-de-lanzamiento` (`queued`, siguiente) y
-  `agentes-ia-sin-codigo-para-emprendedores` en `needs_review` (solapamiento
-  fuerte con dos posts de IA ya publicados). Ver `state/content-queue.json`.
+- El blog tiene **33 artículos publicados** en producción. Último:
+  `/blog/funnel-de-lanzamiento/` (2026-07-09, 2.276 palabras, PUBLISHED_LIVE,
+  HTTP 200, con dato propio citable ya integrado).
+- Cola: **sin items `queued`** tras publicar funnel-de-lanzamiento.
+  `agentes-ia-sin-codigo-para-emprendedores` sigue en `needs_review`
+  (solapamiento con dos posts de IA). Se añadieron 6 semillas nuevas a
+  `state/seed-keywords.txt` (copywriting, páginas de venta, cursos, prompts,
+  monetizar con ia, automatizar ventas): el keyword-researcher (ya autónomo) las
+  procesará y repondrá la cola. Ver `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
@@ -103,6 +121,13 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Incidencias conocidas
 
+- **Content-writer no-op / autonomía (RESUELTO 2026-07-09):** los runs
+  programados del 4, 7 y 9 de julio salieron en `no-op` porque el agente
+  preguntaba en vez de ejecutar, pese al `MODE: AUTO`. `coordinator.sh` ahora
+  antepone una cabecera no-interactiva explícita (aplicada a content-writer y
+  keyword-researcher). Pendiente de confirmar en el próximo run real
+  (keyword-researcher lunes, content-writer sábado): comprobar que vuelven a
+  salir `committed` y no `no-op`.
 - **`context/publishing.json` (RESUELTO 2026-07-03):** `repo_path` corregido a
   `/Users/franlledo/Projects/franlledo-web` y `funnel-de-captacion` publicado.
   `context/` está gitignored: si se cambia de máquina o se mueve el repo web,
@@ -138,10 +163,13 @@ Zona horaria del equipo: `Europe/Madrid`.
    "ejemplos" que domina esa SERP (contenido para content-writer o Fran).
 5. **Decidir sobre `agentes-ia-sin-codigo-para-emprendedores` (`needs_review`):**
    retirar, fusionar o replantear (ver `reports/2026-07-02-content-writer.md`).
-6. Content writer: siguiente item limpio en cola es `funnel-de-lanzamiento`.
-7. Keyword researcher: añadir nuevas semillas a `state/seed-keywords.txt`
-   (candidatas: `monetizar con ia`, `prompts para negocio`, `automatizar ventas`)
-   o iniciar segunda vuelta de las más antiguas.
+6. **Confirmar que la autonomía quedó arreglada:** revisar `state/agent-log.json`
+   tras el próximo keyword-researcher (lunes) y content-writer (sábado); deben
+   volver a `committed`, no `no-op` de ~30s.
+7. Keyword researcher: procesar las **6 semillas nuevas** de
+   `state/seed-keywords.txt` para reponer la cola (ahora vacía de `queued`).
+8. Verificar en los próximos posts que el **dato propio citable (GEO)** se está
+   integrando de forma efectiva y extraíble.
 8. **Medir CTR de los snippets del 3 de julio a partir del ~17 de julio.**
 9. Semana: pivotar vibe-coding a guía práctica; capturas con alt en
    newsletter-ejemplos; diagrama propio en funnel-de-captacion (los packs de

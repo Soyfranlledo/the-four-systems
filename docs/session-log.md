@@ -561,3 +561,78 @@ marketing-funnel, (5) los pendientes de junio. Lista en PROJECT_STATUS.md.
   = 1 salto relativo; 32 `<lastmod>` en sitemap vivo; favicons 200; cero URLs
   con fecha en sitemap/llms.
 - No tocar los snippets del 3 de julio hasta ~17 de julio (ventana de medición).
+
+## 2026-07-09 — Desatasco del pipeline + aplicación de aprendizajes SEO (Villanueva)
+
+Sesión a petición de Fran: "no se publica nada desde el 2 de julio, no sé qué
+pasa a nivel SEO, y no capto suscriptores nuevos por la web". Además pidió
+destilar una entrevista de YouTube a un SEO y aplicar sus consejos.
+
+### Diagnóstico: por qué no se publicaba desde el 2 de julio
+
+El content-writer programado SÍ se disparaba puntual (sáb 4, mar 7, jue 9 a las
+10:00) pero cada run era un `no-op` de 11-37s. Los informes lo delataban: el
+agente leía el contexto de sesión y luego **preguntaba "¿qué quieres hacer?"** en
+vez de escribir el post en cola. El 2 jul aún funcionó en modo autónomo (escribió
+funnel-de-captacion en 88 min). Regresión de comportamiento, no de datos:
+`pick-next-queue-item.py` devolvía correctamente `funnel-de-lanzamiento` con
+exit 0. Causa raíz: el marco "de sesión colaborativa con humano" que impone
+`CLAUDE.md`/`AGENTS.md` pisaba el `MODE: AUTO` que inyecta el coordinador. El
+keyword-researcher hacía lo mismo (además ni recibía cabecera AUTO).
+
+### Acciones
+
+1. **`coordinator.sh` blindado:** la inyección de cabecera para runs programados
+   pasa de un simple `MODE: AUTO` a un preámbulo no-interactivo contundente
+   ("run no interactivo, no hay humano, no preguntes, ejecuta de principio a
+   fin"), aplicado a **content-writer y keyword-researcher**. Mantiene el token
+   `MODE: AUTO` que el prompt del content-writer detecta. `bash -n` OK.
+2. **Cola resembrada:** 6 semillas nuevas en `state/seed-keywords.txt` que abren
+   clústers no cubiertos (copywriting para vender, pagina de ventas que
+   convierte, vender cursos online, prompts para negocio, monetizar con ia,
+   automatizar ventas).
+3. **Publicado `funnel-de-lanzamiento`** (subagente siguiendo el prompt en Modo
+   B): `/blog/funnel-de-lanzamiento/`, 2.276 palabras, seoTitle
+   "Funnel de lanzamiento: 4 fases, 10.000 €" (40 car.), lint OK, build OK,
+   PUBLISHED_LIVE + IndexNow 200, HTTP 200 en producción, cero URLs con fecha en
+   sitemap. Cifra 10-12k€ verificada contra `experience-notes.md` (líneas 6-7,
+   es real). Diferenciado de funnel-de-captacion y campanas-email-marketing.
+   3 enlaces internos entrantes tejidos. Commit web: `post:` + `seo: enlaces
+   internos hacia funnel-de-lanzamiento`. Commit SEO: `42f024f`.
+
+### Entrevista a Luis Villanueva (Webpositer) — aplicación
+
+Destilada la transcripción completa (Ep. #141 de Píldoras del Conocimiento,
+1h27). Fran pidió aplicar **solo los consejos SEO, no los de negocio**. Aplicados
+al `prompts/content-writer.md` (Paso 3 Outline + checklist Paso 5):
+
+- **Cobertura de microtemática/subpreguntas del clúster** (la IA descompone la
+  query en 5-7 subpreguntas antes de citar a 2-3; cubrirlas todas = aparecer
+  como candidato repetido).
+- **Dato propio y citable en cada post** (≥1 cifra/resultado real de
+  `experience-notes.md`, presentado como afirmación autónoma extraíble, que
+  fuerce la cita por IAs generativas; nunca inventado).
+
+Validado (ya lo hacíamos): medir SEO no-marca vs marca, formato cápsula
+pregunta/respuesta, priorizar keywords comerciales conectadas al comprador, no
+inventar cifras. Descartado por decisión de Fran (consejos de negocio):
+ultraespecialización del posicionamiento, plan de email (checkout vs carrito,
+compradores vs no compradores), diferenciar la captación web (quiz), repurposing
+a vídeo/redes.
+
+### MailerLite / captación
+
+El formulario de la web está vivo y bien cableado (cuenta 1064872, form
+184373354165175805). El motivo de "no llegan suscriptores de la web" es de
+embudo, no de formulario: con ~15 sesiones orgánicas/semana la conversión es
+≈0-1/semana. El cuello de botella es tráfico (rankings en página 2), no la
+captación. Sin cambios en la web esta sesión (era consejo de negocio).
+
+### Pendiente
+
+- **Fran (manual, GSC):** solicitar indexación según la lista priorizada
+  (sigue pendiente desde el 3 de julio; P1 = URL vieja de marketing-funnel).
+- Confirmar en `agent-log.json` que el próximo keyword-researcher (lunes) y
+  content-writer (sábado) vuelven a `committed`, no `no-op`.
+- Keyword-researcher: procesar las 6 semillas nuevas para reponer la cola.
+- Medir el fix de CTR del 3 de julio a partir del ~17 de julio.

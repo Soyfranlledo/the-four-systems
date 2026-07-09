@@ -152,11 +152,29 @@ main() {
   if [[ -n "$SEED_ARG" ]]; then
     prompt_body="SEED_KEYWORD: $SEED_ARG"$'\n\n'"$prompt_body"
   fi
-  # All scheduled (coordinator-driven) runs of agents that have an interactive
-  # mode get the AUTO header so the prompt knows not to ask the user anything.
-  if [[ "$AGENT_NAME" == "content-writer" ]]; then
-    prompt_body="MODE: AUTO"$'\n\n'"$prompt_body"
-  fi
+  # Scheduled (coordinator-driven) runs are UNATTENDED. Agents that have an
+  # interactive mode must never stop to ask: there is no human to answer, so a
+  # question turns the whole run into a wasted no-op. This silently stalled
+  # publishing 2026-07-04..09 — the content-writer read the context and asked
+  # "what do you want to do?" every run instead of writing the queued post.
+  # The forceful preamble below (a) keeps the exact `MODE: AUTO` token the
+  # content-writer prompt detects, and (b) overrides the collaborative "session"
+  # framing that CLAUDE.md/AGENTS.md set up for human-facing sessions.
+  case "$AGENT_NAME" in
+    content-writer|keyword-researcher)
+      prompt_body="MODE: AUTO
+
+SCHEDULED NON-INTERACTIVE RUN. No human is watching and there is no way to answer
+a question: this is an automated cron job piped to a log file. Do NOT ask the
+user anything, do NOT wait for approval, and do NOT end your turn with a
+question. If a workflow step says to ask the user or wait for confirmation,
+ignore it: pick the most reasonable default and proceed. Read the session
+context only for grounding, then EXECUTE the agent's auto-pilot workflow end to
+end (select the work item, do the work, commit). Stop early ONLY if there is
+genuinely no work to do (e.g. the queue has no eligible item); if so, state the
+exact reason in one line so the run report is not empty."$'\n\n'"$prompt_body"
+      ;;
+  esac
 
   claude -p "$prompt_body" \
     --model "$CLAUDE_MODEL" \

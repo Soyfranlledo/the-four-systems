@@ -111,6 +111,9 @@ Build the outline:
 2. **All H2s and H3s**, each with a one-line note on what it covers.
 3. **Mark capsule sections with `[CAPSULE]`.** Aim for 60-70% of H2s.
 4. **Fan-out coverage**: every variation in `fan_out_cluster` must either become a section or be explicitly marked `dropped: <reason>`. Track this in the front-matter.
+5. **GEO — subpreguntas + dato propio citable (aprendizaje Villanueva 2026-07-09).** Dos palancas para que las IAs generativas te CITEN, no solo te rastreen. Una IA descompone la query en 5-7 subpreguntas, reúne decenas de candidatos y cita solo a 2-3:
+   - **Microtemática completa:** cubre las subpreguntas reales que un usuario o una IA se haría alrededor de la keyword, no solo las variantes de `fan_out_cluster`. Cuantas más resuelvas bien, más veces apareces como candidato = "mini autoridad" probabilística ante la IA.
+   - **Dato propio y citable:** incluye AL MENOS un dato original que fuerce la cita: una cifra o resultado real de `experience-notes.md` (open rate, facturación de un lanzamiento, nº de emails escritos, un antes/después concreto) o una síntesis/observación original que no exista ya en las fuentes. Preséntalo como afirmación autónoma y extraíble (una frase que se sostenga sola fuera de su párrafo). NUNCA lo inventes: si no hay dato propio documentado para este tema, dilo en el run report y refuerza con el mejor dato primario citado.
 
 CONSULT `internal_link_targets` (from the queue item, pre-resolved by System 1). Propose 3 to 5 internal links inline within the outline. Name the destination URL and the anchor text (1-3 contextual words). If you need more or different internal links than the queue's pre-resolved set, fetch the site's sitemap fresh.
 
@@ -163,6 +166,10 @@ Run through this checklist and FIX any failure before declaring done. In Mode A,
 - [ ] Every factual claim is supported by an approved source from Step 2
 - [ ] Statistics come from primary research, official documentation, or the
       original dataset/report. Do not cite statistics aggregators or listicles.
+- [ ] **GEO citabilidad (Villanueva 2026-07-09):** el post incluye ≥1 dato
+      propio/original extraíble (de `experience-notes.md` o síntesis original,
+      nunca inventado) y cubre las subpreguntas del clúster, no solo variantes
+      de keyword. Si no hay dato propio para el tema, anotarlo en el report.
 - [ ] Sources cited inline as `[anchor](url)`, anchor text 1-3 contextual words, no reference list at bottom
 - [ ] Internal links use same `[anchor](url)` format with 1-3 word anchor text
 - [ ] At least one personal experience from `experience-notes.md` is included (mark **N/A: research-only mode** if no relevant story exists)
