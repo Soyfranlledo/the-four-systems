@@ -789,10 +789,10 @@
     },
     {
       "id": "2026-06-29-funnel-de-lanzamiento",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-06-29T12:01:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-07-09T10:58:26Z",
+      "post_url": "https://franlledo.com/blog/funnel-de-lanzamiento/",
       "primary_keyword": "funnel de lanzamiento",
       "intent": "commercial",
       "volume": null,
