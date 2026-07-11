@@ -1,6 +1,6 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-09
+Última actualización: 2026-07-11
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
@@ -121,13 +121,15 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Incidencias conocidas
 
-- **Content-writer no-op / autonomía (RESUELTO 2026-07-09):** los runs
-  programados del 4, 7 y 9 de julio salieron en `no-op` porque el agente
-  preguntaba en vez de ejecutar, pese al `MODE: AUTO`. `coordinator.sh` ahora
-  antepone una cabecera no-interactiva explícita (aplicada a content-writer y
-  keyword-researcher). Pendiente de confirmar en el próximo run real
-  (keyword-researcher lunes, content-writer sábado): comprobar que vuelven a
-  salir `committed` y no `no-op`.
+- **Content-writer no-op / autonomía (RESUELTO 2026-07-09, CONFIRMADO
+  2026-07-11):** los runs programados del 4, 7 y 9 de julio salieron en
+  `no-op` porque el agente preguntaba en vez de ejecutar, pese al `MODE: AUTO`.
+  `coordinator.sh` ahora antepone una cabecera no-interactiva explícita
+  (aplicada a content-writer y keyword-researcher). El run del sábado
+  2026-07-11 confirma el fix: ejecutó el workflow completo sin preguntar y
+  terminó en `no-op` con motivo explícito (cola sin items `queued`), no en el
+  bug anterior. Pendiente confirmar el lado keyword-researcher en su próximo
+  run real (lunes 2026-07-13).
 - **`context/publishing.json` (RESUELTO 2026-07-03):** `repo_path` corregido a
   `/Users/franlledo/Projects/franlledo-web` y `funnel-de-captacion` publicado.
   `context/` está gitignored: si se cambia de máquina o se mueve el repo web,
@@ -163,11 +165,14 @@ Zona horaria del equipo: `Europe/Madrid`.
    "ejemplos" que domina esa SERP (contenido para content-writer o Fran).
 5. **Decidir sobre `agentes-ia-sin-codigo-para-emprendedores` (`needs_review`):**
    retirar, fusionar o replantear (ver `reports/2026-07-02-content-writer.md`).
-6. **Confirmar que la autonomía quedó arreglada:** revisar `state/agent-log.json`
-   tras el próximo keyword-researcher (lunes) y content-writer (sábado); deben
-   volver a `committed`, no `no-op` de ~30s.
+6. **Confirmar el lado keyword-researcher de la autonomía:** el content-writer
+   ya confirmó el fix el sábado 2026-07-11 (no-op limpio, sin preguntar). Falta
+   verificar que el keyword-researcher del lunes 2026-07-13 sale `committed` y
+   no `no-op`.
 7. Keyword researcher: procesar las **6 semillas nuevas** de
-   `state/seed-keywords.txt` para reponer la cola (ahora vacía de `queued`).
+   `state/seed-keywords.txt` para reponer la cola (sigue vacía de `queued`
+   tras el run del content-writer del 2026-07-11, que no tuvo nada que
+   escribir).
 8. Verificar en los próximos posts que el **dato propio citable (GEO)** se está
    integrando de forma efectiva y extraíble.
 8. **Medir CTR de los snippets del 3 de julio a partir del ~17 de julio.**

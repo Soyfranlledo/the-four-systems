@@ -636,3 +636,21 @@ captación. Sin cambios en la web esta sesión (era consejo de negocio).
   content-writer (sábado) vuelven a `committed`, no `no-op`.
 - Keyword-researcher: procesar las 6 semillas nuevas para reponer la cola.
 - Medir el fix de CTR del 3 de julio a partir del ~17 de julio.
+
+## 2026-07-11 — Content-writer (sábado, MODE: AUTO): no-op confirmado, cola vacía
+
+Run programado (sábado 10:00). `pick-next-queue-item.py` → `NO_QUEUED_ITEMS`
+(exit 2). De los 23 items de `state/content-queue.json`, 22 están `written` y
+1 (`agentes-ia-sin-codigo-para-emprendedores`) sigue en `needs_review` desde el
+2 de julio, pendiente de una decisión que no le corresponde tomar al
+content-writer en auto-pilot. No había ningún item `queued`.
+
+**Confirma el fix de autonomía del 2026-07-09:** este era el "próximo
+content-writer (sábado)" que quedó pendiente de verificar. El run ejecutó el
+workflow completo sin preguntar nada y terminó en un no-op con motivo
+explícito, no en el bug anterior (preguntar "¿qué quieres hacer?"). Lado
+keyword-researcher aún pendiente: su última ejecución registrada es del
+2026-07-08, anterior a las 6 semillas sembradas el 09; el próximo run real es
+el lunes 2026-07-13 09:00.
+
+Sin cambios en `output/`, `state/content-queue.json` ni el repo web.
