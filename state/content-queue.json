@@ -819,6 +819,39 @@
         "https://anaivars.com/product-launch-formula-que-es-y-como-hacer-lanzamientos/"
       ],
       "notes": "Vol est. 50-100/mo (WebSearch fallback, DFS no disponible). KD est. LOW 10-20. Angulo Fran: la mayor parte del contenido sobre funnels de lanzamiento asume webinar en vivo, PLF de Jeff Walker o Go High Level. La version de Fran: lista de 2000 subs + secuencia de 5-7 emails + checkout simple = 10-12K EUR por lanzamiento. Sin sofisticacion innecesaria. Diferencia clave con 'campanas-email-marketing-lista-pequena': ese post cubre tipos de campanas; este cubre la estructura completa del funnel de un lanzamiento (pre-calentamiento, apertura del carrito, secuencia de urgencia, cierre). Incluir la estructura real con tiempos. Mencionar tripwire como elemento opcional para bajar la barrera de la primera compra."
+    },
+    {
+      "id": "2026-07-13-que-es-el-copywriting",
+      "status": "queued",
+      "queued_at": "2026-07-13T09:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "qu\u00e9 es el copywriting",
+      "intent": "informational",
+      "volume": 260,
+      "kd": 15,
+      "fan_out_cluster": [
+        "copywriting que es",
+        "copywriting ejemplos",
+        "ejemplos de copywriting para vender",
+        "frases de copywriting para vender",
+        "plantillas copywriting para vender",
+        "copywriting escribir para vender",
+        "copywriting para vender cursos"
+      ],
+      "suggested_slug": "que-es-el-copywriting",
+      "suggested_title": "Qu\u00e9 es el copywriting: t\u00e9cnicas (AIDA, PAS) y ejemplos reales para vender",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/como-escribir-emails-que-vendan/",
+        "https://franlledo.com/blog/funnel-de-conversion-etapas-que-importan/",
+        "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/"
+      ],
+      "external_authority_candidates": [
+        "https://aulacm.com/formulas-copywriting-aida-pas-pastor-4u/",
+        "https://www.webpositer.com/blog/formulas-de-copywriting/"
+      ],
+      "notes": "Cluster de 5 variantes casi identicas de 'que es (el) copywriting' (ver keyword-bank, priority 2) se resuelve con este unico post; no crear items de cola separados para 'copywriting que es', 'copywriting' desnudo, etc. Diferenciar explicitamente de 'como-escribir-emails-que-vendan' (ese post es tactico y especifico de email, sin frameworks; este post es la pieza pilar del concepto de copywriting con AIDA/PAS/BAB y ejemplos en paginas de venta, emails y anuncios). Dato propio obligatorio (regla GEO Villanueva): apoyarse en los 1.500+ correos de venta y 300+ clientes de experience-notes.md, presentado como cifra citable independiente. Cubrir las subpreguntas del cluster fan_out (que es, ejemplos, frases, plantilla/estructura, como escribir para vender cursos) como haria una IA generativa al descomponer la query."
     }
   ]
 }

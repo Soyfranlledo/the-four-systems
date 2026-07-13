@@ -654,3 +654,74 @@ keyword-researcher aún pendiente: su última ejecución registrada es del
 el lunes 2026-07-13 09:00.
 
 Sin cambios en `output/`, `state/content-queue.json` ni el repo web.
+
+## 2026-07-13: keyword-researcher (lunes, MODE: AUTO) — semilla "copywriting para vender", cola repuesta
+
+Run programado (lunes 09:00). Confirma el lado keyword-researcher del fix de
+autonomía del 2026-07-09: ejecutó el workflow completo sin preguntar nada,
+pendiente #6 de `PROJECT_STATUS.md` queda cerrado.
+
+### Selección de semilla
+
+Ninguna de las 6 semillas nuevas sembradas el 09 (`copywriting para vender`,
+`pagina de ventas que convierte`, `vender cursos online`, `prompts para
+negocio`, `monetizar con ia`, `automatizar ventas`) tenía entrada en
+`seeds_researched`. Por la regla "primera línea sin cubrir" se eligió
+`copywriting para vender`, la primera de las nuevas en `seed-keywords.txt`.
+
+### Fan-out y hallazgo de calidad de datos
+
+`dataforseo_labs_google_keyword_ideas` con la frase completa como seed devolvió
+mayoritariamente ruido no relacionado (vender coche, moto, chalet, catalizador):
+el algoritmo de "misma categoría" agrupó "copywriting para vender" con anuncios
+genéricos de venta de objetos de segunda mano. Se pivotó a
+`dataforseo_labs_google_keyword_suggestions` con la semilla corta "copywriting"
+(100 resultados) más la frase completa (7 resultados), que sí dio señal útil.
+158 variaciones evaluadas en total; ~137 descartadas por ruido de categoría,
+intención de empleo/freelance ("copywriting jobs", "trabajar de copywriting")
+o detección de idioma inglés/portugués en el mercado España.
+
+### Cluster "qué es el copywriting" y decisión anti-canibalización
+
+5 variantes casi idénticas del mismo cluster definicional ("copywriting que
+es" 720/kd2, "que es un copywriting" 390/kd2, "que es el copywriting" 260/kd3,
+"que es copywriting" 210, "copywriting" desnudo 4400/kd7) más "qué es el
+copywriting" (260/kd15, elegida como grafía natural). Mecánicamente varias
+superan el umbral P1, pero se marcó solo una (`qué es el copywriting`) como
+priority 1 y las demás priority 2 para no generar 5 items de cola casi
+duplicados sobre el mismo post — coherente con la práctica de comprobar
+canibalización antes de encolar. Verificado contra el sitemap en vivo
+(`franlledo.com/sitemap-0.xml`): no existe ninguna URL de "copywriting"
+todavía. El post más cercano, `como-escribir-emails-que-vendan`, se confirmó
+(vía WebFetch) que es táctico y específico de email, sin frameworks AIDA/PAS/
+BAB: sin solapamiento con el nuevo post, que cubre el concepto general +
+ejemplos multi-formato.
+
+Descartadas a priority 3 por encaje débil con la estrategia del sitio (nunca
+enlaza a producto directo, sin reviews comparativas): "servicios/servicio de
+copywriting" y "cursos/curso de copywriting" (intención de contratar/comparar
+terceros), "agencia de copywriting" (kd 46), "el libro de copywriting" (nicho,
+bajo volumen).
+
+### Resultado
+
+- 21 keywords nuevas añadidas a `state/keyword-bank.json` (0 duplicados).
+- 1 item encolado en `state/content-queue.json`:
+  `2026-07-13-que-es-el-copywriting` (informational, vol 260, kd 15), con
+  fan_out_cluster de 7 variantes (incluye "copywriting para vender cursos",
+  que cruza con la semilla nueva "vender cursos online" aún sin investigar:
+  nota dejada en el item para no duplicar cuando se procese esa semilla).
+  Angulo GEO obligatorio: apoyar el post en los 1.500+ correos de venta reales
+  de `experience-notes.md`, no en teoría de manual.
+- CSV en `output/keywords/2026-07-13-copywriting-para-vender.csv` (gitignored,
+  como el resto de `output/`).
+- `seeds_researched` actualizado con `copywriting para vender` → 2026-07-13.
+
+### Pendiente
+
+- Quedan 5 semillas nuevas del lote del 09 sin investigar: `pagina de ventas
+  que convierte`, `vender cursos online`, `prompts para negocio`, `monetizar
+  con ia`, `automatizar ventas`. El próximo run (miércoles 2026-07-15)
+  procesará la siguiente por orden de `seed-keywords.txt`.
+- El content-writer (próximo run: martes 2026-07-14) ya tiene un item
+  `queued` disponible tras varios runs en `no-op` por cola vacía.
