@@ -852,6 +852,40 @@
         "https://www.webpositer.com/blog/formulas-de-copywriting/"
       ],
       "notes": "Cluster de 5 variantes casi identicas de 'que es (el) copywriting' (ver keyword-bank, priority 2) se resuelve con este unico post; no crear items de cola separados para 'copywriting que es', 'copywriting' desnudo, etc. Diferenciar explicitamente de 'como-escribir-emails-que-vendan' (ese post es tactico y especifico de email, sin frameworks; este post es la pieza pilar del concepto de copywriting con AIDA/PAS/BAB y ejemplos en paginas de venta, emails y anuncios). Dato propio obligatorio (regla GEO Villanueva): apoyarse en los 1.500+ correos de venta y 300+ clientes de experience-notes.md, presentado como cifra citable independiente. Cubrir las subpreguntas del cluster fan_out (que es, ejemplos, frases, plantilla/estructura, como escribir para vender cursos) como haria una IA generativa al descomponer la query."
+    },
+    {
+      "id": "2026-07-15-que-es-una-landing-page",
+      "status": "queued",
+      "queued_at": "2026-07-15T09:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "qué es una landing page",
+      "intent": "informational",
+      "volume": 1000,
+      "kd": 6,
+      "fan_out_cluster": [
+        "qué es el landing page",
+        "qué es la landing page",
+        "landing page que es",
+        "qué significa landing page",
+        "qué es un landing page",
+        "landing page qué es y para qué sirve",
+        "diferencia entre landing page y página de ventas",
+        "cómo hacer una landing page"
+      ],
+      "suggested_slug": "que-es-una-landing-page",
+      "suggested_title": "Qué es una landing page: la diferencia real con una página de ventas",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/funnel-de-captacion/",
+        "https://franlledo.com/blog/funnel-de-conversion-etapas-que-importan/",
+        "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/"
+      ],
+      "external_authority_candidates": [
+        "https://blog.hubspot.es/website/landing-page",
+        "https://www.semrush.com/blog/what-is-a-landing-page/"
+      ],
+      "notes": "Semilla del run: 'pagina de ventas que convierte'. El fan-out revelo que en es-ES el volumen real vive en 'landing page' (prestamo ingles, 1000/mo, kd6), no en 'pagina de ventas' (70/mo, y ese termino ademas se mezcla con marketplaces de segunda mano: coches, motos, casas). Cluster de 6 variantes casi identicas de 'que es (un/una/el/la) landing page' (ver keyword-bank, priority 2) se resuelve con este unico post, igual que se hizo con que-es-el-copywriting el 13 de julio: no crear items de cola separados para cada variante de articulo/orden. Angulo diferenciador obligatorio (regla P1 informacional + regla GEO Villanueva): no explicar landing page de forma generica de manual/herramienta (asi lo hacen HubSpot/Unbounce/Semrush, que dominan el SERP), sino distinguirla de una 'pagina de ventas' de embudo real con datos propios de experience-notes.md (funnel-de-captacion vs funnel-de-lanzamiento: que landing usa Fran en cada etapa y por que). Incluir 'como hacer una landing page' (110/mo, kd4) como seccion de estructura dentro del post, NO como tutorial de constructor/herramienta (fuera de alcance segun site-config). Dato propio citable obligatorio. Enlazar internamente con funnel-de-captacion (la landing de captacion real de Fran) y funnel-de-conversion-etapas-que-importan (donde encaja la landing en el funnel)."
     }
   ]
 }

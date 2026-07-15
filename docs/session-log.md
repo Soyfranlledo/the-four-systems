@@ -725,3 +725,95 @@ bajo volumen).
   procesará la siguiente por orden de `seed-keywords.txt`.
 - El content-writer (próximo run: martes 2026-07-14) ya tiene un item
   `queued` disponible tras varios runs en `no-op` por cola vacía.
+
+## 2026-07-15: keyword-researcher (miércoles, MODE: AUTO) — semilla "pagina de ventas que convierte", hallazgo "landing page"
+
+Run programado (miércoles 09:00), ejecutado end-to-end sin preguntar
+(confirma de nuevo el fix de autonomía del 2026-07-09).
+
+### Selección de semilla
+
+Primera sin cubrir en `seed-keywords.txt` tras `copywriting para vender`
+(13/07): `pagina de ventas que convierte`. No estaba en `seeds_researched`.
+
+### Fan-out y problema de calidad de dato (repetido del 13/07)
+
+`dataforseo_labs_google_keyword_ideas` con la frase completa como seed volvió
+a fallar: agrupó la keyword con "pagina web" genérico (crear web, traducir
+web, precio de una web), 0 resultados relevantes salvo "pagina de ventas"
+(70/mo) y "pagina de ventas gratis" (10/mo). `dataforseo_labs_google_keyword_suggestions`
+sobre "pagina de ventas" tampoco sirvió: en es-ES esa frase se mezcla
+mayoritariamente con marketplaces de segunda mano (coches, motos, casas,
+ropa), no con el sentido de "landing page de un embudo" que interesa a Fran.
+`dataforseo_labs_google_related_keywords` sobre la frase completa de 4
+palabras devolvió `items: []` (sin datos).
+
+Se pivotó a `dataforseo_labs_google_keyword_overview` con una lista curada de
+35 variantes candidatas (bypassa el algoritmo de "misma categoría" que causa
+el ruido) y a `related_keywords`/`keyword_suggestions` sobre "landing page"
+directamente. Esto reveló el hallazgo real del run: en es-ES la demanda de
+este tema vive casi enteramente bajo el préstamo inglés "landing page"
+(6.600/mo la cabecera desnuda, kd 6) y no bajo "página de ventas" (70/mo).
+344 variaciones únicas evaluadas en total entre todas las llamadas.
+
+### Cluster "qué es una landing page" y decisión anti-canibalización
+
+Igual que el 13/07 con "copywriting": 6 variantes casi idénticas del cluster
+definicional comparten volumen alto ("qué es una landing page" 1000/kd6,
+"qué es el landing page" 1000/kd6, "qué es la landing page" 1000/kd6,
+"landing page que es" 720/kd7, "qué significa landing page" 720/kd8, "qué es
+un landing page" 260/kd6). Se marcó solo "qué es una landing page" (grafía
+más natural) como priority 1 y encoló un único post; las demás quedan en
+priority 2 como material de `fan_out_cluster`, no como items de cola
+separados. Verificado contra el sitemap en vivo (`franlledo.com/sitemap-0.xml`):
+cero URLs con "landing" o "pagina-de-ventas" en producción, sin riesgo de
+canibalización con los posts de funnel existentes
+(`funnel-de-captacion`, `funnel-de-conversion-etapas-que-importan`,
+`sales-funnel-para-solopreneurs`, `como-montar-embudo-de-ventas-sencillo`).
+
+Se marcó "cómo hacer una landing page" (110/mo, kd4) priority 2, no P1, por
+riesgo de derivar en tutorial de constructor/herramienta (fuera de alcance
+explícito en `site-config.md`). Va como sección de estructura dentro del post
+definicional, no como pieza independiente. "Landing page" desnudo (6.600/mo,
+kd6) se aparcó en priority 3: cabecera dominada por HubSpot/Unbounce/Semrush/
+Landingi, autoridad inalcanzable a corto plazo, superada conceptualmente por
+la cola larga.
+
+Corrección silenciosa de un dato de junio: el banco ya tenía "página de
+ventas" (con tilde, priority 3, añadido el 29/06 vía WebSearch fallback con
+`kd: null` y una nota "KD est. 50+"). El dato real de DFS de hoy para la
+variante sin tilde es kd 4. No se añadió como entrada nueva (casi duplicado,
+solo difiere en la tilde) para no generar bloat; se deja constancia aquí en
+vez de perder la corrección silenciosamente.
+
+### Resultado
+
+- 18 keywords nuevas añadidas a `state/keyword-bank.json` (0 duplicados
+  exactos; 258 en banco).
+- 1 item encolado en `state/content-queue.json`:
+  `2026-07-15-que-es-una-landing-page` (informational, vol 1000, kd 6), con
+  fan_out_cluster de 8 variantes. Ángulo GEO obligatorio: diferenciar landing
+  page de página de ventas dentro de un embudo real (no explicación genérica
+  de manual/herramienta), apoyado en funnel-de-captacion y
+  funnel-de-lanzamiento con datos propios de `experience-notes.md`.
+- CSV en `output/keywords/2026-07-15-pagina-de-ventas-que-convierte.csv`
+  (gitignored).
+- `seeds_researched` actualizado con `pagina de ventas que convierte` →
+  2026-07-15.
+
+### Observación fuera de alcance de este agente
+
+`2026-07-13-que-es-el-copywriting` sigue en estado `queued`: no hay ningún
+commit de content-writer del martes 14 de julio en el historial de git (el
+job estaba programado para las 10:00). No investigado a fondo porque excede
+el alcance del keyword-researcher (no debe invocar otros agentes ni tocar
+`prompts/`/`coordinator.sh`). Queda anotado en `PROJECT_STATUS.md` para que
+se revise en el próximo run de content-writer o por Fran directamente.
+
+### Pendiente
+
+- Quedan 4 semillas nuevas del lote del 09 sin investigar: `vender cursos
+  online`, `prompts para negocio`, `monetizar con ia`, `automatizar ventas`.
+  El próximo run de keyword-researcher procesará `vender cursos online`.
+- Revisar por qué el content-writer no corrió el 14/07 y confirmar que la
+  cola (2 items `queued`) se procesa en el próximo run disponible.

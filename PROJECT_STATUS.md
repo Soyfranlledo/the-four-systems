@@ -1,12 +1,27 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-13
+Última actualización: 2026-07-15
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Keyword-researcher, run miércoles 2026-07-15, semilla `pagina de ventas
+  que convierte`** (segunda de las 6 nuevas del 09): 18 keywords nuevas al
+  banco, 1 item encolado (`2026-07-15-que-es-una-landing-page`,
+  informational, vol 1000, kd 6). Mismo problema de calidad de dato que el
+  13/07 con `dataforseo_labs_google_keyword_ideas` sobre la frase completa
+  (ruido de categoría: creación de webs genéricas / marketplaces de segunda
+  mano); se resolvió con `keyword_overview` sobre una lista curada +
+  `related_keywords`/`keyword_suggestions` sobre "landing page". Hallazgo:
+  en es-ES el volumen real de este tema vive en el préstamo inglés "landing
+  page" (6600/mo cabecera, "qué es una landing page" 1000/mo kd6), no en
+  "página de ventas" (70/mo). Ver bitácora 2026-07-15. Quedan 4 semillas
+  nuevas sin investigar. **Observación:** `2026-07-13-que-es-el-copywriting`
+  sigue en estado `queued`: no hay commit de content-writer del martes 14 de
+  julio en el historial de git. Revisar si el run programado falló o no se
+  disparó.
 - **Keyword-researcher confirma el fix de autonomía (lunes 2026-07-13):**
   ejecutó el workflow completo en MODE: AUTO sin preguntar. Semilla
   `copywriting para vender` (primera de las 6 nuevas del 09, nunca antes
@@ -43,12 +58,13 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - El blog tiene **33 artículos publicados** en producción. Último:
   `/blog/funnel-de-lanzamiento/` (2026-07-09, 2.276 palabras, PUBLISHED_LIVE,
   HTTP 200, con dato propio citable ya integrado).
-- Cola: **1 item `queued`** (`2026-07-13-que-es-el-copywriting`) tras el run
-  del keyword-researcher del 13 de julio. `agentes-ia-sin-codigo-para-emprendedores`
-  sigue en `needs_review` (solapamiento con dos posts de IA). Quedan 5 de las
-  6 semillas nuevas del 09 sin investigar (páginas de venta, cursos, prompts,
-  monetizar con ia, automatizar ventas): el keyword-researcher las procesará
-  una por run (miércoles 2026-07-15 en adelante). Ver `state/content-queue.json`.
+- Cola: **2 items `queued`** (`2026-07-13-que-es-el-copywriting`,
+  `2026-07-15-que-es-una-landing-page`) tras el run del keyword-researcher
+  del 15 de julio. `agentes-ia-sin-codigo-para-emprendedores` sigue en
+  `needs_review` (solapamiento con dos posts de IA). Quedan 4 de las 6
+  semillas nuevas del 09 sin investigar (vender cursos online, prompts para
+  negocio, monetizar con ia, automatizar ventas): el keyword-researcher las
+  procesará una por run. Ver `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
@@ -175,11 +191,13 @@ Zona horaria del equipo: `Europe/Madrid`.
    retirar, fusionar o replantear (ver `reports/2026-07-02-content-writer.md`).
 6. ~~Confirmar el lado keyword-researcher de la autonomía~~ — **cerrado
    2026-07-13**, ver bitácora.
-7. Keyword researcher: procesar las **5 semillas nuevas restantes** del lote
-   del 09 (`pagina de ventas que convierte`, `vender cursos online`, `prompts
-   para negocio`, `monetizar con ia`, `automatizar ventas`), una por run.
-7b. Content-writer (próximo run: martes 2026-07-14): ya tiene
-   `2026-07-13-que-es-el-copywriting` disponible en cola.
+7. Keyword researcher: procesar las **4 semillas nuevas restantes** del lote
+   del 09 (`vender cursos online`, `prompts para negocio`, `monetizar con
+   ia`, `automatizar ventas`), una por run.
+7b. **Content-writer: revisar por qué no corrió el martes 2026-07-14** (no
+   hay commit en el historial). La cola tiene 2 items `queued` esperando:
+   `2026-07-13-que-es-el-copywriting` y
+   `2026-07-15-que-es-una-landing-page`.
 8. Verificar en los próximos posts que el **dato propio citable (GEO)** se está
    integrando de forma efectiva y extraíble.
 8. **Medir CTR de los snippets del 3 de julio a partir del ~17 de julio.**
@@ -191,6 +209,8 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-07-15: keyword-researcher run — semilla `pagina de ventas que
+  convierte`, 18 keywords nuevas, 1 item encolado (`que-es-una-landing-page`).
 - 2026-07-13: keyword-researcher run — semilla `copywriting para vender`, 21
   keywords nuevas, 1 item encolado (`que-es-el-copywriting`).
 - 2026-07-03: auditoría SEO integral + implementación (informe, lint Regla 8,
