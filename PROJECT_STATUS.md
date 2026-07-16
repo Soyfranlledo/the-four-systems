@@ -1,12 +1,24 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-16
+Última actualización: 2026-07-16 (tarde: auditoría del 15/07 implementada)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Auditoría SEO del 15/07 implementada (2026-07-16, sesión con Fran,
+  commit web `ec49ae3`):** seoTitle ≤47c con dato real en los **20 posts
+  pendientes** (ya no queda ningún post con título SERP >60c; cierra el
+  antiguo hito 3), 8 descriptions >160c recortadas, HSTS en nginx, alt en
+  avatar de header/landings, y JSON-LD nuevo en 11 páginas estáticas
+  (Breadcrumb+Person en landings, CollectionPage en /proyectos/). La
+  congelación de snippets del 03/07 se respetó (los 12 posts con impresiones
+  no se tocaron). IndexNow 200 con 31 URLs. Dos findings de la auditoría
+  resultaron inflados: los "82 alt que faltan" eran casi todos `alt=""`
+  decorativo legítimo, y /consultoria/ ya tenía schema Service. Pendiente de
+  la auditoría: OG images (hito 2), CSP con pruebas, CrUX de campo. Ver
+  bitácora 2026-07-16 (tarde).
 - **Content-writer, run jueves 2026-07-16 (MODE: AUTO): publicado
   `qué es el copywriting`.** Cogió el item `2026-07-13-que-es-el-copywriting`
   (el que llevaba desde el 13/07 en `queued` porque el run programado del
@@ -202,8 +214,9 @@ Zona horaria del equipo: `Europe/Madrid`.
    funnel-de-captacion): `scripts/og/generate-og.mjs` del repo web exige
    Playwright aparte. Integrarlo en el pipeline de publicación tolerante a
    fallos.
-3. **seoTitle en batch para los ~20 posts restantes** (sin impresiones aún);
-   los 12 con tráfico ya lo tienen.
+3. ~~seoTitle en batch para los ~20 posts restantes~~ — **cerrado
+   2026-07-16** (auditoría implementada, ver bitácora): los 34 posts tienen
+   título SERP ≤60c. Su ventana de medición CTR empieza el 16/07.
 4. **Sección "asuntos para correos: 25 ejemplos listos para copiar"** en
    asuntos-de-email, con tasas de apertura reales: captura la intención
    "ejemplos" que domina esa SERP (contenido para content-writer o Fran).

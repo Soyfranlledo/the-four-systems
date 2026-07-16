@@ -906,3 +906,72 @@ párrafo. `npm run build` OK en el repo web tras los tres cambios. Commit
 - Próximo content-writer (sábado): procesará `que-es-una-landing-page`.
 - Medir el fix de CTR del 3 de julio (ventana ya cumplida desde el 17 de
   julio, pendiente de leer el próximo informe semanal).
+
+## 2026-07-16 (tarde): implementación de la auditoría SEO del 2026-07-15 (sesión con Fran)
+
+Fran pidió analizar la auditoría de `reports/2026-07-15-auditoria-seo/`
+(generada el 15/07 con una skill externa de auditoría) y corregir lo accionable.
+Se ejecutó el plan de acción completo de prioridad ALTA + la mayor parte de la
+MEDIA en una sesión. Commit del repo web: `ec49ae3`.
+
+### Análisis previo (discrepancias con la auditoría)
+
+- **Imágenes (55/100): finding inflado.** Los "82 de 84 sin alt" son en su
+  mayoría `alt=""` explícito en imágenes decorativas (avatares de lectores,
+  chrome), que es correcto. Lo único real: el avatar/logo del header y de las
+  landings sin alt descriptivo. Corregido con 2 ediciones.
+- **JSON-LD: `/consultoria/` ya tenía schema `Service`** en producción (la
+  auditoría la listaba entre las 14 páginas sin JSON-LD). El resto de la lista
+  sí era correcto.
+- **Congelación de snippets hasta ~17/07 respetada:** no se tocó ninguna
+  description ni title de los 12 posts retocados el 03/07. Los 20 posts del
+  lote de hoy no tenían seoTitle previo (no forman parte de la medición).
+- **CSP/Permissions-Policy diferidas:** una CSP mal calibrada rompe GA4 e
+  inline scripts; se hará en una sesión con pruebas. Solo se añadió HSTS.
+
+### Cambios desplegados (repo web, push a main → Coolify)
+
+1. **seoTitle ≤47c con dato real del post en los 20 posts pendientes**
+   (acción ALTA #1 y también hito 3 de PROJECT_STATUS). Redactados leyendo
+   cada post (4 subagentes en paralelo propusieron, se seleccionó
+   editorialmente). Todos con número/dato propio y keyword delante.
+   `updatedDate: 2026-07-16` en los 20. Resultado verificado en `dist/`:
+   **0 posts con título SERP >60c** (antes 27 páginas >60c en el sitio).
+2. **Descriptions >160c recortadas** (sin tocar la congelación):
+   agentes-de-ia (168→147), claude-code (194→134), marketing-automation
+   (227→140), que-es-un-lead (168→127), que-herramienta (162→132),
+   /consultoria/ (181→142), /documento/ (166→153),
+   /asuntos-que-se-abren/ (165→142). Recorte puro, sin cambiar la voz.
+3. **HSTS** en `docker/nginx.conf`, en el bloque server Y en los 3 location
+   que redeclaran cabeceras (add_header dentro de location anula los
+   heredados). Sin `preload` a propósito.
+4. **alt="Fran Lledó"** en el avatar del Header y del LandingLayout.
+5. **JSON-LD nuevo** vía `src/lib/jsonld.ts` (Person compacto con el mismo
+   `@id` que la home para consolidar entidad + helper de breadcrumbs):
+   BreadcrumbList+Person en las 7 landings de lead magnet (`[slug].astro`),
+   CollectionPage+ItemList+Breadcrumb en /proyectos/, Breadcrumb+Person en
+   /contacto/ y /enlaces/. Legales excluidas a propósito.
+6. **Title de /consultoria/ de 73c → 49c** ("ConsultorIA — Te monto el plan
+   de IA — Fran Lledó"), conservando la promesa. Quedan 6 páginas en 61-64c
+   (home, /blog/, 4 landings): se dejan así a propósito — el exceso solo
+   trunca el sufijo de marca y recortarlas implicaría tocar copy de Fran.
+
+### Verificación
+
+- `npm run build` OK; sitemap con 58 URLs, **0 con fecha**; llms.txt y
+  llms-full.txt sin URLs con fecha (invariante 1 y 4 OK).
+- JSON-LD validado (parse JSON) en documento, proyectos, contacto, enlaces,
+  asuntos-que-se-abren; /consultoria/ mantiene su Service.
+- IndexNow ping con las **31 URLs cambiadas** → HTTP 200.
+- Verificación en producción tras el deploy: HSTS presente, títulos nuevos
+  servidos (ver final de la entrada).
+
+### Pendiente que deja esta sesión
+
+- Acciones BAJAS de la auditoría: CrUX de campo, dato propio citable en posts
+  antiguos (refresh), lastmod en estáticas, menciones de marca.
+- OG images propias para los 22 posts con og-default (hito 2, sin cambios).
+- CSP + Permissions-Policy con pruebas.
+- Fran (manual): solicitar indexación GSC de la tabla P1/P2 y medir CTR de
+  los snippets del 03/07 a partir del ~17/07. **Ojo:** los 20 posts de hoy
+  empiezan su propia ventana de medición hoy (16/07).
