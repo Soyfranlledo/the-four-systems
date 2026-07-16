@@ -975,3 +975,21 @@ MEDIA en una sesión. Commit del repo web: `ec49ae3`.
 - Fran (manual): solicitar indexación GSC de la tabla P1/P2 y medir CTR de
   los snippets del 03/07 a partir del ~17/07. **Ojo:** los 20 posts de hoy
   empiezan su propia ventana de medición hoy (16/07).
+
+### Adenda 2026-07-16 (noche): solicitudes de indexación GSC completadas
+
+A petición de Fran, se manejó su Chrome (sesión GSC ya autenticada) para
+completar la acción manual de indexación. Resultado de inspeccionar las 8
+URLs priorizadas: 6 ya estaban indexadas sin intervención. Se solicitó
+indexación solo de las 2 restantes:
+
+- `/blog/2026-05-21-marketing-funnel-para-solopreneurs/` (la vieja): ya NO
+  está en el índice (objetivo del 301 en marcha). Su último rastreo (16/07
+  18:00) marcó "error de redirección", casi seguro transitorio por coincidir
+  con el deploy de Coolify de la tarde; curl confirma 301 limpio en 1 salto
+  → 200. La solicitud fuerza un recrawl fresco.
+- `/blog/ia-agentica-que-es-y-como-usarla/`: "Descubierta: actualmente sin
+  indexar" → solicitada.
+
+Cuota preservada saltando las 6 indexadas. Revisar ambas en ~1 semana.
+PROJECT_STATUS (sección Indexación) actualizado.

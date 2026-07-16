@@ -137,7 +137,16 @@ darán clics hasta subir a página 1: ahí la palanca es ranking, no snippet.
 
 ## Indexación
 
-Estado a 2026-07-03 (URL Inspection API, ver informe de auditoría):
+**Verificado en GSC el 2026-07-16 (sesión con Fran, inspección manual de las
+8 URLs de la tabla):** la acción manual pendiente quedó COMPLETADA. 6 de las
+8 ya estaban indexadas sin intervención (funnel-de-captacion,
+como-escribir-asuntos-de-email, etiqueta/email-marketing,
+claude-code-sin-programar, que-es-un-lead, agentes-de-ia-para-solopreneurs).
+Se solicitó indexación de las 2 restantes: la URL vieja de marketing-funnel
+(ya fuera del índice; su último rastreo 16/07 18:00 marcó "error de
+redirección" casi seguro transitorio por el deploy — verificado con curl que
+el 301 es limpio, 1 salto → 200) e ia-agentica ("Descubierta: sin indexar").
+Revisar ambas en ~1 semana. La tabla de abajo queda como histórico del 03-07:
 
 | Prioridad | URL | Estado GSC | Acción |
 | --- | --- | --- | --- |
