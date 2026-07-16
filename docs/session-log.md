@@ -817,3 +817,92 @@ se revise en el próximo run de content-writer o por Fran directamente.
   El próximo run de keyword-researcher procesará `vender cursos online`.
 - Revisar por qué el content-writer no corrió el 14/07 y confirmar que la
   cola (2 items `queued`) se procesa en el próximo run disponible.
+
+## 2026-07-16: content-writer (jueves, MODE: AUTO) — publicado "qué es el copywriting"
+
+Run programado (jueves 10:00), ejecutado end-to-end sin preguntar nada
+(confirma otra vez el fix de autonomía del 2026-07-09).
+
+### Selección del item
+
+`pick-next-queue-item.py` devolvió `2026-07-13-que-es-el-copywriting`, el
+primero en FIFO y el mismo que quedó anotado como pendiente en
+`PROJECT_STATUS.md` desde el 15/07 (el run programado del martes 14/07 nunca
+se disparó: no hay commit ni entrada de log de ese día). Marcado
+`in_progress` de inmediato.
+
+### Brief y contexto
+
+Keyword primaria "qué es el copywriting" (informational, vol 260, kd 15),
+fan_out_cluster de 7 variantes. Leídos los 8 ficheros de `context/` completos
+antes de escribir. Nota del propio queue item (dejada por el
+keyword-researcher el 13/07): diferenciar explícitamente de
+`como-escribir-emails-que-vendan` (táctico, sin frameworks) y apoyar el post
+en el dato propio de 1.500+ correos de venta / 300+ clientes de
+`experience-notes.md`.
+
+### Investigación
+
+9 fuentes aceptadas, ninguna de dominios de `competitors.md` (se descartaron
+deliberadamente resultados de SERP de educadores de copywriting en español
+con solapamiento de audiencia, p. ej. Maïder Tomasena e Ivo Fiz, aunque no
+estén en la lista formal de competidores directos, por prudencia): Wikipedia
+ES, HubSpot ES, Domestika, AulaCM y Webpositer (los dos últimos eran los
+`external_authority_candidates` que dejó el keyword-researcher) para las
+fórmulas AIDA/PAS/BAB, Copyblogger y Swipe File Archive para la cita y el
+anuncio de Rolls-Royce de David Ogilvy, WordStream para el benchmark de tasa
+de conversión de landing pages, e InboundCycle para los principios de
+Cialdini. Consultado `serp_organic_live_advanced` para la keyword primaria:
+sin sorpresas, dominan definiciones genéricas (Wikipedia, HubSpot, Payoneer,
+Salesforce) sin ángulo de experiencia propia, hueco que confirma la
+diferenciación planeada.
+
+### Draft y ángulo GEO
+
+Post de 2.039 palabras (objetivo 1.800, +13,3%, dentro del ±15%). Estructura
+de 9 H2 (66,7% cápsulas) con 3 H3 anidados para AIDA/PAS/BAB. Cubiertas las 7
+variantes del `fan_out_cluster` (ninguna dropeada). Dato propio citable:
+"1.500+ correos de venta enviados" en el TL;DR y la intro. Dos historias
+reales de `experience-notes.md` reutilizadas donde encajaban de forma
+natural sin fabricar nada nuevo: "el descubrimiento de la promesa" (por qué
+el copywriting no es escribir bonito) y "el lanzamiento desastre por
+escuchar al público" (el error más caro: escribir a partir de lo que el
+público dice que quiere, no de lo que compra). Un uso del término de marca
+"Datafonazo", contextualizado sin definirlo defensivamente, fuera del primer
+párrafo.
+
+### Lint, publicación y enlazado
+
+`lint-post.py` → `LINT OK` a la primera pasada (sin necesidad del intento de
+arreglo). Revisión manual adicional de la lista negra de frases prohibidas
+(el parser de `lint-post.py` no cubre el formato numerado de esa lista
+concreta) y de nombres de competidores: sin coincidencias. Publicado con
+`publish-to-astro.py`: build previo OK, `PUBLISHED_LIVE` en
+`/blog/que-es-el-copywriting/`, IndexNow 200. La URL en producción tardó
+~5 minutos en devolver 200 (dos comprobaciones a 404 antes de confirmar),
+más que los ~1-2 minutos habituales de Coolify; sin acción tomada, solo
+anotado por si se repite.
+
+Enlazado entrante (paso 6, solo posible porque `PUBLISHED_LIVE`): añadido un
+enlace contextual a `/blog/que-es-el-copywriting/` en cada uno de
+`como-escribir-emails-que-vendan`, `lead-magnet-que-es-y-como-crear-uno` y
+`funnel-de-conversion-etapas-que-importan` (ninguno lo enlazaba todavía),
+siempre fuera del primer párrafo y de encabezados, máximo un enlace por
+párrafo. `npm run build` OK en el repo web tras los tres cambios. Commit
+`seo: enlaces internos hacia que-es-el-copywriting` y push a `main`.
+
+### Resultado
+
+- `state/content-queue.json`: item `2026-07-13-que-es-el-copywriting` →
+  `written`, con `published_url` a la URL en vivo.
+- Dashboard regenerado (`scripts/render-html-report.py`).
+- Cola: queda 1 item `queued` (`2026-07-15-que-es-una-landing-page`) para el
+  próximo run.
+
+### Pendiente
+
+- Investigar la causa del run que no se disparó el 14/07 (cron/launchd) si
+  vuelve a fallar un martes o sábado; ver nota en `PROJECT_STATUS.md`.
+- Próximo content-writer (sábado): procesará `que-es-una-landing-page`.
+- Medir el fix de CTR del 3 de julio (ventana ya cumplida desde el 17 de
+  julio, pendiente de leer el próximo informe semanal).

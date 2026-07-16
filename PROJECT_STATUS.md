@@ -1,12 +1,25 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-15
+Última actualización: 2026-07-16
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run jueves 2026-07-16 (MODE: AUTO): publicado
+  `qué es el copywriting`.** Cogió el item `2026-07-13-que-es-el-copywriting`
+  (el que llevaba desde el 13/07 en `queued` porque el run programado del
+  martes 14/07 nunca se disparó, ver bitácora 2026-07-15). Post de 2.039
+  palabras con las fórmulas AIDA/PAS/BAB, dato propio (1.500+ correos de
+  venta) y las 7 variantes del `fan_out_cluster` cubiertas. Lint OK a la
+  primera. Publicado en `/blog/que-es-el-copywriting/` (confirmado HTTP 200
+  en producción, con retraso de ~5 min en el deploy de Coolify frente a los
+  ~1-2 min habituales). 3 enlaces internos entrantes añadidos desde
+  `como-escribir-emails-que-vendan`, `lead-magnet-que-es-y-como-crear-uno` y
+  `funnel-de-conversion-etapas-que-importan`. Cola: queda 1 item `queued`
+  (`2026-07-15-que-es-una-landing-page`) para el próximo run. Ver bitácora
+  2026-07-16.
 - **Keyword-researcher, run miércoles 2026-07-15, semilla `pagina de ventas
   que convierte`** (segunda de las 6 nuevas del 09): 18 keywords nuevas al
   banco, 1 item encolado (`2026-07-15-que-es-una-landing-page`,
@@ -55,13 +68,12 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - **Publicación automática DESBLOQUEADA** (2026-07-03): `context/publishing.json`
   corregido a `~/Projects/franlledo-web` y publicado
   `/blog/funnel-de-captacion/` (build OK, IndexNow 200, 200 en producción).
-- El blog tiene **33 artículos publicados** en producción. Último:
-  `/blog/funnel-de-lanzamiento/` (2026-07-09, 2.276 palabras, PUBLISHED_LIVE,
-  HTTP 200, con dato propio citable ya integrado).
-- Cola: **2 items `queued`** (`2026-07-13-que-es-el-copywriting`,
-  `2026-07-15-que-es-una-landing-page`) tras el run del keyword-researcher
-  del 15 de julio. `agentes-ia-sin-codigo-para-emprendedores` sigue en
-  `needs_review` (solapamiento con dos posts de IA). Quedan 4 de las 6
+- El blog tiene **34 artículos publicados** en producción. Último:
+  `/blog/que-es-el-copywriting/` (2026-07-16, 2.039 palabras, PUBLISHED_LIVE,
+  HTTP 200, con dato propio citable y 3 enlaces internos entrantes).
+- Cola: **1 item `queued`** (`2026-07-15-que-es-una-landing-page`) para el
+  próximo run de content-writer. `agentes-ia-sin-codigo-para-emprendedores`
+  sigue en `needs_review` (solapamiento con dos posts de IA). Quedan 4 de las 6
   semillas nuevas del 09 sin investigar (vender cursos online, prompts para
   negocio, monetizar con ia, automatizar ventas): el keyword-researcher las
   procesará una por run. Ver `state/content-queue.json`.
@@ -154,6 +166,14 @@ Zona horaria del equipo: `Europe/Madrid`.
   sábado 2026-07-11 (content-writer) y el del lunes 2026-07-13
   (keyword-researcher) confirman el fix en ambos lados: ejecutaron el
   workflow completo sin preguntar nada. Incidencia cerrada.
+- **Run programado del martes 2026-07-14 no se disparó (sin resolver, fuera
+  del alcance de este agente):** `2026-07-13-que-es-el-copywriting` quedó en
+  `queued` 3 días en vez de procesarse al día siguiente. No hay commit ni
+  entrada de log de un content-writer del 14/07. El run de hoy (2026-07-16)
+  procesó el item con normalidad, así que el efecto está mitigado, pero la
+  causa (¿cron/launchd no disparó, o disparó y falló silenciosamente antes de
+  hacer ningún commit?) no se ha investigado. Revisar la configuración de
+  `launchd`/cron si vuelve a pasar un martes o sábado.
 - **`context/publishing.json` (RESUELTO 2026-07-03):** `repo_path` corregido a
   `/Users/franlledo/Projects/franlledo-web` y `funnel-de-captacion` publicado.
   `context/` está gitignored: si se cambia de máquina o se mueve el repo web,
