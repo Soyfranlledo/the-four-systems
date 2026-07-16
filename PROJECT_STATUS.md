@@ -7,6 +7,18 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Plan de aceleración ejecutado (2026-07-16 noche, commit web `b280e89`):**
+  refresh de los 4 posts striking-distance (asuntos-de-email con 34 ejemplos
+  reales del export de MailerLite, monetizar como listicle de 7 formas,
+  marketing-funnel con etapas/vs-sales-funnel, vibe-coding pivotado a
+  práctico) + 9 enlaces internos nuevos. Revisión adversarial de 3 agentes
+  antes de publicar: 13 hallazgos corregidos (incluido un asunto que exponía
+  datos de un cliente). IndexNow 200 ×13 URLs. **OJO informe del lunes:**
+  asuntos-de-email y monetizar-newsletter salen de la medición de snippets
+  del 03-07; ventana nueva desde 16/07. La palanca pendiente es de Fran
+  (autoridad): enlace cazatarjetas→franlledo (hoy NO existe), YouTube/
+  Substack→blog, 5-10 enlaces editoriales. Análisis completo en
+  `reports/2026-07-16-plan-aceleracion.md` (local). Ver bitácora.
 - **Auditoría SEO del 15/07 implementada (2026-07-16, sesión con Fran,
   commit web `ec49ae3`):** seoTitle ≤47c con dato real en los **20 posts
   pendientes** (ya no queda ningún post con título SERP >60c; cierra el

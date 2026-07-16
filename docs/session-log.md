@@ -1006,3 +1006,44 @@ y las PAA; (3) monetizar-newsletter es top-5 ganable reestructurando como
 listicle; (4) 9 enlaces internos concretos propuestos, monetizar-newsletter
 y newsletter-ejemplos infra-enlazados. Nada ejecutado aún: pendiente de OK
 de Fran para los refreshes y enlaces internos.
+
+### Adenda 2026-07-16 (noche III): plan de aceleración EJECUTADO (parte sistema)
+
+Fran dio el OK ("ejecuta ya todo lo que tú puedes hacer"). Commit web `b280e89`.
+
+**Ejecutado:**
+1. **9 enlaces internos nuevos** hacia los posts striking-distance (monetizar
+   y newsletter-ejemplos estaban a -49%/-32% de la media de entrantes).
+2. **Refresh asuntos-de-email:** 34 ejemplos REALES sacados del conector
+   MailerLite (export de 100 campañas enviadas abr-jul 2026, open rates
+   28-34% a lista completa), organizados por los 3 formatos del post; H2
+   pregunta PAA; puente al lead magnet enlazando la landing
+   /asuntos-que-se-abren/. FAQPage nuevo (2 preguntas). seoTitle 42c.
+3. **Refresh monetizar-newsletter:** listicle de 7 formas con el caso
+   100.000 € como prueba de la forma 1; H2 "¿Cuánto dinero se puede ganar?";
+   keyword "monetizar" mantenida en title/seoTitle/description con la
+   variante "ganar dinero" (que es donde están las impresiones GSC).
+4. **marketing-funnel:** H2 "¿Cuáles son las etapas...?" (FAQ) + H2 vs sales
+   funnel + enlaces a funnel-de-captacion (huérfano, 1 entrante) y
+   que-es-un-lead.
+5. **vibe-coding:** pivote práctico con ejemplos propios verificables (el
+   pipeline SEO de este blog) + comparativa de 6 herramientas + reciprocidad
+   del clúster IA (claude-code, agentes-de-ia, ia-agentica).
+
+**Revisión adversarial previa a publicar (3 agentes, 13 hallazgos, todos
+corregidos):** contradicción 28-34% vs 35% (resuelta como media histórica vs
+ventana reciente), overclaim "cada lanzamiento me genera 10-12k" (devuelto al
+claim original), un asunto publicaba nombre+edad+profesión de un cliente
+(RETIRADO, N pasó de 35 a 34), promesa falsa "descarga al final de esta
+página" (ahora enlaza la landing), contradicción de etapas 3 vs 5 y de
+"vs sales funnel" con la FAQ (armonizadas), H2 convertidos a pregunta para no
+perder entradas FAQPage (marketing-funnel 7, vibe-coding 4), 3 tildes
+normalizadas en asuntos citados (revisar si Fran prefiere el literal).
+
+**Verificado:** build OK, FAQPage counts, títulos ≤60c, sitemap 58 URLs sin
+fechas, IndexNow 200 con las 13 URLs cambiadas.
+
+**Nota para el informe del lunes:** asuntos-de-email y monetizar-newsletter
+salen de la medición de snippets del 03-07 (contenido y snippet cambiados
+hoy); su nueva ventana empieza el 16/07. Pendiente de Fran (autoridad):
+enlace cazatarjetas→franlledo, YouTube/Substack, 5-10 enlaces editoriales.
