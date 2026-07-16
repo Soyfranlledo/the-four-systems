@@ -993,3 +993,16 @@ indexación solo de las 2 restantes:
 
 Cuota preservada saltando las 6 indexadas. Revisar ambas en ~1 semana.
 PROJECT_STATUS (sección Indexación) actualizado.
+
+### Adenda 2026-07-16 (noche II): plan de aceleración
+
+Fran preguntó cómo acelerar los resultados. Análisis multi-agente (autoridad
++ 4 SERPs live + enlazado interno) → `reports/2026-07-16-plan-aceleracion.md`.
+Hallazgos clave: (1) autoridad es el cuello de botella (~3 dominios de
+referencia editoriales reales; cazatarjetas.com NO enlaza a franlledo.com);
+(2) asuntos-de-email ya está en TOP 3 orgánico en vivo (el 6,2 de GSC es
+posición absoluta con AIO/vídeos delante) — el gap es la sección de ejemplos
+y las PAA; (3) monetizar-newsletter es top-5 ganable reestructurando como
+listicle; (4) 9 enlaces internos concretos propuestos, monetizar-newsletter
+y newsletter-ejemplos infra-enlazados. Nada ejecutado aún: pendiente de OK
+de Fran para los refreshes y enlaces internos.
