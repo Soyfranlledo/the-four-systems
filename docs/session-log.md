@@ -1047,3 +1047,71 @@ fechas, IndexNow 200 con las 13 URLs cambiadas.
 salen de la medición de snippets del 03-07 (contenido y snippet cambiados
 hoy); su nueva ventana empieza el 16/07. Pendiente de Fran (autoridad):
 enlace cazatarjetas→franlledo, YouTube/Substack, 5-10 enlaces editoriales.
+
+## 2026-07-20: keyword-researcher (lunes, MODE: AUTO) — semilla "vender cursos online", 0 items encolados
+
+Run programado (lunes 09:00), ejecutado end-to-end sin preguntar.
+
+### Selección de semilla
+
+Primera sin cubrir en `seed-keywords.txt` tras `pagina de ventas que
+convierte` (15/07): `vender cursos online` (tercera de las 4 semillas nuevas
+del lote del 09/07). No estaba en `seeds_researched`.
+
+### Fan-out y hallazgo: cluster dominado por plataformas
+
+`dataforseo_labs_google_keyword_ideas` con la frase completa repitió el
+problema ya visto el 13/07 y el 15/07: 50 variaciones devueltas, el 100% ruido
+de categoría total ajeno al sitio (curso de Excel, cursos SEPE, ciberseguridad,
+mecanografía, enfermería, DevOps). Descartadas en bloque, no se añadió
+ninguna al banco.
+
+`dataforseo_labs_google_related_keywords` (14 items) y
+`dataforseo_labs_google_keyword_suggestions` (dos llamadas: "vender cursos
+online" con 100 items, "vender un curso" con 30 items) sí devolvieron datos
+relevantes: 194 variaciones evaluadas en total. El hallazgo real: el cluster
+de "vender cursos online" está dominado por queries de plataforma/herramienta
+(Hotmart, Udemy, Teachable, Coursera, Domestika, Crehana, WordPress, Wix,
+WooCommerce, Moodle, Shopify, "mejores plataformas para...", "plataforma
+gratis para..."). Eso cae directamente en la exclusión de `site-config.md`
+("reviews comparativas tipo X vs Y vs Z", "tutoriales de configurar
+herramientas"). Se descartaron sin añadir al banco por ser ruido de categoría
+o comparativas de plataforma explícitamente fuera de alcance.
+
+Las queries de estrategia pura (sin nombre de plataforma, angulo de "cómo
+vender" en vez de "dónde vender") sí encajan en el alcance del blog, pero su
+volumen real es bajo: la cabecera 20-30/mo, el resto 10/mo. Ninguna alcanza
+el umbral P1 informacional (≥100/mo). El propio seed "vender cursos online"
+(90/mo, transactional) se bajó a priority 3 pese a ser la keyword de mayor
+volumen: su SERP relacionada está dominada por plataformas, así que
+posicionar ahí competiría con reviews de herramientas, no con contenido de
+estrategia, y no es el ángulo del blog.
+
+Verificado contra el sitemap en vivo (`franlledo.com/sitemap-0.xml`): ningún
+slug coincide literalmente, pero hay solape conceptual con
+`que-son-los-infoproductos` e `infoproductos-con-ia` (un curso es un tipo de
+infoproducto). Anotado en las entradas del banco, no se marcó `covered_by`
+porque no hay coincidencia de slug.
+
+### Resultado
+
+- 8 keywords nuevas añadidas a `state/keyword-bank.json` (0 duplicados
+  exactos contra las 258 existentes; 266 en banco): 4 en priority 2 (`como
+  vender cursos online`, `cómo vender cursos online`, `vender cursos online
+  es rentable`, `como crear un curso online y venderlo`) y 4 en priority 3
+  (el propio seed, `como vender mis cursos online`, `frases para vender
+  cursos online`, `estrategias para vender cursos online`).
+- **0 items encolados** en `state/content-queue.json`: no hay ningún
+  priority-1 este run (regla del propio agente: no forzar la cola cuando no
+  hay candidato que cumpla el umbral). Cola sigue con 1 item `queued`
+  (`2026-07-15-que-es-una-landing-page`, sin tocar por content-writer desde
+  hace 5 días; ver incidencia pendiente sobre el run del 14/07 no disparado,
+  aunque en este caso podría ser simplemente que no tocó martes/jueves/sábado
+  desde el 16/07).
+- CSV: `output/keywords/2026-07-20-vender-cursos-online.csv`.
+- `dataforseo_labs_bulk_keyword_difficulty` no devolvió KD para ninguna de
+  las 8 keywords candidatas (long-tail sin dato en la base de DataForSEO):
+  `kd: null` en todas las entradas nuevas del banco.
+
+Quedan 3 semillas nuevas del lote del 09/07 sin investigar: `prompts para
+negocio`, `monetizar con ia`, `automatizar ventas`.

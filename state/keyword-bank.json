@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "franlledo.com",
-  "last_updated": "2026-07-15",
+  "last_updated": "2026-07-20",
   "seeds_researched": [
     {
       "seed": "embudos de venta",
@@ -58,6 +58,10 @@
     {
       "seed": "pagina de ventas que convierte",
       "last_researched": "2026-07-15"
+    },
+    {
+      "seed": "vender cursos online",
+      "last_researched": "2026-07-20"
     }
   ],
   "keywords": [
@@ -3643,6 +3647,118 @@
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Cabecera generica de altisimo volumen dominada por plataformas con autoridad inalcanzable a corto plazo (HubSpot, Unbounce, Semrush, Landingi). Superada conceptualmente por la cola larga 'que es una landing page', que capta la misma intencion con mucha menos competencia real. Aparcada, no encolar como pieza independiente."
+    },
+    {
+      "keyword": "vender cursos online",
+      "seed": "vender cursos online",
+      "intent": "transactional",
+      "volume": 90,
+      "kd": null,
+      "cpc": 9.38,
+      "priority": 3,
+      "fan_out_parent": "vender cursos online",
+      "covered_by": null,
+      "discovered": "2026-07-20",
+      "source": "dataforseo_labs_google_related_keywords",
+      "notes": "Cabecera del seed, pero su cluster relacionado (related_keywords) esta dominado por plataformas (Hotmart, Udemy, Teachable, 'plataformas para vender cursos online'): la SERP real compite con reviews de herramientas, fuera del angulo del blog (nunca comparativas de plataformas). Tendencia -64% interanual. Conceptualmente solapa con que-son-los-infoproductos e infoproductos-con-ia (cursos = tipo de infoproducto) aunque ningun slug coincide literalmente."
+    },
+    {
+      "keyword": "como vender cursos online",
+      "seed": "vender cursos online",
+      "intent": "commercial",
+      "volume": 30,
+      "kd": null,
+      "cpc": 7.06,
+      "priority": 2,
+      "fan_out_parent": "vender cursos online",
+      "covered_by": null,
+      "discovered": "2026-07-20",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Query de estrategia (no de plataforma), en el angulo correcto del blog. Volumen por debajo del umbral P1 (30<100). Variante acentuada 'como vender cursos online' con igual volumen tratada como entrada separada."
+    },
+    {
+      "keyword": "cómo vender cursos online",
+      "seed": "vender cursos online",
+      "intent": "informational",
+      "volume": 30,
+      "kd": null,
+      "cpc": 7.06,
+      "priority": 2,
+      "fan_out_parent": "vender cursos online",
+      "covered_by": null,
+      "discovered": "2026-07-20",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Variante acentuada de 'como vender cursos online' (misma intencion real, DataForSEO la trackea aparte con intent informational en vez de commercial). Volumen por debajo del umbral P1."
+    },
+    {
+      "keyword": "vender cursos online es rentable",
+      "seed": "vender cursos online",
+      "intent": "informational",
+      "volume": 20,
+      "kd": null,
+      "cpc": 2.83,
+      "priority": 2,
+      "fan_out_parent": "vender cursos online",
+      "covered_by": null,
+      "discovered": "2026-07-20",
+      "source": "dataforseo_labs_google_related_keywords",
+      "notes": "Angulo de honestidad ('es rentable de verdad?') que encaja con el posicionamiento de Fran (numeros reales sobre humo). Volumen bajo, pero diferenciacion clara si se escribe."
+    },
+    {
+      "keyword": "como crear un curso online y venderlo",
+      "seed": "vender cursos online",
+      "intent": "informational",
+      "volume": 20,
+      "kd": null,
+      "cpc": 32.36,
+      "priority": 2,
+      "fan_out_parent": "vender cursos online",
+      "covered_by": null,
+      "discovered": "2026-07-20",
+      "source": "dataforseo_labs_google_related_keywords",
+      "notes": "Combina creacion + venta, CPC alto (32.36) indica valor comercial percibido pese al volumen bajo. Angulo diferenciado posible con la trayectoria propia de Fran. Volumen por debajo del umbral P1."
+    },
+    {
+      "keyword": "como vender mis cursos online",
+      "seed": "vender cursos online",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": 6.68,
+      "priority": 3,
+      "fan_out_parent": "vender cursos online",
+      "covered_by": null,
+      "discovered": "2026-07-20",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Redundante con 'como vender cursos online', volumen minimo (10/mes)."
+    },
+    {
+      "keyword": "frases para vender cursos online",
+      "seed": "vender cursos online",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "vender cursos online",
+      "covered_by": null,
+      "discovered": "2026-07-20",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Angulo de copywriting, sinergia con que-es-el-copywriting (enlace interno natural si se escribe), pero volumen demasiado bajo (10/mes) para priorizar ahora."
+    },
+    {
+      "keyword": "estrategias para vender cursos online",
+      "seed": "vender cursos online",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "vender cursos online",
+      "covered_by": null,
+      "discovered": "2026-07-20",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Volumen minimo (10/mes), redundante conceptualmente con 'como vender cursos online'."
     }
   ]
 }

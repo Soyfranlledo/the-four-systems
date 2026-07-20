@@ -1,12 +1,26 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-16 (tarde: auditoría del 15/07 implementada)
+Última actualización: 2026-07-20 (keyword-researcher: semilla `vender cursos
+online` investigada, 0 items encolados)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Keyword-researcher, run lunes 2026-07-20, semilla `vender cursos online`**
+  (tercera de las 4 nuevas del 09): 194 variaciones evaluadas (50 de
+  `keyword_ideas` descartadas por ruido de categoría total: Excel, SEPE,
+  ciberseguridad, sin relación con el sitio), 8 keywords nuevas al banco (4 en
+  P2, 4 en P3), **0 items encolados**. Hallazgo: el cluster real de "vender
+  cursos online" está dominado por comparativas de plataformas (Hotmart,
+  Udemy, Teachable), fuera de alcance por `site-config.md` (nunca comparativas
+  de herramientas). Las queries de estrategia pura (sin marca de plataforma)
+  tienen volumen real de 10-30/mes, por debajo del umbral P1 informacional
+  (100/mes). El propio seed (90/mes) baja a P3 por el desajuste de intención
+  SERP, no por volumen. Quedan 3 semillas nuevas sin investigar (`prompts para
+  negocio`, `monetizar con ia`, `automatizar ventas`), una por run. Ver
+  bitácora 2026-07-20.
 - **Plan de aceleración ejecutado (2026-07-16 noche, commit web `b280e89`):**
   refresh de los 4 posts striking-distance (asuntos-de-email con 34 ejemplos
   reales del export de MailerLite, monetizar como listicle de 7 formas,
@@ -245,9 +259,9 @@ Zona horaria del equipo: `Europe/Madrid`.
    retirar, fusionar o replantear (ver `reports/2026-07-02-content-writer.md`).
 6. ~~Confirmar el lado keyword-researcher de la autonomía~~ — **cerrado
    2026-07-13**, ver bitácora.
-7. Keyword researcher: procesar las **4 semillas nuevas restantes** del lote
-   del 09 (`vender cursos online`, `prompts para negocio`, `monetizar con
-   ia`, `automatizar ventas`), una por run.
+7. Keyword researcher: procesar las **3 semillas nuevas restantes** del lote
+   del 09 (`prompts para negocio`, `monetizar con ia`, `automatizar ventas`),
+   una por run.
 7b. **Content-writer: revisar por qué no corrió el martes 2026-07-14** (no
    hay commit en el historial). La cola tiene 2 items `queued` esperando:
    `2026-07-13-que-es-el-copywriting` y
@@ -263,6 +277,10 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-07-20: keyword-researcher run — semilla `vender cursos online`, 8
+  keywords nuevas (4 P2, 4 P3), 0 items encolados (cluster dominado por
+  comparativas de plataformas, fuera de alcance; queries de estrategia con
+  volumen bajo el umbral P1).
 - 2026-07-15: keyword-researcher run — semilla `pagina de ventas que
   convierte`, 18 keywords nuevas, 1 item encolado (`que-es-una-landing-page`).
 - 2026-07-13: keyword-researcher run — semilla `copywriting para vender`, 21
