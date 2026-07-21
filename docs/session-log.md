@@ -1115,3 +1115,76 @@ porque no hay coincidencia de slug.
 
 Quedan 3 semillas nuevas del lote del 09/07 sin investigar: `prompts para
 negocio`, `monetizar con ia`, `automatizar ventas`.
+
+## 2026-07-21: content-writer (martes, MODE: AUTO) — "qué es una landing page" publicado, cola vaciada
+
+Run programado (martes 10:00), ejecutado end-to-end sin preguntar.
+
+### Selección e item
+
+Único item `queued` en la cola: `2026-07-15-que-es-una-landing-page`
+(primary keyword "qué es una landing page", vol 1000, kd 6, en espera desde
+el 15/07). Marcado `in_progress` al inicio.
+
+### Ángulo y research
+
+Las notas de cola exigían un ángulo diferenciador (regla P1 informacional +
+regla GEO Villanueva): no explicar landing page de forma genérica de manual
+(así lo hace el SERP entero: HubSpot, Semrush, Wix, GoDaddy, ESIC, Wikipedia,
+todo definicional sin opinión ni datos propios, confirmado con
+`serp_organic_live_advanced` en vivo), sino distinguirla de una página de
+ventas con datos propios de `experience-notes.md`.
+
+Research: Semrush define explícitamente la página de ventas como "landing
+page de formato largo" para acciones de mayor compromiso, lo que dio el
+armazón conceptual exacto (toda página de ventas es una landing page, no al
+revés). Unbounce aportó el criterio de cuándo una página debe ser larga o
+corta (precio, complejidad, nivel de conciencia del visitante) y el
+benchmark de conversión (6,6% media, 41.000 páginas, canal email al 19,3%).
+HubSpot ES aportó las cifras de fricción (formulario: -10/-15% por campo
+extra; landing dedicada vs home: +55%). Nielsen Norman Group (eyetracking
+original, no agregador) aportó el 57% de tiempo de visualización por encima
+del scroll. Se descartaron ~18 resultados de blogs agregadores/content-farm
+(landerlab, growthstackblog, seosherpa, sellerscommerce, apexure, etc.) por
+la regla de `brand-guidelines.md` contra content farms; también Wikipedia
+(cobertura ya cubierta) y un fetch de CXL que devolvió HTTP 403.
+
+Dato propio citable (GEO): los 2 tipos de landing que usa Fran en su propio
+funnel, ya documentados en posts publicados (`funnel-de-captacion`:
+squeeze page, ~2.000 suscriptores, 35% open rate; `funnel-de-lanzamiento`:
+página de pago simple, lanzamientos de 10.000 a 12.000€ con la persuasión en
+la secuencia de 5-7 emails, no en la página). Síntesis original: no hace
+falta una página de ventas larga si la secuencia de emails ya hizo la
+persuasión antes de que el visitante llegue a la landing.
+
+### Resultado
+
+- 1.643 palabras (objetivo 1.800, -8,7%, dentro de ±15%).
+- Lint OK a la primera (`lint-post.py`): 0 em dashes, 12 enlaces con anchor
+  ≤3 palabras, capsule ratio 62,5% (5/8 H2 en pregunta), Three Kings OK.
+- 8/8 variantes del `fan_out_cluster` cubiertas (todas las variantes
+  gramaticales de "qué es X landing page" resueltas en una sola sección,
+  igual que el precedente de `que-es-el-copywriting`), 0 dropped.
+- 5 fuentes externas citadas (Semrush, HubSpot ES, Unbounce ×2, Nielsen
+  Norman Group), 4 enlaces internos salientes (`funnel-de-captacion`,
+  `funnel-de-lanzamiento`, `lead-magnet-que-es-y-como-crear-uno`,
+  `funnel-de-conversion-etapas-que-importan`).
+- Publicado en `/blog/que-es-una-landing-page/` vía `publish-to-astro.py`
+  (`PUBLISHED_LIVE`, build pre-publish OK, IndexNow 200, confirmado HTTP 200
+  en producción, commit web `8f632cb`).
+- **3 enlaces internos entrantes** añadidos convirtiendo frases ya existentes
+  en `funnel-de-captacion` ("landing normal" → "landing page normal"),
+  `marketing-funnel-para-solopreneurs` ("landings" → "landing pages") y
+  `sales-funnel-para-solopreneurs` ("segunda landing" → "segunda landing
+  page"). Build verificado OK tras el cambio, sitemap sin URLs con fecha,
+  commit y push `72ec9a9`.
+- Cola: **0 items `queued`** tras marcar el item `written`. El
+  keyword-researcher de mañana miércoles debe dejar al menos 1 item
+  encolado o el próximo run de content-writer saldrá en `NO_QUEUED_ITEMS`.
+- Incidencia `7b` (run del 14/07 no disparado) cerrada: los dos items que
+  arrastraba (`que-es-el-copywriting`, `que-es-una-landing-page`) están
+  ambos `written` y publicados; el efecto está mitigado aunque la causa
+  raíz nunca se investigó.
+
+Quedan 3 semillas nuevas del lote del 09/07 sin investigar: `prompts para
+negocio`, `monetizar con ia`, `automatizar ventas`.

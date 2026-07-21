@@ -1,13 +1,28 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-20 (keyword-researcher: semilla `vender cursos
-online` investigada, 0 items encolados)
+Última actualización: 2026-07-21 (content-writer: `qué es una landing page`
+publicado, cola vacía)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run martes 2026-07-21 (MODE: AUTO): publicado `qué es
+  una landing page`.** Cogió el único item `queued`
+  (`2026-07-15-que-es-una-landing-page`, en espera desde el 15/07). Ángulo
+  diferenciador obligatorio por notas de cola: landing page vs página de
+  ventas (toda página de ventas es una landing page de formato largo, pero no
+  al revés), con dato propio citable de los 2 tipos que Fran usa en su propio
+  funnel (squeeze page en captación con los ~2.000 suscriptores/35% open
+  rate documentados, página de pago simple en lanzamiento con los
+  10.000-12.000 € ya documentados en `funnel-de-lanzamiento`). 1.643 palabras,
+  8/8 variantes del fan-out cubiertas, lint OK a la primera. Publicado en
+  `/blog/que-es-una-landing-page/` (HTTP 200 confirmado). 3 enlaces internos
+  entrantes añadidos desde `funnel-de-captacion`, `marketing-funnel-para-solopreneurs`
+  y `sales-funnel-para-solopreneurs` (build OK, push `72ec9a9`). Cola: **0
+  items `queued`**, keyword-researcher deberá resembrarla. Ver bitácora
+  2026-07-21.
 - **Keyword-researcher, run lunes 2026-07-20, semilla `vender cursos online`**
   (tercera de las 4 nuevas del 09): 194 variaciones evaluadas (50 de
   `keyword_ideas` descartadas por ruido de categoría total: Excel, SEPE,
@@ -106,15 +121,16 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - **Publicación automática DESBLOQUEADA** (2026-07-03): `context/publishing.json`
   corregido a `~/Projects/franlledo-web` y publicado
   `/blog/funnel-de-captacion/` (build OK, IndexNow 200, 200 en producción).
-- El blog tiene **34 artículos publicados** en producción. Último:
-  `/blog/que-es-el-copywriting/` (2026-07-16, 2.039 palabras, PUBLISHED_LIVE,
+- El blog tiene **35 artículos publicados** en producción. Último:
+  `/blog/que-es-una-landing-page/` (2026-07-21, 1.643 palabras, PUBLISHED_LIVE,
   HTTP 200, con dato propio citable y 3 enlaces internos entrantes).
-- Cola: **1 item `queued`** (`2026-07-15-que-es-una-landing-page`) para el
-  próximo run de content-writer. `agentes-ia-sin-codigo-para-emprendedores`
-  sigue en `needs_review` (solapamiento con dos posts de IA). Quedan 4 de las 6
-  semillas nuevas del 09 sin investigar (vender cursos online, prompts para
-  negocio, monetizar con ia, automatizar ventas): el keyword-researcher las
-  procesará una por run. Ver `state/content-queue.json`.
+- Cola: **0 items `queued`**. El content-writer del 21/07 vació la cola
+  (era el último item pendiente desde el 15/07). `agentes-ia-sin-codigo-para-emprendedores`
+  sigue en `needs_review` (solapamiento con dos posts de IA). Quedan 3 de las 6
+  semillas nuevas del 09 sin investigar (prompts para negocio, monetizar con
+  ia, automatizar ventas): el keyword-researcher las procesará una por run.
+  **La cola necesita resiembra** antes del próximo run de content-writer (martes,
+  jueves o sábado) o volverá a salir `NO_QUEUED_ITEMS`. Ver `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
@@ -262,10 +278,16 @@ Zona horaria del equipo: `Europe/Madrid`.
 7. Keyword researcher: procesar las **3 semillas nuevas restantes** del lote
    del 09 (`prompts para negocio`, `monetizar con ia`, `automatizar ventas`),
    una por run.
-7b. **Content-writer: revisar por qué no corrió el martes 2026-07-14** (no
-   hay commit en el historial). La cola tiene 2 items `queued` esperando:
-   `2026-07-13-que-es-el-copywriting` y
-   `2026-07-15-que-es-una-landing-page`.
+7b. ~~Content-writer: revisar por qué no corrió el martes 2026-07-14~~ —
+   **cerrado 2026-07-21**: ambos items que quedaron pendientes de esa
+   incidencia (`que-es-el-copywriting`, `que-es-una-landing-page`) están
+   `written` y publicados. La causa raíz del run del 14/07 nunca se
+   investigó, pero el efecto está totalmente mitigado y la cola no arrastra
+   nada de esa incidencia.
+7c. **Cola de content-writer vacía (nuevo, 2026-07-21):** resembrar antes del
+   próximo run programado (martes/jueves/sábado) o saldrá `NO_QUEUED_ITEMS`.
+   El keyword-researcher de mañana miércoles debería priorizar dejar al
+   menos 1 item `queued`.
 8. Verificar en los próximos posts que el **dato propio citable (GEO)** se está
    integrando de forma efectiva y extraíble.
 8. **Medir CTR de los snippets del 3 de julio a partir del ~17 de julio.**
@@ -277,6 +299,8 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-07-21: content-writer run — `qué es una landing page` publicado, cola
+  vaciada (0 `queued`).
 - 2026-07-20: keyword-researcher run — semilla `vender cursos online`, 8
   keywords nuevas (4 P2, 4 P3), 0 items encolados (cluster dominado por
   comparativas de plataformas, fuera de alcance; queries de estrategia con
@@ -301,6 +325,8 @@ Repo SEO:
 
 Repo web:
 
+- `72ec9a9` (2026-07-21): seo: enlaces internos hacia que-es-una-landing-page.
+- `8f632cb` (2026-07-21): post: que-es-una-landing-page.
 - `88c0ebf` (2026-07-03): auditoría SEO — 12 seoTitles/metas, lastmod en
   sitemap, absolute_redirect off, favicons, .htaccess eliminado.
 - (2026-07-03): post: funnel-de-captacion.

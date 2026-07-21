@@ -855,10 +855,10 @@
     },
     {
       "id": "2026-07-15-que-es-una-landing-page",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-07-15T09:00:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-07-21T08:10:45Z",
+      "post_url": "https://franlledo.com/blog/que-es-una-landing-page/",
       "primary_keyword": "qu\u00e9 es una landing page",
       "intent": "informational",
       "volume": 1000,
