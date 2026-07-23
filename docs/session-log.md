@@ -1188,3 +1188,42 @@ persuasión antes de que el visitante llegue a la landing.
 
 Quedan 3 semillas nuevas del lote del 09/07 sin investigar: `prompts para
 negocio`, `monetizar con ia`, `automatizar ventas`.
+
+## 2026-07-23: content-writer (jueves, MODE: AUTO) — no-op, cola vacía sin resembrar
+
+Run programado (jueves 10:00), ejecutado end-to-end sin preguntar.
+
+### Selección
+
+`python3 scripts/pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2). De los
+25 items de `state/content-queue.json`: 24 `written`, 1 `needs_review`
+(`agentes-ia-sin-codigo-para-emprendedores`, sin decisión desde el 2 de
+julio). Ningún item `queued`. Motivo exacto por el que no hay post nuevo:
+**no había ningún item elegible en la cola.**
+
+### Causa raíz: la resiembra esperada no ocurrió
+
+El hito 7c de `PROJECT_STATUS.md` (abierto el 21/07) pedía que el
+keyword-researcher del miércoles 22/07 dejara al menos 1 item `queued`. No
+ocurrió: no hay commit de ese día en `git log` ni entrada en
+`state/agent-log.json` para un keyword-researcher del 22/07 (el último
+registro es el content-writer del 21/07). Mismo patrón exacto que la
+incidencia del martes 2026-07-14 (run programado que nunca dejó rastro),
+salvo que esta vez el efecto sí es visible aguas abajo: la cola llegó vacía
+al content-writer de hoy. Con dos ocurrencias del mismo síntoma en semanas
+distintas (un martes de content-writer, un miércoles de keyword-researcher),
+la hipótesis de un fallo puntual pierde fuerza frente a algo sistémico en el
+disparador de cron/launchd. Documentado como incidencia nueva en
+`PROJECT_STATUS.md`; la investigación de la causa (revisar configuración de
+`launchd`/cron) queda fuera del alcance de este agente.
+
+### Resultado
+
+- Sin cambios en `output/posts/`, `state/content-queue.json` ni el repo web.
+- `PROJECT_STATUS.md` actualizado: nuevo bullet de resumen, incidencia nueva
+  (segunda ocurrencia del patrón "run que no se dispara"), hito 7c marcado
+  como agravado con prioridad alta para el próximo keyword-researcher que
+  corra antes del sábado 25/07 10:00.
+- Próxima acción: el próximo keyword-researcher programado (o uno disparado
+  a mano si el cron sigue fallando) debe dejar al menos 1 item `queued` antes
+  del sábado, o el content-writer del sábado volverá a salir en no-op.

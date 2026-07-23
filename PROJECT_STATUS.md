@@ -1,13 +1,22 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-21 (content-writer: `qué es una landing page`
-publicado, cola vacía)
+Última actualización: 2026-07-23 (content-writer: no-op, cola vacía sin
+resembrar)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run jueves 2026-07-23 (MODE: AUTO): no-op, cola sin
+  items `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  De los 25 items de `state/content-queue.json`, 24 están `written` y 1
+  (`agentes-ia-sin-codigo-para-emprendedores`) sigue en `needs_review`; ninguno
+  `queued`. La resiembra que el hito 7c pedía para el keyword-researcher del
+  miércoles 22/07 no ocurrió: no hay commit ni entrada en
+  `state/agent-log.json` de ese run, mismo patrón que la incidencia del
+  martes 14/07 (nunca investigada). Sin cambios en `output/` ni en el repo
+  web. Ver bitácora 2026-07-23.
 - **Content-writer, run martes 2026-07-21 (MODE: AUTO): publicado `qué es
   una landing page`.** Cogió el único item `queued`
   (`2026-07-15-que-es-una-landing-page`, en espera desde el 15/07). Ángulo
@@ -237,6 +246,15 @@ Zona horaria del equipo: `Europe/Madrid`.
   causa (¿cron/launchd no disparó, o disparó y falló silenciosamente antes de
   hacer ningún commit?) no se ha investigado. Revisar la configuración de
   `launchd`/cron si vuelve a pasar un martes o sábado.
+- **Segunda ocurrencia del mismo patrón: keyword-researcher del miércoles
+  2026-07-22 no se disparó (nuevo, sin resolver):** igual que el 14/07 pero en
+  el lado keyword-researcher. No hay commit ni entrada en
+  `state/agent-log.json` para esa fecha; el último run registrado es
+  content-writer del 21/07. Efecto esta vez SÍ es visible: la cola llegó
+  vacía al content-writer del 23/07 (no-op) porque nadie la resembró. Dos
+  incidencias del mismo tipo (un martes, un miércoles) apuntan a algo
+  sistémico en el disparador de cron/launchd, no a un fallo puntual. Revisar
+  la configuración si vuelve a pasar una tercera vez.
 - **`context/publishing.json` (RESUELTO 2026-07-03):** `repo_path` corregido a
   `/Users/franlledo/Projects/franlledo-web` y `funnel-de-captacion` publicado.
   `context/` está gitignored: si se cambia de máquina o se mueve el repo web,
@@ -284,10 +302,12 @@ Zona horaria del equipo: `Europe/Madrid`.
    `written` y publicados. La causa raíz del run del 14/07 nunca se
    investigó, pero el efecto está totalmente mitigado y la cola no arrastra
    nada de esa incidencia.
-7c. **Cola de content-writer vacía (nuevo, 2026-07-21):** resembrar antes del
-   próximo run programado (martes/jueves/sábado) o saldrá `NO_QUEUED_ITEMS`.
-   El keyword-researcher de mañana miércoles debería priorizar dejar al
-   menos 1 item `queued`.
+7c. **Cola de content-writer vacía (2026-07-21, AGRAVADO 2026-07-23):** el
+   run del content-writer de hoy jueves salió `NO_QUEUED_ITEMS` porque el
+   keyword-researcher del miércoles 22/07 no se disparó (ver incidencia
+   arriba). Prioridad alta para el próximo keyword-researcher que sí corra:
+   dejar al menos 1 item `queued` antes del sábado 25/07 10:00 o el
+   content-writer volverá a salir en no-op.
 8. Verificar en los próximos posts que el **dato propio citable (GEO)** se está
    integrando de forma efectiva y extraíble.
 8. **Medir CTR de los snippets del 3 de julio a partir del ~17 de julio.**
