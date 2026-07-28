@@ -43,6 +43,7 @@ In the run report, always include:
 - Fan-out variations fetched: <N_total>
 - Dropped as duplicates of existing bank: <N_dup>
 - New keywords added to bank: <N_new>
+- P1 candidates demoted to P2 by SERP authority gate (Step 5b): <N_wall>
 - Queue items skipped (already queued/written): <N_qskip>
 - Queue items added: <N_added>
 ```
@@ -126,6 +127,62 @@ generic informational.
 
 For each kept keyword, check whether your-site.com already targets it. The simplest check: WebFetch `https://www.your-site.com/sitemap.xml` (cache the result for the run), then for each keyword see if any URL slug obviously matches. If yes, set `covered_by` to that URL. If `covered_by` is non-null, drop priority to 3 (do not queue, but track in bank).
 
+### Step 5b: SERP authority gate (winnability filter)
+
+Runs ONLY on keywords still scored **priority 1** after Steps 4–5. Its job:
+never queue content for SERPs your domain cannot realistically crack, no matter
+how good the post is. Ranking on page 1 is a function of your **domain authority
+relative to the incumbents**, not just content quality. Impressions on page 2–3
+do not convert to clicks (validated 2026-07-28: +47% impressions, clicks flat,
+because most new rankings landed on the page-2 shelf of rank-500+ SERPs).
+
+**Once per run**, fetch your own domain's backlink rank as the baseline:
+
+```
+mcp__dfs-mcp__backlinks_bulk_ranks(targets=["<your-site.com>"])  → SITE_RANK  (0–1000 scale)
+```
+
+**For each priority-1 candidate:**
+
+1. `mcp__dfs-mcp__serp_organic_live_advanced(keyword=<kw>, language_code=<from site-config>, location_name=<from site-config>, depth=10)`. For franlledo.com that is `language_code="es"`, `location_name="Spain"`.
+2. Collect the domains of the `type:"organic"` results in the top 10, **in SERP order**. **Exclude non-competing mega-surfaces** you can never displace and that are not your competitors: `youtube.com`, `*.wikipedia.org`, `reddit.com`, `*.google.com`, `amazon.*`, `facebook.com`. If those + an AI Overview occupy most of the SERP, note it as a "no-click SERP".
+3. `mcp__dfs-mcp__backlinks_bulk_ranks(targets=[...those competitor domains...])`.
+4. Compute the gate:
+
+```python
+import statistics
+# ranks: list of (serp_position, rank) for the real organic competitors, in SERP order
+top5 = [r for _, r in ranks[:5]]
+serp_median_top5 = statistics.median(top5) if top5 else None
+serp_min_rank    = min((r for _, r in ranks), default=None)
+has_weak_target  = any(r <= SITE_RANK for _, r in ranks[:5])   # a competitor you can plausibly displace
+wall = (serp_median_top5 is not None
+        and serp_median_top5 > SITE_RANK + 200
+        and not has_weak_target)
+```
+
+**Decision:**
+
+- `wall == True` → **demote to priority 2** (stays in the bank, NOT queued). In
+  its bank entry `notes`, record: `SERP wall: median top-5 rank <X> vs site
+  <SITE_RANK>, no displaceable target`. If the keyword has a strong first-party
+  / original-data angle, append ` — GEO-citation candidate` (it may still earn
+  LLM citations without the click; revisit when SITE_RANK grows). Do NOT queue.
+- otherwise → **keep priority 1** and proceed to the queue.
+
+On every keyword you ran this check for, record `serp_median_top5`,
+`serp_min_rank`, and `serp_checked: true` in its bank entry.
+
+**Cost control:** only P1 survivors of Steps 4–5 get this check (typically ≤5
+per run). NEVER run it on the full fan-out.
+
+**Calibration note (2026-07-28):** the `SITE_RANK + 200` margin is the current
+heuristic. Validated against live SERPs at SITE_RANK=227: "marketing funnel"
+(median top-5 ≈ 615) and "qué es una landing page" (≈ 480) are walls; "asuntos
+de email" was winnable and the site already ranks #5 there (its one weak
+target, rank 139, is displaceable). Widen or narrow the +200 margin as
+authority grows. Do not hardcode 227 — always read SITE_RANK live.
+
 ### Step 6: Update keyword-bank.json
 
 Append every researched keyword (any priority, including covered ones). Schema per keyword:
@@ -142,9 +199,16 @@ Append every researched keyword (any priority, including covered ones). Schema p
   "fan_out_parent": "content decay detection",
   "covered_by": null,
   "discovered": "YYYY-MM-DD",
-  "source": "ai_optimization_chat_gpt_scraper"
+  "source": "ai_optimization_chat_gpt_scraper",
+  "serp_checked": false,
+  "serp_median_top5": null,
+  "serp_min_rank": null
 }
 ```
+
+`serp_checked`/`serp_median_top5`/`serp_min_rank` are populated only for the
+priority-1 candidates that went through the Step 5b SERP authority gate; leave
+them at the defaults (`false`/`null`) for everything else.
 
 Also update top-level `last_updated` to today, and append the seed to a `seeds_researched` array with `{ "seed": "...", "last_researched": "YYYY-MM-DD" }` (or update existing entry's date).
 
@@ -206,8 +270,10 @@ Write a markdown report (printed to stdout, the coordinator captures it):
 
 ## Summary
 - Seed: <seed>
+- Site authority (SITE_RANK this run): <N>
 - Fan-out variations evaluated: <N>
 - Added to bank: <N>
+- P1 demoted by SERP authority gate: <N> (list the keywords + their median top-5 rank)
 - Queued for content writer: <N>
 - CSV: output/keywords/<file>.csv
 

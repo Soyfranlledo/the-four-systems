@@ -1,13 +1,31 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-28 (diagnóstico de los emails GSC del 18/07:
-errores de indexación transitorios de deploy, ya resueltos — ver bitácora)
+Última actualización: 2026-07-28 (análisis de autoridad competitiva + gate de
+winnability en keyword-researcher; antes ese día: diagnóstico emails GSC — ver
+bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Análisis de rendimiento + autoridad competitiva (2026-07-28): el cuello de
+  botella es AUTORIDAD, no contenido. Implementado un gate de winnability en el
+  keyword-researcher.** GSC 28d (28 jun–25 jul vs previo): impresiones **+47%**
+  (2.327→3.430) pero **clics planos** (28, y ~16 son de la home/marca) y posición
+  media 16,1→18,1 — el sitio gana visibilidad y se atasca en página 2-3. Causa
+  medida con DataForSEO: rank de franlledo.com **227**, la mitad/un tercio del
+  típico competidor de página 1 (400-700). **cazatarjetas.com es MÁS DÉBIL (162)**,
+  así que el enlace cazatarjetas→franlledo es menor (hacerlo y olvidarlo, no era
+  la palanca). De 5 SERPs medidas, la única ganable es **asuntos de email** (ya
+  #5 orgánico, con rival débil desplazable de rank 139); marketing funnel
+  (mediana top-5 ≈615), landing page (≈480), newsletter ejemplos (≈480) y vibe
+  coding son muros de marcas. **Acción implementada:** `Step 5b` en
+  `prompts/keyword-researcher.md` — antes de encolar, mide la mediana de
+  autoridad del top-5 orgánico contra el SITE_RANK vivo y degrada a P2 las
+  SERPs-muro (regla: `mediana top-5 > SITE_RANK+200 y sin rival desplazable`),
+  con válvula de escape para candidatas GEO-citables. Ver bitácora 2026-07-28
+  (tarde).
 - **Emails GSC del 18/07 ("Error de redirección" + "No se ha encontrado (404)"
   en un sitemap) diagnosticados el 2026-07-28: transitorios de la ventana de
   deploy del 16/07, ya resueltos.** Verificado en producción (sitemap 59/59 a
@@ -163,7 +181,28 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Rendimiento observado
 
-Última lectura del informe semanal automático: semana 13-19 de junio de 2026.
+**Lectura fresca 28d (GSC, 2026-07-28) — 28 jun–25 jul vs 31 may–27 jun:**
+
+| Métrica | Actual 28d | Previo 28d | Δ |
+| --- | ---: | ---: | --- |
+| Impresiones | 3.430 | 2.327 | **+47%** |
+| Clics | 28 | 28 | 0% |
+| CTR | 0,82% | 1,2% | 🔻 |
+| Posición media | 18,1 | 16,1 | 🔻 (peor) |
+
+Diagnóstico: la visibilidad crece con fuerza pero **los clics están clavados** y
+~16 de los 28 son de la home (marca). Los clics de contenido llevan planos
+porque casi toda la impresión nueva cae en posición 14-30 (página 2-3). No es
+problema de contenido sino de **autoridad relativa a la SERP** (ver bullet de
+resumen y bitácora 2026-07-28 tarde). La posición media empeora porque el sitio
+rankea para muchas más queries nuevas en pos 20-50, que tiran la media abajo
+(huella creciendo, no caída). Página con más recorrido:
+`/blog/newsletter-ejemplos-que-venden/` (0→3 clics, 62→405 impr, pos 23→18,5).
+La estrella `/blog/como-escribir-asuntos-de-email/` sigue con **1.271 impr pero
+solo 2 clics** en pos 14,6 (en el término cabecera exacto está #5 orgánico; la
+media la bajan las variaciones más duras).
+
+Histórico semanal (informe automático, semana 13-19 jun 2026):
 
 | Métrica | 13-19 jun | 6-12 jun | 30 may-5 jun |
 | --- | ---: | ---: | ---: |
@@ -172,9 +211,6 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 | CTR | 1,30% | 2,00% | 6,49% |
 | Posición media | 17,1 | — | — |
 | Sesiones orgánicas (GA4) | 15 | 8 | 8 |
-
-Las impresiones crecen con claridad (×11 en tres semanas). El post estrella
-es `/blog/como-escribir-asuntos-de-email/` (337 imp, posición 13, CTR 0,3%).
 
 GEO: ChatGPT reconoce "Fran Lledó" y "Cazatarjetas" en consultas directas,
 pero aún no cita franlledo.com en queries de nicho.

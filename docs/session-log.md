@@ -1306,3 +1306,98 @@ arreglo estructural (strip de fecha en `publish-to-astro.py` + 301 limpios en
 Nada accionable. Si GSC reincide con "error de redirección"/"404" justo
 después de un deploy, es el mismo patrón transitorio: verificar con curl + URL
 Inspection API antes de asumir un problema real.
+
+## 2026-07-28 (tarde): análisis de rendimiento SEO + autoridad competitiva → gate de winnability en keyword-researcher
+
+### Contexto
+
+Fran preguntó "¿cómo vamos con el SEO?". La tabla de rendimiento de
+`PROJECT_STATUS.md` estaba en la semana del 13-19 jun (>1 mes desfasada), así
+que se sacaron datos frescos de GSC y un análisis de autoridad con DataForSEO.
+
+### Rendimiento (GSC 28d, `scripts/gsc-28d-compare.mjs`)
+
+Ventana 28 jun–25 jul vs 31 may–27 jun: impresiones 2.327 → **3.430 (+47%)**,
+clics **28 → 28 (planos)**, CTR 1,2% → 0,82%, posición media 16,1 → 18,1 (peor).
+Lectura: visibilidad crece con fuerza, clics clavados. De los 28 clics ~16 son
+de la home (marca; query "fran lledo" 5 clics en pos 1). Los clics de contenido
+(~11) llevan planos porque casi toda la impresión nueva cae en pos 14-30. La
+posición media empeora por ensanche de huella (muchas queries nuevas en pos
+20-50), no por caída. Ganador emergente: `newsletter-ejemplos-que-venden`
+(0→3 clics, 62→405 impr, pos 23→18,5). Estrella atascada:
+`como-escribir-asuntos-de-email` (1.271 impr, 2 clics, pos 14,6).
+
+### Autoridad competitiva (DataForSEO Backlinks + SERP)
+
+**Hallazgo que tumbó la premisa previa:** se asumía que cazatarjetas.com era el
+dominio fuerte que prestaría autoridad a franlledo. Es al revés.
+
+| Métrica | franlledo.com | cazatarjetas.com |
+| --- | ---: | ---: |
+| Rank (0-1000) | **227** | 162 |
+| Backlinks | 324 | 28 |
+| Ref. domains | 75 | 23 |
+| Spam score | 12 | 41 |
+
+Consecuencia: el enlace `cazatarjetas → franlledo` es un movimiento **lateral**
+(162 < 227), no la palanca. Hacerlo (dofollow desde home/footer, gratis, sin
+downside) pero sin esperar que saque de página 2.
+
+**Gap vs la SERP:** se sacó la página 1 real (es-ES, Spain) de 5 keywords y el
+rank de cada competidor orgánico. franlledo (227) es la mitad/un tercio del
+típico competidor de página 1 (400-700):
+
+| Keyword | Mediana top-5 orgánico | Veredicto |
+| --- | ---: | --- |
+| asuntos de email | ~463 pero con rival rank 139 desplazable; ya #5 orgánico | **GANABLE** |
+| newsletter ejemplos | ~480 | difícil |
+| qué es una landing page | ~480 (universidades, Wikipedia) | muro |
+| vibe coding en español | ~600 (Google, IBM, Cloudflare, Wikipedia) | muro |
+| marketing funnel | ~615 (Salesforce, HubSpot, Amazon) | muro |
+
+Lección: donde el contenido es superior Y la SERP tiene grietas (rivales
+débiles), rank 227 basta (caso asuntos). Donde la página 1 es un muro de marcas,
+publicar más no sirve.
+
+### Decisión / implementación: SERP authority gate (Step 5b)
+
+El keyword-researcher filtraba solo por KD (que no ve la fuerza real de los que
+rankean). Se añadió `Step 5b` a `prompts/keyword-researcher.md`: sobre cada
+candidata **priority-1**, tras coverage, mide la mediana de autoridad del top-5
+orgánico contra el `SITE_RANK` (leído en vivo, no hardcodeado) y **degrada a P2**
+las SERPs-muro. Regla: `wall = median_top5 > SITE_RANK+200 AND no hay rival del
+top-5 con rank ≤ SITE_RANK`. Válvula de escape: si la keyword tiene ángulo de
+dato propio, se marca `— GEO-citation candidate` (puede ganar cita de LLM sin el
+clic; revisar cuando suba la autoridad). Se excluyen mega-superficies no
+competidoras (youtube, wikipedia, reddit, google, amazon, facebook). Solo corre
+sobre los P1 supervivientes (≤5/run) para acotar coste de la API.
+
+Cambios en el prompt:
+- Nuevo `Step 5b` con procedimiento + snippet Python de decisión.
+- Esquema de `keyword-bank.json`: +`serp_checked`, `serp_median_top5`,
+  `serp_min_rank`.
+- Contadores del informe: +`P1 demoted by SERP authority gate`.
+- Resumen del Step 9: +`SITE_RANK` del run y lista de keywords degradadas.
+- Nota de calibración con los datos del 28/07 (SITE_RANK=227) para futuros
+  ajustes del margen +200.
+
+### Acciones
+
+- Editado `prompts/keyword-researcher.md` (Step 5b + esquema + informe).
+- `PROJECT_STATUS.md`: bullet de resumen del análisis + gate, y sección
+  Rendimiento refrescada con el 28d (histórico semanal conservado debajo).
+- No se tocó `state/` (el gate actúa en el próximo run del keyword-researcher).
+
+### Pendiente
+
+- **Validar el gate en el próximo run real** del keyword-researcher: confirmar
+  que reporta SITE_RANK y que degrada correctamente alguna SERP-muro. Calibrar
+  el margen +200 si hace falta.
+- **Doblar en el cluster "asuntos de email / copywriting de email"** (terreno
+  ganable): ampliar el post estrella, construir cluster, dirigir enlaces
+  internos ahí (ya tiene 7 entrantes).
+- **cazatarjetas → franlledo**: enlace dofollow menor desde home/footer cuando
+  Fran quiera (acción suya en WordPress). Prioridad baja.
+- Palanca de fondo no resuelta: ganar dominios de referencia nuevos y de calidad
+  (lo que sube el rank para pelear términos comerciales). Fuera del pipeline
+  de contenido.
