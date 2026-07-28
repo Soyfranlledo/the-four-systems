@@ -1227,3 +1227,82 @@ disparador de cron/launchd. Documentado como incidencia nueva en
 - Próxima acción: el próximo keyword-researcher programado (o uno disparado
   a mano si el cron sigue fallando) debe dejar al menos 1 item `queued` antes
   del sábado, o el content-writer del sábado volverá a salir en no-op.
+
+## 2026-07-28: diagnóstico de 3 emails de GSC (18/07) sobre indexación — transitorios de deploy, ya resueltos
+
+### Contexto
+
+Fran reportó haber recibido "hace unos días" varios emails de Google Search
+Console avisando de problemas de indexación. Sesión de diagnóstico a petición
+suya. Los correos se localizaron directamente en Gmail (remitente
+`sc-noreply@google.com`), sin reenvío manual.
+
+### Los 3 emails (todos del 2026-07-18 ~11:46 UTC)
+
+1. **franlledo.com — "Error de redirección"** (nuevo motivo que impide indexar).
+2. **franlledo.com — "No se ha encontrado (404)"** en páginas de un sitemap.
+3. **cazatarjetas.com — "Página con redirección"** (otro sitio, fuera de
+   alcance; no investigado).
+
+Los emails de GSC solo dan el TIPO de problema, nunca la lista de URLs afectadas
+(esa vive en el informe *Indexación › Páginas*, que requiere login).
+
+### Verificación en producción (curl)
+
+- **Sitemap actual 100% limpio:** las 59 URLs de `sitemap-index.xml` →
+  `sitemap-0.xml` devuelven 200, cero redirecciones, cero 404.
+- **Los 9 redirects con fecha** del incidente del 8-jun + los 2 de ensayos +
+  el cross-domain `/gracias-lista` → todos 301 → 200 en 1 solo salto. Ninguna
+  cadena, ningún bucle, ningún destino roto.
+
+### Verificación con la GSC URL Inspection API (veredicto en tiempo real)
+
+Script dirigido reutilizando el OAuth de `refresh-scorer.py` (scope
+`webmasters.readonly`, token en `.env.local`), inspeccionando las URLs viejas
+con fecha (que NO salen en el sitemap, así que el scorer normal no las
+inspecciona) + los 2 posts nuevos + controles. Campo clave: `pageFetchState`.
+
+- **`pageFetchState` = SUCCESSFUL en TODAS.** Ni un `REDIRECT_ERROR` ni un
+  `NOT_FOUND` en la lista.
+- URL vieja `/blog/2026-05-21-marketing-funnel-...`: coverage "Page with
+  redirect", SUCCESSFUL, **re-rastreada 17/07 20:27**, googleCanonical a la
+  URL limpia. (Era la candidata del "error de redirección"; ya sana.)
+- `que-es-el-copywriting` (publicado 16/07): "Submitted and indexed",
+  SUCCESSFUL, **rastreada 18/07 01:57**. (Candidata del "404 en sitemap" por
+  carrera sitemap-vs-deploy; ya indexada.)
+- `que-es-una-landing-page`: "Submitted and indexed", rastreada 21/07.
+- Resto de URLs con fecha: "Page with redirect" (SUCCESSFUL) o "URL is unknown
+  to Google" (nunca rastreadas). Todas benignas.
+
+### Conclusión
+
+Ambos avisos = **fallos transitorios de la ventana de deploy del 16/07** (dos
+deploys seguidos — auditoría `ec49ae3` + plan aceleración `b280e89` — + 44
+pings de IndexNow). Googlebot rastreó durante el reinicio del contenedor nginx
+y se llevó errores momentáneos. Coincide con la nota ya existente en la sección
+Indexación de `PROJECT_STATUS.md` (el rastreo del 16/07 18:00 de la URL vieja
+de marketing-funnel marcó "error de redirección" achacado al deploy). GSC
+detecta el 16, agrupa y envía el email el 18; para entonces los re-rastreos del
+17 y 18 ya daban 200. **El correo describía un problema ya resuelto.**
+
+Causa raíz de fondo (no accionable a esta escala): el sitio se sirve con un
+único contenedor; durante un rebuild de Coolify hay unos segundos de
+indisponibilidad. Estos errores se autocorrigen en el siguiente rastreo. El
+arreglo estructural (strip de fecha en `publish-to-astro.py` + 301 limpios en
+`docker/nginx.conf`) ya está en su sitio y funciona.
+
+### Acciones
+
+- Sin cambios de código (nada roto que arreglar). No se tocó el repo web.
+- Opcional para Fran (no necesario): pulsar "Validar corrección" en las dos
+  filas del informe GSC para que Google cierre los avisos antes.
+- Cabo suelto conocido: la URL exacta marcada como 404 solo se ve en el
+  informe GSC (la API inspecciona URLs dadas, no enumera las afectadas por un
+  problema). Irrelevante porque todo resuelve a 200 y los posts nuevos están
+  indexados.
+
+### Pendiente
+
+Nada accionable. Si GSC reincide con "error de redirección"/"404" justo
+después de un deploy, es el mismo patrón transitorio: verificar con curl + URL
+Inspection API antes de asumir un problema real.

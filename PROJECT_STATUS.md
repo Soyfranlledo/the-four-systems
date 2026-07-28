@@ -1,13 +1,25 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-23 (content-writer: no-op, cola vacía sin
-resembrar)
+Última actualización: 2026-07-28 (diagnóstico de los emails GSC del 18/07:
+errores de indexación transitorios de deploy, ya resueltos — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Emails GSC del 18/07 ("Error de redirección" + "No se ha encontrado (404)"
+  en un sitemap) diagnosticados el 2026-07-28: transitorios de la ventana de
+  deploy del 16/07, ya resueltos.** Verificado en producción (sitemap 59/59 a
+  200; los 9 redirects con fecha + ensayos 301→200 en 1 salto) y con la GSC URL
+  Inspection API en tiempo real: `pageFetchState`=SUCCESSFUL en todas las URLs
+  sospechosas (ni un `REDIRECT_ERROR` ni un `NOT_FOUND`); la vieja de
+  marketing-funnel re-rastreada 17/07 (sana, "Page with redirect"),
+  `que-es-el-copywriting` indexada (rastreo 18/07). Causa: Googlebot rastreó
+  durante el reinicio del contenedor nginx (2 deploys + 44 pings IndexNow ese
+  día); GSC detecta el 16, envía el 18, pero los re-rastreos del 17-18 ya daban
+  200 — el correo describía un problema ya resuelto. **Sin acción de código.**
+  El tercer email era de cazatarjetas.com (otro sitio). Ver bitácora 2026-07-28.
 - **Content-writer, run jueves 2026-07-23 (MODE: AUTO): no-op, cola sin
   items `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   De los 25 items de `state/content-queue.json`, 24 están `written` y 1
@@ -187,6 +199,16 @@ top-10 son ~15-25 clics/28d adicionales (hoy: 31). Las URLs en pos 20+ no
 darán clics hasta subir a página 1: ahí la palanca es ranking, no snippet.
 
 ## Indexación
+
+**Actualización 2026-07-28 — emails GSC del 18/07 resueltos.** Google avisó de
+"Error de redirección" y "No se ha encontrado (404)" en páginas de un sitemap
+(detectados ~16/07, entregados el 18/07). Diagnóstico: transitorios de la
+ventana de deploy del 16/07 (2 deploys + 44 pings IndexNow); Googlebot rastreó
+durante el reinicio del contenedor. Confirmado sano: sitemap 59/59 a 200, los 9
+redirects con fecha 301→200 en 1 salto, y la URL Inspection API da
+`pageFetchState`=SUCCESSFUL en todas (URL vieja de marketing-funnel re-rastreada
+17/07; `que-es-el-copywriting` indexada, rastreo 18/07). Sin acción de código;
+opcional "Validar corrección" en las 2 filas de GSC. Ver bitácora 2026-07-28.
 
 **Verificado en GSC el 2026-07-16 (sesión con Fran, inspección manual de las
 8 URLs de la tabla):** la acción manual pendiente quedó COMPLETADA. 6 de las
