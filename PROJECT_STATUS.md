@@ -1,14 +1,52 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-07-28 (análisis de autoridad competitiva + gate de
-winnability en keyword-researcher; antes ese día: diagnóstico emails GSC — ver
-bitácora)
+Última actualización: 2026-08-06 (pipeline reactivado tras 10 días parado por
+auth; el enlazado interno NO era la palanca y la página estrella apunta a una
+keyword de 10 búsquedas/mes — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Pipeline parado 10 días por auth (2026-07-27 → 2026-08-06, RESUELTO).** 9
+  runs consecutivos en `error / auth failure`: `claude auth status` daba
+  `loggedIn: false` y el check de `coordinator.sh:118` abortaba antes de
+  ejecutar. Último post publicado: 21/07. **El informe semanal siguió llegando**
+  (usa su propia OAuth de `.env.local`, no el CLI), lo que enmascara el fallo:
+  para vigilar la salud del pipeline hay que mirar `state/agent-log.json`, no la
+  bandeja de entrada. Reautenticado; run manual OK (commit `95235ae`).
+- **El enlazado interno NO es la palanca (2026-08-06). Cierra como no-procede la
+  acción del 28/07.** El sitio tiene **204 enlaces internos de cuerpo** en 35
+  posts (5,8/post) y **cero huérfanos**. Correlación entrantes vs impresiones
+  28d: **r = +0,15**, nula. Las dos páginas más enlazadas del sitio
+  (`como-montar-embudo-de-ventas-sencillo` 15 entrantes,
+  `como-hacer-email-marketing-que-venda` 13) tienen 6 y 4 impresiones. Ojo al
+  medirlo: el sitio usa enlaces relativos **y absolutos** (contar solo
+  `](/blog/...)` da la mitad y huérfanos falsos), y el campo `internal_links`
+  del frontmatter **no se renderiza** (no está en el schema Zod de
+  `src/content.config.ts`), es metadato, no enlaces.
+- **La página estrella apunta a una keyword de 10 búsquedas/mes (2026-08-06).**
+  `como-escribir-asuntos-de-email` (1.368 impr, 2 clics, pos 14,5): su keyword
+  objetivo está **por debajo del suelo de detección** de Google Ads; el término
+  con dato más cercano, `asuntos de email`, son **10/mes**. Las 1.368
+  impresiones son Google repartiéndola por 36+ microvariantes de intención
+  **"correo formal de trabajo"** (`asuntos para correos formales` 10/mes pos 33,
+  `ejemplos de asuntos para correos de trabajo` 40/mes pos 28). El post es del
+  lanzamiento del 19/05, reciclado de emails de Notion: **no aparece en
+  `keyword-bank.json` ni en `content-queue.json`**, nunca pasó por el pipeline y
+  nadie miró su volumen. Su CTR de 0,15% no se arregla con snippet y sus
+  impresiones dejan de ser un KPI.
+- **El nicho no es pequeño; lo que falta es medir el banco (2026-08-06).**
+  Volumen real es/Spain: newsletter **12.100**, email marketing **8.100**,
+  landing page **6.600**, copywriting **4.400**, funnel de ventas 1.300, embudo
+  de ventas 1.000, lead magnet 1.000. La demanda existe, pero esas cabeceras son
+  muros con rank 227. Y el banco tiene **273 keywords con `serp_checked: 0`**: el
+  gate del 28/07 solo corre sobre P1 del run en curso y el único run posterior no
+  tuvo ninguno, así que todo el backlog sigue puntuado **solo por KD** — la
+  métrica que el propio 28/07 demostró insuficiente (`marketing funnel` KD 4 es
+  un muro de ≈615; `qué es una landing page` KD 6 es un muro de ≈480). Hay **45
+  keywords de banda media (100+/mes) sin cubrir y sin medir**.
 - **Análisis de rendimiento + autoridad competitiva (2026-07-28): el cuello de
   botella es AUTORIDAD, no contenido. Implementado un gate de winnability en el
   keyword-researcher.** GSC 28d (28 jun–25 jul vs previo): impresiones **+47%**
@@ -202,6 +240,14 @@ La estrella `/blog/como-escribir-asuntos-de-email/` sigue con **1.271 impr pero
 solo 2 clics** en pos 14,6 (en el término cabecera exacto está #5 orgánico; la
 media la bajan las variaciones más duras).
 
+> **Corrección 2026-08-06:** esa lectura de la "estrella" era equivocada. Sus
+> impresiones no son una oportunidad atascada: la keyword objetivo está por
+> debajo del suelo de detección de Google Ads (el término con dato más cercano,
+> `asuntos de email`, son **10 búsquedas/mes**) y las impresiones vienen de 36+
+> microvariantes de intención **"correo formal de trabajo"**, no de email
+> marketing. Ni las variaciones "más duras" ni el snippet son el problema: el
+> lector que las busca no es el nuestro. Ver bitácora 2026-08-06.
+
 Histórico semanal (informe automático, semana 13-19 jun 2026):
 
 | Métrica | 13-19 jun | 6-12 jun | 30 may-5 jun |
@@ -222,6 +268,13 @@ Diagnóstico 2026-07-03 (GSC 28 días): CTR global 1,1%, pero **no-marca 0,24%**
 caracteres sin número que Google truncaba, frente a SERPs donde el 100% de los
 títulos ganadores lleva cifra. Caso extremo: #1 orgánico en "cómo escribir
 mejores asuntos de email" (198 impr, pos 5,7) con 0 clics.
+
+> **Corrección 2026-08-06:** ese "caso extremo" no era un fallo de snippet.
+> `cómo escribir mejores asuntos de email` **no tiene volumen registrado** en
+> Google Ads (es/Spain): está por debajo del suelo de detección. Una query sin
+> demanda medible puede acumular impresiones y no dar un solo clic sin que haya
+> nada que arreglar en el título. Antes de diagnosticar CTR en una query,
+> comprobar que tiene volumen.
 
 Cambios desplegados 2026-07-03 (**no tocar snippets hasta ~17 de julio**, 2
 semanas de datos): seoTitle ≤47 car. con número/prueba en los 12 posts con
@@ -334,6 +387,16 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Próximos hitos
 
+0. **PRIORIDAD: pasar el gate de autoridad (Step 5b) por las 45 keywords de
+   banda media del banco**, antes de buscar semillas nuevas. Trabajo acotado (1
+   llamada `backlinks_bulk_ranks` del dominio + ~45 `serp_organic_live_advanced`)
+   que convierte 273 keywords de fiabilidad desconocida en una lista ordenada de
+   lo que es **ganable y además tiene volumen**. Es la explicación del atasco de
+   la cola: `vender cursos online` (20/07) y `prompts para negocio` (06/08)
+   encolaron 0 items, y entre medias el content-writer del 23/07 salió no-op por
+   cola vacía. Se están probando semillas nuevas y malas mientras el backlog con
+   volumen real sigue sin evaluar. Requiere un modo del
+   keyword-researcher que corra sobre el banco en vez de sobre una semilla.
 1. **Indexación (Fran, manual en GSC):** la tabla de "Indexación" de arriba,
    en orden. La P1 (URL vieja de marketing-funnel) es la que más equity
    recupera.
@@ -344,9 +407,12 @@ Zona horaria del equipo: `Europe/Madrid`.
 3. ~~seoTitle en batch para los ~20 posts restantes~~ — **cerrado
    2026-07-16** (auditoría implementada, ver bitácora): los 34 posts tienen
    título SERP ≤60c. Su ventana de medición CTR empieza el 16/07.
-4. **Sección "asuntos para correos: 25 ejemplos listos para copiar"** en
-   asuntos-de-email, con tasas de apertura reales: captura la intención
-   "ejemplos" que domina esa SERP (contenido para content-writer o Fran).
+4. ~~**Sección "asuntos para correos: 25 ejemplos listos para copiar"** en
+   asuntos-de-email~~ — **revisado 2026-08-06, no procede tal cual**: la SERP de
+   "ejemplos" que quería capturar es de intención **"correo formal de trabajo"**
+   (oficinistas), no de email marketing, y todo el clúster está en 10-40
+   búsquedas/mes. Si se hace, que sea una decisión de contenido consciente de
+   que ese lector no convierte, no una jugada de SEO.
 5. **Decidir sobre `agentes-ia-sin-codigo-para-emprendedores` (`needs_review`):**
    retirar, fusionar o replantear (ver `reports/2026-07-02-content-writer.md`).
 6. ~~Confirmar el lado keyword-researcher de la autonomía~~ — **cerrado

@@ -1401,3 +1401,130 @@ Cambios en el prompt:
 - Palanca de fondo no resuelta: ganar dominios de referencia nuevos y de calidad
   (lo que sube el rank para pelear términos comerciales). Fuera del pipeline
   de contenido.
+
+## 2026-08-06: reactivación del pipeline + el enlazado interno no era la palanca (sesión con Fran)
+
+Sesión larga con Fran que empieza en "¿cómo va el SEO?" y acaba refutando la
+acción pendiente que dejó la bitácora del 28/07.
+
+### Pipeline parado 10 días (auth)
+
+`state/agent-log.json` acumulaba **9 runs consecutivos en `error / auth
+failure`** desde el 2026-07-27 (keyword-researcher 27/07, 29/07, 03/08, 05/08;
+content-writer 28/07, 01/08, 04/08, 06/08; refresh-recommender 01/08). Causa:
+`claude auth status` devolvía `loggedIn: false` y el check de `coordinator.sh`
+(línea 118) aborta antes de ejecutar nada. Último post publicado: 21/07.
+
+El informe semanal siguió llegando con normalidad porque
+`scripts/weekly-seo-report.mjs` usa su propia OAuth de Google desde
+`.env.local`, no el CLI. **Esto enmascara el fallo**: el lunes llega un informe
+con datos frescos y parece que todo funciona. Para vigilar la salud del
+pipeline hay que mirar `agent-log.json`, no la bandeja de entrada.
+
+Fran reautenticó (`/login`) y el run manual de keyword-researcher salió OK en
+493s.
+
+### Run 2026-08-06: semilla "prompts para negocio", 0 encolados
+
+339 variaciones evaluadas, 7 keywords nuevas al banco (1 P2, 6 P3), 266→273.
+Cero P1, así que el gate del Step 5b **ni llegó a dispararse**. No es un
+problema de autoridad: es demanda inexistente. `keyword_ideas` cae otra vez en
+ruido de categoría (matchea "negocio" → traspasos y franquicias),
+`related_keywords` y `keyword_suggestions` vacías, y de 24 variantes a mano
+solo 6 tenían volumen, todas en el suelo de 10/mes. Tercer intento en falso
+seguido tras `vender cursos online` (20/07).
+
+### Nota operativa: `git add -A` del coordinator
+
+`git_commit()` hace `git add -A .`, así que el commit del run se llevó cuatro
+cambios previos no relacionados del working tree (AGENTS.md, coordinator.sh y
+el borrado de CLAUDE.md/GEMINI.md). Se deshizo con `git reset --soft HEAD~1` y
+se recommiteó solo `state/keyword-bank.json` (commit `95235ae`). El commit
+original nunca se empujó. **Si hay cambios propios en el working tree, hacer
+stash antes de lanzar el coordinator.**
+
+Detalle a recordar: `CLAUDE.md` y `GEMINI.md` no son ficheros, son **symlinks
+a AGENTS.md** (modo 120000). Borrarlos deja a Claude Code y a Gemini CLI sin
+auto-cargar las instrucciones del proyecto — incluidos los `claude -p` de los
+runs programados. Restaurados en esta sesión.
+
+### El enlazado interno ya estaba hecho (refuta la acción del 28/07)
+
+La bitácora del 28/07 dejó pendiente "doblar en el cluster asuntos de email:
+ampliar el post estrella, dirigir enlaces internos ahí (ya tiene 7 entrantes)".
+Al ir a ejecutarlo, los datos lo tumban:
+
+- **204 enlaces internos** en el cuerpo de los 35 posts (111 relativos + 93
+  absolutos), 5,8 por post, **cero huérfanos**.
+- Correlación entrantes vs impresiones 28d: **r = +0,15**. Nula.
+- Las dos páginas **más** enlazadas del sitio (`como-montar-embudo-de-ventas-sencillo`
+  con 15 entrantes, `como-hacer-email-marketing-que-venda` con 13) tienen 6 y 4
+  impresiones. El equity se reparte por cercanía temática, no por oportunidad.
+
+Trampas metodológicas encontradas (para no repetirlas): el sitio usa enlaces
+**relativos y absolutos**, contar solo `](/blog/...)` da la mitad y un huérfano
+falso; y el campo `internal_links` del frontmatter **no se renderiza** (no está
+en el schema Zod de `src/content.config.ts`, que descarta claves desconocidas
+en silencio), es metadato del content-writer, no enlaces reales.
+
+### El hallazgo de fondo: la página estrella vale 10 búsquedas/mes
+
+`como-escribir-asuntos-de-email` (1.368 impresiones, 2 clics, pos 14,5) apunta
+a una keyword **por debajo del suelo de detección** de Google Ads. El término
+con dato más cercano, `asuntos de email`, son **10 búsquedas/mes**.
+
+Sus 1.368 impresiones son Google repartiéndola por 36+ microvariantes, y la
+intención dominante **no es la nuestra**: `asuntos para correos formales` (10/mes,
+pos 33), `ejemplos de asuntos para correos de trabajo` (40/mes, pos 28),
+`como redactar un asunto de correo` (10/mes, pos 25). Son oficinistas
+redactando un correo de trabajo, no gente escribiendo asuntos de campaña.
+
+El post es del lanzamiento del 19/05 ("11 artículos evergreen"), reciclado de
+dos emails de Notion. **No aparece en `keyword-bank.json` ni en
+`content-queue.json`**: nunca pasó por el pipeline y nadie miró su volumen.
+
+Consecuencia práctica: su CTR de 0,15% no se arregla con snippet, y las 1.368
+impresiones dejan de ser un KPI. El diagnóstico de CTR del 03/07 y el hito 4 de
+PROJECT_STATUS (sección de "ejemplos" para capturar esa SERP) estaban
+persiguiendo un clúster de 10-40 búsquedas/mes con la intención equivocada.
+
+### El nicho no es pequeño; el banco nunca se ha medido
+
+Volumen real (DataForSEO, es/Spain): newsletter **12.100**, email marketing
+**8.100**, landing page **6.600**, copywriting **4.400**, funnel de ventas
+1.300, embudo de ventas 1.000, lead magnet 1.000. La demanda existe; lo que
+pasa es que esas cabeceras son muros con rank 227.
+
+Y el banco: **273 keywords, `serp_checked: 0`**. El gate del 28/07 solo corre
+sobre P1 del run en curso, y el único run posterior no tuvo P1. Todo el backlog
+sigue puntuado **solo por KD**, que es justo la métrica que el 28/07 demostró
+insuficiente: `marketing funnel` figura con KD 4 y es un muro de ≈615;
+`qué es una landing page` con KD 6 y es un muro de ≈480.
+
+Distribución: 111 keywords en 0/null, 111 en 10-90, 31 en 100-490, 4 en
+500-990, 16 en 1.000+. **45 de banda media (100+/mes) sin cubrir y sin medir.**
+
+### Acciones
+
+- Reautenticado el CLI; run manual de keyword-researcher OK (commit `95235ae`).
+- Restaurados los symlinks `CLAUDE.md` y `GEMINI.md` → `AGENTS.md`.
+- Informe completo en `reports/2026-08-06-analisis-volumen-y-enlazado.md`
+  (gitignored; el registro durable es esta bitácora y PROJECT_STATUS).
+- Sin cambios en `state/` ni en el repo web.
+
+### Pendiente
+
+- **Pasar el gate por las 45 keywords de banda media del banco**, antes de
+  buscar semillas nuevas. Trabajo acotado (1 llamada de rank + ~45 SERPs) que
+  convierte un banco de fiabilidad desconocida en una lista ordenada de lo
+  ganable **y con volumen**. Es también la explicación de los tres ceros
+  seguidos: se están probando semillas nuevas y malas mientras el backlog con
+  volumen real sigue sin evaluar.
+- **Cerrada como no-procede** la acción del 28/07 de dirigir enlaces internos a
+  `asuntos-de-email`: ni el enlazado es la palanca ni esa keyword vale nada.
+- Revisar el hito 4 de PROJECT_STATUS (sección de "ejemplos" en asuntos): la
+  SERP que quiere capturar es de intención "correo formal de trabajo".
+- Sin resolver: la cola sigue vacía (24 `written`, 1 `needs_review`), así que el
+  content-writer del sábado 08/08 hará no-op salvo resiembra previa.
+- Palanca de fondo sin cambios: dominios de referencia nuevos. Con rank 227 las
+  cabeceras de 1.000-12.100/mes no se pelean, y eso no lo arregla nada on-site.
