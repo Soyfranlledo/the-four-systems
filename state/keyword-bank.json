@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "franlledo.com",
-  "last_updated": "2026-07-20",
+  "last_updated": "2026-08-06",
   "seeds_researched": [
     {
       "seed": "embudos de venta",
@@ -62,6 +62,10 @@
     {
       "seed": "vender cursos online",
       "last_researched": "2026-07-20"
+    },
+    {
+      "seed": "prompts para negocio",
+      "last_researched": "2026-08-06"
     }
   ],
   "keywords": [
@@ -1508,7 +1512,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 12100, KD 12, competition LOW 26. T\u00e9rmino head con volumen extraordinario y KD bajo. CPC 7.44 confirma intent comercial. \u00c1ngulo Fran: newsletter como canal propio de captaci\u00f3n y venta para solopreneurs, diferenciado de 'herramienta para informar'. Combinar con 'newsletter que es' (KD 11, vol 2400) en el mismo post."
+      "notes": "Vol 12100, KD 12, competition LOW 26. Término head con volumen extraordinario y KD bajo. CPC 7.44 confirma intent comercial. Ángulo Fran: newsletter como canal propio de captación y venta para solopreneurs, diferenciado de 'herramienta para informar'. Combinar con 'newsletter que es' (KD 11, vol 2400) en el mismo post."
     },
     {
       "keyword": "newsletter que es",
@@ -1522,7 +1526,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 2400, KD 11, competition LOW 6. B\u00fasqueda definitoria con gran volumen. \u00c1ngulo diferenciado: no solo 'qu\u00e9 es' sino 'qu\u00e9 puede hacer por tu negocio de 1 persona'. Bundle como H2 dentro del post de 'newsletter'."
+      "notes": "Vol 2400, KD 11, competition LOW 6. Búsqueda definitoria con gran volumen. Ángulo diferenciado: no solo 'qué es' sino 'qué puede hacer por tu negocio de 1 persona'. Bundle como H2 dentro del post de 'newsletter'."
     },
     {
       "keyword": "newsletter ejemplos",
@@ -1536,7 +1540,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 320, KD null (competition LOW 19). Paralelo al post de 'email marketing ejemplos' (que funcion\u00f3 bien). \u00c1ngulo: formatos concretos y criterio de primera persona. Usar ejemplos reales solo cuando est\u00e9n documentados; no inventar m\u00e9tricas ni ventas atribuidas."
+      "notes": "Vol 320, KD null (competition LOW 19). Paralelo al post de 'email marketing ejemplos' (que funcionó bien). Ángulo: formatos concretos y criterio de primera persona. Usar ejemplos reales solo cuando estén documentados; no inventar métricas ni ventas atribuidas."
     },
     {
       "keyword": "como crear una newsletter",
@@ -1550,7 +1554,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 70, KD 1 (extraordinariamente bajo), competition HIGH 68 en GAS (ads, no org\u00e1nico). Vol por debajo de P1 threshold (100/mo informational). Bundlable como H2 en el post de newsletter. No como tutorial de herramienta (fuera de scope) sino enfoque estrat\u00e9gico."
+      "notes": "Vol 70, KD 1 (extraordinariamente bajo), competition HIGH 68 en GAS (ads, no orgánico). Vol por debajo de P1 threshold (100/mo informational). Bundlable como H2 en el post de newsletter. No como tutorial de herramienta (fuera de scope) sino enfoque estratégico."
     },
     {
       "keyword": "crear newsletter",
@@ -1581,7 +1585,7 @@
       "notes": "Vol 30, KD 28, competition MEDIUM 61. Vol bajo para P1. Bundlable como variante de 'como crear una newsletter'."
     },
     {
-      "keyword": "lista de correo electr\u00f3nico",
+      "keyword": "lista de correo electrónico",
       "seed": "lista de suscriptores",
       "intent": "commercial",
       "volume": 40,
@@ -1592,7 +1596,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 40, KD null, competition LOW 28. Mejor t\u00e9rmino con volumen del cluster 'lista de suscriptores' propiamente dicho. Vol por debajo de P1 (50/mo commercial). P2."
+      "notes": "Vol 40, KD null, competition LOW 28. Mejor término con volumen del cluster 'lista de suscriptores' propiamente dicho. Vol por debajo de P1 (50/mo commercial). P2."
     },
     {
       "keyword": "newsletter marketing",
@@ -1606,7 +1610,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 30, KD null, competition MEDIUM 35. Gen\u00e9rico y bajo volumen. Park."
+      "notes": "Vol 30, KD null, competition MEDIUM 35. Genérico y bajo volumen. Park."
     },
     {
       "keyword": "enviar newsletter",
@@ -1620,7 +1624,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 20, KD 51. Fuera de umbral (KD >45 para vol bajo). Intent transaccional (busca herramienta de env\u00edo). Park."
+      "notes": "Vol 20, KD 51. Fuera de umbral (KD >45 para vol bajo). Intent transaccional (busca herramienta de envío). Park."
     },
     {
       "keyword": "plataforma newsletter",
@@ -1648,7 +1652,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "Seed original. Vol 10 en Espa\u00f1a. El t\u00e9rmino no tiene masa cr\u00edtica como frase exacta en espa\u00f1ol. El cluster de valor es 'newsletter' (12100 vol, KD 12)."
+      "notes": "Seed original. Vol 10 en España. El término no tiene masa crítica como frase exacta en español. El cluster de valor es 'newsletter' (12100 vol, KD 12)."
     },
     {
       "keyword": "hacer newsletter gratis",
@@ -1662,7 +1666,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 10, competition HIGH 86. Searcher busca herramienta gratuita. Fuera de scope y vol \u00ednfimo. Park."
+      "notes": "Vol 10, competition HIGH 86. Searcher busca herramienta gratuita. Fuera de scope y vol ínfimo. Park."
     },
     {
       "keyword": "aumentar suscriptores newsletter",
@@ -1676,7 +1680,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 10. Concepto relevante (crecimiento de lista) pero sin masa cr\u00edtica de b\u00fasqueda. Monitorear."
+      "notes": "Vol 10. Concepto relevante (crecimiento de lista) pero sin masa crítica de búsqueda. Monitorear."
     },
     {
       "keyword": "como conseguir suscriptores",
@@ -1704,7 +1708,7 @@
       "covered_by": null,
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 10. Variante t\u00e9cnica del seed. Sin masa cr\u00edtica. Park."
+      "notes": "Vol 10. Variante técnica del seed. Sin masa crítica. Park."
     },
     {
       "keyword": "lead magnet",
@@ -1718,7 +1722,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "Vol 1000, competition LOW 0.27, CPC 10.79. SERP solo 69 resultados (campo casi virgen), sin AI Overview. Trend -45% yearly pero sigue siendo el head term con mayor volumen del cluster. \u00c1ngulo Fran: de 0 a 2000 suscriptores usando lead magnets reales, no PDFs gen\u00e9ricos. Queued como post principal del seed."
+      "notes": "Vol 1000, competition LOW 0.27, CPC 10.79. SERP solo 69 resultados (campo casi virgen), sin AI Overview. Trend -45% yearly pero sigue siendo el head term con mayor volumen del cluster. Ángulo Fran: de 0 a 2000 suscriptores usando lead magnets reales, no PDFs genéricos. Queued como post principal del seed."
     },
     {
       "keyword": "que es un lead magnet",
@@ -1740,13 +1744,13 @@
       "intent": "informational",
       "volume": 1300,
       "kd": 2,
-      "cpc": 1.80,
+      "cpc": 1.8,
       "priority": 1,
       "fan_out_parent": "que es un lead",
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "Vol 1300, KD 2. SERP solo 128 resultados, AI Overview presente pero SERP extraordinariamente thin. Audiencia amplia (marketing, periodismo, m\u00fasica) pero \u00e1ngulo solopreneur diferenciado evita el gen\u00e9rico. Queued como post standalone con enfoque en captaci\u00f3n de leads para negocios de 1 persona."
+      "notes": "Vol 1300, KD 2. SERP solo 128 resultados, AI Overview presente pero SERP extraordinariamente thin. Audiencia amplia (marketing, periodismo, música) pero ángulo solopreneur diferenciado evita el genérico. Queued como post standalone con enfoque en captación de leads para negocios de 1 persona."
     },
     {
       "keyword": "lead magnet ejemplos",
@@ -1760,7 +1764,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "Vol 70 < 100 (umbral P1 informacional). SERP 93200 resultados, competition LOW 0.18. Bundlable como secci\u00f3n en el post de lead magnet."
+      "notes": "Vol 70 < 100 (umbral P1 informacional). SERP 93200 resultados, competition LOW 0.18. Bundlable como sección en el post de lead magnet."
     },
     {
       "keyword": "lead scoring",
@@ -1802,10 +1806,10 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 10, competition MEDIUM 43. Vol demasiado bajo para post standalone. Concepto clave bundlable como secci\u00f3n 'c\u00f3mo crear' en el post de lead magnet."
+      "notes": "Vol 10, competition MEDIUM 43. Vol demasiado bajo para post standalone. Concepto clave bundlable como sección 'cómo crear' en el post de lead magnet."
     },
     {
-      "keyword": "lead magnet en espa\u00f1ol",
+      "keyword": "lead magnet en español",
       "seed": "lead magnet",
       "intent": "informational",
       "volume": 10,
@@ -1816,7 +1820,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 10, competition LOW 19. Vol m\u00ednimo. Park."
+      "notes": "Vol 10, competition LOW 19. Vol mínimo. Park."
     },
     {
       "keyword": "lead magnet gratis",
@@ -1830,7 +1834,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 10, competition HIGH 79. Searcher busca herramienta o plantilla gratuita, no gu\u00eda estrat\u00e9gica. Intent incompatible. Park."
+      "notes": "Vol 10, competition HIGH 79. Searcher busca herramienta o plantilla gratuita, no guía estratégica. Intent incompatible. Park."
     },
     {
       "keyword": "lead magnet ideas",
@@ -1844,7 +1848,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 10. Demasiado bajo. Bundlable como secci\u00f3n de ejemplos en el post principal."
+      "notes": "Vol 10. Demasiado bajo. Bundlable como sección de ejemplos en el post principal."
     },
     {
       "keyword": "mejores lead magnets",
@@ -1858,7 +1862,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "ai_optimization_chat_gpt_scraper",
-      "notes": "Sin datos GAS. Concepto de alto valor editorial. Bundlable como secci\u00f3n de criterio en el post de lead magnet."
+      "notes": "Sin datos GAS. Concepto de alto valor editorial. Bundlable como sección de criterio en el post de lead magnet."
     },
     {
       "keyword": "lead magnet para email marketing",
@@ -1900,7 +1904,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "ai_optimization_chat_gpt_scraper",
-      "notes": "Sin datos GAS. Alta relevancia on-brand pero sin masa cr\u00edtica de b\u00fasqueda en espa\u00f1ol. Monitorear."
+      "notes": "Sin datos GAS. Alta relevancia on-brand pero sin masa crítica de búsqueda en español. Monitorear."
     },
     {
       "keyword": "lead magnet efectivo",
@@ -1914,7 +1918,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "ai_optimization_chat_gpt_scraper",
-      "notes": "Sin datos GAS. Concepto bundlable como secci\u00f3n '\u00bfqu\u00e9 hace efectivo a un lead magnet?' en el post principal."
+      "notes": "Sin datos GAS. Concepto bundlable como sección '¿qué hace efectivo a un lead magnet?' en el post principal."
     },
     {
       "keyword": "lead magnet checklist",
@@ -1928,7 +1932,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "ai_optimization_chat_gpt_scraper",
-      "notes": "Sin datos GAS. Tipo de lead magnet m\u00e1s f\u00e1cil de crear seg\u00fan ChatGPT scraper. Bundlable en la secci\u00f3n de tipos."
+      "notes": "Sin datos GAS. Tipo de lead magnet más fácil de crear según ChatGPT scraper. Bundlable en la sección de tipos."
     },
     {
       "keyword": "lead magnet ebook",
@@ -1942,7 +1946,7 @@
       "covered_by": null,
       "discovered": "2026-06-17",
       "source": "ai_optimization_chat_gpt_scraper",
-      "notes": "Sin datos GAS. Tipo m\u00e1s com\u00fan de lead magnet pero tambi\u00e9n el m\u00e1s saturado. Bundlable con \u00e1ngulo honesto sobre cu\u00e1ndo vale la pena un ebook vs otros formatos."
+      "notes": "Sin datos GAS. Tipo más común de lead magnet pero también el más saturado. Bundlable con ángulo honesto sobre cuándo vale la pena un ebook vs otros formatos."
     },
     {
       "keyword": "monetizar newsletter",
@@ -1956,7 +1960,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Seed original. DFS no disponible en esta sesi\u00f3n (fallback a WebSearch). Head term del cluster de monetizaci\u00f3n de newsletters. Vol estimado >100/mo por densidad del SERP (10+ art\u00edculos competidores en espa\u00f1ol). \u00c1ngulo Fran: modelo sin newsletter de pago ni patrocinios, lista gratuita + venta de infoproductos propios. 100K EUR/a\u00f1o con 2000 subs al 35% OR."
+      "notes": "Seed original. DFS no disponible en esta sesión (fallback a WebSearch). Head term del cluster de monetización de newsletters. Vol estimado >100/mo por densidad del SERP (10+ artículos competidores en español). Ángulo Fran: modelo sin newsletter de pago ni patrocinios, lista gratuita + venta de infoproductos propios. 100K EUR/año con 2000 subs al 35% OR."
     },
     {
       "keyword": "como monetizar una newsletter",
@@ -1970,7 +1974,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "HOW-TO principal del cluster. SERP con 10+ art\u00edculos gen\u00e9ricos (listas de 5-10 m\u00e9todos de plataformas como MailerLite, GoDaddy, Nomada Digital). Hueco claro: ning\u00fan post desde solopreneur con datos reales propios. \u00c1ngulo Fran: su sistema concreto (lista gratuita, emails casi diarios, secuencias de lanzamiento 5-7 emails, venta de infoproductos propios, sin patrocinios). Datos ancla: 100K EUR/a\u00f1o, 2000 subs, 35% OR, lanzamientos 10-12K EUR. Queued."
+      "notes": "HOW-TO principal del cluster. SERP con 10+ artículos genéricos (listas de 5-10 métodos de plataformas como MailerLite, GoDaddy, Nomada Digital). Hueco claro: ningún post desde solopreneur con datos reales propios. Ángulo Fran: su sistema concreto (lista gratuita, emails casi diarios, secuencias de lanzamiento 5-7 emails, venta de infoproductos propios, sin patrocinios). Datos ancla: 100K EUR/año, 2000 subs, 35% OR, lanzamientos 10-12K EUR. Queued."
     },
     {
       "keyword": "ganar dinero con una newsletter",
@@ -1984,7 +1988,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Variante de 'como monetizar una newsletter', mismo intent del searcher. SERP id\u00e9ntico. Bundlable como variante en el post principal."
+      "notes": "Variante de 'como monetizar una newsletter', mismo intent del searcher. SERP idéntico. Bundlable como variante en el post principal."
     },
     {
       "keyword": "newsletter de pago",
@@ -1998,7 +2002,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "SERP dominado por plataformas (Substack, MailerLite, WordPress). El \u00e1ngulo de Fran es contrario: lista gratuita > newsletter de pago para su modelo. Bundlable como H2 en el post de monetizaci\u00f3n (modelo evaluado, pros y contras). P2 por alineaci\u00f3n parcial con el modelo de Fran."
+      "notes": "SERP dominado por plataformas (Substack, MailerLite, WordPress). El ángulo de Fran es contrario: lista gratuita > newsletter de pago para su modelo. Bundlable como H2 en el post de monetización (modelo evaluado, pros y contras). P2 por alineación parcial con el modelo de Fran."
     },
     {
       "keyword": "como crear newsletter de pago",
@@ -2012,7 +2016,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Tutorial de configuraci\u00f3n. Fuera de scope si se toma como gu\u00eda de herramienta; bundlable como subsecci\u00f3n comparativa en el post de monetizaci\u00f3n mostrando la alternativa."
+      "notes": "Tutorial de configuración. Fuera de scope si se toma como guía de herramienta; bundlable como subsección comparativa en el post de monetización mostrando la alternativa."
     },
     {
       "keyword": "newsletter patrocinios",
@@ -2026,7 +2030,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Modelo de monetizaci\u00f3n que Fran no usa. \u00c1ngulo diferenciado: por qu\u00e9 prefiere infoproductos propios a patrocinios. Bundlable en el post principal como secci\u00f3n de modelos."
+      "notes": "Modelo de monetización que Fran no usa. Ángulo diferenciado: por qué prefiere infoproductos propios a patrocinios. Bundlable en el post principal como sección de modelos."
     },
     {
       "keyword": "como conseguir patrocinadores newsletter",
@@ -2040,7 +2044,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Long tail. SERP con posts de Limoneros, Shopify. Vol probable bajo. Bundlable como H2 dentro de la secci\u00f3n de patrocinios en el post de monetizaci\u00f3n."
+      "notes": "Long tail. SERP con posts de Limoneros, Shopify. Vol probable bajo. Bundlable como H2 dentro de la sección de patrocinios en el post de monetización."
     },
     {
       "keyword": "cuantos suscriptores para monetizar newsletter",
@@ -2054,7 +2058,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Pregunta de validaci\u00f3n con \u00e1ngulo diferenciado fuerte para Fran: 2000 subs al 35% OR generan lanzamientos de 10-12K EUR. La respuesta correcta es 'depende del modelo, no del n\u00famero'. Bundlable como H2 introductorio en el post."
+      "notes": "Pregunta de validación con ángulo diferenciado fuerte para Fran: 2000 subs al 35% OR generan lanzamientos de 10-12K EUR. La respuesta correcta es 'depende del modelo, no del número'. Bundlable como H2 introductorio en el post."
     },
     {
       "keyword": "newsletter afiliacion",
@@ -2068,7 +2072,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Monetizaci\u00f3n via comisiones de afiliados. No el modelo principal de Fran pero complementario. Bundlable en el post de monetizaci\u00f3n."
+      "notes": "Monetización via comisiones de afiliados. No el modelo principal de Fran pero complementario. Bundlable en el post de monetización."
     },
     {
       "keyword": "ingresos con newsletter",
@@ -2082,7 +2086,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Variante m\u00e1s corta de 'ganar dinero con una newsletter'. Bundlable en el cluster del post principal."
+      "notes": "Variante más corta de 'ganar dinero con una newsletter'. Bundlable en el cluster del post principal."
     },
     {
       "keyword": "newsletter para vender infoproductos",
@@ -2096,7 +2100,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Alta relevancia on-brand. Describe exactamente el modelo de Fran. Vol probablemente bajo (frase muy espec\u00edfica). Bundlable o futuro post si el cluster madura."
+      "notes": "Alta relevancia on-brand. Describe exactamente el modelo de Fran. Vol probablemente bajo (frase muy específica). Bundlable o futuro post si el cluster madura."
     },
     {
       "keyword": "monetizar lista de email",
@@ -2110,7 +2114,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Variante del tema con 'lista de email' en vez de 'newsletter'. Sin cobertura directa en el blog. Bundlable en el post de monetizaci\u00f3n."
+      "notes": "Variante del tema con 'lista de email' en vez de 'newsletter'. Sin cobertura directa en el blog. Bundlable en el post de monetización."
     },
     {
       "keyword": "newsletter rentable",
@@ -2124,7 +2128,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Vol desconocido. Frase adjetiva m\u00e1s que de proceso. Bundlable como H2 en el post principal."
+      "notes": "Vol desconocido. Frase adjetiva más que de proceso. Bundlable como H2 en el post principal."
     },
     {
       "keyword": "cuanto gana una newsletter",
@@ -2138,7 +2142,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Pregunta de validaci\u00f3n econ\u00f3mica. Fran puede responder con datos reales: 100K EUR/a\u00f1o de negocio total con la newsletter como canal principal (no datos inventados). Bundlable como H2."
+      "notes": "Pregunta de validación económica. Fran puede responder con datos reales: 100K EUR/año de negocio total con la newsletter como canal principal (no datos inventados). Bundlable como H2."
     },
     {
       "keyword": "newsletter modelo de negocio",
@@ -2152,7 +2156,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "B\u00fasqueda estrat\u00e9gica sobre c\u00f3mo estructurar el negocio alrededor de una newsletter. Bundlable en el post de monetizaci\u00f3n."
+      "notes": "Búsqueda estratégica sobre cómo estructurar el negocio alrededor de una newsletter. Bundlable en el post de monetización."
     },
     {
       "keyword": "newsletter premium",
@@ -2180,7 +2184,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Terminolog\u00eda m\u00e1s anticuada ('lista de correo'). Audiencia probable distinta al ICP de Fran. Park."
+      "notes": "Terminología más anticuada ('lista de correo'). Audiencia probable distinta al ICP de Fran. Park."
     },
     {
       "keyword": "newsletter sin muchos suscriptores",
@@ -2194,7 +2198,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Long tail con vol probablemente muy bajo. Concepto on-brand pero sin masa cr\u00edtica de b\u00fasqueda. Park. El post de 'cu\u00e1ntos suscriptores para monetizar' cubre este \u00e1ngulo."
+      "notes": "Long tail con vol probablemente muy bajo. Concepto on-brand pero sin masa crítica de búsqueda. Park. El post de 'cuántos suscriptores para monetizar' cubre este ángulo."
     },
     {
       "keyword": "primera venta newsletter",
@@ -2208,7 +2212,7 @@
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Long tail muy espec\u00edfico. Vol m\u00ednimo probable. Park."
+      "notes": "Long tail muy específico. Vol mínimo probable. Park."
     },
     {
       "keyword": "newsletter fuente ingresos",
@@ -3759,6 +3763,125 @@
       "discovered": "2026-07-20",
       "source": "dataforseo_labs_google_keyword_suggestions",
       "notes": "Volumen minimo (10/mes), redundante conceptualmente con 'como vender cursos online'."
+    },
+    {
+      "keyword": "prompts para negocios",
+      "seed": "prompts para negocio",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": 2.66,
+      "priority": 3,
+      "fan_out_parent": "prompts para negocio",
+      "covered_by": null,
+      "discovered": "2026-08-06",
+      "source": "kw_data_google_ads_search_volume",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen en el piso de detección (10/mo). Nicho aun sin masa de busqueda medible en es/Spain."
+    },
+    {
+      "keyword": "prompts para emprendedores",
+      "seed": "prompts para negocio",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": 1.04,
+      "priority": 3,
+      "fan_out_parent": "prompts para negocio",
+      "covered_by": null,
+      "discovered": "2026-08-06",
+      "source": "kw_data_google_ads_search_volume",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen en el piso de deteccion (10/mo). Relacionado con 'prompts claude para emprendedores' (bank, P3, sin datos DFS)."
+    },
+    {
+      "keyword": "prompts marketing digital",
+      "seed": "prompts para negocio",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": 6.54,
+      "priority": 3,
+      "fan_out_parent": "prompts para negocio",
+      "covered_by": null,
+      "discovered": "2026-08-06",
+      "source": "kw_data_google_ads_search_volume",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen en el piso de deteccion (10/mo), CPC alto (6.54) indica intencion de agencia/curso, no encaja bien con angulo solopreneur."
+    },
+    {
+      "keyword": "prompts para chat gpt negocios",
+      "seed": "prompts para negocio",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "prompts para negocio",
+      "covered_by": null,
+      "discovered": "2026-08-06",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen en el piso de deteccion (10/mo)."
+    },
+    {
+      "keyword": "prompts de marketing para chatgpt",
+      "seed": "prompts para negocio",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "prompts para negocio",
+      "covered_by": null,
+      "discovered": "2026-08-06",
+      "source": "dataforseo_labs_google_keyword_ideas",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen en el piso de deteccion (10/mo)."
+    },
+    {
+      "keyword": "prompts para marketing",
+      "seed": "prompts para negocio",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "prompts para negocio",
+      "covered_by": null,
+      "discovered": "2026-08-06",
+      "source": "dataforseo_labs_google_keyword_ideas",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen en el piso de deteccion (10/mo)."
+    },
+    {
+      "keyword": "ia aplicada al marketing",
+      "seed": "prompts para negocio",
+      "intent": "informational",
+      "volume": 70,
+      "kd": null,
+      "cpc": 12.36,
+      "priority": 2,
+      "fan_out_parent": "prompts para negocio",
+      "covered_by": null,
+      "discovered": "2026-08-06",
+      "source": "dataforseo_labs_google_keyword_ideas",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "70/mo, bajo el umbral P1 informational (100). Sin angulo diferenciado propio todavia; revisar si Fran tiene experiencia de primera mano en IA+marketing que lo eleve a P1 en un proximo run."
     }
   ]
 }
