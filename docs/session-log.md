@@ -1528,3 +1528,57 @@ Distribución: 111 keywords en 0/null, 111 en 10-90, 31 en 100-490, 4 en
   content-writer del sábado 08/08 hará no-op salvo resiembra previa.
 - Palanca de fondo sin cambios: dominios de referencia nuevos. Con rank 227 las
   cabeceras de 1.000-12.100/mes no se pelean, y eso no lo arregla nada on-site.
+
+## 2026-08-08: content-writer, run sábado (MODE: AUTO) — no-op, cola sin resembrar
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status`,
+`memory/MEMORY.md`) antes de ejecutar el workflow del content-writer.
+
+### Resultado
+
+`python3 scripts/pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+`state/content-queue.json` sigue con los mismos 25 items del 06/08: 24
+`written`, 1 `needs_review` (`agentes-ia-sin-codigo-para-emprendedores`), 0
+`queued`. Exactamente el resultado que la bitácora del 06/08 ya anticipaba
+("el content-writer del sábado 08/08 hará no-op salvo resiembra previa").
+
+Este no es el patrón de "run fantasma" de las incidencias del 14/07 y 22/07
+(ausencia total de commit/entrada de log): el run se disparó y se ejecutó con
+normalidad, simplemente no había trabajo que hacer. La causa de fondo sigue
+siendo la misma que arrastra la bitácora desde el 20/07: el keyword-researcher
+no ha encolado nada nuevo desde el 21/07 (`vender cursos online` 20/07 → 0,
+`prompts para negocio` 06/08 → 0), y el hito 0 de PROJECT_STATUS (pasar el
+gate de autoridad por las 45 keywords de banda media del banco) sigue sin
+ejecutarse.
+
+### Nota operativa: limpieza de working tree antes de correr
+
+Al arrancar, `git status` mostraba `AGENTS.md` y `coordinator.sh` modificados
+sin commitear: eran los cambios que la sesión del 06/08 dejó colgados tras un
+`git reset --soft HEAD~1` (reescritura completa de AGENTS.md + fix de un
+comentario en coordinator.sh que aún citaba `CLAUDE.md` como fichero propio en
+vez de symlink). Se commitearon aparte (`b095ad4`) antes de tocar nada más,
+siguiendo la propia advertencia que esa sesión dejó por escrito ("si hay
+cambios propios en el working tree, hacer stash antes de lanzar el
+coordinator") para que no acabaran mezclados en el commit automático de este
+run.
+
+### Acciones
+
+- Verificado `state/content-queue.json` y `state/agent-log.json` directamente
+  (no solo la fotografía de PROJECT_STATUS.md).
+- Commit `b095ad4`: recuperados los cambios colgados de AGENTS.md/coordinator.sh
+  del 06/08.
+- `PROJECT_STATUS.md` y esta entrada actualizados con el resultado del no-op.
+- Sin cambios en `output/`, `state/content-queue.json` ni en el repo web.
+
+### Pendiente
+
+- Sigue en pie el hito 0: pasar el gate de autoridad (Step 5b) por las 45
+  keywords de banda media del banco antes de seguir probando semillas nuevas.
+  Es la causa raíz de que la cola lleve 5 runs de keyword-researcher (20/07,
+  06/08 incluidos) sin encolar nada.
+- El próximo keyword-researcher programado (lunes o miércoles) debe dejar al
+  menos 1 item `queued` o el content-writer del martes 11/08 volverá a salir
+  en no-op.

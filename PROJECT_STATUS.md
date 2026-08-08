@@ -1,14 +1,22 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-06 (pipeline reactivado tras 10 días parado por
-auth; el enlazado interno NO era la palanca y la página estrella apunta a una
-keyword de 10 búsquedas/mes — ver bitácora)
+Última actualización: 2026-08-08 (content-writer sábado: no-op confirmado,
+cola sigue sin resembrar — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run sábado 2026-08-08 (MODE: AUTO): no-op, cola sin
+  items `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  Mismos 25 items que el 06/08 (24 `written`, 1 `needs_review`), ninguno
+  `queued`. Esperado: la bitácora del 06/08 ya anticipaba este resultado
+  porque el keyword-researcher no ha vuelto a encolar nada desde el
+  21/07 (los runs de `vender cursos online` 20/07 y `prompts para negocio`
+  06/08 dieron 0 items encolados, ver hito 0). No es el patrón de "run
+  fantasma" (el run sí se disparó); es cola vacía por falta de resiembra.
+  Sin cambios en `output/` ni en el repo web. Ver bitácora 2026-08-08.
 - **Pipeline parado 10 días por auth (2026-07-27 → 2026-08-06, RESUELTO).** 9
   runs consecutivos en `error / auth failure`: `claude auth status` daba
   `loggedIn: false` y el check de `coordinator.sh:118` abortaba antes de
