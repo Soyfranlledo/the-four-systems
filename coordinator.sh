@@ -159,7 +159,7 @@ main() {
   # "what do you want to do?" every run instead of writing the queued post.
   # The forceful preamble below (a) keeps the exact `MODE: AUTO` token the
   # content-writer prompt detects, and (b) overrides the collaborative "session"
-  # framing that CLAUDE.md/AGENTS.md set up for human-facing sessions.
+  # framing that AGENTS.md sets up for human-facing sessions.
   case "$AGENT_NAME" in
     content-writer|keyword-researcher)
       prompt_body="MODE: AUTO
