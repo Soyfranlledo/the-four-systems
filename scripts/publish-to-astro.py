@@ -141,8 +141,8 @@ def main() -> int:
             return 1
         print("Pre-publish build: OK")
 
-    run(["git", "commit", "-m", f"post: {slug}"], check=False)
-    run(["git", "push", "-u", "origin", "HEAD"], check=False)
+    run(["git", "commit", "-m", f"post: {slug}"])
+    run(["git", "push", "-u", "origin", "HEAD"])
 
     if branch_strategy == "draft":
         print(f"PUBLISHED_DRAFT branch={branch} (open a PR to ship to main)")

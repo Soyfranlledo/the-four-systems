@@ -1,14 +1,51 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-10 (bank sweep automatizado como `Step 0` del
-keyword-researcher; cola desatascada con `ganar dinero con ia`, primera keyword
-del proyecto que pasa el gate con volumen real — ver bitácora)
+Última actualización: 2026-08-10 (content-writer publica `ganar dinero con
+ia`, primer post nacido de una keyword que pasó el gate de autoridad con
+volumen real; corregido un bug de publicación que reportaba éxito falso — ver
+bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run lunes 2026-08-10 (MODE: AUTO): publicado `ganar
+  dinero con ia`, y corregido un bug real de publicación silenciosa.**
+  Cogió el único item `queued` (`ganar dinero con ia`, comercial, vol 260,
+  encolado el mismo día por el bank sweep del keyword-researcher). Ángulo
+  obligatorio de la cola cumplido: nada de listicle genérico tipo "50 formas"
+  (los 3 competidores orgánicos principales hacen justo eso); en su lugar,
+  pilar honesto con dato propio citable: el propio pipeline de agentes de
+  este repo (35 posts publicados sin que Fran escriba el primer borrador, el
+  36 es este mismo) como prueba de la vía "automatizar tu negocio", separada
+  explícitamente de "ganar dinero" (el blog no vende, es captación). 4 vías
+  cubiertas (servicios, automatización, audiencia/newsletter, infoproductos)
+  con 3 fuentes externas verificadas (Upwork +109% demanda de skills de IA,
+  Anthropic Economic Index 57/43 aumentación vs automatización, Mordor
+  Intelligence tamaño de mercado freelance) y 4 enlaces internos. 1.821
+  palabras, 6/6 variantes del fan-out cubiertas, lint OK a la primera.
+  Publicado en `/blog/ganar-dinero-con-ia/` (HTTP 200 confirmado). 3 enlaces
+  internos entrantes añadidos desde `automatizacion-con-ia-para-solopreneurs`,
+  `infoproductos-con-ia` y `como-monetizar-una-newsletter`.
+  **Bug encontrado y corregido:** `scripts/publish-to-astro.py` llamaba a
+  `git commit`/`git push` con `check=False`, así que un push rechazado
+  (non-fast-forward) se tragaba el error en silencio y el script igualmente
+  imprimía `PUBLISHED_LIVE` y disparaba el ping de IndexNow a una URL que
+  devolvía 404. Pasó exactamente eso hoy: el repo web llevaba 6 commits de
+  atraso frente a origin (trabajo ajeno de republicación de ensayos e
+  integración de vídeos de YouTube, sin relación con este run) desde antes de
+  empezar la sesión. Detectado verificando con `curl` en vez de fiarse del
+  stdout del script (invariante 4, "verificar antes de cantar victoria").
+  Solución aplicada: quitar `check=False` de esas dos llamadas para que
+  fallen alto en vez de mentir. El post se rebaseó sobre los 6 commits
+  ajenos sin conflicto y se publicó de verdad en el segundo intento.
+  **Nota aparte:** el repo web tenía además un `stash` sin resolver de una
+  migración de `CLAUDE.md` → `AGENTS.md` (trabajo de otra sesión, no de
+  este run) que entra en conflicto con cambios recientes de `CLAUDE.md` en
+  origin (`git stash list` en `franlledo-web` muestra la entrada). No se
+  tocó: es una decisión de contenido de Fran, no algo que un run de
+  content-writer deba resolver. Cola: 0 items `queued` de nuevo.
 - **Content-writer, run sábado 2026-08-08 (MODE: AUTO): no-op, cola sin
   items `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   Mismos 25 items que el 06/08 (24 `written`, 1 `needs_review`), ninguno
@@ -219,16 +256,20 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - **Publicación automática DESBLOQUEADA** (2026-07-03): `context/publishing.json`
   corregido a `~/Projects/franlledo-web` y publicado
   `/blog/funnel-de-captacion/` (build OK, IndexNow 200, 200 en producción).
-- El blog tiene **35 artículos publicados** en producción. Último:
-  `/blog/que-es-una-landing-page/` (2026-07-21, 1.643 palabras, PUBLISHED_LIVE,
+- El blog tiene **36 artículos publicados** en producción. Último:
+  `/blog/ganar-dinero-con-ia/` (2026-08-10, 1.821 palabras, PUBLISHED_LIVE,
   HTTP 200, con dato propio citable y 3 enlaces internos entrantes).
-- Cola: **0 items `queued`**. El content-writer del 21/07 vació la cola
-  (era el último item pendiente desde el 15/07). `agentes-ia-sin-codigo-para-emprendedores`
-  sigue en `needs_review` (solapamiento con dos posts de IA). Quedan 3 de las 6
-  semillas nuevas del 09 sin investigar (prompts para negocio, monetizar con
-  ia, automatizar ventas): el keyword-researcher las procesará una por run.
-  **La cola necesita resiembra** antes del próximo run de content-writer (martes,
-  jueves o sábado) o volverá a salir `NO_QUEUED_ITEMS`. Ver `state/content-queue.json`.
+- Cola: **0 items `queued`**. El content-writer del 10/08 vació la cola
+  (era el único item, encolado ese mismo día por el bank sweep).
+  `agentes-ia-sin-codigo-para-emprendedores` sigue en `needs_review`
+  (solapamiento con dos posts de IA). Quedan 3 de las 6 semillas nuevas del
+  09/07 sin investigar (prompts para negocio, monetizar con ia, automatizar
+  ventas) y 3 SERPs P1/P2 del backlog de banda media sin medir (vibe coding,
+  copywriting, copywriting español): el keyword-researcher las procesará a
+  razón de una semilla + hasta 5 del `Step 0: Bank sweep` por run.
+  **La cola necesita resiembra** antes del próximo run de content-writer
+  (martes, jueves o sábado) o volverá a salir `NO_QUEUED_ITEMS`. Ver
+  `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
@@ -362,6 +403,18 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Incidencias conocidas
 
+- **`publish-to-astro.py` reportaba éxito falso en push rechazado (RESUELTO
+  2026-08-10):** las llamadas a `git commit`/`git push` usaban `check=False`,
+  así que un push no-fast-forward (repo web con commits ajenos por delante)
+  se tragaba el error, el script imprimía `PUBLISHED_LIVE` igualmente y
+  disparaba IndexNow contra una URL en 404. Detectado al verificar con
+  `curl` en vez de fiarse del stdout (invariante 4). Corregido quitando
+  `check=False` de esas dos líneas para que fallen alto. El repo web puede
+  quedar por detrás de origin si otra sesión/automatización empuja commits
+  directamente a GitHub (pasó hoy: republicación de ensayos + integración de
+  vídeos de YouTube); si `publish-to-astro.py` falla con un error de git
+  push, la causa más probable es esa, y el fix es un `git pull --rebase`
+  antes de reintentar la publicación.
 - **Content-writer no-op / autonomía (RESUELTO 2026-07-09, CONFIRMADO
   2026-07-11 y 2026-07-13):** los runs programados del 4, 7 y 9 de julio
   salieron en `no-op` porque el agente preguntaba en vez de ejecutar, pese al
@@ -468,6 +521,11 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-08-10: content-writer run — `ganar dinero con ia` publicado, cola
+  vaciada (0 `queued`); corregido bug de `check=False` en
+  `publish-to-astro.py` que reportaba éxito falso en push rechazado.
+- 2026-08-10: keyword-researcher run — bank sweep (`Step 0`) + semilla
+  `monetizar con ia` pivotada a `ganar dinero con ia`, 1 item encolado.
 - 2026-07-21: content-writer run — `qué es una landing page` publicado, cola
   vaciada (0 `queued`).
 - 2026-07-20: keyword-researcher run — semilla `vender cursos online`, 8
@@ -494,6 +552,11 @@ Repo SEO:
 
 Repo web:
 
+- `2d24350` (2026-08-10): seo: enlaces internos hacia ganar-dinero-con-ia.
+- `6340ad4` (2026-08-10): post: ganar-dinero-con-ia (rebaseado sobre 6
+  commits ajenos que habían llegado a origin/main mientras tanto: RSS de
+  ensayos vía n8n, republicación automática de ensayos, integración de
+  vídeos de YouTube en el blog).
 - `72ec9a9` (2026-07-21): seo: enlaces internos hacia que-es-una-landing-page.
 - `8f632cb` (2026-07-21): post: que-es-una-landing-page.
 - `88c0ebf` (2026-07-03): auditoría SEO — 12 seoTitles/metas, lastmod en

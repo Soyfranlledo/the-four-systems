@@ -1671,3 +1671,129 @@ el prefijo de fecha que prohíbe la invariante 1. Sustituido por la URL pública
   irá drenando a razón de ≤5 por run.
 - Sin cambios en la palanca de fondo: dominios de referencia. Con rank 227 las
   cabeceras de 1.000-12.100/mes siguen siendo muros.
+
+## 2026-08-10: content-writer publica `ganar dinero con ia` y corrige un bug de publicación silenciosa
+
+Run programado (MODE: AUTO), sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status` de ambos
+repos, `memory/MEMORY.md`) antes de ejecutar el workflow.
+
+### Brief y redacción
+
+`pick-next-queue-item.py` devolvió el único item `queued`: `ganar dinero con
+ia` (comercial, vol 260, KD 3), encolado ese mismo día por el bank sweep del
+keyword-researcher. Las notas de cola exigían un ángulo diferenciador
+explícito frente a los 3 competidores orgánicos principales de la SERP
+(escuelaemprende, wix, unavidaonline: los tres listicles genéricos de "N
+formas de ganar dinero con IA"), con dato propio citable obligatorio (regla
+GEO Villanueva).
+
+Ángulo elegido: pilar honesto con el propio pipeline de agentes de este repo
+como dato propio. El post revela, con cifra verificable en el momento de
+escribir (`ls src/content/blog/*.md | wc -l` → 35), que el blog lleva 35
+posts publicados sin que Fran escriba el primer borrador, y que el que se
+está publicando es el número 36. Se dejó explícito el límite de esa
+afirmación para no violar la regla de "nunca inflar": el blog no genera
+ingresos directos (es captación, no venta), así que la IA "ahorra tiempo",
+no "genera dinero" por sí misma. Las 4 vías reales (servicios, automatizar
+el propio negocio, audiencia/newsletter, infoproductos) siguen la estructura
+que pedía la cola, con 4 enlaces internos a los posts pre-resueltos
+(`automatizacion-con-ia-para-solopreneurs`, `infoproductos-con-ia`,
+`como-monetizar-una-newsletter`, `claude-code-sin-programar`).
+
+Investigación (Step 2): SERP en vivo confirmó el patrón de AI Overview +
+listicles genéricos dominando la query. 3 fuentes externas verificadas con
+WebFetch antes de citar (no solo el snippet de búsqueda): Upwork ("In-Demand
+Skills 2026", demanda de skills de IA +109% interanual), Anthropic Economic
+Index (57% de uso de IA es aumentación, 43% automatización completa, dato
+usado para contrastar con el pipeline propio) y Mordor Intelligence (mercado
+freelance de 8.900M USD en 2026 a 21.970M en 2031). Se descartó citar a los
+propios competidores de la SERP (escuelaemprende, moaflip, wix, godaddy,
+xataka, unavidaonline) precisamente porque el ángulo del post es diferenciarse
+de ellos, no darles autoridad.
+
+H2 capsule ratio calculado a mano antes de escribir (5 de 8, 62,5%) para
+quedar cómodo dentro del rango real del linter (55-70%, más permisivo que el
+55-75% documentado en el prompt). Lint OK a la primera. 1.821 palabras
+(objetivo 2.000, dentro de ±15%). 6/6 variantes del `fan_out_cluster`
+cubiertas, ninguna `dropped`.
+
+### El bug: `PUBLISHED_LIVE` falso
+
+`publish-to-astro.py` copió el post, corrió el build (`npm run build` OK) y
+reportó `PUBLISHED_LIVE https://franlledo.com/blog/ganar-dinero-con-ia/` con
+IndexNow en 200. La URL, verificada con `curl` (invariante 4, "verificar
+antes de cantar victoria"), devolvía 404, y siguió devolviendo 404 tras
+esperar el tiempo normal de deploy de Coolify.
+
+Causa: el repo web (`franlledo-web`) ya estaba **6 commits por detrás de
+origin/main** antes de empezar esta sesión (trabajo de otra sesión o
+automatización sin relación con este run: proxy de RSS de ensayos vía n8n,
+republicación automática de ensayos desde Substack, integración de vídeos de
+YouTube en el blog). `publish-to-astro.py` hace `git commit` y `git push`
+con `check=False`, así que el push non-fast-forward falló en silencio, el
+script siguió su curso como si nada y **igualmente imprimió
+`PUBLISHED_LIVE` y disparó el ping de IndexNow contra una URL que daba 404**.
+
+Corrección aplicada en `scripts/publish-to-astro.py`: se quitó `check=False`
+de esas dos llamadas (ahora usan el `check=True` por defecto de la función
+`run()`), así que un commit o push fallido aborta con error explícito en vez
+de mentir sobre el resultado.
+
+Para publicar de verdad: `git fetch` + rebase de los 2 commits locales
+(`post:` + los enlaces internos, ver abajo) sobre los 6 commits ajenos de
+origin, sin conflictos (no tocaban los mismos ficheros), rebuild (`npm run
+build` OK, 74 páginas) y push. Confirmado con `curl` en bucle hasta HTTP 200
+(el deploy de Coolify tardó su tiempo habitual de 1-2 min una vez el push
+llegó de verdad). Re-disparado el ping de IndexNow, esta vez contra una URL
+que sí resolvía.
+
+### Hallazgo aparte, no tocado: stash sin resolver en el repo web
+
+Al empezar, `git status` en `franlledo-web` mostraba `AGENTS.md` modificado y
+`CLAUDE.md` borrado sin commitear: trabajo en curso de otra sesión,
+consolidando `AGENTS.md` como fuente única (el mismo patrón que ya usa este
+repo) y retirando `CLAUDE.md`. Sin relación con este run.
+
+Antes del rebase se guardó con `git stash push -u` (solo esos dos ficheros)
+para no mezclarlo con el commit del post. Al intentar recuperarlo después del
+push, `git stash pop` dio conflicto: origin/main había tocado `CLAUDE.md` en
+los 6 commits ajenos (documentación de las funciones nuevas), y el stash lo
+borra. No se resolvió: es una decisión de contenido de Fran (si `CLAUDE.md`
+se retira de verdad o sigue vivo), no algo que un run de content-writer deba
+decidir. El stash queda intacto (`git stash list` en `franlledo-web` →
+`stash@{0}: On main: wip: AGENTS.md/CLAUDE.md consolidation`); el working
+tree del repo web quedó limpio, igual que `origin/main`.
+
+### Enlazado interno entrante
+
+3 enlaces añadidos (de los 4 outbound, se dejó fuera `claude-code-sin-programar`
+por no encontrar un hueco natural sin forzarlo): desde
+`automatizacion-con-ia-para-solopreneurs`, `infoproductos-con-ia` y
+`como-monetizar-una-newsletter`, cada uno con una frase nueva que distingue
+el tema de ese post de las otras vías del post nuevo. Build verificado antes
+y después del rebase.
+
+### Acciones
+
+- `output/posts/2026-08-10-ganar-dinero-con-ia.md` + `.meta.json` (local,
+  gitignored).
+- `state/content-queue.json`: item marcado `written` con `post_url`.
+- Repo web, commits `6340ad4` (post) y `2d24350` (enlaces internos),
+  rebaseados sobre origin y publicados.
+- `scripts/publish-to-astro.py`: fix del bug `check=False` descrito arriba.
+- `PROJECT_STATUS.md` y esta entrada actualizados.
+
+### Pendiente
+
+- Seguimiento en GSC a 28 días de `ganar dinero con ia`: es el primer post
+  del proyecto nacido de una keyword que pasó el gate de autoridad con
+  volumen real (ver bitácora 2026-08-10 anterior, bank sweep). Vale la pena
+  comprobar si el gate predice algo útil.
+- Decisión de Fran pendiente sobre el stash `AGENTS.md`/`CLAUDE.md` en
+  `franlledo-web`.
+- Cola de content-writer vacía otra vez (0 `queued`): el próximo
+  keyword-researcher (lunes o miércoles) debe resembrarla o el content-writer
+  del martes 11/08 saldrá en no-op.
+- Sigue en pie el backlog de 3 SERPs P1/P2 sin medir del `Step 0: Bank
+  sweep` (vibe coding, copywriting, copywriting español).
