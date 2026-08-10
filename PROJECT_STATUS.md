@@ -1,7 +1,8 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-08 (content-writer sábado: no-op confirmado,
-cola sigue sin resembrar — ver bitácora)
+Última actualización: 2026-08-10 (bank sweep automatizado como `Step 0` del
+keyword-researcher; cola desatascada con `ganar dinero con ia`, primera keyword
+del proyecto que pasa el gate con volumen real — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
@@ -53,8 +54,20 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   gate del 28/07 solo corre sobre P1 del run en curso y el único run posterior no
   tuvo ninguno, así que todo el backlog sigue puntuado **solo por KD** — la
   métrica que el propio 28/07 demostró insuficiente (`marketing funnel` KD 4 es
-  un muro de ≈615; `qué es una landing page` KD 6 es un muro de ≈480). Hay **45
-  keywords de banda media (100+/mes) sin cubrir y sin medir**.
+  un muro de ≈615; `qué es una landing page` KD 6 es un muro de ≈480).
+  *(Corregido 2026-08-10: aquí dije "45 keywords de banda media sin cubrir y sin
+  medir" y estaba inflado — no descontaba las 17 ya presentes en
+  `content-queue.json` ni las P3 aparcadas a propósito, y 16 de las restantes
+  eran huecos de `covered_by`, no oportunidad. El backlog real son **3 SERPs**
+  con P1/P2. Ver hito 0.)*
+- **Bank sweep automatizado y cola desatascada (2026-08-10).** El
+  keyword-researcher del 10/08 barrió el banco, arregló 16 `covered_by`, midió
+  `ejemplos de landing page` (muro, 463 vs 227) y encoló **1 item**:
+  `ganar dinero con ia` (260/mes, gate **PASA**: mediana top-5 315 contra umbral
+  427, con rival desplazable en rank 188). Primera keyword del proyecto que pasa
+  el gate con volumen real. La pasada se ha convertido en `Step 0: Bank sweep`
+  del prompt + `scripts/pick-bank-gate-batch.py` (selección determinista, 0
+  llamadas a API, dedup por SERP y suelo de volumen 100).
 - **Análisis de rendimiento + autoridad competitiva (2026-07-28): el cuello de
   botella es AUTORIDAD, no contenido. Implementado un gate de winnability en el
   keyword-researcher.** GSC 28d (28 jun–25 jul vs previo): impresiones **+47%**
@@ -395,16 +408,20 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 ## Próximos hitos
 
-0. **PRIORIDAD: pasar el gate de autoridad (Step 5b) por las 45 keywords de
-   banda media del banco**, antes de buscar semillas nuevas. Trabajo acotado (1
-   llamada `backlinks_bulk_ranks` del dominio + ~45 `serp_organic_live_advanced`)
-   que convierte 273 keywords de fiabilidad desconocida en una lista ordenada de
-   lo que es **ganable y además tiene volumen**. Es la explicación del atasco de
-   la cola: `vender cursos online` (20/07) y `prompts para negocio` (06/08)
-   encolaron 0 items, y entre medias el content-writer del 23/07 salió no-op por
-   cola vacía. Se están probando semillas nuevas y malas mientras el backlog con
-   volumen real sigue sin evaluar. Requiere un modo del
-   keyword-researcher que corra sobre el banco en vez de sobre una semilla.
+0. ~~**PRIORIDAD: pasar el gate por las 45 keywords de banda media**~~ —
+   **ejecutado y redimensionado 2026-08-10.** El run del keyword-researcher del
+   10/08 leyó este hito y barrió el banco por su cuenta: de 28 candidatas de
+   banda media, **16 eran huecos de contabilidad** (ya cubiertas por un post
+   publicado, con `covered_by` sin rellenar) y el resto estaban correctamente
+   aparcadas. Solo una candidata real llegó al gate (`ejemplos de landing page`:
+   **muro**, mediana top-5 463 vs 227). **La cifra de "45" que documenté el
+   06/08 estaba inflada**: contaba solo `covered_by`, sin descontar las 17
+   keywords ya presentes en `content-queue.json` ni las P3 aparcadas a
+   propósito. El backlog real sin medir hoy son **3 SERPs** con P1/P2 (13 si se
+   incluyen P3), no 45. Automatizado como `Step 0: Bank sweep` en
+   `prompts/keyword-researcher.md` + `scripts/pick-bank-gate-batch.py`, para que
+   la pasada sea rutina y no un accidente de un run que leyó el estado. **No se
+   construyó un agente aparte**: no lo justifica un backlog de 3.
 1. **Indexación (Fran, manual en GSC):** la tabla de "Indexación" de arriba,
    en orden. La P1 (URL vieja de marketing-funnel) es la que más equity
    recupera.

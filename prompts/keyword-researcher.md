@@ -52,6 +52,69 @@ This visibility is the whole reason the agent is trustworthy on a recurring sche
 
 ## Workflow
 
+### Step 0: Bank sweep (run this BEFORE the seed workflow)
+
+The Step 5b authority gate only ever runs on the P1 survivors of the current
+run. Measured 2026-08-06: 273 keywords in the bank, `serp_checked` = 0. The
+entire backlog was still scored on KD alone, which is exactly the metric the
+2026-07-28 analysis proved insufficient (`marketing funnel` sits in the bank
+with KD 4 and is a measured wall of median top-5 ~615). A keyword that never
+gets measured never gets queued, no matter how good it is.
+
+So: before researching a fresh seed, spend a small, bounded budget measuring
+what is already in the bank.
+
+```bash
+python3 scripts/pick-bank-gate-batch.py --limit 5
+```
+
+The script does the deterministic part with **zero API calls**: it keeps only
+keywords with `volume >= 100` (the gate measures whether you *can* win, not
+whether winning is *worth anything* — this floor is what prevents another
+`asuntos de email`: winnable and 10 searches/month), drops anything already
+`serp_checked`, already `covered_by`, or already in `content-queue.json`, and
+deduplicates by SERP signature so four phrasings of "qué es una landing page"
+cost one SERP call instead of four. It writes `state/bank-gate-batch.json` and
+exits 2 when there is nothing to measure.
+
+Then:
+
+1. If the script exits 2, skip to Step 1 and note "bank sweep: nothing to
+   measure" in the report. Do not force it.
+2. Otherwise run the **Step 5b gate exactly as written** on each keyword in
+   `batch[]` (fetch `SITE_RANK` once, reuse it for the whole run including the
+   seed workflow). Do not re-implement the rule here.
+3. Write the verdict back into each keyword's bank entry (`serp_checked`,
+   `serp_median_top5`, `serp_min_rank`, and the `notes` string Step 5b
+   specifies). Apply the same verdict to every keyword in that entry's
+   `aliases[]` without spending another SERP call, and note in their `notes`
+   that the verdict is inherited from the alias head.
+4. A keyword that **passes** the gate and is priority 1 goes to the queue via
+   Step 7, same as a seed survivor. A keyword that passes but is priority 2
+   stays P2: passing the gate is not a promotion, it only removes the
+   authority objection.
+
+**Watch for bookkeeping gaps, not just walls.** On 2026-08-10 a sweep of 28
+mid-band candidates found **16 were already covered by a published post whose
+`covered_by` was never set** — phantom backlog, not opportunity. Before
+measuring a SERP, reconcile the candidate against published posts'
+`fan_out_cluster` and `secondaryKeywords`; if it is already covered, set
+`covered_by` to the **public URL** (`https://franlledo.com/blog/<slug>/` or
+`/blog/<slug>/`) and skip the SERP call. Never write a local artifact path
+(`./output/posts/<date>-<slug>.md`): it does not resolve, it hides the keyword
+from every URL-based check, and it drags in the dated filename that invariant 1
+forbids. The script flags malformed values under `AVISO`.
+
+**Cost control:** `--limit 5` by default, so the sweep costs at most ~5 SERP
+calls plus the one `backlinks_bulk_ranks` you need anyway. The backlog drains
+across runs; it does not need to finish in one.
+
+Report these counters under `## Summary`:
+
+```
+- Bank sweep: <N> SERPs measured, <N> walls, <N> passed, <N> covered_by fixed, <N> left in backlog
+```
+
 ### Step 1: Generate AI fan-out queries
 
 For the seed keyword, generate the fan-out: the related questions and sub-queries that AI search engines (Google AI Overviews, ChatGPT search, Perplexity) actually decompose the seed into.

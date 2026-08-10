@@ -95,10 +95,10 @@
       "cpc": 0.63,
       "priority": 3,
       "fan_out_parent": "embudos de venta",
-      "covered_by": "./output/posts/2026-05-21-marketing-funnel-para-solopreneurs.md",
+      "covered_by": "https://franlledo.com/blog/marketing-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "competition LOW 0.06, treat as low KD [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de ./output/posts/2026-05-21-marketing-funnel-para-solopreneurs.md; no encolar por separado.]"
+      "notes": "competition LOW 0.06, treat as low KD [Fix 2026-08-10: covered_by corregido (gap de Step 5); coincide con fan_out_cluster/tema de marketing-funnel-para-solopreneurs, no encolar por separado. El valor apuntaba a la ruta local del artefacto; sustituido por la URL publica.]"
     },
     {
       "keyword": "funnel de conversión",

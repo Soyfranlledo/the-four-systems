@@ -10,6 +10,9 @@ context/
 # Per-run state and outputs
 state/.lock
 state/agent-log.json
+# Lote de trabajo del Step 0 (bank sweep): derivado y regenerado en cada run
+# por scripts/pick-bank-gate-batch.py, no es fuente de verdad.
+state/bank-gate-batch.json
 output/
 reports/
 logs/

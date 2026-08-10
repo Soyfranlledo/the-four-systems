@@ -1582,3 +1582,92 @@ run.
 - El próximo keyword-researcher programado (lunes o miércoles) debe dejar al
   menos 1 item `queued` o el content-writer del martes 11/08 volverá a salir
   en no-op.
+
+## 2026-08-10: bank sweep automatizado (Step 0) + corrección de la cifra de backlog
+
+Continuación de la sesión del 06/08. Entre medias corrieron dos runs
+programados: content-writer del 08/08 (no-op, cola vacía) y
+keyword-researcher del 10/08, que **leyó el hito 0 de PROJECT_STATUS y actuó
+por su cuenta** antes de hacer su semilla.
+
+### El run del 10/08 ejecutó el hito y desmintió mi cifra
+
+Barrió las candidatas de banda media del banco (vol≥100, sin cubrir, sin
+encolar): 28 coincidencias. Resultado:
+
+- **16 eran huecos de contabilidad**: ya cubiertas por un post publicado, con
+  `covered_by` sin rellenar. Phantom backlog, no oportunidad. Corregidas.
+- El resto estaban correctamente aparcadas (fuera de alcance, riesgo de
+  canibalización, público equivocado).
+- **1 candidata real** llegó al gate: `ejemplos de landing page` → **muro**
+  (mediana top-5 463 vs SITE_RANK 227+200; Wix, HubSpot, MailerLite, Landingi,
+  SiteGround). Aparcada.
+
+Después hizo la semilla `monetizar con ia`, cuyo fan-out literal era ruido
+(TikTok/OnlyFans/Twitch), y pivotó al término cabecera real **`ganar dinero con
+ia`**: 260/mes, gate **PASA** (mediana top-5 315 contra umbral 427, con rival
+desplazable `aiassistantstore.com` en rank 188). Encolado como
+`2026-08-10-ganar-dinero-con-ia`. **Primera keyword del proyecto que pasa el
+gate teniendo volumen real.** La cola deja de estar vacía.
+
+### Corrección: la cifra de "45" estaba inflada
+
+En la bitácora y el PROJECT_STATUS del 06/08 escribí "45 keywords de banda media
+sin cubrir y sin medir". El filtro que usé solo descontaba `covered_by`. No
+descontaba las **17 keywords ya presentes en `content-queue.json`** (la mayoría
+`written`, es decir con post publicado) ni las **12 P3 aparcadas a propósito**.
+Sumado a los 16 huecos de contabilidad que encontró el run del 10/08, el backlog
+real sin medir es de **3 SERPs** con P1/P2 (13 si se incluyen las P3), no 45.
+
+Consecuencia de diseño: **no se construye un agente `bank-gatekeeper` aparte.**
+Un quinto agente con su propio plist para vaciar un backlog de 3 no se justifica.
+
+### Lo que sí se construye
+
+- **`scripts/pick-bank-gate-batch.py`**: capa determinista, **cero llamadas a
+  API**. Aplica suelo de volumen (≥100 por defecto: el gate mide si *puedes*
+  ganar, no si *vale la pena* — es el filtro que evita repetir el caso `asuntos
+  de email`, ganable y con 10 búsquedas/mes), descarta lo ya medido / cubierto /
+  encolado, y **deduplica por firma de SERP** (sin acentos, sin stopwords,
+  tokens ordenados) para que cuatro fraseos de "qué es una landing page" cuesten
+  una llamada y no cuatro. Escribe `state/bank-gate-batch.json`, sale con
+  código 2 si no hay nada que medir.
+- **`Step 0: Bank sweep` en `prompts/keyword-researcher.md`**: corre el script
+  con `--limit 5` antes del workflow de semilla, aplica el Step 5b tal cual
+  (sin duplicar la regla), propaga el veredicto a los alias sin gastar SERPs
+  extra, y avisa explícitamente de que hay que buscar **huecos de contabilidad
+  antes que muros**. El backlog se drena entre runs, no hace falta terminarlo
+  en uno. Así la pasada del 10/08 pasa a ser rutina en vez de un accidente de
+  un run que casualmente leyó el estado.
+
+### Higiene de `covered_by`
+
+El script valida el formato. `covered_by` vale como URL absoluta
+(`https://franlledo.com/blog/<slug>/`) o como ruta del sitio (`/blog/<slug>/`);
+ambas conviven en el banco y las dos resuelven. Lo que no vale es una ruta al
+artefacto local. Encontrado y corregido uno: `funnel marketing` (1.000/mes)
+apuntaba a `./output/posts/2026-05-21-marketing-funnel-para-solopreneurs.md`,
+que no resuelve, esconde la keyword de cualquier comprobación por URL y arrastra
+el prefijo de fecha que prohíbe la invariante 1. Sustituido por la URL pública.
+
+### Acciones
+
+- Nuevo `scripts/pick-bank-gate-batch.py`.
+- `prompts/keyword-researcher.md`: nuevo `Step 0: Bank sweep` + contadores en el
+  informe.
+- `state/keyword-bank.json`: corregido el `covered_by` malformado de
+  `funnel marketing`.
+- `PROJECT_STATUS.md`: hito 0 cerrado y redimensionado, corrección de la cifra
+  de 45, bullet del sweep del 10/08.
+
+### Pendiente
+
+- **El content-writer del martes 11/08 debería publicar `ganar dinero con ia`.**
+  Es el primer post del proyecto nacido de una keyword que pasó el gate con
+  volumen: merece seguimiento en GSC a 28 días para validar (o no) que el gate
+  predice algo útil.
+- Quedan 3 SERPs P1/P2 sin medir (`vibe coding` 12.100 P2, `copywriting` 4.400
+  P2, `copywriting español` 110 P2) y 12 más si se abren las P3. El `Step 0` las
+  irá drenando a razón de ≤5 por run.
+- Sin cambios en la palanca de fondo: dominios de referencia. Con rank 227 las
+  cabeceras de 1.000-12.100/mes siguen siendo muros.
