@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "franlledo.com",
-  "last_updated": "2026-08-06",
+  "last_updated": "2026-08-10",
   "seeds_researched": [
     {
       "seed": "embudos de venta",
@@ -66,6 +66,10 @@
     {
       "seed": "prompts para negocio",
       "last_researched": "2026-08-06"
+    },
+    {
+      "seed": "monetizar con ia",
+      "last_researched": "2026-08-10"
     }
   ],
   "keywords": [
@@ -89,12 +93,12 @@
       "volume": 1000,
       "kd": null,
       "cpc": 0.63,
-      "priority": 1,
+      "priority": 3,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "./output/posts/2026-05-21-marketing-funnel-para-solopreneurs.md",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "competition LOW 0.06, treat as low KD"
+      "notes": "competition LOW 0.06, treat as low KD [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de ./output/posts/2026-05-21-marketing-funnel-para-solopreneurs.md; no encolar por separado.]"
     },
     {
       "keyword": "funnel de conversión",
@@ -448,12 +452,12 @@
       "volume": 110,
       "kd": 51,
       "cpc": 15.1,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "email marketing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
       "discovered": "2026-05-22",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "KD 51 borderline. Vol decente. Candidato para más adelante cuando el dominio tenga más autoridad."
+      "notes": "KD 51 borderline. Vol decente. Candidato para más adelante cuando el dominio tenga más autoridad. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/campanas-email-marketing-lista-pequena/; no encolar por separado.]"
     },
     {
       "keyword": "20 ejemplos de correos electrónicos",
@@ -880,12 +884,12 @@
       "volume": 140,
       "kd": 4,
       "cpc": 0.57,
-      "priority": 1,
+      "priority": 3,
       "fan_out_parent": "vibe coding",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/vibe-coding-en-espanol/",
       "discovered": "2026-06-04",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "Vol 140, KD 4. SERP con AI Overview + PAA. Cubierto en el post 'vibe coding en español' como cluster/H2 (mismo intent, mismo post)."
+      "notes": "Vol 140, KD 4. SERP con AI Overview + PAA. Cubierto en el post 'vibe coding en español' como cluster/H2 (mismo intent, mismo post). [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/vibe-coding-en-espanol/; no encolar por separado.]"
     },
     {
       "keyword": "vibe coding herramientas",
@@ -1102,12 +1106,12 @@
       "volume": 210,
       "kd": null,
       "cpc": 6.48,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "marketing automation",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-automation-para-solopreneurs/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 210, competition_index 14 (LOW). Variante en español de 'marketing automation'. Cluster con el post principal."
+      "notes": "Vol 210, competition_index 14 (LOW). Variante en español de 'marketing automation'. Cluster con el post principal. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/marketing-automation-para-solopreneurs/; no encolar por separado.]"
     },
     {
       "keyword": "que es marketing automation",
@@ -1521,12 +1525,12 @@
       "volume": 2400,
       "kd": 11,
       "cpc": 1.71,
-      "priority": 1,
+      "priority": 3,
       "fan_out_parent": "newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 2400, KD 11, competition LOW 6. Búsqueda definitoria con gran volumen. Ángulo diferenciado: no solo 'qué es' sino 'qué puede hacer por tu negocio de 1 persona'. Bundle como H2 dentro del post de 'newsletter'."
+      "notes": "Vol 2400, KD 11, competition LOW 6. Búsqueda definitoria con gran volumen. Ángulo diferenciado: no solo 'qué es' sino 'qué puede hacer por tu negocio de 1 persona'. Bundle como H2 dentro del post de 'newsletter'. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/newsletter-guia-para-solopreneurs/; no encolar por separado.]"
     },
     {
       "keyword": "newsletter ejemplos",
@@ -1731,12 +1735,12 @@
       "volume": 210,
       "kd": null,
       "cpc": 2.38,
-      "priority": 1,
+      "priority": 3,
       "fan_out_parent": "lead magnet",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/",
       "discovered": "2026-06-17",
       "source": "kw_data_google_ads_search_volume",
-      "notes": "Vol 210, competition LOW 0.10. Cluster dentro del post 'lead magnet'. Pregunta definitoria con volumen sano. Cubrir como H2 introductorio en el post principal."
+      "notes": "Vol 210, competition LOW 0.10. Cluster dentro del post 'lead magnet'. Pregunta definitoria con volumen sano. Cubrir como H2 introductorio en el post principal. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/; no encolar por separado.]"
     },
     {
       "keyword": "que es un lead",
@@ -3131,12 +3135,12 @@
       "volume": 720,
       "kd": 2,
       "cpc": 1.13,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Misma intencion que 'que es el copywriting' (priority 1, ya en cola). No requeue."
+      "notes": "Misma intencion que 'que es el copywriting' (priority 1, ya en cola). No requeue. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-el-copywriting/; no encolar por separado.]"
     },
     {
       "keyword": "que es un copywriting",
@@ -3145,12 +3149,12 @@
       "volume": 390,
       "kd": 2,
       "cpc": null,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Mismo cluster que 'que es el copywriting' (priority 1)."
+      "notes": "Mismo cluster que 'que es el copywriting' (priority 1). [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-el-copywriting/; no encolar por separado.]"
     },
     {
       "keyword": "que es el copywriting",
@@ -3159,12 +3163,12 @@
       "volume": 260,
       "kd": 3,
       "cpc": 0.3,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Variante sin tilde de 'qué es el copywriting' (priority 1, ya en cola)."
+      "notes": "Variante sin tilde de 'qué es el copywriting' (priority 1, ya en cola). [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-el-copywriting/; no encolar por separado.]"
     },
     {
       "keyword": "que es copywriting",
@@ -3173,12 +3177,12 @@
       "volume": 210,
       "kd": null,
       "cpc": 2.86,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Mismo cluster que 'que es el copywriting' (priority 1)."
+      "notes": "Mismo cluster que 'que es el copywriting' (priority 1). [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-el-copywriting/; no encolar por separado.]"
     },
     {
       "keyword": "copywriting",
@@ -3435,12 +3439,12 @@
       "volume": 1000,
       "kd": 6,
       "cpc": null,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "pagina de ventas que convierte",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-una-landing-page/",
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Variante casi identica de 'que es una landing page' (articulo 'el' en vez de 'una', uso coloquial masculino). No crear item de cola separado: se cubre como variante dentro del mismo post."
+      "notes": "Variante casi identica de 'que es una landing page' (articulo 'el' en vez de 'una', uso coloquial masculino). No crear item de cola separado: se cubre como variante dentro del mismo post. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-una-landing-page/; no encolar por separado.]"
     },
     {
       "keyword": "qué es la landing page",
@@ -3449,12 +3453,12 @@
       "volume": 1000,
       "kd": 6,
       "cpc": null,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "pagina de ventas que convierte",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-una-landing-page/",
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Variante casi identica de 'que es una landing page' (articulo 'la'). No crear item de cola separado."
+      "notes": "Variante casi identica de 'que es una landing page' (articulo 'la'). No crear item de cola separado. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-una-landing-page/; no encolar por separado.]"
     },
     {
       "keyword": "landing page que es",
@@ -3463,12 +3467,12 @@
       "volume": 720,
       "kd": 7,
       "cpc": null,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "pagina de ventas que convierte",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-una-landing-page/",
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Orden invertido de la definicional, mismo cluster. Entra en el fan_out_cluster del item encolado."
+      "notes": "Orden invertido de la definicional, mismo cluster. Entra en el fan_out_cluster del item encolado. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-una-landing-page/; no encolar por separado.]"
     },
     {
       "keyword": "qué significa landing page",
@@ -3477,12 +3481,12 @@
       "volume": 720,
       "kd": 8,
       "cpc": null,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "pagina de ventas que convierte",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-una-landing-page/",
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Variante 'que significa' del mismo cluster definicional."
+      "notes": "Variante 'que significa' del mismo cluster definicional. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-una-landing-page/; no encolar por separado.]"
     },
     {
       "keyword": "qué es un landing page",
@@ -3491,12 +3495,12 @@
       "volume": 260,
       "kd": 6,
       "cpc": null,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "pagina de ventas que convierte",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-una-landing-page/",
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Variante singular masculina del cluster definicional."
+      "notes": "Variante singular masculina del cluster definicional. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-una-landing-page/; no encolar por separado.]"
     },
     {
       "keyword": "landing page qué es y para qué sirve",
@@ -3533,12 +3537,12 @@
       "volume": 110,
       "kd": 4,
       "cpc": null,
-      "priority": 2,
+      "priority": 3,
       "fan_out_parent": "pagina de ventas que convierte",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-una-landing-page/",
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Riesgo de derivar en tutorial de herramienta/constructor (fuera de alcance segun site-config: 'tutoriales paso a paso de configurar herramientas'). Si se usa, debe quedar como seccion de estructura/estrategia dentro del post definicional, no como post independiente tipo tutorial."
+      "notes": "Riesgo de derivar en tutorial de herramienta/constructor (fuera de alcance segun site-config: 'tutoriales paso a paso de configurar herramientas'). Si se usa, debe quedar como seccion de estructura/estrategia dentro del post definicional, no como post independiente tipo tutorial. [Fix 2026-08-10: covered_by corregido (gap de Step 5), coincide con fan_out_cluster/tema de https://franlledo.com/blog/que-es-una-landing-page/; no encolar por separado.]"
     },
     {
       "keyword": "ejemplos de landing page",
@@ -3552,7 +3556,10 @@
       "covered_by": null,
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Encaja con el patron de posts '-ejemplos' que ya funciona en el sitio (newsletter-ejemplos-que-venden, email-marketing-ejemplos-de-correos-que-venden). Sin dato de KD en DFS: revisar en un proximo run antes de encolar como post independiente."
+      "notes": "Encaja con el patron de posts '-ejemplos' que ya funciona en el sitio (newsletter-ejemplos-que-venden, email-marketing-ejemplos-de-correos-que-venden). Sin dato de KD en DFS: revisar en un proximo run antes de encolar como post independiente. [Gate Step 5b 2026-08-10: SERP wall confirmado. Mediana top-5 rank 463 (iebschool 364, wix 698, siteground 448, hubspot.es 480, mailjet 463) vs SITE_RANK 227 (umbral muro 427). Sin rival desplazable en top5. No encolar.]",
+      "serp_checked": true,
+      "serp_median_top5": 463,
+      "serp_min_rank": 267
     },
     {
       "keyword": "landing page de ventas",
@@ -3882,6 +3889,149 @@
       "serp_median_top5": null,
       "serp_min_rank": null,
       "notes": "70/mo, bajo el umbral P1 informational (100). Sin angulo diferenciado propio todavia; revisar si Fran tiene experiencia de primera mano en IA+marketing que lo eleve a P1 en un proximo run."
+    },
+    {
+      "keyword": "ganar dinero con ia",
+      "seed": "monetizar con ia",
+      "intent": "commercial",
+      "volume": 260,
+      "kd": 3,
+      "cpc": 3.35,
+      "priority": 1,
+      "fan_out_parent": "monetizar con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": true,
+      "serp_median_top5": 315,
+      "serp_min_rank": 188,
+      "notes": "Head term del cluster 'ganar dinero con ia'. Gate Step 5b PASA: mediana top-5 rank 315 (escuelaemprende 315, wix 698, unavidaonline 236, godaddy 636, aiassistantstore 188) vs SITE_RANK 227 (umbral 427); rival desplazable aiassistantstore.com (rank 188). SERP con AI Overview dominante pero organic real detras (no muro de marcas ineludibles). Queued 2026-08-10 como pieza diferenciada de infoproductos-con-ia (esa es sobre CREAR infoproductos con IA; esta es sobre las vias reales de generar ingresos con IA para un solopreneur)."
+    },
+    {
+      "keyword": "como ganar dinero con la ia",
+      "seed": "monetizar con ia",
+      "intent": "informational",
+      "volume": 320,
+      "kd": 5,
+      "cpc": 2.71,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Parte del fan_out_cluster de 'ganar dinero con ia' (id 2026-08-10-ganar-dinero-con-ia, queued 2026-08-10). No encolar por separado."
+    },
+    {
+      "keyword": "cómo ganar dinero con ia",
+      "seed": "monetizar con ia",
+      "intent": "informational",
+      "volume": 210,
+      "kd": 14,
+      "cpc": 2.47,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Parte del fan_out_cluster de 'ganar dinero con ia' (id 2026-08-10-ganar-dinero-con-ia, queued 2026-08-10). No encolar por separado."
+    },
+    {
+      "keyword": "como ganar dinero con ia",
+      "seed": "monetizar con ia",
+      "intent": "informational",
+      "volume": 210,
+      "kd": 3,
+      "cpc": 2.47,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Variante sin tilde de 'como ganar dinero con la ia'/'cómo ganar dinero con ia'. Mismo cluster, no encolar por separado."
+    },
+    {
+      "keyword": "ganar dinero con la ia",
+      "seed": "monetizar con ia",
+      "intent": "commercial",
+      "volume": 90,
+      "kd": 3,
+      "cpc": 4.05,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Parte del fan_out_cluster de 'ganar dinero con ia' (id 2026-08-10-ganar-dinero-con-ia, queued 2026-08-10). No encolar por separado."
+    },
+    {
+      "keyword": "ganar dinero con ia gratis",
+      "seed": "monetizar con ia",
+      "intent": "commercial",
+      "volume": 110,
+      "kd": 7,
+      "cpc": 2.75,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Searcher busca herramienta/app gratuita, no una guia. Intent incompatible con post de blog (mismo patron que 'vibe coding gratis'). Park."
+    },
+    {
+      "keyword": "formas de ganar dinero con ia",
+      "seed": "monetizar con ia",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Vol bajo (10) pero encaja como framing del post principal ('las formas que funcionan'). Bundlable, no post independiente."
+    },
+    {
+      "keyword": "como trabajar con ia y ganar dinero",
+      "seed": "monetizar con ia",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": 1.78,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Vol bajo (10). Angulo servicios/freelance con IA, bundlable como H2 dentro del post principal."
+    },
+    {
+      "keyword": "ia para ganar dinero sin invertir",
+      "seed": "monetizar con ia",
+      "intent": "commercial",
+      "volume": 20,
+      "kd": null,
+      "cpc": 2.4,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_related_keywords",
+      "notes": "Vol bajo (20), rondando el terreno 'sin invertir' que se solapa con inversion/trading. Park."
+    },
+    {
+      "keyword": "app ia para ganar dinero",
+      "seed": "monetizar con ia",
+      "intent": "commercial",
+      "volume": 40,
+      "kd": null,
+      "cpc": 0.91,
+      "priority": 3,
+      "fan_out_parent": "ganar dinero con ia",
+      "covered_by": null,
+      "discovered": "2026-08-10",
+      "source": "dataforseo_labs_google_related_keywords",
+      "notes": "Intent de buscar una app/herramienta concreta, roza comparativas (fuera de alcance segun site-config). Park."
     }
   ]
 }
