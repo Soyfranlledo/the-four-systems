@@ -1,8 +1,7 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-10 (content-writer publica `ganar dinero con
-ia`, primer post nacido de una keyword que pasó el gate de autoridad con
-volumen real; corregido un bug de publicación que reportaba éxito falso — ver
+Última actualización: 2026-08-11 (content-writer martes: no-op, cola vacía
+otra vez tras un único item consumido el mismo día que se encoló — ver
 bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
@@ -10,6 +9,15 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run martes 2026-08-11 (MODE: AUTO): no-op, cola sin
+  items `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  `state/content-queue.json`: 26 items, 25 `written` (incluye `ganar dinero
+  con ia`, publicado ayer) y 1 `needs_review`
+  (`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued`. Causa: el bank
+  sweep del keyword-researcher del 10/08 solo encoló 1 item y el
+  content-writer de ese mismo día lo consumió, así que la cola llegó vacía
+  al run de hoy sin que medie ningún run fantasma. Sin cambios en `output/`
+  ni en el repo web. Ver bitácora 2026-08-11.
 - **Content-writer, run lunes 2026-08-10 (MODE: AUTO): publicado `ganar
   dinero con ia`, y corregido un bug real de publicación silenciosa.**
   Cogió el único item `queued` (`ganar dinero con ia`, comercial, vol 260,
@@ -260,15 +268,17 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   `/blog/ganar-dinero-con-ia/` (2026-08-10, 1.821 palabras, PUBLISHED_LIVE,
   HTTP 200, con dato propio citable y 3 enlaces internos entrantes).
 - Cola: **0 items `queued`**. El content-writer del 10/08 vació la cola
-  (era el único item, encolado ese mismo día por el bank sweep).
+  (era el único item, encolado ese mismo día por el bank sweep); el run del
+  11/08 confirmó `NO_QUEUED_ITEMS` sin que nadie la resembrara entre medias.
   `agentes-ia-sin-codigo-para-emprendedores` sigue en `needs_review`
-  (solapamiento con dos posts de IA). Quedan 3 de las 6 semillas nuevas del
-  09/07 sin investigar (prompts para negocio, monetizar con ia, automatizar
-  ventas) y 3 SERPs P1/P2 del backlog de banda media sin medir (vibe coding,
+  (solapamiento con dos posts de IA). Queda 1 de las 6 semillas nuevas del
+  09/07 sin investigar (`automatizar ventas`; `prompts para negocio` se
+  procesó el 06/08 y `monetizar con ia` el 10/08, pivotada a `ganar dinero
+  con ia`) y 3 SERPs P1/P2 del backlog de banda media sin medir (vibe coding,
   copywriting, copywriting español): el keyword-researcher las procesará a
   razón de una semilla + hasta 5 del `Step 0: Bank sweep` por run.
   **La cola necesita resiembra** antes del próximo run de content-writer
-  (martes, jueves o sábado) o volverá a salir `NO_QUEUED_ITEMS`. Ver
+  (jueves 13/08 o sábado 15/08) o volverá a salir `NO_QUEUED_ITEMS`. Ver
   `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en

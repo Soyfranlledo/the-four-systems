@@ -1797,3 +1797,52 @@ y después del rebase.
   del martes 11/08 saldrá en no-op.
 - Sigue en pie el backlog de 3 SERPs P1/P2 sin medir del `Step 0: Bank
   sweep` (vibe coding, copywriting, copywriting español).
+
+## 2026-08-11: content-writer, run martes (MODE: AUTO) — no-op, cola sin resembrar
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `state/content-queue.json`,
+`state/agent-log.json`, `git status`, `memory/MEMORY.md`) antes de ejecutar el
+workflow del content-writer.
+
+### Resultado
+
+`python3 scripts/pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+`state/content-queue.json` tiene 26 items: 25 `written` (incluye `ganar
+dinero con ia`, publicado ayer) y 1 `needs_review`
+(`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued`. Exactamente lo que
+la propia bitácora del 10/08 anticipaba en su sección "Pendiente": el bank
+sweep del keyword-researcher del 10/08 encoló un único item y el
+content-writer de ese mismo día lo consumió, así que la cola llegó vacía al
+run de hoy sin que mediara ningún run fantasma ni ninguna resiembra.
+
+No es el patrón de "run fantasma" de las incidencias del 14/07 y 22/07
+(ausencia total de commit/entrada de log): el run se disparó y se ejecutó con
+normalidad (`git status` limpio al arrancar, sin cambios colgados de sesiones
+anteriores), simplemente no había trabajo que hacer.
+
+### Acciones
+
+- Verificado `state/content-queue.json` (conteo de status por Python) y
+  `state/agent-log.json` directamente, no solo la fotografía de
+  `PROJECT_STATUS.md`.
+- `PROJECT_STATUS.md` y esta entrada actualizados con el resultado del no-op;
+  corregida de paso una cifra desactualizada (el bullet de "Cola" seguía
+  listando `prompts para negocio` y `monetizar con ia` como semillas nuevas
+  sin investigar, cuando ambas ya se procesaron el 06/08 y el 10/08 — solo
+  queda `automatizar ventas` de las 6 del lote del 09/07).
+- Sin cambios en `output/`, `state/content-queue.json` ni en el repo web.
+
+### Pendiente
+
+- El próximo keyword-researcher programado (miércoles 12/08) debe dejar al
+  menos 1 item `queued` o el content-writer del jueves 13/08 volverá a salir
+  en no-op. El patrón de "bank sweep encola 1 item y el content-writer lo
+  agota el mismo día" ya se repitió una vez (10/08→11/08); si se repite una
+  tercera vez vale la pena que el keyword-researcher encole más de 1 item por
+  run cuando el gate lo permita, en vez de dejar la cola en el filo cada vez.
+- Sigue en pie el backlog de 3 SERPs P1/P2 sin medir del `Step 0: Bank sweep`
+  (vibe coding, copywriting, copywriting español) y la semilla `automatizar
+  ventas` sin investigar.
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).
