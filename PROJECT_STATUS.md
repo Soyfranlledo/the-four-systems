@@ -1,14 +1,44 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-11 (content-writer martes: no-op, cola vacía
-otra vez tras un único item consumido el mismo día que se encoló — ver
-bitácora)
+Última actualización: 2026-08-12 (keyword-researcher miércoles: no-op forzado
+por caída de `dfs-mcp`, causa raíz encontrada y corregida para el próximo run
+— ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Keyword-researcher, run miércoles 2026-08-12 (MODE: AUTO): no-op, `dfs-mcp`
+  no conectó.** `claude mcp list` mostró `dfs-mcp: ✘ Failed to connect —
+  connection timed out after 30000ms`. Causa raíz encontrada: `npx -y
+  dataforseo-mcp-server` (sin pin de versión en `.mcp.json`) instaló
+  `3.0.0` (publicada el 2026-08-11, un día antes de este run), que **rompe
+  dos cosas a la vez**: (1) arranca en modo `http` por defecto (bind a
+  `:3000`) en vez de hablar MCP por stdio, así que el handshake con Claude
+  Code nunca completa; (2) aunque se fuerce `--mode stdio`, esa versión solo
+  expone 4 herramientas genéricas (`docs_index`, `docs_list_sections`,
+  `docs_search`, `api_request`) y ha eliminado las ~89 herramientas por
+  endpoint (`serp_organic_live_advanced`, `backlinks_bulk_ranks`,
+  `dataforseo_labs_google_keyword_ideas`, etc.) que **todos** los prompts de
+  este repo llaman directamente. No es el mismo patrón que la caída
+  17-30/06/2026 (esa vez el servidor sí respondía, solo devolvía datos
+  incompletos); esta vez la interfaz completa cambió de forma incompatible.
+  **Fix aplicado:** `.mcp.json` ahora fija `dataforseo-mcp-server@2.9.13`
+  (última release de la serie 2.9.x, publicada horas antes que la 3.0.0 el
+  mismo día) en vez de `dataforseo-mcp-server` a secas. Verificado a mano por
+  fuera del cliente MCP: handshake stdio OK, 89 herramientas listadas
+  (incluidas las 6 que usa el keyword-researcher), y una llamada real a
+  `backlinks_bulk_ranks(["franlledo.com"])` devuelve rank 227 (coincide con
+  el SITE_RANK ya documentado del 28/07). El fix no pudo desbloquear **este**
+  run (la conexión de esta sesión ya había fallado antes de tocar el
+  fichero), así que sigue siendo no-op, pero el próximo run programado
+  (keyword-researcher, próximo lunes/miércoles) debería conectar limpio.
+  **Pendiente de vigilar:** `npx -y` sin pin de versión seguirá siendo
+  frágil ante la próxima release mayor de `dataforseo-mcp-server`; si vuelve
+  a pasar, es la primera sospecha. Cero cambios en `state/keyword-bank.json`
+  ni `state/content-queue.json` (no se fabricó ningún dato de volumen/KD sin
+  la API, por regla del prompt). Ver bitácora 2026-08-12.
 - **Content-writer, run martes 2026-08-11 (MODE: AUTO): no-op, cola sin
   items `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   `state/content-queue.json`: 26 items, 25 `written` (incluye `ganar dinero

@@ -1846,3 +1846,146 @@ anteriores), simplemente no había trabajo que hacer.
   ventas` sin investigar.
 - Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
   bitácora 2026-08-10).
+
+## 2026-08-12: keyword-researcher, run miércoles (MODE: AUTO) — no-op, `dfs-mcp` caído
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `state/keyword-bank.json`,
+`state/content-queue.json`, `state/seed-keywords.txt`, `state/agent-log.json`,
+`git status`) antes de ejecutar el workflow.
+
+### Semilla elegida
+
+`automatizar ventas`: única línea de `state/seed-keywords.txt` sin entrada en
+`keyword-bank.json -> seeds_researched[]` (todas las demás semillas ya tienen
+`last_researched`). Nunca llegó a investigarse porque el bloqueo de `dfs-mcp`
+(ver abajo) impidió cualquier llamada.
+
+### Step 0 (bank sweep): completado sin API
+
+`python3 scripts/pick-bank-gate-batch.py --limit 5` corrió con normalidad (no
+llama a ninguna API): 283 keywords en banco, 3 candidatas tras deduplicar
+(`vibe coding`, `copywriting`, `copywriting español`, las tres ya `priority:
+2`, el mismo backlog pendiente desde el 10/08). El siguiente paso, correr el
+gate Step 5b sobre ellas, requiere `serp_organic_live_advanced` y
+`backlinks_bulk_ranks`: ahí es donde el run se bloqueó.
+
+### El bloqueo: `dfs-mcp` no conecta
+
+`ToolSearch` no encontró ninguna herramienta `mcp__dfs-mcp__*` pese al aviso
+de "still connecting". `claude mcp list` confirmó: `dfs-mcp: ✘ Failed to
+connect — connection timed out after 30000ms`.
+
+Diagnóstico (todo verificado a mano, fuera del cliente MCP, sin tocar datos
+del proyecto):
+
+1. Credenciales OK (`DATAFORSEO_USERNAME`/`DATAFORSEO_PASSWORD` presentes en
+   `.mcp.json`), red OK (`api.dataforseo.com` responde a ping, el registro npm
+   responde 200).
+2. `.mcp.json` invoca `npx -y dataforseo-mcp-server` **sin pin de versión**.
+   `npm view dataforseo-mcp-server versions` muestra que la serie 2.9.x
+   (la que expone una herramienta MCP por endpoint, la arquitectura que
+   asumen todos los prompts de este repo) terminó en `2.9.13`, publicada el
+   **2026-08-11 12:02 UTC**, y que **`3.0.0` se publicó el mismo día a las
+   16:13 UTC**, horas después: un día antes de este run. `npx -y` sin pin
+   coge automáticamente la última, así que este run fue el primero en tocar
+   `3.0.0`.
+3. `3.0.0` rompe dos cosas simultáneamente:
+   - Arranca en modo `http` por defecto (bind a `:3000`) salvo que se pase
+     `--mode stdio` explícito. Sin ese flag, el proceso nunca habla MCP por
+     stdio, así que el cliente de Claude Code espera 30s y aborta la
+     conexión. Confirmado reproduciendo el arranque a mano: el proceso queda
+     vivo, escuchando en el puerto 3000, sin completar el handshake (y de
+     hecho dejó un proceso húérfano ocupando el puerto desde el intento de
+     conexión de esta misma sesión, visible con `lsof -nP -iTCP:3000`).
+   - Aunque se fuerce `--mode stdio`, la superficie de herramientas cambió
+     por completo: de ~89 herramientas por endpoint a solo 4 genéricas
+     (`docs_index`, `docs_list_sections`, `docs_search`, `api_request`).
+     Ninguna de las herramientas que el prompt llama por nombre
+     (`serp_organic_live_advanced`, `backlinks_bulk_ranks`,
+     `dataforseo_labs_google_keyword_ideas`,
+     `dataforseo_labs_google_related_keywords`,
+     `dataforseo_labs_bulk_keyword_difficulty`,
+     `ai_optimization_chat_gpt_scraper`) existe ya en `3.0.0`. Es una
+     reescritura de API, no un bug puntual: no basta con arreglar el
+     transporte.
+
+No es el mismo patrón que la caída de `dfs-mcp` del 17-30/06/2026 (aquella
+vez el servidor respondía pero con huecos de datos que se cubrieron con
+WebSearch de emergencia). Esta vez ninguna llamada era posible, y con la
+interfaz de herramientas completamente distinta, no había forma de hacer
+fallback parcial sin fabricar cifras de volumen/KD, algo que el prompt
+prohíbe explícitamente.
+
+### Fix aplicado
+
+`.mcp.json`: `"args": ["-y", "dataforseo-mcp-server"]` →
+`"args": ["-y", "dataforseo-mcp-server@2.9.13"]` (fija la última versión de
+la serie 2.9.x en vez de seguir arrastrando "latest").
+
+Verificado a mano, invocando el binario directamente por stdio con las
+credenciales del proyecto (sin pasar por el cliente MCP de esta sesión, que
+ya había fallado la conexión y no se puede reconectar en caliente):
+
+- Handshake `initialize` por stdio: OK, sin necesidad de `--mode stdio` (esta
+  versión antigua no tiene ese flag, ni falta).
+- `tools/list`: 89 herramientas, incluidas las 6 que usa el
+  keyword-researcher.
+- `tools/call` real a `backlinks_bulk_ranks(["franlledo.com"])`: `rank: 227`,
+  coincide exactamente con el SITE_RANK documentado en el análisis del
+  28/07 (invariante de coherencia, buena señal de que 2.9.13 se comporta
+  igual que la versión con la que se construyó todo el histórico del
+  banco).
+
+También se mató el proceso huérfano que había quedado escuchando en el
+puerto 3000 (`kill 70816`, arranque de esta misma sesión al intentar
+conectar contra `3.0.0`); no queda nada residual.
+
+`.mcp.json` está en `.gitignore` (confirmado con `git check-ignore`), así que
+este cambio no toca git y no viaja a ningún commit; hay que recordar
+reaplicarlo si se reconstruye `.mcp.json` en otra máquina desde
+`.mcp.json.example`.
+
+**El fix no pudo desbloquear este run**: la conexión de la sesión actual ya
+había fallado antes de tocar el fichero, y Claude Code no reconecta MCP en
+caliente dentro de la misma conversación. El próximo run programado
+(keyword-researcher, próximo lunes o miércoles, arranque de sesión limpio)
+debería conectar bien.
+
+### Resultado
+
+No-op genuino: 0 llamadas a DataForSEO, 0 keywords nuevas en el banco, 0
+items añadidos a la cola, `state/keyword-bank.json` y
+`state/content-queue.json` sin tocar (ninguna cifra de volumen/KD se fabricó
+sin la API, por regla explícita del prompt). Semilla `automatizar ventas`
+sigue sin investigar. Backlog de `Step 0` (vibe coding, copywriting,
+copywriting español) sigue sin medir, exactamente donde estaba el 10/08.
+
+### Acciones
+
+- `.mcp.json`: pin de versión (ver arriba, gitignored, no aparece en git
+  status).
+- Proceso huérfano en el puerto 3000 terminado.
+- `PROJECT_STATUS.md` y esta entrada actualizados.
+- Ningún cambio en `state/keyword-bank.json`, `state/content-queue.json`,
+  `output/` ni en el repo web.
+
+### Pendiente
+
+- Confirmar en el próximo run programado que `dfs-mcp` conecta limpio con el
+  pin nuevo y que investiga por fin la semilla `automatizar ventas`.
+- Si `dfs-mcp` vuelve a fallar tras el pin, sospechar primero de credenciales
+  o red, no de otra ruptura de versión (esa causa ya está descartada para
+  `2.9.13`).
+- Cuando haya un momento sin presión de cola, vale la pena fijar también un
+  rango semver conservador (p. ej. `2.9.13` a secas ya lo hace de facto) en
+  vez de depender de acordarse de actualizar el pin a mano si DataForSEO
+  publica parches 2.9.x legítimos más adelante.
+- Sigue en pie el backlog de 3 SERPs P1/P2 sin medir del `Step 0: Bank sweep`
+  (vibe coding, copywriting, copywriting español) y la semilla `automatizar
+  ventas` sin investigar (ambos bloqueados por lo mismo, no por falta de
+  trabajo).
+- La cola de content-writer sigue en 0 `queued`: el próximo keyword-researcher
+  debe resembrarla en cuanto `dfs-mcp` esté operativo o el content-writer del
+  jueves 13/08 volverá a salir en no-op (tercera vez seguida si esto no se
+  resuelve pronto).
