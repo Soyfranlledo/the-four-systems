@@ -1989,3 +1989,50 @@ copywriting español) sigue sin medir, exactamente donde estaba el 10/08.
   debe resembrarla en cuanto `dfs-mcp` esté operativo o el content-writer del
   jueves 13/08 volverá a salir en no-op (tercera vez seguida si esto no se
   resuelve pronto).
+
+## 2026-08-13: content-writer, run jueves (MODE: AUTO) — no-op, cola sin resembrar
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status`/`git log`
+de este repo y del repo web, `state/content-queue.json`, `memory/MEMORY.md`)
+antes de ejecutar el workflow del content-writer.
+
+### Resultado
+
+`python3 scripts/pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+`state/content-queue.json` tiene 26 items: 25 `written` y 1 `needs_review`
+(`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued` — mismo conteo que el
+11/08, confirmado contando por Python, no solo leyendo la fotografía de
+`PROJECT_STATUS.md`.
+
+Causa directa: el keyword-researcher del miércoles 12/08, que era quien debía
+resembrar la cola antes de este run, salió en no-op genuino por la caída de
+`dfs-mcp` (ver bitácora 2026-08-12) y no llegó a tocar
+`state/content-queue.json`. No es un run fantasma (`git status` limpio al
+arrancar, working tree sin cambios colgados, el run de hoy se disparó y
+ejecutó con normalidad); simplemente no había ningún item nuevo desde el
+10/08.
+
+### Acciones
+
+- Verificado `state/content-queue.json` con el picker real
+  (`pick-next-queue-item.py`) y con un conteo por Python, no solo con la
+  fotografía de `PROJECT_STATUS.md`.
+- `PROJECT_STATUS.md` y esta entrada actualizados con el resultado del no-op.
+- Sin cambios en `output/`, `state/content-queue.json`, `state/keyword-bank.json`
+  ni en el repo web.
+
+### Pendiente
+
+- Tercer no-op de content-writer por cola vacía en cinco runs programados
+  (08/08, 11/08, 13/08) desde que dejó de resembrarse con margen. El fix del
+  pin `dataforseo-mcp-server@2.9.13` (12/08) debería dejar conectar limpio al
+  keyword-researcher del lunes 17/08; si ese run también sale en no-op por
+  cola sin resembrar (no por fallo de `dfs-mcp`), vale la pena que encole más
+  de 1 item cuando el gate lo permita en vez de dejar la cola en el filo cada
+  vez (la propia bitácora del 11/08 ya lo señalaba).
+- Sigue en pie el backlog de 3 SERPs P1/P2 sin medir del `Step 0: Bank sweep`
+  (vibe coding, copywriting, copywriting español) y la semilla `automatizar
+  ventas` sin investigar.
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).
