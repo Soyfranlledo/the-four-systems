@@ -1,13 +1,24 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-13 (content-writer jueves: no-op, cola sin
-resembrar tras el no-op del keyword-researcher del 12/08 — ver bitácora)
+Última actualización: 2026-08-15 (content-writer sábado: no-op, cola sin
+resembrar — cuarto no-op consecutivo por cola vacía, ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run sábado 2026-08-15 (MODE: AUTO): no-op, cola sin items
+  `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  `state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`
+  (`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued` — mismo conteo que
+  el 13/08. Causa: no ha corrido ningún keyword-researcher desde el 12/08
+  (no-op por `dfs-mcp` caído); el siguiente programado es el lunes 17/08, con
+  el pin `dataforseo-mcp-server@2.9.13` ya aplicado. No es un run fantasma
+  (`git status` limpio al arrancar, el run se disparó y ejecutó con
+  normalidad). Sin cambios en `output/` ni en el repo web. Cuarto no-op de
+  content-writer por cola vacía (08/08, 11/08, 13/08, 15/08) desde que la cola
+  dejó de resembrarse con margen. Ver bitácora 2026-08-15.
 - **Content-writer, run jueves 2026-08-13 (MODE: AUTO): no-op, cola sin items
   `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   `state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`

@@ -2036,3 +2036,49 @@ ejecutó con normalidad); simplemente no había ningún item nuevo desde el
   ventas` sin investigar.
 - Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
   bitácora 2026-08-10).
+
+## 2026-08-15: content-writer, run sábado (MODE: AUTO) — no-op, cola sin resembrar
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status`/`git log`
+de este repo, `state/content-queue.json`, `memory/MEMORY.md`) antes de
+ejecutar el workflow del content-writer.
+
+### Resultado
+
+`python3 scripts/pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+`state/content-queue.json` tiene 26 items: 25 `written` y 1 `needs_review`
+(`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued` — mismo conteo que el
+13/08, confirmado contando por Python además del picker real.
+
+Causa: ningún keyword-researcher ha corrido desde el 12/08 (ese run salió en
+no-op genuino por la caída de `dfs-mcp`, ver bitácora 2026-08-12); el
+siguiente programado por `launchd` es el lunes 17/08, ya con el pin
+`dataforseo-mcp-server@2.9.13` aplicado. No es un run fantasma (`git status`
+limpio al arrancar, el run de hoy se disparó y ejecutó con normalidad;
+simplemente no había ningún item `queued` que consumir).
+
+### Acciones
+
+- Verificado `state/content-queue.json` con el picker real
+  (`pick-next-queue-item.py`) y con un conteo por Python, no solo con la
+  fotografía de `PROJECT_STATUS.md`.
+- `PROJECT_STATUS.md` y esta entrada actualizados con el resultado del no-op.
+- Sin cambios en `output/`, `state/content-queue.json`, `state/keyword-bank.json`
+  ni en el repo web.
+
+### Pendiente
+
+- Cuarto no-op de content-writer por cola vacía (08/08, 11/08, 13/08, 15/08)
+  desde que la cola dejó de resembrarse con margen. Todo depende ahora del
+  keyword-researcher del lunes 17/08: si conecta limpio con el pin de
+  `dfs-mcp` y resiembra la cola, este patrón debería romperse; si vuelve a
+  salir en no-op (por fallo de conexión o por cola sin resembrar con
+  suficiente margen), es la señal para dejar de tratarlo como incidencia
+  puntual y encolar más de 1 item por bank sweep cuando el gate de autoridad
+  lo permita (señalado ya el 11/08 y el 13/08).
+- Sigue en pie el backlog de 3 SERPs P1/P2 sin medir del `Step 0: Bank sweep`
+  (vibe coding, copywriting, copywriting español) y la semilla `automatizar
+  ventas` sin investigar.
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).
