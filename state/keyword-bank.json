@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "franlledo.com",
-  "last_updated": "2026-08-10",
+  "last_updated": "2026-08-17",
   "seeds_researched": [
     {
       "seed": "embudos de venta",
@@ -70,6 +70,10 @@
     {
       "seed": "monetizar con ia",
       "last_researched": "2026-08-10"
+    },
+    {
+      "seed": "automatizar ventas",
+      "last_researched": "2026-08-17"
     }
   ],
   "keywords": [
@@ -861,7 +865,10 @@
       "covered_by": null,
       "discovered": "2026-06-04",
       "source": "dataforseo_labs_google_related_keywords",
-      "notes": "Head term. Vol 12100, KD 48 - supera el umbral P1 para informational (KD ≤ 35). SERP: organic, PAA, video, knowledge_graph, images. Competition LOW 0.28. Cobertura de los términos hijo sube la autoridad para este head term."
+      "notes": "Head term. Vol 12100, KD 48 - supera el umbral P1 para informational (KD ≤ 35). SERP: organic, PAA, video, knowledge_graph, images. Competition LOW 0.28. Cobertura de los términos hijo sube la autoridad para este head term. SERP gate (bank sweep 2026-08-17): median top-5 528 vs site 227, displaceable target found (vibe-coding.fr rank 0, sin backlinks). Pasa el gate (no wall); sigue P2 por KD 48 por encima del umbral informational.",
+      "serp_checked": true,
+      "serp_median_top5": 528,
+      "serp_min_rank": 0
     },
     {
       "keyword": "vibe coding en español",
@@ -1956,15 +1963,15 @@
       "keyword": "monetizar newsletter",
       "seed": "monetizar newsletter",
       "intent": "commercial",
-      "volume": null,
+      "volume": 10,
       "kd": null,
       "cpc": null,
-      "priority": 1,
+      "priority": 2,
       "fan_out_parent": "monetizar newsletter",
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Seed original. DFS no disponible en esta sesión (fallback a WebSearch). Head term del cluster de monetización de newsletters. Vol estimado >100/mo por densidad del SERP (10+ artículos competidores en español). Ángulo Fran: modelo sin newsletter de pago ni patrocinios, lista gratuita + venta de infoproductos propios. 100K EUR/año con 2000 subs al 35% OR."
+      "notes": "Seed original. DFS no disponible en esta sesión (fallback a WebSearch). Head term del cluster de monetización de newsletters. Vol estimado >100/mo por densidad del SERP (10+ artículos competidores en español). Ángulo Fran: modelo sin newsletter de pago ni patrocinios, lista gratuita + venta de infoproductos propios. 100K EUR/año con 2000 subs al 35% OR. CORRECCION 2026-08-17: dato de volumen real obtenido via API (antes null, arrastrado de la ventana de caida de dfs-mcp de 17-30/06). Vol real 10/mes, por debajo del umbral P1 comercial (>=50). Degradado a P2."
     },
     {
       "keyword": "como monetizar una newsletter",
@@ -1987,12 +1994,12 @@
       "volume": null,
       "kd": null,
       "cpc": null,
-      "priority": 1,
+      "priority": 3,
       "fan_out_parent": "monetizar newsletter",
       "covered_by": null,
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
-      "notes": "Variante de 'como monetizar una newsletter', mismo intent del searcher. SERP idéntico. Bundlable como variante en el post principal."
+      "notes": "Variante de 'como monetizar una newsletter', mismo intent del searcher. SERP idéntico. Bundlable como variante en el post principal. CORRECCION 2026-08-17: sin datos de volumen en DataForSEO (keyword_overview no devuelve resultado), antes null arrastrado de la ventana de caida de dfs-mcp de 17-30/06. Sin evidencia de volumen real, se aparca en P3."
     },
     {
       "keyword": "newsletter de pago",
@@ -3196,7 +3203,10 @@
       "covered_by": null,
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Termino cabecera muy amplio y competido a nivel global (Hotmart, Rockcontent, Semrush). El KD reportado (7) es sospechosamente bajo para un termino tan generico; no se usa como primary_keyword por riesgo de sobreestimar la oportunidad real. Servido de forma natural por el post de 'que es el copywriting' sin ser el target literal."
+      "notes": "Termino cabecera muy amplio y competido a nivel global (Hotmart, Rockcontent, Semrush). El KD reportado (7) es sospechosamente bajo para un termino tan generico; no se usa como primary_keyword por riesgo de sobreestimar la oportunidad real. Servido de forma natural por el post de 'que es el copywriting' sin ser el target literal. SERP wall (bank sweep 2026-08-17): median top-5 rank 470 vs site 227, sin target desplazable (domestika.org 470, ciudadano2cero.com 287, utamed.es 496, iebschool.com 364, platzi.com 520).",
+      "serp_checked": true,
+      "serp_median_top5": 470,
+      "serp_min_rank": 287
     },
     {
       "keyword": "copywriting ejemplos",
@@ -3304,7 +3314,10 @@
       "covered_by": null,
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
-      "notes": "Angulo debil (busqueda ambigua entre 'copywriting en espanol' y 'copywriter espanol'), sin diferenciacion clara. Se deja en banco."
+      "notes": "Angulo debil (busqueda ambigua entre 'copywriting en espanol' y 'copywriter espanol'), sin diferenciacion clara. Se deja en banco. SERP gate (bank sweep 2026-08-17): median top-5 198 vs site 227, targets desplazables (growitschool.com 192, cristinafuertes.com 169, ivofiz.com 198). Pasa el gate; sigue P2 por angulo debil.",
+      "serp_checked": true,
+      "serp_median_top5": 198,
+      "serp_min_rank": 169
     },
     {
       "keyword": "servicios de copywriting",
@@ -4032,6 +4045,142 @@
       "discovered": "2026-08-10",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Intent de buscar una app/herramienta concreta, roza comparativas (fuera de alcance segun site-config). Park."
+    },
+    {
+      "keyword": "automatizar ventas",
+      "seed": "automatizar ventas",
+      "intent": "commercial",
+      "volume": 20,
+      "kd": null,
+      "cpc": null,
+      "priority": 2,
+      "fan_out_parent": "automatizar ventas",
+      "covered_by": null,
+      "discovered": "2026-08-17",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Seed vol 20, por debajo del umbral P1 (>=50 comercial). Cluster tematicamente cercano a 'automatizacion con ia' y 'marketing automation', ya cubiertos en el sitio."
+    },
+    {
+      "keyword": "como automatizar ventas por internet",
+      "seed": "automatizar ventas",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 2,
+      "fan_out_parent": "automatizar ventas",
+      "covered_by": null,
+      "discovered": "2026-08-17",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Vol 10, por debajo del umbral P1 informational (>=100). Se deja en banco."
+    },
+    {
+      "keyword": "automatizar ventas online",
+      "seed": "automatizar ventas",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 2,
+      "fan_out_parent": "automatizar ventas",
+      "covered_by": null,
+      "discovered": "2026-08-17",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Vol 10, por debajo del umbral P1 comercial (>=50). Se deja en banco."
+    },
+    {
+      "keyword": "automatizacion de ventas",
+      "seed": "automatizar ventas",
+      "intent": "commercial",
+      "volume": 70,
+      "kd": null,
+      "cpc": null,
+      "priority": 2,
+      "fan_out_parent": "automatizacion de ventas",
+      "covered_by": null,
+      "discovered": "2026-08-17",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": true,
+      "serp_median_top5": 616,
+      "serp_min_rank": 278,
+      "notes": "Vol 70 (>=50, cumplia el umbral P1 comercial) pero degradado a P2 por el gate de autoridad Step 5b. SERP wall: median top-5 rank 616 vs site 227, sin target desplazable (ibm.com 616, prometeo-fp.com 278, mailchimp.com 703, sap.com 658, hubspot.es 480). SERP dominada por vendedores de CRM enterprise (IBM, SAP, HubSpot, Salesforce) - GEO-citation candidate solo si se enmarca con angulo propio 'automatizar ventas sin CRM' (coherente con el post ya publicado marketing-automation-para-solopreneurs). No solapa con secondaryKeywords de ese post ni de automatizacion-con-ia-para-solopreneurs; no se marca covered_by."
+    },
+    {
+      "keyword": "automatizacion de las ventas",
+      "seed": "automatizar ventas",
+      "intent": "commercial",
+      "volume": 70,
+      "kd": null,
+      "cpc": null,
+      "priority": 2,
+      "fan_out_parent": "automatizacion de ventas",
+      "covered_by": null,
+      "discovered": "2026-08-17",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Variante sinonima de 'automatizacion de ventas' (mismo core_keyword segun DataForSEO). No se gatea por separado ni se encolaria como primary_keyword propio: si 'automatizacion de ventas' se encola en el futuro, esta variante entra en su fan_out_cluster."
+    },
+    {
+      "keyword": "chatbot de ventas",
+      "seed": "automatizar ventas",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "automatizar ventas",
+      "covered_by": null,
+      "discovered": "2026-08-17",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Vol 10, encaje tematico debil (construir un chatbot no es el angulo de Fran para solopreneurs). Se aparca."
+    },
+    {
+      "keyword": "crm automatizado",
+      "seed": "automatizar ventas",
+      "intent": "commercial",
+      "volume": 20,
+      "kd": null,
+      "cpc": null,
+      "priority": 2,
+      "fan_out_parent": "automatizar ventas",
+      "covered_by": null,
+      "discovered": "2026-08-17",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Vol 20, por debajo del umbral P1. Solapa conceptualmente con la tesis del post marketing-automation-para-solopreneurs ('automatiza sin CRM ni software caro'); no esta en su secondaryKeywords asi que no se marca covered_by, pero cuidado con cannibalizacion si se encola en el futuro."
+    },
+    {
+      "keyword": "ia para ventas",
+      "seed": "automatizar ventas",
+      "intent": "informational",
+      "volume": 40,
+      "kd": null,
+      "cpc": 4.93,
+      "priority": 2,
+      "fan_out_parent": "automatizar ventas",
+      "covered_by": null,
+      "discovered": "2026-08-17",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Vol 40, por debajo del umbral P1 informational (>=100). Se deja en banco."
     }
   ]
 }
