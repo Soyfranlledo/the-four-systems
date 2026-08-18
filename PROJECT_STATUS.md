@@ -1,13 +1,35 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-15 (content-writer sábado: no-op, cola sin
-resembrar — cuarto no-op consecutivo por cola vacía, ver bitácora)
+Última actualización: 2026-08-18 (content-writer martes: no-op, cola sin
+`queued` — quinto no-op consecutivo, y por primera vez no por falta de un run
+intermedio: el keyword-researcher del 17/08 sí corrió y no dejó nada
+encolable, ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run martes 2026-08-18 (MODE: AUTO): no-op, cola sin items
+  `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  `state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`
+  (`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued`. **Distinto de los
+  cuatro no-ops anteriores:** esta vez el keyword-researcher del lunes 17/08
+  sí corrió (commit `630981d`) e hizo trabajo real — semilla nueva
+  `automatizar ventas` investigada (8 keywords al banco) y el `Step 0: Bank
+  sweep` completo, drenando su backlog de 3 SERPs a 0 — pero ningún candidato
+  sobrevivió el gate de autoridad (`Step 5b`): la única P1
+  (`automatizacion de ventas`, vol 70) fue degradada a P2 por el mismo patrón
+  de "autoridad, no contenido" del 28/07 (mediana top-5 616 vs SITE_RANK 227,
+  SERP de CRMs enterprise). El propio informe del 17/08 predijo exactamente
+  este resultado. No es un run fantasma (`git status` limpio al arrancar).
+  Sin cambios en `output/` ni en el repo web. **Quinto no-op consecutivo**
+  (08/08, 11/08, 13/08, 15/08, 18/08). **Hallazgo relevante:** con esta
+  semilla las 6 semillas nuevas del lote del 09/07 quedan todas investigadas
+  y el backlog del bank sweep queda en 0 — es la primera vez que el pipeline
+  se queda sin trabajo de bajo esfuerzo que resembrar automáticamente; hace
+  falta una segunda vuelta sobre semillas antiguas o semillas nuevas de Fran
+  (ver hito 7 e hito 0 actualizados abajo). Ver bitácora 2026-08-18.
 - **Content-writer, run sábado 2026-08-15 (MODE: AUTO): no-op, cola sin items
   `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   `state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`
@@ -319,21 +341,18 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - El blog tiene **36 artículos publicados** en producción. Último:
   `/blog/ganar-dinero-con-ia/` (2026-08-10, 1.821 palabras, PUBLISHED_LIVE,
   HTTP 200, con dato propio citable y 3 enlaces internos entrantes).
-- Cola: **0 items `queued`**. El content-writer del 10/08 vació la cola
-  (era el único item, encolado ese mismo día por el bank sweep); los runs del
-  11/08 y 13/08 confirmaron `NO_QUEUED_ITEMS` sin que nadie la resembrara
-  entre medias (el keyword-researcher del 12/08 fue no-op por la caída de
-  `dfs-mcp`, no llegó a intentarlo). `agentes-ia-sin-codigo-para-emprendedores`
-  sigue en `needs_review` (solapamiento con dos posts de IA). Queda 1 de las 6
-  semillas nuevas del 09/07 sin investigar (`automatizar ventas`; `prompts
-  para negocio` se procesó el 06/08 y `monetizar con ia` el 10/08, pivotada a
-  `ganar dinero con ia`) y 3 SERPs P1/P2 del backlog de banda media sin medir
-  (vibe coding, copywriting, copywriting español): el keyword-researcher las
-  procesará a razón de una semilla + hasta 5 del `Step 0: Bank sweep` por run,
-  ahora que el pin `dataforseo-mcp-server@2.9.13` (12/08) debería dejarlo
-  conectar limpio. **La cola necesita resiembra** antes del próximo run de
-  content-writer (sábado 15/08) o volverá a salir `NO_QUEUED_ITEMS` por
-  cuarta vez consecutiva. Ver `state/content-queue.json`.
+- Cola: **0 items `queued`** desde el 10/08. El keyword-researcher del 17/08
+  conectó limpio con el pin `dataforseo-mcp-server@2.9.13`, investigó la
+  última semilla nueva (`automatizar ventas`) y drenó a 0 el backlog del
+  `Step 0: Bank sweep` (las 3 SERPs de banda media: vibe coding, copywriting,
+  copywriting español), pero ningún candidato pasó el gate de autoridad
+  (`Step 5b`). `agentes-ia-sin-codigo-para-emprendedores` sigue en
+  `needs_review` (solapamiento con dos posts de IA). **El pipeline se ha
+  quedado sin trabajo de bajo esfuerzo por primera vez**: las 17 semillas de
+  `state/seed-keywords.txt` están todas investigadas y el backlog del bank
+  sweep está en 0. La cola no se resembrará sola en el próximo run
+  programado: hace falta una segunda vuelta de keyword-researcher sobre
+  semillas antiguas o semillas nuevas de Fran. Ver `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
@@ -559,9 +578,16 @@ Zona horaria del equipo: `Europe/Madrid`.
    retirar, fusionar o replantear (ver `reports/2026-07-02-content-writer.md`).
 6. ~~Confirmar el lado keyword-researcher de la autonomía~~ — **cerrado
    2026-07-13**, ver bitácora.
-7. Keyword researcher: procesar las **3 semillas nuevas restantes** del lote
-   del 09 (`prompts para negocio`, `monetizar con ia`, `automatizar ventas`),
-   una por run.
+7. ~~Keyword researcher: procesar las 3 semillas nuevas restantes del lote
+   del 09~~ — **cerrado 2026-08-17**: `prompts para negocio` (06/08),
+   `monetizar con ia` (10/08, pivotada a `ganar dinero con ia`) y
+   `automatizar ventas` (17/08) ya están las tres investigadas. Las 17
+   semillas de `state/seed-keywords.txt` están ahora todas investigadas al
+   menos una vez, y el `Step 0: Bank sweep` drenó su backlog a 0 el 17/08.
+   **Nueva prioridad:** el pipeline no tiene más trabajo de bajo esfuerzo que
+   resembrar solo; el próximo keyword-researcher necesita o bien una segunda
+   vuelta sobre las semillas más antiguas o bien semillas nuevas de Fran para
+   volver a producir items `queued`.
 7b. ~~Content-writer: revisar por qué no corrió el martes 2026-07-14~~ —
    **cerrado 2026-07-21**: ambos items que quedaron pendientes de esa
    incidencia (`que-es-el-copywriting`, `que-es-una-landing-page`) están

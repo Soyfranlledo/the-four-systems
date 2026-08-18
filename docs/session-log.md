@@ -2082,3 +2082,86 @@ simplemente no había ningún item `queued` que consumir).
   ventas` sin investigar.
 - Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
   bitácora 2026-08-10).
+
+## 2026-08-18: content-writer, run martes (MODE: AUTO) — no-op, pipeline sin más trabajo de bajo esfuerzo
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status`/`git log`
+de este repo, `state/content-queue.json`, `memory/MEMORY.md`) antes de
+ejecutar el workflow del content-writer.
+
+### Resultado
+
+`python3 scripts/pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+`state/content-queue.json` tiene 26 items: 25 `written` y 1 `needs_review`
+(`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued` — confirmado con el
+picker real y con un conteo por Python.
+
+A diferencia de los cuatro no-ops anteriores (08/08, 11/08, 13/08, 15/08),
+esta vez sí corrió un keyword-researcher intermedio: el del lunes 17/08
+(commit `630981d`) investigó la semilla `automatizar ventas` (8 keywords
+nuevas al banco, 0 duplicados) y ejecutó el `Step 0: Bank sweep` completo (3
+SERPs medidas: `copywriting`, `vibe coding`, `copywriting español`),
+drenando su backlog a 0. Pero **ningún candidato sobrevivió el gate de
+autoridad (`Step 5b`)**: la única keyword P1 de la semilla
+(`automatizacion de ventas`, vol 70/mes) fue degradada a P2 porque la
+mediana de autoridad del top-5 orgánico (616) supera con mucho el
+SITE_RANK vivo (227) y ningún rival del top-5 es desplazable (IBM, SAP,
+HubSpot, Mailchimp, prometeo-fp.com) — el mismo patrón de "autoridad, no
+contenido" documentado el 28/07. El propio informe del keyword-researcher
+del 17/08 predijo textualmente este resultado para el content-writer del
+18/08 o 20/08.
+
+No es un run fantasma (`git status` limpio al arrancar, el run se disparó y
+ejecutó con normalidad); simplemente no hay ningún item `queued` que
+consumir.
+
+**Hallazgo relevante, más allá del no-op puntual:** con `automatizar ventas`
+investigada, las 6 semillas nuevas del lote del 09/07 quedan las 6
+procesadas (`copywriting para vender` 13/07, `pagina de ventas que
+convierte` 15/07, `vender cursos online` 20/07, `prompts para negocio`
+06/08, `monetizar con ia` 10/08, `automatizar ventas` 17/08). Contando las
+11 semillas originales, las **17 semillas de `state/seed-keywords.txt` están
+ahora todas investigadas al menos una vez**, y el backlog del `Step 0: Bank
+sweep` (que llevaba semanas siendo la fuente principal de items nuevos)
+está en 0. Es la primera vez desde que existe el pipeline automático que se
+queda sin trabajo de bajo esfuerzo que resembrar por su cuenta: el próximo
+keyword-researcher programado (miércoles 19/08) no tiene ninguna semilla
+nueva que investigar ni ninguna SERP de banda media pendiente de medir, así
+que su única fuente de items nuevos sería una segunda vuelta sobre semillas
+ya investigadas (nuevas variantes/volumen fresco) o semillas completamente
+nuevas. Esto no es un fallo de ningún run: es el pipeline llegando al fondo
+de su backlog inicial por primera vez.
+
+### Acciones
+
+- Verificado `state/content-queue.json` con el picker real
+  (`pick-next-queue-item.py`) y con un conteo por Python.
+- Revisado el commit y el informe del keyword-researcher del 17/08
+  (`reports/2026-08-17-keyword-researcher.md`) para confirmar que no es un
+  run fantasma y para documentar por qué no dejó nada encolado.
+- Confirmado contra `state/seed-keywords.txt` y `state/agent-log.json` que
+  las 17 semillas están investigadas y localizada la fecha de cada una de
+  las 6 nuevas del lote del 09/07.
+- `PROJECT_STATUS.md` actualizado: nuevo bullet de resumen, hito 7 cerrado
+  (las 3 semillas nuevas restantes ya están procesadas), bullet de "Cola"
+  refrescado con el hallazgo de que el pipeline se ha quedado sin backlog de
+  bajo esfuerzo.
+- Sin cambios en `output/`, `state/content-queue.json`, `state/keyword-bank.json`
+  ni en el repo web.
+
+### Pendiente
+
+- Quinto no-op de content-writer por cola vacía (08/08, 11/08, 13/08, 15/08,
+  18/08), pero por primera vez la causa no es "nadie resembró": es que el
+  pipeline se ha quedado sin semillas nuevas y sin backlog del bank sweep.
+  El keyword-researcher del miércoles 19/08 necesita una segunda vuelta
+  sobre semillas antiguas (las más antiguas de `seed-keywords.txt` llevan
+  investigadas desde antes de julio) o semillas nuevas para volver a
+  producir items `queued`; si ese run también sale en no-op por falta de
+  material, es la señal para que Fran añada semillas nuevas a mano en vez de
+  esperar a que el pipeline se resiembre solo.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).
