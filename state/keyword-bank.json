@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "franlledo.com",
-  "last_updated": "2026-08-17",
+  "last_updated": "2026-08-19",
   "seeds_researched": [
     {
       "seed": "embudos de venta",
@@ -9,7 +9,7 @@
     },
     {
       "seed": "email marketing",
-      "last_researched": "2026-05-22"
+      "last_researched": "2026-08-19"
     },
     {
       "seed": "lanzamientos infoproductos",
@@ -86,7 +86,7 @@
       "cpc": 7.66,
       "priority": 1,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords"
     },
@@ -113,7 +113,7 @@
       "cpc": 2.03,
       "priority": 1,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords"
     },
@@ -126,7 +126,7 @@
       "cpc": 9.0,
       "priority": 1,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/sales-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Búsqueda en inglés desde España, audiencia más técnica que el típico ICP"
@@ -218,7 +218,7 @@
       "cpc": 2.38,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/sales-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords"
     },
@@ -231,7 +231,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords"
     },
@@ -244,7 +244,7 @@
       "cpc": 0.42,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/sales-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "KD 1, oportunidad facil aunque volumen bajo"
@@ -258,7 +258,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords"
     },
@@ -349,7 +349,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-conversion-etapas-que-importan/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_keyword_ideas",
       "notes": "Framework TOFU MOFU BOFU"
@@ -389,7 +389,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-funnel-para-solopreneurs/",
       "discovered": "2026-05-21",
       "source": "dataforseo_labs_google_related_keywords"
     },
@@ -430,7 +430,7 @@
       "cpc": 3.19,
       "priority": 1,
       "fan_out_parent": "email marketing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
       "discovered": "2026-05-22",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "competition LOW, KD nulo pero relacionado depth-2 del seed. Volumen sano para informational."
@@ -444,7 +444,7 @@
       "cpc": 2.77,
       "priority": 1,
       "fan_out_parent": "email marketing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
       "discovered": "2026-05-22",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "KD 18 + vol 140 = ratio excelente. Intent commercial pero el post puede ser educativo (tipos de campañas que sí funcionan en una lista pequeña)."
@@ -500,7 +500,7 @@
       "cpc": 10.34,
       "priority": 2,
       "fan_out_parent": "email marketing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
       "discovered": "2026-05-22",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "KD 1 ridículo, vol 20 bajo. Easy win pero low traffic. Bundlable con otro post."
@@ -514,7 +514,7 @@
       "cpc": 0.22,
       "priority": 2,
       "fan_out_parent": "email marketing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
       "discovered": "2026-05-22",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Adyacente a tipos/ventajas. KD null pero competition LOW."
@@ -598,7 +598,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "email marketing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
       "discovered": "2026-05-22",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Long tail. Bundlable con el post de 'email marketing ejemplos'."
@@ -612,7 +612,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "email marketing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
       "discovered": "2026-05-22",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Encaja con el ángulo Fran (captación). Long tail."
@@ -626,7 +626,7 @@
       "cpc": 6.89,
       "priority": 2,
       "fan_out_parent": "email marketing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
       "discovered": "2026-05-22",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Adyacente al cluster ejemplos. Audiencia borderline (puede ser oficinista)."
@@ -640,7 +640,7 @@
       "cpc": 6.65,
       "priority": 1,
       "fan_out_parent": "infoproductos",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-son-los-infoproductos/",
       "discovered": "2026-05-29",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "competition MEDIUM 0.34, search_intent_info=informational (DFS), search_intent label commercial 0.716. SERP con ai_overview + people_also_ask. Top keyword del cluster."
@@ -654,7 +654,7 @@
       "cpc": 6.8,
       "priority": 1,
       "fan_out_parent": "infoproductos",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/infoproductos-con-ia/",
       "discovered": "2026-05-29",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "competition MEDIUM 0.59. yearly trend -93 (cayó duro), pero on-brand para Fran (Claude, prompts, ia para solopreneurs). Tratar como evergreen, no chasing trend."
@@ -682,7 +682,7 @@
       "cpc": 3.97,
       "priority": 2,
       "fan_out_parent": "infoproductos",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-son-los-infoproductos/",
       "discovered": "2026-05-29",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Intent informational pura, on-brand. Vol 10 demasiado bajo para P1. Posible H2 dentro del post de 'infoproductos'."
@@ -879,7 +879,7 @@
       "cpc": 2.93,
       "priority": 1,
       "fan_out_parent": "vibe coding",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/vibe-coding-en-espanol/",
       "discovered": "2026-06-04",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Vol 480, KD 18, competition LOW 0.28. SERP solo tiene 45 resultados - espacio casi virgen. Trend +2500% anual. Queued como post principal del seed."
@@ -907,7 +907,7 @@
       "cpc": 0.75,
       "priority": 2,
       "fan_out_parent": "vibe coding",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/vibe-coding-en-espanol/",
       "discovered": "2026-06-04",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Vol 50, competition MEDIUM 0.37. Intent commercial. Bundlable con el post pillar de vibe coding como H2 sobre las herramientas principales (Claude, Cursor, Replit)."
@@ -963,7 +963,7 @@
       "cpc": 0.65,
       "priority": 2,
       "fan_out_parent": "vibe coding",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/vibe-coding-en-espanol/",
       "discovered": "2026-06-04",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Vol 20, competition LOW 0.15. Bundlable con el post principal como sección de ejemplos reales de solopreneur."
@@ -977,7 +977,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "vibe coding",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/vibe-coding-en-espanol/",
       "discovered": "2026-06-04",
       "source": "dataforseo_labs_google_related_keywords"
     },
@@ -1087,7 +1087,7 @@
       "cpc": 9.46,
       "priority": 1,
       "fan_out_parent": "marketing automation",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-automation-para-solopreneurs/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 590, KD 12, competition LOW 0.32. Término en inglés buscado desde España. Ángulo solopreneur: automation sin CRM ni stack enterprise. Cluster con 'automatizacion de marketing' (210 vol) y 'email automation' (70 vol)."
@@ -1101,7 +1101,7 @@
       "cpc": 2.86,
       "priority": 1,
       "fan_out_parent": "lead nurturing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 390, KD 6, competition LOW 0.16. Ángulo diferenciado Fran: nurturing con emails diarios, sin CRM, lista <5K con 35% open rate. Primer hito documentado: 1500+ correos enviados. P1 informational con datos propios fuertes."
@@ -1129,7 +1129,7 @@
       "cpc": 0.01,
       "priority": 2,
       "fan_out_parent": "marketing automation",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-automation-para-solopreneurs/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 70, competition_index 7 (muy bajo). Búsqueda definitoria, buen H2 dentro del post de marketing automation."
@@ -1143,7 +1143,7 @@
       "cpc": 44.74,
       "priority": 2,
       "fan_out_parent": "marketing automation",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-automation-para-solopreneurs/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 70, KD 14, competition MEDIUM 0.34. CPC 44.74 altísimo (sector SaaS). P1 por métricas pero cercano al cluster 'marketing automation' → P2 (parcial coverage por el post de automation queued)."
@@ -1157,7 +1157,7 @@
       "cpc": 13.63,
       "priority": 2,
       "fan_out_parent": "lead nurturing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 30, competition LOW 0.32. Bundlable como H2 en el post de lead nurturing."
@@ -1171,7 +1171,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "secuencias de email",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 30, competition LOW 0.12. El email de bienvenida es el primer email de cualquier secuencia. Bundlable como sección en el post de lead nurturing."
@@ -1185,7 +1185,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "lead nurturing",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/lead-nurturing-con-email-marketing/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume"
     },
@@ -1198,7 +1198,7 @@
       "cpc": 33.07,
       "priority": 2,
       "fan_out_parent": "marketing automation",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-automation-para-solopreneurs/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 20, KD 49 borderline. CPC altísimo. Cluster con marketing automation."
@@ -1212,7 +1212,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "marketing automation",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/marketing-automation-para-solopreneurs/",
       "discovered": "2026-06-08",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 10 solo. Bundlable como sección con ejemplos reales dentro del post de automation."
@@ -1366,7 +1366,7 @@
       "cpc": 8.06,
       "priority": 1,
       "fan_out_parent": "ia para negocios pequeños",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/automatizacion-con-ia-para-solopreneurs/",
       "discovered": "2026-06-10",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 260, competition MEDIUM 63. KD null (término relativamente nuevo, thin SERP). Mejor keyword del cluster. Ángulo Fran: automatización real de un negocio solopreneur con Claude, desde primera persona. Diferencia de 'marketing-automation-para-solopreneurs': ese post cubre email automation; este cubre IA automation en sentido amplio (contenido, SEO, operaciones, emails)."
@@ -1380,7 +1380,7 @@
       "cpc": 3.19,
       "priority": 2,
       "fan_out_parent": "ia para negocios pequeños",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/automatizacion-con-ia-para-solopreneurs/",
       "discovered": "2026-06-10",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 70, competition LOW 17. Sin KD confirmado. Término broad sin ángulo diferenciado claro. Bundlable como H2 en post de automatización con IA."
@@ -1520,7 +1520,7 @@
       "cpc": 7.44,
       "priority": 1,
       "fan_out_parent": "newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 12100, KD 12, competition LOW 26. Término head con volumen extraordinario y KD bajo. CPC 7.44 confirma intent comercial. Ángulo Fran: newsletter como canal propio de captación y venta para solopreneurs, diferenciado de 'herramienta para informar'. Combinar con 'newsletter que es' (KD 11, vol 2400) en el mismo post."
@@ -1548,7 +1548,7 @@
       "cpc": 3.48,
       "priority": 1,
       "fan_out_parent": "newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/newsletter-ejemplos-que-venden/",
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 320, KD null (competition LOW 19). Paralelo al post de 'email marketing ejemplos' (que funcionó bien). Ángulo: formatos concretos y criterio de primera persona. Usar ejemplos reales solo cuando estén documentados; no inventar métricas ni ventas atribuidas."
@@ -1562,7 +1562,7 @@
       "cpc": 5.38,
       "priority": 2,
       "fan_out_parent": "newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 70, KD 1 (extraordinariamente bajo), competition HIGH 68 en GAS (ads, no orgánico). Vol por debajo de P1 threshold (100/mo informational). Bundlable como H2 en el post de newsletter. No como tutorial de herramienta (fuera de scope) sino enfoque estratégico."
@@ -1590,7 +1590,7 @@
       "cpc": 15.48,
       "priority": 2,
       "fan_out_parent": "newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/newsletter-guia-para-solopreneurs/",
       "discovered": "2026-06-15",
       "source": "kw_data_google_ads_search_volume",
       "notes": "Vol 30, KD 28, competition MEDIUM 61. Vol bajo para P1. Bundlable como variante de 'como crear una newsletter'."
@@ -1730,7 +1730,7 @@
       "cpc": 10.79,
       "priority": 1,
       "fan_out_parent": "lead magnet",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/",
       "discovered": "2026-06-17",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Vol 1000, competition LOW 0.27, CPC 10.79. SERP solo 69 resultados (campo casi virgen), sin AI Overview. Trend -45% yearly pero sigue siendo el head term con mayor volumen del cluster. Ángulo Fran: de 0 a 2000 suscriptores usando lead magnets reales, no PDFs genéricos. Queued como post principal del seed."
@@ -1758,7 +1758,7 @@
       "cpc": 1.8,
       "priority": 1,
       "fan_out_parent": "que es un lead",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-un-lead/",
       "discovered": "2026-06-17",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Vol 1300, KD 2. SERP solo 128 resultados, AI Overview presente pero SERP extraordinariamente thin. Audiencia amplia (marketing, periodismo, música) pero ángulo solopreneur diferenciado evita el genérico. Queued como post standalone con enfoque en captación de leads para negocios de 1 persona."
@@ -1772,7 +1772,7 @@
       "cpc": 1.33,
       "priority": 2,
       "fan_out_parent": "lead magnet",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/lead-magnet-que-es-y-como-crear-uno/",
       "discovered": "2026-06-17",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Vol 70 < 100 (umbral P1 informacional). SERP 93200 resultados, competition LOW 0.18. Bundlable como sección en el post de lead magnet."
@@ -1968,7 +1968,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "monetizar newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/como-monetizar-una-newsletter/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Seed original. DFS no disponible en esta sesión (fallback a WebSearch). Head term del cluster de monetización de newsletters. Vol estimado >100/mo por densidad del SERP (10+ artículos competidores en español). Ángulo Fran: modelo sin newsletter de pago ni patrocinios, lista gratuita + venta de infoproductos propios. 100K EUR/año con 2000 subs al 35% OR. CORRECCION 2026-08-17: dato de volumen real obtenido via API (antes null, arrastrado de la ventana de caida de dfs-mcp de 17-30/06). Vol real 10/mes, por debajo del umbral P1 comercial (>=50). Degradado a P2."
@@ -1982,7 +1982,7 @@
       "cpc": null,
       "priority": 1,
       "fan_out_parent": "monetizar newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/como-monetizar-una-newsletter/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "HOW-TO principal del cluster. SERP con 10+ artículos genéricos (listas de 5-10 métodos de plataformas como MailerLite, GoDaddy, Nomada Digital). Hueco claro: ningún post desde solopreneur con datos reales propios. Ángulo Fran: su sistema concreto (lista gratuita, emails casi diarios, secuencias de lanzamiento 5-7 emails, venta de infoproductos propios, sin patrocinios). Datos ancla: 100K EUR/año, 2000 subs, 35% OR, lanzamientos 10-12K EUR. Queued."
@@ -2010,7 +2010,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "monetizar newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/como-monetizar-una-newsletter/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "SERP dominado por plataformas (Substack, MailerLite, WordPress). El ángulo de Fran es contrario: lista gratuita > newsletter de pago para su modelo. Bundlable como H2 en el post de monetización (modelo evaluado, pros y contras). P2 por alineación parcial con el modelo de Fran."
@@ -2038,7 +2038,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "monetizar newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/como-monetizar-una-newsletter/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Modelo de monetización que Fran no usa. Ángulo diferenciado: por qué prefiere infoproductos propios a patrocinios. Bundlable en el post principal como sección de modelos."
@@ -2066,7 +2066,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "monetizar newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/como-monetizar-una-newsletter/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Pregunta de validación con ángulo diferenciado fuerte para Fran: 2000 subs al 35% OR generan lanzamientos de 10-12K EUR. La respuesta correcta es 'depende del modelo, no del número'. Bundlable como H2 introductorio en el post."
@@ -2108,7 +2108,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "monetizar newsletter",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/como-monetizar-una-newsletter/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Alta relevancia on-brand. Describe exactamente el modelo de Fran. Vol probablemente bajo (frase muy específica). Bundlable o futuro post si el cluster madura."
@@ -2262,7 +2262,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "claude code",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/claude-code-sin-programar/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Informacional definitoria. SERP con 5+ articulos dedicados (nocodehackers, cristiantala, mentoraia, javadex, growitschool). Vol estimado 200-400/mo. Bundlable como H2 introductoria en el post de 'claude code sin programar'."
@@ -2290,7 +2290,7 @@
       "cpc": null,
       "priority": 1,
       "fan_out_parent": "claude code",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/claude-code-sin-programar/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Vol estimado 150-300/mo (5+ articulos dedicados: growitschool, cristiantala, lorenabordonaba, datos.ninja, aprendiendoia, escueladevibecoding). KD estimado 15-20 (espacio relativamente nuevo en 2026). Angulo diferenciado fuerte para Fran: solopreneur real que usa Claude Code para su negocio (el repo seo-franlledo es la prueba). Queued."
@@ -2318,7 +2318,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "claude code",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/claude-code-sin-programar/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Vol estimado <100/mo. On-brand fuerte para Fran. SERP: misingresospasivos, pabloypunto, donweb tienen articulo. Bundlable como H2 en el post de 'claude code sin programar'. P2 por vol probable bajo."
@@ -2346,7 +2346,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "claude code",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/claude-code-sin-programar/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Vol estimado 100-300/mo. SERP creciendo (mentoraia, nocodehackers, maxtechera, javadex). Bundlable como H2 en el post principal. P2 porque el angulo generico de 'como usar' sin la capa solopreneur no diferencia respecto al SERP existente."
@@ -2374,7 +2374,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "claude code",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/claude-code-sin-programar/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Analogo a 'vibe coding en español' (vol 480, KD 18, P1). Vol estimado 200-400/mo. Potencialmente P1 pero cluster del post queued 'claude code sin programar'. Verificar con DFS en siguiente run con herramientas disponibles. El post que se ha queued cubre este intent."
@@ -2416,7 +2416,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "claude code",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/claude-code-sin-programar/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Vol estimado 50-100/mo. Solapamiento con 'automatizacion con ia' (post existente) pero Claude Code especifico es diferente. Bundlable como H2 en el post de 'claude code sin programar'. P2."
@@ -2430,7 +2430,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "claude code",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/claude-code-sin-programar/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Vol estimado 50-100/mo. Angulo potente para Fran con ejemplos reales del repo seo-franlledo. Bundlable como H2."
@@ -2514,7 +2514,7 @@
       "cpc": null,
       "priority": 1,
       "fan_out_parent": "agentes de ia",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/agentes-de-ia-para-solopreneurs/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Head term. Est. vol 1000-2000/mo por densidad SERP (10+ artículos en español: emprender-facil, manageengine, kommo, gptbots, naxia, javadex, ecosistemastartup, nytelweb). SERP dominado por tech giants (Google Cloud, AWS, IBM) + corporativo. Hueco solopreneur claro: Fran tiene sistema real de agentes funcionando (seo-franlledo). Queued como post pillar del seed."
@@ -2528,7 +2528,7 @@
       "cpc": null,
       "priority": 1,
       "fan_out_parent": "agentes de ia",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/agentes-de-ia-para-solopreneurs/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Buzzword tecnico de 2026. Est. vol 200-400/mo, KD muy bajo (termino emergente). SERP: ecosistemastartup, itsitio, nachoconesa, startups-espanolas. Diferente de 'agentes de ia' (busca entender el paradigma, no herramientas concretas). Angulo Fran: la IA agentica es la razon por la que su sistema seo-franlledo funciona sin supervision constante. Queued como post conceptual sobre la tendencia."
@@ -2542,7 +2542,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "agentes de ia",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/agentes-de-ia-para-solopreneurs/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Est. vol 500-800/mo, KD medio (Google Cloud, AWS, IBM, Wikipedia dominan SERP). Bundlable como H2 introductorio en el post pillar de 'agentes de ia'. P2 standalone por dominio de tech giants."
@@ -2570,7 +2570,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "agentes de ia",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/agentes-de-ia-para-solopreneurs/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Est. vol 100-200/mo, KD bajo (kommo tiene post dedicado). Bundlable como H2 en el post pillar. Clasificacion: reactivos, deliberativos, basados en metas, basados en utilidad, de aprendizaje."
@@ -2584,7 +2584,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "agentes de ia",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/agentes-de-ia-para-solopreneurs/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Est. vol 100-200/mo, KD bajo. On-brand fuerte para Fran. El post pillar 'agentes de ia para solopreneurs' cubre este intent directamente. Bundlable como cluster del post pillar."
@@ -2640,7 +2640,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "agentes de ia",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/agentes-de-ia-para-solopreneurs/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Est. vol 50-100/mo, KD bajo. Angulo potente para Fran: ejemplos reales de su propio sistema (seo-franlledo como agente de keyword research y content writer). Bundlable como seccion en el post pillar."
@@ -2668,7 +2668,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "agentes de ia",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/agentes-de-ia-para-solopreneurs/",
       "discovered": "2026-06-25",
       "source": "web_search_fallback",
       "notes": "Est. vol 50-100/mo. Agentes para automatizar seguimiento de leads, emails de ventas, qualificacion de prospectos. Alta relevancia para el ICP de Fran (vende infoproductos via email). Bundlable como H2 en el post pillar."
@@ -2850,7 +2850,7 @@
       "cpc": null,
       "priority": 1,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-captacion/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Re-research run 2026-06-29. Est. vol 100-200/mo por densidad SERP (5+ articulos dedicados en español: blashdesign, amicsdigitals, bastidafarina, oppizi, nuntiumcomunicacion). KD est. LOW 15-25. Intent commercial: el searcher quiere construir su funnel de captacion. Angulo Fran: su modelo completo ES un funnel de captacion (lead magnet + newsletter + email diario). La pieza faltante en el cluster de captacion del blog. Queued. DFS no disponible esta sesion."
@@ -2864,7 +2864,7 @@
       "cpc": null,
       "priority": 1,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-lanzamiento/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Re-research run 2026-06-29. Est. vol 50-100/mo (articulo dedicado en adictivamedia; anaivars cubre product launch formula como cluster). KD est. LOW 10-20. Intent commercial. Angulo Fran: lanzamientos de 10-12K EUR con lista de 2000 subs y secuencia de 5-7 emails, sin sofisticacion de PLF ni stack caro. Datos documentados son la ventaja competitiva. Queued. DFS no disponible."
@@ -2878,7 +2878,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-captacion/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Variante de 'funnel de captacion' con terminos en español completo. Cluster del post queued. SERP: oppizi.com tiene articulo dedicado. Est. vol 50-100/mo."
@@ -2892,7 +2892,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-captacion/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Variante informacional de 'funnel de captacion'. Est. vol 30-60/mo. Bundlable como H2 dentro del post principal de funnel de captacion."
@@ -2906,7 +2906,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-lanzamiento/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Oferta de bajo precio (1-10 EUR) para convertir leads en compradores y romper la barrera de la primera transaccion. Explicito en site-config como tema in-scope ('tripwires'). Est. vol 50-100/mo. KD est. LOW. Fran usa tripwires en su modelo. P2 porque vol no confirmado con DFS; confirmar en proximo run con DFS disponible."
@@ -2934,7 +2934,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-lanzamiento/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Cluster del post 'funnel de lanzamiento'. SERP: borradsmarket, awan.es tienen contenido dedicado. Est. vol 30-70/mo. Alta relevancia para el ICP de Fran (vende infoproductos). Bundlable como H2 en el post de funnel de lanzamiento."
@@ -2962,7 +2962,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-captacion/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Concepto de rubenmanez.com con articulo dedicado. Est. vol 20-50/mo. KD est. LOW. On-brand para Fran (simplicidad vs sofisticacion). Bundlable como angulo en el post de funnel de captacion ('el funnel minimo viable para captar tus primeros 1000 suscriptores')."
@@ -2976,7 +2976,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-lanzamiento/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Est. vol 30-60/mo. Fran tambien vende servicios de mentoria y consultoria puntual. KD est. LOW. Angulo diferenciado: el funnel para servicios no necesita webinar ni llamada de descubrimiento sofisticada; con una lista y 3 emails se puede vender una sesion de mentoria. Bundlable o futuro standalone."
@@ -2990,7 +2990,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-captacion/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Pagina de captura de email (landing page minimalista para el lead magnet). Componente central del funnel de captacion. Est. vol 40-80/mo. KD est. LOW. Bundlable como seccion dentro del post de funnel de captacion. P2 standalone por riesgo de cruzar en 'tutorial de herramienta' (out of scope)."
@@ -3004,7 +3004,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-lanzamiento/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Sistema de Jeff Walker de lanzamiento con 4 videos/contenidos previos. Muy buscado en español (anaivars tiene post dedicado). Est. vol 50-100/mo. KD est. MEDIUM. Bundlable como H2 en el post de funnel de lanzamiento con angulo critico de Fran: 'esto funciona si tienes comunidad activa; para una lista fria de 2000 lo que funciona es la secuencia de emails'."
@@ -3018,7 +3018,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-captacion/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "SERP: vilmanunez (guia 2025), rubenmanez, haciendola tienen contenido. Est. vol 30-60/mo. Solapamiento parcial con el post 'marketing-automation-para-solopreneurs' (email automation) pero enfoque en el funnel completo automatizado, no solo el email. Bundlable en el post de funnel de captacion (su funnel ES automatizado: lead magnet + secuencia de bienvenida automatica)."
@@ -3046,7 +3046,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "embudos de venta",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/funnel-de-captacion/",
       "discovered": "2026-06-29",
       "source": "web_search_fallback",
       "notes": "Combinacion de los dos grandes clusters del blog. Est. vol 30-60/mo. Bundlable como cluster en el post de funnel de captacion (el email es el canal central del funnel de Fran)."
@@ -3130,7 +3130,7 @@
       "cpc": 0.04,
       "priority": 1,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
       "notes": "Cluster 'que es copywriting' agrupa 5 variantes casi identicas (con/sin acento, orden de palabras): 'copywriting que es' (720/kd2), 'que es un copywriting' (390/kd2), 'que es el copywriting' (260/kd3), 'que es copywriting' (210), 'copywriting' desnudo (4400/kd7). Se elige esta grafia natural como primary_keyword del item de cola; el resto queda en priority 2 para no duplicar el post. Angulo diferenciador: Fran ha escrito 1.500+ correos de venta y factura con ellos, no es teoria de manual. Sin solapamiento con 'como-escribir-emails-que-vendan' (ese post es especifico de email, sin frameworks AIDA/PAS/BAB; este cubre el concepto general + ejemplos multi-formato)."
@@ -3217,7 +3217,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
       "notes": "Bajo el umbral de volumen para P1 informacional (100). Pasa a seccion de ejemplos dentro del post de 'que es el copywriting'."
@@ -3245,7 +3245,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions"
     },
@@ -3258,7 +3258,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions"
     },
@@ -3271,7 +3271,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions"
     },
@@ -3284,7 +3284,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions",
       "notes": "Interseccion con la semilla nueva 'vender cursos online' (pendiente de investigar). No duplicar cuando se procese esa semilla."
@@ -3298,7 +3298,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "copywriting para vender",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-el-copywriting/",
       "discovered": "2026-07-13",
       "source": "dataforseo_labs_google_keyword_suggestions"
     },
@@ -3440,7 +3440,7 @@
       "cpc": 1.23,
       "priority": 1,
       "fan_out_parent": "pagina de ventas que convierte",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-una-landing-page/",
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_keyword_suggestions",
       "notes": "El termino real con volumen en es-ES es 'landing page' (prestamo ingles), no 'pagina de ventas'. Volumen alto, KD muy bajo. Angulo diferenciador obligatorio: explicar landing page vs pagina de ventas dentro de un embudo real (no generico de herramienta/constructor), apoyado en los funnels propios de experience-notes.md. Sin cobertura actual, verificado contra sitemap en vivo."
@@ -3524,7 +3524,7 @@
       "cpc": null,
       "priority": 2,
       "fan_out_parent": "pagina de ventas que convierte",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/que-es-una-landing-page/",
       "discovered": "2026-07-15",
       "source": "dataforseo_labs_google_related_keywords",
       "notes": "Aporta el angulo 'para que sirve', util como subseccion del post definicional."
@@ -3912,7 +3912,7 @@
       "cpc": 3.35,
       "priority": 1,
       "fan_out_parent": "monetizar con ia",
-      "covered_by": null,
+      "covered_by": "https://franlledo.com/blog/ganar-dinero-con-ia/",
       "discovered": "2026-08-10",
       "source": "dataforseo_labs_google_keyword_suggestions",
       "serp_checked": true,
@@ -4181,6 +4181,295 @@
       "serp_median_top5": null,
       "serp_min_rank": null,
       "notes": "Vol 40, por debajo del umbral P1 informational (>=100). Se deja en banco."
+    },
+    {
+      "keyword": "email marketing que es",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 210,
+      "kd": 23,
+      "cpc": 1.3,
+      "priority": 2,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Vol sano, KD bajo, pero pregunta puramente definicional sin angulo diferenciador (regla Step 4: generico = P2). Considerar cubrir dentro de un post existente en vez de pieza dedicada."
+    },
+    {
+      "keyword": "que es el email marketing",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 210,
+      "kd": 23,
+      "cpc": 2.91,
+      "priority": 2,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Variante de 'email marketing que es'. Mismo veredicto: generico, sin angulo, P2."
+    },
+    {
+      "keyword": "qué es el email marketing",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 210,
+      "kd": 23,
+      "cpc": 1.3,
+      "priority": 2,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Variante con tilde de 'email marketing que es'. Mismo cluster, mismo veredicto P2."
+    },
+    {
+      "keyword": "qué es email marketing",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 90,
+      "kd": 39,
+      "cpc": 1.94,
+      "priority": 2,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_related_keywords",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "KD 39 (banda 36-55) ademas de generico: doble motivo para P2."
+    },
+    {
+      "keyword": "que es email marketing",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 90,
+      "kd": 13,
+      "cpc": 1.94,
+      "priority": 2,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_related_keywords",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Variante sin tilde. Generico sin angulo: P2 pese al KD bajo."
+    },
+    {
+      "keyword": "email marketing ejemplo",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 210,
+      "kd": null,
+      "cpc": 5.47,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": "https://franlledo.com/blog/email-marketing-ejemplos-de-correos-que-venden/",
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Singular de 'email marketing ejemplos' (P1, ya cubierta). Mismo post cubre la intencion."
+    },
+    {
+      "keyword": "campaña de email marketing",
+      "seed": "email marketing",
+      "intent": "commercial",
+      "volume": 110,
+      "kd": 11,
+      "cpc": 17.85,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Variante singular de 'campañas de email marketing' (P1, ya cubierta y publicada)."
+    },
+    {
+      "keyword": "campañas email marketing",
+      "seed": "email marketing",
+      "intent": "commercial",
+      "volume": 70,
+      "kd": 12,
+      "cpc": 20.0,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Variante sin preposicion de 'campañas de email marketing', misma cobertura."
+    },
+    {
+      "keyword": "campaña email marketing",
+      "seed": "email marketing",
+      "intent": "commercial",
+      "volume": 70,
+      "kd": 8,
+      "cpc": 20.0,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Variante singular sin preposicion, misma cobertura que 'campañas de email marketing'."
+    },
+    {
+      "keyword": "ejemplos de campañas de email marketing",
+      "seed": "email marketing",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": 51,
+      "cpc": 14.45,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": "https://franlledo.com/blog/campanas-email-marketing-lista-pequena/",
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_related_keywords",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen bajo y KD 51; ademas ya cubierta tematicamente por el post de campañas."
+    },
+    {
+      "keyword": "ejemplos de correos electrónicos profesionales",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 30,
+      "kd": 18,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_related_keywords",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Mismo riesgo de audiencia equivocada que '20 ejemplos de correos electronicos' ya en banco: busca plantillas de correo formal de oficina, no email marketing comercial. Volumen bajo de por si."
+    },
+    {
+      "keyword": "tasa de apertura de email marketing",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 30,
+      "kd": 13,
+      "cpc": 0.09,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Angulo de metricas del fan-out de ChatGPT, pero volumen por debajo del umbral P1/P2 informational (100)."
+    },
+    {
+      "keyword": "mejor hora para enviar email marketing",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 20,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen insuficiente para P1/P2. Parked."
+    },
+    {
+      "keyword": "mejor dia para enviar email marketing",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen insuficiente. Nota: el angulo de frecuencia de envio ya esta cubierto por el post 'cada-cuanto-enviar-emails-lista' (enlazado desde campanas-email-marketing-lista-pequena), aunque esa URL no tiene su propio keyword en el banco."
+    },
+    {
+      "keyword": "metricas de email marketing",
+      "seed": "email marketing",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen insuficiente para priorizar."
+    },
+    {
+      "keyword": "email marketing b2c",
+      "seed": "email marketing",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen muy por debajo del umbral commercial (50)."
+    },
+    {
+      "keyword": "estrategia de email marketing",
+      "seed": "email marketing",
+      "intent": "commercial",
+      "volume": 70,
+      "kd": null,
+      "cpc": 21.53,
+      "priority": 2,
+      "fan_out_parent": "email marketing",
+      "covered_by": null,
+      "discovered": "2026-08-19",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Tendencia marcadamente decreciente (yearly -86%, quarterly -80%): el 'volumen 70' es un promedio historico, los ultimos 3 meses reales son ~10-50/mes. KD sin dato fiable (bulk_keyword_difficulty devolvio 0, probablemente 'sin datos' y no un KD real medido). Degradado a P2 por volumen real insuficiente pese a cumplir el umbral nominal, hasta tener una lectura mas estable."
     }
   ]
 }
