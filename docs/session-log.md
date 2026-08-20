@@ -2165,3 +2165,59 @@ de su backlog inicial por primera vez.
   (`needs_review` desde el 02/07).
 - Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
   bitácora 2026-08-10).
+
+## 2026-08-20: content-writer, run jueves (MODE: AUTO) — no-op, cola sin resembrar
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status`/`git log`
+de este repo y del repo web, `state/content-queue.json`, `state/agent-log.json`,
+`memory/MEMORY.md`) antes de ejecutar el workflow del content-writer.
+
+### Resultado
+
+`python3 scripts/pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+`state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`
+(`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued` — confirmado con el
+picker real y con un conteo por Python.
+
+Causa directa: el keyword-researcher del 19/08 (commit `db9365e`) hizo la
+primera segunda vuelta del pipeline sobre `email marketing` (la semilla más
+antigua de `state/seed-keywords.txt`, sin investigar desde el 22/05). El bank
+sweep (`Step 0`) salió en 0 candidatas (`pick-bank-gate-batch.py` exit 2), y
+el fan-out de la semilla añadió 17 keywords nuevas al banco (0 P1, 6 P2, 11
+P3) pero ninguna sobrevivió a P1: el cluster definicional "qué es el email
+marketing" se degradó a P2 por falta de ángulo diferenciador pese a volumen
+sano, y la única commercial con volumen nominal (`estrategia de email
+marketing`, 70/mes) bajó por tendencia real decreciente (-86% interanual). El
+gate de autoridad (`Step 5b`) ni siquiera se ejecutó porque no hubo
+supervivientes P1 que medir. El propio informe del 19/08
+(`reports/2026-08-19-keyword-researcher.md`) predijo textualmente este no-op.
+
+No es un run fantasma (`git status` limpio al arrancar en ambos repos, el run
+se disparó y ejecutó con normalidad). Sin cambios en `output/`,
+`state/content-queue.json`, `state/keyword-bank.json` ni en el repo web.
+
+### Acciones
+
+- Verificado `state/content-queue.json` con el picker real
+  (`pick-next-queue-item.py`) y con un conteo por Python.
+- Revisado el commit y el informe del keyword-researcher del 19/08 para
+  confirmar la causa y descartar un run fantasma.
+- Escrito `reports/2026-08-20-content-writer.md`.
+- `PROJECT_STATUS.md` actualizado: nuevo bullet de resumen, bullet de "Cola"
+  y hito 7 refrescados con el resultado de la primera segunda vuelta.
+
+### Pendiente
+
+- **Sexto no-op consecutivo** de content-writer por cola vacía (08/08,
+  11/08, 13/08, 15/08, 18/08, 20/08). El pipeline lleva dos runs seguidos de
+  keyword-researcher (17/08 y 19/08) sin producir ningún item `queued`: ya
+  no es una racha de mala suerte puntual sino la señal de que el backlog de
+  bajo esfuerzo (semillas nuevas + bank sweep) está agotado. Próxima acción
+  recae en Fran: añadir semillas nuevas a `state/seed-keywords.txt` o decidir
+  una segunda vuelta con ángulos distintos (no solo refresco de volumen) en
+  vez de esperar a que el pipeline se resiembre solo.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).

@@ -1,15 +1,31 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-18 (content-writer martes: no-op, cola sin
-`queued` — quinto no-op consecutivo, y por primera vez no por falta de un run
-intermedio: el keyword-researcher del 17/08 sí corrió y no dejó nada
-encolable, ver bitácora)
+Última actualización: 2026-08-20 (content-writer jueves: no-op, cola sin
+`queued` — sexto no-op consecutivo; el keyword-researcher del 19/08 (segunda
+vuelta sobre `email marketing`) tampoco dejó nada encolable, ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run jueves 2026-08-20 (MODE: AUTO): no-op, cola sin items
+  `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  `state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`
+  (`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued`. Causa directa: el
+  keyword-researcher del 19/08 (segunda vuelta sobre `email marketing`, la
+  semilla más antigua de `state/seed-keywords.txt`) añadió 17 keywords al
+  banco pero ninguna llegó a P1 (cluster definicional degradado a P2 por
+  falta de ángulo diferenciador; la única commercial con volumen nominal
+  bajó por tendencia real decreciente), así que el gate de autoridad
+  (`Step 5b`) ni siquiera se ejecutó. El propio informe del 19/08 predijo
+  este resultado. **Sexto no-op consecutivo** (08/08, 11/08, 13/08, 15/08,
+  18/08, 20/08). No es un run fantasma (`git status` limpio al arrancar). Sin
+  cambios en `output/` ni en el repo web. El pipeline sigue sin trabajo de
+  bajo esfuerzo que resembrar solo: las 17 semillas están en su segunda
+  vuelta y el bank sweep en 0 candidatas — hace falta que Fran añada semillas
+  nuevas o decida una segunda vuelta con ángulos distintos. Ver bitácora
+  2026-08-20.
 - **Content-writer, run martes 2026-08-18 (MODE: AUTO): no-op, cola sin items
   `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   `state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`
@@ -346,19 +362,22 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   última semilla nueva (`automatizar ventas`) y drenó a 0 el backlog del
   `Step 0: Bank sweep` (las 3 SERPs de banda media: vibe coding, copywriting,
   copywriting español), pero ningún candidato pasó el gate de autoridad
-  (`Step 5b`). `agentes-ia-sin-codigo-para-emprendedores` sigue en
-  `needs_review` (solapamiento con dos posts de IA). **El pipeline se ha
-  quedado sin trabajo de bajo esfuerzo por primera vez**: las 17 semillas de
-  `state/seed-keywords.txt` están todas investigadas y el backlog del bank
-  sweep está en 0. La cola no se resembrará sola en el próximo run
-  programado: hace falta una segunda vuelta de keyword-researcher sobre
-  semillas antiguas o semillas nuevas de Fran. Ver `state/content-queue.json`.
+  (`Step 5b`). El del 19/08 hizo la primera segunda vuelta (`email
+  marketing`, la semilla más antigua) y tampoco dejó nada encolable: ni un
+  candidato llegó a P1. `agentes-ia-sin-codigo-para-emprendedores` sigue en
+  `needs_review` (solapamiento con dos posts de IA). **El pipeline lleva dos
+  runs seguidos sin trabajo de bajo esfuerzo que resembrar solo**: las 17
+  semillas de `state/seed-keywords.txt` están en su segunda vuelta y el
+  backlog del bank sweep sigue en 0. Hace falta que Fran añada semillas
+  nuevas o decida ángulos distintos para la segunda vuelta (no solo refresco
+  de volumen). Ver `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
   título SERP ≤60, description 120-160).
-- Todas las semillas de `state/seed-keywords.txt` están investigadas. Próxima
-  acción: añadir semillas nuevas o iniciar segunda vuelta de las más antiguas.
+- Todas las semillas de `state/seed-keywords.txt` están en su segunda vuelta
+  investigadas (empezada 19/08 con `email marketing`). Próxima acción: añadir
+  semillas nuevas o profundizar la segunda vuelta con ángulos distintos.
 - Los ensayos duplicados con Substack usan `noindex, follow` y no aparecen en
   el sitemap.
 
@@ -584,10 +603,13 @@ Zona horaria del equipo: `Europe/Madrid`.
    `automatizar ventas` (17/08) ya están las tres investigadas. Las 17
    semillas de `state/seed-keywords.txt` están ahora todas investigadas al
    menos una vez, y el `Step 0: Bank sweep` drenó su backlog a 0 el 17/08.
-   **Nueva prioridad:** el pipeline no tiene más trabajo de bajo esfuerzo que
-   resembrar solo; el próximo keyword-researcher necesita o bien una segunda
-   vuelta sobre las semillas más antiguas o bien semillas nuevas de Fran para
-   volver a producir items `queued`.
+   **Nueva prioridad, confirmada 2026-08-19:** la primera segunda vuelta
+   (`email marketing`, la semilla más antigua) tampoco dejó nada encolable —
+   ni un candidato llegó a P1. El pipeline lleva dos runs seguidos sin
+   trabajo de bajo esfuerzo que resembrar solo; hace falta que Fran añada
+   semillas nuevas a `state/seed-keywords.txt` o decida ángulos distintos
+   para la segunda vuelta (no solo refresco de volumen) para volver a
+   producir items `queued`.
 7b. ~~Content-writer: revisar por qué no corrió el martes 2026-07-14~~ —
    **cerrado 2026-07-21**: ambos items que quedaron pendientes de esa
    incidencia (`que-es-el-copywriting`, `que-es-una-landing-page`) están
