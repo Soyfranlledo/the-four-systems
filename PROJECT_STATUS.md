@@ -1,14 +1,25 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-20 (content-writer jueves: no-op, cola sin
-`queued` — sexto no-op consecutivo; el keyword-researcher del 19/08 (segunda
-vuelta sobre `email marketing`) tampoco dejó nada encolable, ver bitácora)
+Última actualización: 2026-08-22 (content-writer sábado: no-op, cola sin
+`queued` — séptimo no-op consecutivo; ningún keyword-researcher ha corrido
+desde el 19/08, el próximo programado es el lunes 24/08, ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run sábado 2026-08-22 (MODE: AUTO): no-op, cola sin items
+  `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  `state/content-queue.json`: mismo conteo que el 20/08 (26 items, 25
+  `written`, 1 `needs_review`), 0 `queued`. Causa: ningún keyword-researcher
+  ha corrido desde el no-op del 19/08 (el ciclo lunes/miércoles no tuvo
+  ejecución entre el 20/08 y hoy); el siguiente programado es el lunes
+  24/08. No hay causa nueva que investigar, es la misma inanición de
+  backlog de bajo esfuerzo documentada en el hito 0/7. No es un run
+  fantasma (`git status` limpio al arrancar). Sin cambios en `output/` ni en
+  el repo web. **Séptimo no-op consecutivo** (08/08, 11/08, 13/08, 15/08,
+  18/08, 20/08, 22/08). Ver bitácora 2026-08-22.
 - **Content-writer, run jueves 2026-08-20 (MODE: AUTO): no-op, cola sin items
   `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   `state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`
@@ -364,13 +375,16 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   copywriting español), pero ningún candidato pasó el gate de autoridad
   (`Step 5b`). El del 19/08 hizo la primera segunda vuelta (`email
   marketing`, la semilla más antigua) y tampoco dejó nada encolable: ni un
-  candidato llegó a P1. `agentes-ia-sin-codigo-para-emprendedores` sigue en
+  candidato llegó a P1. Desde entonces ningún keyword-researcher ha vuelto a
+  correr (próximo programado: lunes 24/08), así que el content-writer del
+  22/08 repitió el mismo no-op sin causa nueva que investigar.
+  `agentes-ia-sin-codigo-para-emprendedores` sigue en
   `needs_review` (solapamiento con dos posts de IA). **El pipeline lleva dos
-  runs seguidos sin trabajo de bajo esfuerzo que resembrar solo**: las 17
-  semillas de `state/seed-keywords.txt` están en su segunda vuelta y el
-  backlog del bank sweep sigue en 0. Hace falta que Fran añada semillas
-  nuevas o decida ángulos distintos para la segunda vuelta (no solo refresco
-  de volumen). Ver `state/content-queue.json`.
+  runs seguidos de keyword-researcher sin trabajo de bajo esfuerzo que
+  resembrar solo**: las 17 semillas de `state/seed-keywords.txt` están en su
+  segunda vuelta y el backlog del bank sweep sigue en 0. Hace falta que Fran
+  añada semillas nuevas o decida ángulos distintos para la segunda vuelta (no
+  solo refresco de volumen). Ver `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:

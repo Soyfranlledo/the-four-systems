@@ -2221,3 +2221,54 @@ se disparó y ejecutó con normalidad). Sin cambios en `output/`,
   (`needs_review` desde el 02/07).
 - Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
   bitácora 2026-08-10).
+
+## 2026-08-22: content-writer, run sábado (MODE: AUTO) — no-op, sin keyword-researcher que resembrar desde el 19/08
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status`/`git log`
+de este repo, `state/content-queue.json`, `state/agent-log.json`,
+`memory/MEMORY.md`) antes de ejecutar el workflow del content-writer.
+
+### Resultado
+
+`python3 scripts/pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+`state/content-queue.json`: 26 items, 25 `written`, 1 `needs_review`
+(`agentes-ia-sin-codigo-para-emprendedores`), 0 `queued` — mismo conteo que
+el run del 20/08, confirmado con el picker real y con un conteo por Python.
+
+Causa directa: `state/agent-log.json` no tiene ninguna entrada de
+keyword-researcher entre el no-op del 19/08 y hoy. El ciclo lunes/miércoles
+del keyword-researcher no tuvo ejecución en ese hueco (el 20/08 y el 22/08
+son días de content-writer, no de keyword-researcher); el siguiente run
+programado del keyword-researcher es el lunes 24/08. No hay causa nueva que
+investigar: es la misma inanición de backlog de bajo esfuerzo (semillas
+nuevas + bank sweep agotados) documentada el 19/08 y el 20/08.
+
+No es un run fantasma (`git status` limpio al arrancar, el run se disparó y
+ejecutó con normalidad). Sin cambios en `output/`, `state/content-queue.json`,
+`state/keyword-bank.json` ni en el repo web.
+
+### Acciones
+
+- Verificado `state/content-queue.json` con el picker real
+  (`pick-next-queue-item.py`) y con un conteo por Python.
+- Revisado `state/agent-log.json` para confirmar que no ha corrido ningún
+  keyword-researcher desde el 19/08 y descartar un run fantasma.
+- Escrito `reports/2026-08-22-content-writer.md`.
+- `PROJECT_STATUS.md` actualizado: nuevo bullet de resumen y bullet de
+  "Cola" refrescados con el resultado (sin cambios de fondo, solo confirma
+  que el estado persiste).
+
+### Pendiente
+
+- **Séptimo no-op consecutivo** de content-writer por cola vacía (08/08,
+  11/08, 13/08, 15/08, 18/08, 20/08, 22/08). Si el keyword-researcher del
+  lunes 24/08 no encuentra semillas nuevas ni ángulos distintos que
+  resembrar, saldrá en no-op otra vez y arrastrará un octavo no-op de
+  content-writer el martes 25/08. Próxima acción recae en Fran: añadir
+  semillas nuevas a `state/seed-keywords.txt` o decidir una segunda vuelta
+  con ángulos distintos (no solo refresco de volumen) antes de esa fecha.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).
