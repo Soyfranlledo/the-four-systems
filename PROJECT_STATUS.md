@@ -1,14 +1,34 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-22 (content-writer sábado: no-op, cola sin
-`queued` — séptimo no-op consecutivo; ningún keyword-researcher ha corrido
-desde el 19/08, el próximo programado es el lunes 24/08, ver bitácora)
+Última actualización: 2026-08-24 (keyword-researcher lunes: semilla
+`lanzamientos infoproductos` investigada, 15 keywords nuevas al banco, **0
+encoladas** — segundo run seguido sin nada P1, ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Keyword-researcher, run lunes 2026-08-24 (MODE: AUTO): semilla
+  `lanzamientos infoproductos`, 0 items encolados.** Bank sweep (`Step 0`): 1
+  SERP medida (`email marketing que es`, ya P2), confirmado muro (mediana
+  top-5 516 vs SITE_RANK 227+200), verdict heredado a sus 2 alias; backlog
+  queda en 0. Fan-out de la semilla: 73 variaciones únicas evaluadas (50 de
+  `keyword_ideas`, mayoría ruido de categoría ajeno al negocio: Huawei,
+  Nintendo Switch, VR, NFTs, AWS re:Invent), 3 duplicados del banco, 55
+  descartadas por ser off-topic o sin volumen medible en DataForSEO, **15
+  nuevas al banco, las 15 en P3**. Ninguna alcanzó el umbral P1 (todas 10-30
+  búsquedas/mes en es/Spain, contra ≥50 commercial/≥100 informational).
+  Hallazgo relevante: **6 de las 15 ya están cubiertas** por 2 posts
+  publicados (`que-son-los-infoproductos` y `funnel-de-lanzamiento`) cuyo
+  `fan_out_cluster` resultó más completo de lo que reflejaba el banco;
+  `covered_by` corregido para esas 6. El resto tiene volumen real
+  insuficiente para justificar pieza dedicada. `Step 5b` no se ejecutó (sin
+  supervivientes P1 que medir). No es un run fantasma (`git status` limpio al
+  arrancar). Informe completo: `reports/2026-08-24-keyword-researcher.md`.
+  **Segundo run consecutivo de keyword-researcher sin nada encolable** (el
+  del 19/08 tampoco dejó nada). El próximo content-writer (martes 25/08)
+  saldrá en no-op otra vez por la misma causa. Ver bitácora 2026-08-24.
 - **Content-writer, run sábado 2026-08-22 (MODE: AUTO): no-op, cola sin items
   `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   `state/content-queue.json`: mismo conteo que el 20/08 (26 items, 25
@@ -375,16 +395,19 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   copywriting español), pero ningún candidato pasó el gate de autoridad
   (`Step 5b`). El del 19/08 hizo la primera segunda vuelta (`email
   marketing`, la semilla más antigua) y tampoco dejó nada encolable: ni un
-  candidato llegó a P1. Desde entonces ningún keyword-researcher ha vuelto a
-  correr (próximo programado: lunes 24/08), así que el content-writer del
-  22/08 repitió el mismo no-op sin causa nueva que investigar.
-  `agentes-ia-sin-codigo-para-emprendedores` sigue en
-  `needs_review` (solapamiento con dos posts de IA). **El pipeline lleva dos
-  runs seguidos de keyword-researcher sin trabajo de bajo esfuerzo que
-  resembrar solo**: las 17 semillas de `state/seed-keywords.txt` están en su
-  segunda vuelta y el backlog del bank sweep sigue en 0. Hace falta que Fran
-  añada semillas nuevas o decida ángulos distintos para la segunda vuelta (no
-  solo refresco de volumen). Ver `state/content-queue.json`.
+  candidato llegó a P1. El del 24/08 (segunda vuelta, semilla `lanzamientos
+  infoproductos`) tampoco: 15 keywords nuevas, todas P3 (volumen real 10-30/mes,
+  6 de ellas ya cubiertas por `que-son-los-infoproductos` y
+  `funnel-de-lanzamiento`, `covered_by` corregido). `agentes-ia-sin-codigo-
+  para-emprendedores` sigue en `needs_review` (solapamiento con dos posts de
+  IA). **El pipeline lleva tres runs seguidos de keyword-researcher sin
+  trabajo de bajo esfuerzo que resembrar solo**: las 17 semillas de
+  `state/seed-keywords.txt` siguen en su segunda vuelta (quedan 14 sin
+  revisar) y el backlog del bank sweep sigue en 0, pero el patrón de las
+  últimas 3 semillas de segunda vuelta apunta a rendimientos decrecientes:
+  clusters ya cubiertos por los 35 posts existentes o volumen real por
+  debajo del umbral. Hace falta que Fran añada semillas nuevas fuera del
+  temario ya cubierto. Ver `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
@@ -617,13 +640,16 @@ Zona horaria del equipo: `Europe/Madrid`.
    `automatizar ventas` (17/08) ya están las tres investigadas. Las 17
    semillas de `state/seed-keywords.txt` están ahora todas investigadas al
    menos una vez, y el `Step 0: Bank sweep` drenó su backlog a 0 el 17/08.
-   **Nueva prioridad, confirmada 2026-08-19:** la primera segunda vuelta
-   (`email marketing`, la semilla más antigua) tampoco dejó nada encolable —
-   ni un candidato llegó a P1. El pipeline lleva dos runs seguidos sin
-   trabajo de bajo esfuerzo que resembrar solo; hace falta que Fran añada
-   semillas nuevas a `state/seed-keywords.txt` o decida ángulos distintos
-   para la segunda vuelta (no solo refresco de volumen) para volver a
-   producir items `queued`.
+   **Nueva prioridad, confirmada 2026-08-19 y reforzada 2026-08-24:** la
+   primera segunda vuelta (`email marketing`, 19/08) y la segunda
+   (`lanzamientos infoproductos`, 24/08) tampoco dejaron nada encolable — ni
+   un candidato llegó a P1 en ninguna de las dos, y en el run del 24/08 el
+   40% de las keywords nuevas ya estaban cubiertas por posts existentes que
+   el banco no reflejaba. El pipeline lleva tres runs seguidos sin trabajo de
+   bajo esfuerzo que resembrar solo; hace falta que Fran añada semillas
+   nuevas a `state/seed-keywords.txt` fuera del temario ya cubierto (no solo
+   refresco de volumen ni rotación de las mismas 17) para volver a producir
+   items `queued`.
 7b. ~~Content-writer: revisar por qué no corrió el martes 2026-07-14~~ —
    **cerrado 2026-07-21**: ambos items que quedaron pendientes de esa
    incidencia (`que-es-el-copywriting`, `que-es-una-landing-page`) están
@@ -647,6 +673,9 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-08-24: keyword-researcher run — bank sweep (1 SERP, muro confirmado) +
+  semilla `lanzamientos infoproductos`, 15 keywords nuevas (todas P3, 6 con
+  `covered_by` corregido), 0 items encolados.
 - 2026-08-10: content-writer run — `ganar dinero con ia` publicado, cola
   vaciada (0 `queued`); corregido bug de `check=False` en
   `publish-to-astro.py` que reportaba éxito falso en push rechazado.

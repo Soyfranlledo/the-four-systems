@@ -2272,3 +2272,133 @@ ejecutó con normalidad). Sin cambios en `output/`, `state/content-queue.json`,
   (`needs_review` desde el 02/07).
 - Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
   bitácora 2026-08-10).
+
+## 2026-08-24: keyword-researcher, run lunes (MODE: AUTO) — semilla `lanzamientos infoproductos`, 0 encolados
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status`/`git log`
+de este repo, `state/content-queue.json`, `state/seed-keywords.txt`,
+`state/keyword-bank.json -> seeds_researched`, `memory/MEMORY.md`) antes de
+ejecutar el workflow del keyword-researcher.
+
+### Selección de semilla
+
+Sin `SEED_KEYWORD:` prepended. Por regla del prompt, se leyó
+`keyword-bank.json -> seeds_researched[]` y se ordenó por `last_researched`
+ascendente: `lanzamientos infoproductos` (2026-05-29) era la más antigua,
+investigada por última vez antes de que empezara la segunda vuelta del
+pipeline (que arrancó el 19/08 con `email marketing`). Fuera de la ventana de
+30 días, se procedió sin `--force`.
+
+### Step 0: Bank sweep
+
+`python3 scripts/pick-bank-gate-batch.py --limit 5` → 1 SERP a medir tras
+deduplicar (2 keywords heredan veredicto): `email marketing que es` (vol 210,
+KD 23, ya P2 desde el 19/08 por falta de ángulo diferenciador).
+
+`SITE_RANK` (una vez para todo el run): **227**.
+
+SERP de `email marketing que es` (es/Spain, depth 10): top orgánico
+excluyendo YouTube: brevo.com, mailchimp.com, seas.es, es.wix.com,
+acumbamail.com, salesforce.com, iebschool.com, fromdoppler.com.
+`backlinks_bulk_ranks` de esos 8: 647, 703, 347, 436, 516, 678, 364, 411.
+Mediana top-5 (brevo/mailchimp/seas/wix/acumbamail) = **516**. Ningún rival
+del top-5 tiene rank ≤227 (mínimo del top-5 es 347). Gate:
+`516 > 227+200=427` y sin rival desplazable → **muro confirmado**. Se queda
+en P2 (ya lo era; pasar el gate no promociona, y aquí no lo pasó). Verdict
+(`serp_checked: true`, `serp_median_top5: 516`, `serp_min_rank: 347`, nota de
+muro) escrito en `email marketing que es` y heredado sin coste extra a sus 2
+alias (`que es el email marketing`, `qué es el email marketing`). Backlog del
+bank sweep queda en 0.
+
+### Step 1-6: fan-out de la semilla
+
+`ai_optimization_chat_gpt_scraper` descompuso la semilla en tipos de
+lanzamiento (preventa/beta, webinar/masterclass, challenge, Product Launch
+Formula, evergreen) y una estructura de 7 pasos (oferta → captación →
+calentamiento → evento → venta → seguimiento → análisis); usado como fuente
+de candidatos curados, no como fuente de volumen.
+
+`dataforseo_labs_google_keyword_ideas` sobre la frase completa repitió el
+patrón de ruido de categoría ya documentado en `AGENTS.md` (gadgets Huawei,
+Nintendo Switch, VR, NFTs, AWS re:Invent, Game Awards — nada relacionado con
+el negocio). `dataforseo_labs_google_related_keywords` devolvió 0 resultados
+(sin "búsquedas relacionadas" para esta keyword en la SERP de Google).
+`dataforseo_labs_google_keyword_suggestions` sobre variantes de la frase
+también devolvió casi vacío (2 items). Se pivotó a
+`dataforseo_labs_google_keyword_overview` sobre una lista curada de 32 + 16
+candidatos derivados de la descomposición de ChatGPT y patrones habituales en
+español, siguiendo el mismo patrón de pivote confirmado el 13/07, 15/07 y
+20/07.
+
+Total: 73 strings únicos evaluados, 3 duplicados del banco (`infoproductos`,
+`infoproductos con ia`, `product launch formula`, esta última con
+`covered_by` ya correcto desde el 29/06), 55 descartadas por ser off-topic o
+sin volumen medible en DataForSEO para es/Spain, **15 nuevas al banco**.
+
+Las 15 tienen volumen real de 10-30/mes, muy por debajo de los umbrales P1
+(≥50 commercial/transactional, ≥100 informational). Ninguna con una señal
+clara de "easy win" (KD bajo con volumen decente) que justificara promoción a
+P2: la más baja de KD medido fue 25 (`como vender un curso online`, vol solo
+10). Las 15 quedaron en **P3**.
+
+**Hallazgo relevante:** al revisar la cobertura (Step 5) contra los posts ya
+publicados, **6 de las 15 keywords nuevas ya estaban cubiertas** y el banco
+no lo reflejaba (los `covered_by` de esas keywords no existían porque nunca
+habían sido investigadas antes):
+
+- `que-son-los-infoproductos` (29/05) cubre `lanzamientos de infoproductos`,
+  `infoproductos online`, `que infoproductos vender`,
+  `como vender un infoproducto`, `vender infoproductos` (su
+  `fan_out_cluster` ya incluía "lanzamiento de infoproducto" y "venta de
+  infoproductos").
+- `funnel-de-lanzamiento` (29/06) cubre `formula de lanzamiento` (traducción
+  de "product launch formula", ya en su `fan_out_cluster`).
+
+Las 9 restantes no tienen cobertura exacta pero su volumen (10-30/mes) es
+insuficiente para pieza dedicada.
+
+`Step 5b` (gate de autoridad) **no se ejecutó** en el flujo de semilla: sin
+supervivientes P1 que medir.
+
+### Resultado
+
+0 items encolados. `state/keyword-bank.json`: 323 keywords (308 → 323),
+`last_updated` a 2026-08-24. `state/content-queue.json` sin cambios (sigue en
+0 `queued`). CSV: `output/keywords/2026-08-24-lanzamientos-infoproductos.csv`.
+Informe: `reports/2026-08-24-keyword-researcher.md`.
+
+No es un run fantasma (`git status` limpio al arrancar, el run se disparó y
+ejecutó con normalidad).
+
+### Acciones
+
+- `scripts/pick-bank-gate-batch.py --limit 5` (Step 0).
+- `backlinks_bulk_ranks` (SITE_RANK + 8 dominios competidores),
+  `serp_organic_live_advanced` (1 SERP), `ai_optimization_chat_gpt_scraper`,
+  `dataforseo_labs_google_keyword_ideas`, `_related_keywords`,
+  `_keyword_suggestions` (×3), `_keyword_overview` (×2, 32+16 keywords),
+  `_bulk_keyword_difficulty` (10 keywords).
+- Verdict del bank sweep escrito en `state/keyword-bank.json` (3 entradas:
+  head + 2 alias).
+- 15 keywords nuevas añadidas a `state/keyword-bank.json`, `seeds_researched`
+  actualizado (`lanzamientos infoproductos` → 2026-08-24), `last_updated`
+  actualizado.
+- CSV e informe del run escritos.
+- `PROJECT_STATUS.md` actualizado: cabecera, bullet de resumen, bullet de
+  "Cola", hito 7 y "Últimos commits relevantes".
+
+### Pendiente
+
+- **Tercer run consecutivo de keyword-researcher sin nada encolable** (17/08,
+  19/08, 24/08). El content-writer del martes 25/08 saldrá en no-op otra vez
+  por la misma causa (cola vacía, sin item `queued` que resembrar). El
+  patrón de las últimas 3 semillas de segunda vuelta apunta a rendimientos
+  decrecientes: la rotación automática de las mismas 17 semillas está
+  agotada como fuente de trabajo de bajo esfuerzo. Próxima acción recae en
+  Fran: añadir semillas nuevas a `state/seed-keywords.txt` fuera del temario
+  ya cubierto por los 35 posts publicados.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).
