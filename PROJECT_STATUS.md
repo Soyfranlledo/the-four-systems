@@ -1,14 +1,24 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-24 (keyword-researcher lunes: semilla
-`lanzamientos infoproductos` investigada, 15 keywords nuevas al banco, **0
-encoladas** — segundo run seguido sin nada P1, ver bitácora)
+Última actualización: 2026-08-25 (content-writer martes: no-op, cola vacía —
+**octavo no-op consecutivo**, ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run martes 2026-08-25 (MODE: AUTO): no-op, cola sin items
+  `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  `state/content-queue.json`: mismo conteo que el 22/08 (26 items, 25
+  `written`, 1 `needs_review`), 0 `queued`. Causa: el keyword-researcher del
+  lunes 24/08 (segunda vuelta, semilla `lanzamientos infoproductos`) añadió
+  15 keywords al banco pero las 15 en P3, ninguna P1; sin run de
+  keyword-researcher entre el 24/08 y hoy (próximo programado: lunes 31/08).
+  Misma inanición de backlog de bajo esfuerzo del hito 7. No es un run
+  fantasma (`git status` limpio al arrancar). Sin cambios en `output/` ni en
+  el repo web. **Octavo no-op consecutivo** (08/08, 11/08, 13/08, 15/08,
+  18/08, 20/08, 22/08, 25/08). Ver bitácora 2026-08-25.
 - **Keyword-researcher, run lunes 2026-08-24 (MODE: AUTO): semilla
   `lanzamientos infoproductos`, 0 items encolados.** Bank sweep (`Step 0`): 1
   SERP medida (`email marketing que es`, ya P2), confirmado muro (mediana
@@ -407,7 +417,9 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   últimas 3 semillas de segunda vuelta apunta a rendimientos decrecientes:
   clusters ya cubiertos por los 35 posts existentes o volumen real por
   debajo del umbral. Hace falta que Fran añada semillas nuevas fuera del
-  temario ya cubierto. Ver `state/content-queue.json`.
+  temario ya cubierto. El content-writer del martes 25/08 confirmó el
+  no-op previsto (cola sin cambios desde el 22/08). Ver
+  `state/content-queue.json`.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
@@ -649,7 +661,10 @@ Zona horaria del equipo: `Europe/Madrid`.
    bajo esfuerzo que resembrar solo; hace falta que Fran añada semillas
    nuevas a `state/seed-keywords.txt` fuera del temario ya cubierto (no solo
    refresco de volumen ni rotación de las mismas 17) para volver a producir
-   items `queued`.
+   items `queued`. **Confirmado 2026-08-25:** el content-writer de hoy salió
+   en no-op como se preveía (cola sin cambios desde el 22/08); el próximo
+   keyword-researcher (lunes 31/08) sigue siendo la próxima oportunidad de
+   desatascarlo, si Fran ha añadido semillas nuevas antes de esa fecha.
 7b. ~~Content-writer: revisar por qué no corrió el martes 2026-07-14~~ —
    **cerrado 2026-07-21**: ambos items que quedaron pendientes de esa
    incidencia (`que-es-el-copywriting`, `que-es-una-landing-page`) están
@@ -673,6 +688,8 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-08-25: content-writer run — no-op, cola vacía (octavo no-op
+  consecutivo).
 - 2026-08-24: keyword-researcher run — bank sweep (1 SERP, muro confirmado) +
   semilla `lanzamientos infoproductos`, 15 keywords nuevas (todas P3, 6 con
   `covered_by` corregido), 0 items encolados.
