@@ -2459,3 +2459,137 @@ ejecutó con normalidad). Sin cambios en `output/`, `state/content-queue.json`,
   (`needs_review` desde el 02/07).
 - Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
   bitácora 2026-08-10).
+
+## 2026-08-26: keyword-researcher, run miércoles (MODE: AUTO) — semilla `claude para solopreneurs`, 1 item encolado, rompe la racha de 3 no-ops
+
+Run programado, sin sesión con Fran. Grounding leído (`AGENTS.md`,
+`PROJECT_STATUS.md`, últimas entradas de la bitácora, `git status`/`git log`,
+`state/keyword-bank.json`, `state/content-queue.json`,
+`state/seed-keywords.txt`, `context/site-config.md`, `memory/MEMORY.md`)
+antes de ejecutar el workflow.
+
+### Selección de semilla
+
+`seeds_researched` en el banco: las 17 semillas de `state/seed-keywords.txt`
+ya tenían una entrada cada una (más `vibe coding`, que ya no está en el
+fichero). La más antigua por `last_researched` era `claude para
+solopreneurs` (2026-06-03, ~12 semanas), muy por encima de la ventana de 30
+días del pre-check de dedup, así que se procedió sin `--force`.
+
+### Step 0: Bank sweep
+
+`python3 scripts/pick-bank-gate-batch.py --limit 5` → exit 2, nada que medir
+(262 descartadas por volumen <100, 41 ya cubiertas, 8 ya medidas, 12 fuera de
+prioridad 1-2). Se saltó directo al Step 1.
+
+### Step 1-6: fan-out de la semilla
+
+`ai_optimization_chat_gpt_scraper` descompuso la semilla en usos típicos
+(ideación/estrategia, ventas, marketing, operaciones/SOPs, investigación,
+programación/automatización, gestión del negocio) pero sin lista de queries
+aprovechable. `dataforseo_labs_google_keyword_ideas` sobre la frase completa
+repitió el patrón de ruido de categoría ya documentado (48 variaciones:
+facturas, MCP de terceros, apps móviles, comparativas de modelos, un
+calefactor literal, un cuadro de arte, "economía de caricias" de Claude
+Steiner — persona homónima sin relación). `dataforseo_labs_google_related_keywords`
+devolvió 0 resultados. Además, comprobado contra el banco: la propia semilla
+y `claude ai precios` ya están `covered_by` `/blog/claude-para-solopreneurs/`
+(publicado 01/06, actualizado 07/08) — el post ya cubre email marketing, SEO,
+Claude Projects, comparación con "Claude for Small Business" y Claude vs
+ChatGPT.
+
+Pivotado a una lista curada de 30 candidatos de ángulo negocio (SOPs,
+propuestas comerciales, atención al cliente, freelancers, consultores,
+validar idea, etc.) vía `dataforseo_labs_google_keyword_overview`: de 30,
+solo 3 tuvieron volumen medible en es/Spain — `claude cowork` (12.100,
+navigational), `que es claude cowork` (210, informational) y `claude opus
+4.5` (880, informational, en caída libre -77% trimestral, aparcado por no
+encajar en el ángulo de negocio del sitio). Claude Cowork resultó ser un
+producto de Anthropic (agente de escritorio) sin ninguna mención en el sitio
+hasta ahora.
+
+Expandido el cluster con `dataforseo_labs_google_keyword_suggestions` sobre
+"claude cowork" (39 variaciones): apareció `claude cowork precio` (170/mes,
+commercial, KD~0), además de soporte/instalación (Windows, Mac, descargar —
+fuera de alcance por ser tutoriales de configuración, no estrategia) y
+variantes de bajísimo volumen.
+
+### Step 5b: gate de autoridad
+
+`backlinks_bulk_ranks(["franlledo.com"])` → SITE_RANK 227 (coincide con el
+valor documentado desde 28/07).
+
+- **`que es claude cowork`** (P1 candidato): SERP con AI Overview dominante +
+  `support.claude.com` (466), `xataka.com` (573), `datacamp.com` (528),
+  `cyberclick.es` (337), `formadoresit.es` (344) en el top-5 orgánico (reddit
+  excluido). Mediana top-5 = 466 > 227+200 = 427, sin rival desplazable →
+  **muro**. Demotado a P2. GEO-citation candidate anotado (ángulo propio de
+  Fran, sin click pero citable).
+- **`claude cowork precio`** (P1 candidato): top-5 orgánico `coworkerai.io`
+  (213), `xataka.com` (573), `tactiq.io` (382), `datacamp.com` (528),
+  `appropia.com` (102) (reddit excluido). Mediana top-5 = 382, **por debajo**
+  del umbral 427, y dos rivales claramente desplazables (213 y 102, ambos
+  bajo SITE_RANK). **Gate PASA.** Primera keyword del run que pasa el gate.
+
+### Resultado
+
+9 keywords nuevas al banco (`claude cowork` P3 navigational vol 12100,
+`cowork claude` P3 navigational vol 720, `que es claude cowork` P2
+informational vol 210 serp_checked, `claude cowork precio` **P1** commercial
+vol 170 serp_checked, `claude cowork es gratis` P2 commercial vol 90, `que es
+cowork de claude` P2 informational vol 70, `como usar claude cowork` P3
+navigational vol 40, `claude cowork como funciona` P3 navigational vol 20,
+`claude opus 4.5` P3 informational vol 880). `state/keyword-bank.json`: 332
+keywords (323 → 332), `last_updated` 2026-08-26, `seeds_researched` de
+`claude para solopreneurs` actualizado a 2026-08-26.
+
+1 item encolado en `state/content-queue.json` (26 → 27 items):
+`2026-08-26-claude-cowork-precio` (commercial, vol 170, kd 0, cluster de 6
+variantes, target 1700 palabras). Ángulo diferenciador obligatorio en las
+notas de la cola: comparar con Claude Projects/Claude Code que Fran ya usa a
+diario (enlazar `/blog/claude-para-solopreneurs/`), veredicto honesto sobre
+si el salto de precio Pro→Max compensa para un negocio de una persona, cubrir
+la definición (`que es claude cowork`) como sección de apoyo ya que esa
+variante no pasó el gate por sí sola.
+
+CSV: `output/keywords/2026-08-26-claude-para-solopreneurs.csv`. Informe:
+`reports/2026-08-26-keyword-researcher.md`.
+
+No es un run fantasma (`git status` limpio al arrancar, el run se disparó y
+ejecutó con normalidad).
+
+### Acciones
+
+- `scripts/pick-bank-gate-batch.py --limit 5` (Step 0, exit 2).
+- `ai_optimization_chat_gpt_scraper`, `dataforseo_labs_google_keyword_ideas`,
+  `dataforseo_labs_google_related_keywords`,
+  `dataforseo_labs_google_keyword_overview` (×1, 30 keywords curadas),
+  `dataforseo_labs_google_keyword_suggestions` (×1, "claude cowork"),
+  `dataforseo_labs_bulk_keyword_difficulty` (×1, 8 keywords),
+  `backlinks_bulk_ranks` (×3: SITE_RANK, competidores de "que es claude
+  cowork", competidores de "claude cowork precio"),
+  `serp_organic_live_advanced` (×2).
+- 9 keywords nuevas añadidas a `state/keyword-bank.json` con verdicto del
+  gate escrito en sus `notes`; `seeds_researched` y `last_updated`
+  actualizados.
+- 1 item añadido a `state/content-queue.json`.
+- CSV e informe del run escritos.
+- `PROJECT_STATUS.md` actualizado: cabecera, bullet de resumen nuevo, bullet
+  de "Cola" refrescado, hito 7 actualizado (racha rota) y "Últimos commits
+  relevantes".
+
+### Pendiente
+
+- El próximo content-writer programado (jueves 27/08) debería consumir
+  `claude cowork precio`. Vigilar que el ángulo diferenciador (comparación
+  con Claude Projects/Code, veredicto honesto de precio) se respete y no
+  degenere en un resumen genérico tipo Xataka/DataCamp.
+- Quedan 14 semillas de `state/seed-keywords.txt` sin una segunda vuelta
+  reciente (la siguiente más antigua: `secuencias de email`, 08/06). No
+  todas tendrán un producto nuevo que perseguir como en este run; sigue en
+  pie la recomendación de que Fran añada semillas nuevas fuera del temario
+  ya cubierto por los 36 posts publicados.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).

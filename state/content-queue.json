@@ -918,6 +918,35 @@
         "https://www.anthropic.com/news"
       ],
       "notes": "Vol 260, KD3 (cluster 210-320, KD3-14). SERP con AI Overview dominante y organic top10 de listicles corporate (escuelaemprende '50 formas', wix, unavidaonline '11 mejores formas', godaddy, aiassistantstore, xataka). Gate de autoridad Step 5b PASA: mediana top-5 rank 315 vs SITE_RANK 227 (umbral 427), rival desplazable aiassistantstore.com (188). Angulo diferenciador OBLIGATORIO: nada de listicle generico '50 formas de ganar dinero con IA' (asi lo hacen los 3 competidores organicos principales); en su lugar, pillar honesto desde la experiencia real de Fran con su propio sistema de agentes IA (este mismo repo seo-franlledo, que automatiza research y redaccion de este mismo blog) + datos ya documentados (100.000 euros facturados en 2025). Estructura sugerida en vias reales para un solopreneur: (1) servicios con IA, (2) automatizar el propio negocio (enlazar automatizacion-con-ia-para-solopreneurs), (3) contenido/audiencia y newsletter (enlazar como-monetizar-una-newsletter), (4) productos digitales/infoproductos (enlazar infoproductos-con-ia), (5) mencion breve de herramientas/SaaS via Claude Code (enlazar claude-code-sin-programar). Dato propio citable obligatorio (regla GEO Villanueva). Cubrir el fan_out_cluster completo. Diferenciar explicitamente de 'infoproductos-con-ia' (ese post es sobre CREAR infoproductos usando IA como herramienta de produccion; este post es sobre las VIAS para generar ingresos con IA en general, de las cuales infoproductos es solo una)."
+    },
+    {
+      "id": "2026-08-26-claude-cowork-precio",
+      "status": "queued",
+      "queued_at": "2026-08-26T09:00:00Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "claude cowork precio",
+      "intent": "commercial",
+      "volume": 170,
+      "kd": 0,
+      "fan_out_cluster": [
+        "que es claude cowork",
+        "claude cowork es gratis",
+        "que es cowork de claude",
+        "claude cowork vs claude projects",
+        "claude cowork para solopreneurs",
+        "cowork claude"
+      ],
+      "suggested_slug": "claude-cowork-precio",
+      "suggested_title": "Claude Cowork precio: planes, coste real y si vale la pena para un solopreneur",
+      "target_word_count": 1700,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/claude-para-solopreneurs/"
+      ],
+      "external_authority_candidates": [
+        "https://support.claude.com/es/articles/13345190-comienza-con-claude-cowork"
+      ],
+      "notes": "Producto nuevo de Anthropic (Claude Cowork, agente de escritorio integrado en la app de Claude), sin cobertura previa en el sitio: ni claude-para-solopreneurs.md (2026-06-01, actualizado 07/08) ni ningun otro post mencionan 'cowork'. Vol 170/mes commercial (tendencia -34% trimestral, aun sana). Gate Step 5b PASA: mediana top-5 rank 382 vs SITE_RANK 227 (umbral 427), dos rivales desplazables (coworkerai.io rank 213, appropia.com rank 102). La variante puramente informacional 'que es claude cowork' (vol 210) SI choca con el muro (mediana 466, dominada por Xataka/DataCamp/Wired/soporte oficial de Anthropic) asi que no es el primary keyword, pero su respuesta va como primera seccion del post. Angulo diferenciador obligatorio (dato propio + opinion, no un resumen mas de lo que ya hicieron Xataka/DataCamp/Wired): Fran ya usa Claude a diario para email marketing, SEO y decisiones (ver /blog/claude-para-solopreneurs/, enlazar); el post tiene que responder, desde esa experiencia real, si el salto de precio de Pro ($20) a Max ($100-200) para acceder a Cowork compensa para un negocio de una sola persona, o si Claude Projects (que ya usa y ya cubrio en el post anterior) resuelve el 90% del caso de uso sin pagar el extra. Cubrir en el fan_out_cluster: que es Cowork y en que se diferencia de Claude Projects/Claude Code, planes y precio real (Pro/Max/Team), si el free lo incluye (no), y veredicto honesto para un solopreneur. Nunca enlazar a producto de pago propio; el CTA sigue siendo <EmailCapture />."
     }
   ]
 }

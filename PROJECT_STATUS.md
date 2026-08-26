@@ -1,13 +1,39 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-25 (content-writer martes: no-op, cola vacía —
-**octavo no-op consecutivo**, ver bitácora)
+Última actualización: 2026-08-26 (keyword-researcher miércoles: semilla
+`claude para solopreneurs`, 1 item **encolado** — rompe la racha de 3 runs
+seguidos sin nada encolable, ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Keyword-researcher, run miércoles 2026-08-26 (MODE: AUTO): semilla
+  `claude para solopreneurs`, 1 item encolado.** Semilla elegida por
+  `last_researched` más antiguo (2026-06-03, ~12 semanas), fuera de la
+  ventana de 30 días de dedup. Bank sweep (`Step 0`): nada que medir (exit
+  2). El fan-out directo de la semilla repitió el patrón de ruido de
+  categoría ya documentado (`keyword_ideas` 48 variaciones, mayoría ajenas al
+  negocio; `related_keywords` 0 resultados) y la semilla en sí ya está
+  cubierta por `/blog/claude-para-solopreneurs/` (01/06, actualizado 07/08).
+  Pivotando a una lista curada de 30 candidatos de negocio vía
+  `keyword_overview`, solo 3 tuvieron volumen medible, y 2 de ellos apuntaban
+  a **Claude Cowork**, un producto de Anthropic sin cobertura previa en el
+  sitio. Expandido el cluster con `keyword_suggestions` (39 variaciones):
+  **`claude cowork precio`** (170/mes, commercial, KD~0) pasa el gate de
+  autoridad (`Step 5b`, mediana top-5 rank 382 vs SITE_RANK 227, umbral 427,
+  dos rivales desplazables) y queda **encolado**. La variante puramente
+  informacional `que es claude cowork` (210/mes) sí choca con el muro
+  (mediana 466: Xataka, DataCamp, Wired, soporte oficial de Anthropic) y
+  queda en P2, pero su contenido se cubre como sección de apoyo dentro del
+  mismo post. 9 keywords nuevas al banco en total (1 P1, 3 P2, 5 P3). Informe
+  completo: `reports/2026-08-26-keyword-researcher.md`. **Rompe la racha de
+  3 runs consecutivos de keyword-researcher sin nada encolable** (17/08,
+  19/08, 24/08): el patrón que funcionó fue no quedarse en el fan-out
+  genérico de una semilla ya cubierta, sino perseguir el sub-cluster de un
+  producto/feature nuevo aparecido desde la última vez que se investigó esa
+  semilla. Ver bitácora 2026-08-26.
 - **Content-writer, run martes 2026-08-25 (MODE: AUTO): no-op, cola sin items
   `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   `state/content-queue.json`: mismo conteo que el 22/08 (26 items, 25
@@ -398,28 +424,25 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - El blog tiene **36 artículos publicados** en producción. Último:
   `/blog/ganar-dinero-con-ia/` (2026-08-10, 1.821 palabras, PUBLISHED_LIVE,
   HTTP 200, con dato propio citable y 3 enlaces internos entrantes).
-- Cola: **0 items `queued`** desde el 10/08. El keyword-researcher del 17/08
-  conectó limpio con el pin `dataforseo-mcp-server@2.9.13`, investigó la
-  última semilla nueva (`automatizar ventas`) y drenó a 0 el backlog del
-  `Step 0: Bank sweep` (las 3 SERPs de banda media: vibe coding, copywriting,
-  copywriting español), pero ningún candidato pasó el gate de autoridad
-  (`Step 5b`). El del 19/08 hizo la primera segunda vuelta (`email
-  marketing`, la semilla más antigua) y tampoco dejó nada encolable: ni un
-  candidato llegó a P1. El del 24/08 (segunda vuelta, semilla `lanzamientos
-  infoproductos`) tampoco: 15 keywords nuevas, todas P3 (volumen real 10-30/mes,
-  6 de ellas ya cubiertas por `que-son-los-infoproductos` y
-  `funnel-de-lanzamiento`, `covered_by` corregido). `agentes-ia-sin-codigo-
-  para-emprendedores` sigue en `needs_review` (solapamiento con dos posts de
-  IA). **El pipeline lleva tres runs seguidos de keyword-researcher sin
-  trabajo de bajo esfuerzo que resembrar solo**: las 17 semillas de
-  `state/seed-keywords.txt` siguen en su segunda vuelta (quedan 14 sin
-  revisar) y el backlog del bank sweep sigue en 0, pero el patrón de las
-  últimas 3 semillas de segunda vuelta apunta a rendimientos decrecientes:
-  clusters ya cubiertos por los 35 posts existentes o volumen real por
-  debajo del umbral. Hace falta que Fran añada semillas nuevas fuera del
-  temario ya cubierto. El content-writer del martes 25/08 confirmó el
-  no-op previsto (cola sin cambios desde el 22/08). Ver
-  `state/content-queue.json`.
+- Cola: **1 item `queued`** desde el 26/08 (`claude cowork precio`), tras 16
+  días en 0 (10/08 → 25/08, 8 no-ops consecutivos de content-writer). El
+  keyword-researcher del 17/08 conectó limpio con el pin
+  `dataforseo-mcp-server@2.9.13`, investigó la última semilla nueva
+  (`automatizar ventas`) y drenó a 0 el backlog del `Step 0: Bank sweep`
+  (las 3 SERPs de banda media: vibe coding, copywriting, copywriting
+  español), pero ningún candidato pasó el gate de autoridad (`Step 5b`). El
+  del 19/08 (primera segunda vuelta, `email marketing`) y el del 24/08
+  (segunda vuelta, `lanzamientos infoproductos`) tampoco dejaron nada
+  encolable: 15 keywords nuevas el 24/08, todas P3, 6 ya cubiertas por
+  `que-son-los-infoproductos` y `funnel-de-lanzamiento` (`covered_by`
+  corregido). El del 26/08 (segunda vuelta, semilla `claude para
+  solopreneurs`, la más antigua) sí encontró un P1: `claude cowork precio`
+  (170/mes, gate de autoridad superado), al detectar un producto nuevo de
+  Anthropic (Claude Cowork) sin cobertura previa en el sitio. `agentes-ia-
+  sin-codigo-para-emprendedores` sigue en `needs_review` (solapamiento con
+  dos posts de IA). El próximo content-writer programado (jueves 27/08)
+  debería consumir este item. Ver `state/content-queue.json` y bitácora
+  2026-08-26.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
@@ -652,19 +675,25 @@ Zona horaria del equipo: `Europe/Madrid`.
    `automatizar ventas` (17/08) ya están las tres investigadas. Las 17
    semillas de `state/seed-keywords.txt` están ahora todas investigadas al
    menos una vez, y el `Step 0: Bank sweep` drenó su backlog a 0 el 17/08.
-   **Nueva prioridad, confirmada 2026-08-19 y reforzada 2026-08-24:** la
-   primera segunda vuelta (`email marketing`, 19/08) y la segunda
-   (`lanzamientos infoproductos`, 24/08) tampoco dejaron nada encolable — ni
-   un candidato llegó a P1 en ninguna de las dos, y en el run del 24/08 el
-   40% de las keywords nuevas ya estaban cubiertas por posts existentes que
-   el banco no reflejaba. El pipeline lleva tres runs seguidos sin trabajo de
-   bajo esfuerzo que resembrar solo; hace falta que Fran añada semillas
-   nuevas a `state/seed-keywords.txt` fuera del temario ya cubierto (no solo
-   refresco de volumen ni rotación de las mismas 17) para volver a producir
-   items `queued`. **Confirmado 2026-08-25:** el content-writer de hoy salió
-   en no-op como se preveía (cola sin cambios desde el 22/08); el próximo
-   keyword-researcher (lunes 31/08) sigue siendo la próxima oportunidad de
-   desatascarlo, si Fran ha añadido semillas nuevas antes de esa fecha.
+   La primera segunda vuelta (`email marketing`, 19/08) y la segunda
+   (`lanzamientos infoproductos`, 24/08) no dejaron nada encolable — ni un
+   candidato llegó a P1 en ninguna de las dos, y en el run del 24/08 el 40%
+   de las keywords nuevas ya estaban cubiertas por posts existentes que el
+   banco no reflejaba. **Racha rota 2026-08-26:** la tercera segunda vuelta
+   (`claude para solopreneurs`) sí dejó 1 item `queued` (`claude cowork
+   precio`), pero no fue la rotación mecánica de la semilla la que lo
+   consiguió — fue detectar que había aparecido un producto nuevo (Claude
+   Cowork) desde la última vez que se investigó esa semilla (01/06) y
+   perseguir ese sub-cluster con `keyword_suggestions` en vez de repetir
+   `keyword_ideas`/`related_keywords` sobre la frase genérica, que seguía
+   devolviendo ruido o contenido ya cubierto. Sigue sin resolverse el
+   problema de fondo: **quedan 14 semillas sin una segunda vuelta reciente**
+   y no todas tendrán un lanzamiento de producto reciente que perseguir. Fran
+   debería seguir valorando añadir semillas nuevas a
+   `state/seed-keywords.txt` fuera del temario ya cubierto, y/o instruir al
+   researcher para que compruebe rutinariamente anuncios de producto
+   recientes de Anthropic/OpenAI relevantes a cada semilla antes de
+   descartarla como agotada.
 7b. ~~Content-writer: revisar por qué no corrió el martes 2026-07-14~~ —
    **cerrado 2026-07-21**: ambos items que quedaron pendientes de esa
    incidencia (`que-es-el-copywriting`, `que-es-una-landing-page`) están
@@ -688,6 +717,10 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-08-26: keyword-researcher run — semilla `claude para solopreneurs`
+  (segunda vuelta), 9 keywords nuevas, 1 item encolado (`claude cowork
+  precio`, gate de autoridad superado). Rompe la racha de 3 runs sin nada
+  encolable.
 - 2026-08-25: content-writer run — no-op, cola vacía (octavo no-op
   consecutivo).
 - 2026-08-24: keyword-researcher run — bank sweep (1 SERP, muro confirmado) +
