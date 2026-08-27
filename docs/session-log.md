@@ -2593,3 +2593,114 @@ ejecutó con normalidad).
   (`needs_review` desde el 02/07).
 - Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
   bitácora 2026-08-10).
+
+## 2026-08-27: content-writer, run jueves (MODE: AUTO) — publicado `claude cowork precio`, cola vuelve a 0
+
+### Brief
+
+Único item `queued`: `2026-08-26-claude-cowork-precio` (commercial, vol 170,
+kd 0, target 1700 palabras, sembrado por el keyword-researcher del 26/08 tras
+pasar el gate de autoridad `Step 5b`). Marcado `in_progress` de inmediato.
+Leídos los 8 ficheros de `context/` en orden. Revisados los dos posts
+hermanos ya publicados (`claude-para-solopreneurs.md`,
+`claude-code-sin-programar.md`) para no repetir ángulo ni contradecir hechos
+ya documentados sobre el uso real de Claude por parte de Fran.
+
+### Investigación: la premisa de la cola ya no era cierta
+
+Las notas de la cola (escritas el 26/08) planteaban el post como "¿compensa
+el salto de precio de Pro (20$) a Max (100-200$) para acceder a Cowork?",
+asumiendo que Cowork requería Max. La investigación (SERP de
+`claude cowork precio` vía `serp_organic_live_advanced`, más `WebFetch` de
+`claude.com/pricing`, `support.claude.com` y `WebSearch` de la fecha de
+lanzamiento) mostró que esa premisa quedó obsoleta:
+
+- Anthropic lanzó Cowork el 12/01/2026 en preview, exclusivo para Max con
+  lista de espera (confirmado en TechCrunch, cobertura del día del anuncio).
+- La página oficial de precios y el artículo de soporte oficial (ambos
+  consultados hoy) confirman que Cowork viene incluido en **cualquier plan de
+  pago**, Pro incluido (20€/mes), no solo Max.
+- Varias guías indexadas para la misma keyword siguen repitiendo el dato de
+  lanzamiento: un tutorial de DataCamp de abril de 2026 todavía dice "solo
+  Max, 100-200$/mes". Los resultados top-5 con forma de granja de contenido
+  (`coworkerai.io`, `claudecowork.im`, `appropia.com`, exactamente los
+  rivales que el gate de autoridad del 26/08 marcó como desplazables)
+  reproducen variaciones del mismo dato sin fuente primaria.
+
+Reorienté el post: en vez de "¿compensa subir a Max?", el ángulo pasó a ser
+la corrección en sí ("el precio real hoy es 20€, no 100€, y medio internet en
+español no se ha actualizado"), usada como el dato propio/síntesis original
+que exige la regla GEO (Villanueva, 2026-07-09). No fabriqué experiencia
+práctica con Cowork: no existe en `experience-notes.md` ni en posts previos
+que Fran lo haya usado hands-on. El veredicto final se apoya en el hecho ya
+documentado (mismo dato citado en `claude-para-solopreneurs.md`) de que Fran
+paga Claude Pro y usa Projects/Code para email marketing y SEO, contrastado
+con lo que Cowork resuelve (gestión de archivos/tareas de oficina), sin decir
+en ningún momento "lo he probado y...". `experience_mode` en el sidecar
+queda anotado como tal para que quede auditable.
+
+Fuentes citadas (5, todas verificadas hoy): página oficial de precios de
+Anthropic, artículo de soporte oficial de Cowork, TechCrunch (anuncio
+original 12/01/2026), DataCamp (citado explícitamente como ejemplo del dato
+desactualizado, no como autoridad de precio), eesel.ai (cuotas de uso).
+Descartadas por forma de granja de contenido: `coworkerai.io`,
+`claudecowork.im`, `appropia.com`.
+
+### Redacción y lint
+
+1.566 palabras (objetivo 1.700, dentro del ±15%). Capsule ratio 71% (5/7
+H2, dentro de 55-75%). Three Kings extendido: "cowork precio" en título y en
+2 H2 (`Claude Cowork precio: ¿cuánto cuesta cada plan?` y `Claude Cowork
+precio: el mito de los 100 euros al mes`). `lint-post.py` OK a la primera
+pasada, sin necesidad del intento de arreglo.
+
+### Publicación
+
+`publish-to-astro.py` copió el archivo, pasó el build previo (`npm run
+build` OK), hizo commit `post: claude-cowork-precio`, pero el `git push`
+final falló: el repo web estaba 1 commit por detrás de `origin/main` (un
+push automático no relacionado de republicación de un ensayo desde
+Substack). El script falló alto tal y como se corrigió el 10/08 (ver
+"Incidencias conocidas"), sin reportar éxito falso. Resuelto con `git fetch`
++ `git rebase origin/main` (sin conflictos: archivos distintos), rebuild y
+`git push` manual. Repetí el ping de IndexNow a mano porque el script había
+salido con código de error antes de llegar a ese paso.
+
+Confirmado con `curl -o /dev/null -w '%{http_code}'` → **200** en
+`https://franlledo.com/blog/claude-cowork-precio/`. Sitemap y `llms.txt`
+verificados sin URLs con fecha (invariante 1).
+
+### Enlazado interno entrante
+
+3 enlaces añadidos (uno por post, fuera de heading y de primer párrafo,
+anchor ≤3 palabras): `claude-para-solopreneurs.md`, `claude-code-sin-
+programar.md`, `automatizacion-con-ia-para-solopreneurs.md`. Build
+reverificado tras los tres cambios, commit `097e6e8` (`seo: enlaces internos
+hacia claude-cowork-precio`) y push sin incidencias (ya sincronizado con
+origin tras el rebase anterior).
+
+### Resultado
+
+- `state/content-queue.json`: `2026-08-26-claude-cowork-precio` → `written`,
+  `post_url` = URL publicada. Cola queda en 0 `queued` (26 `written`, 1
+  `needs_review` histórico).
+- Dashboard regenerado (`scripts/render-html-report.py`).
+- Informe completo: `reports/2026-08-27-content-writer.md`.
+- `PROJECT_STATUS.md` actualizado: cabecera, bullet de resumen nuevo,
+  "Últimos commits relevantes" (ambos repos).
+
+### Pendiente
+
+- Próximo content-writer programado (sábado 29/08) saldrá en no-op salvo que
+  el keyword-researcher del lunes 31/08 encole algo nuevo.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` sigue pendiente (ver
+  bitácora 2026-08-10).
+- Vigilar si el patrón de "repo web por detrás de origin al publicar" se
+  repite; ya son tres ocurrencias documentadas (10/08, y ahora 27/08) del
+  mismo patrón conocido (otra automatización/sesión empuja directo a
+  `origin/main`), mitigado con el mismo `git rebase` manual cada vez. Si se
+  vuelve recurrente, valorar que `publish-to-astro.py` haga el `fetch` +
+  `rebase` automáticamente antes de intentar el push en vez de fallar y
+  requerir intervención manual.

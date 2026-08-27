@@ -1,14 +1,34 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-26 (keyword-researcher miércoles: semilla
-`claude para solopreneurs`, 1 item **encolado** — rompe la racha de 3 runs
-seguidos sin nada encolable, ver bitácora)
+Última actualización: 2026-08-27 (content-writer jueves: publicado `claude
+cowork precio`, cola vuelve a 0 `queued` — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run jueves 2026-08-27 (MODE: AUTO): publicado `claude
+  cowork precio`.** Único item `queued` (sembrado el 26/08). La investigación
+  encontró que la premisa de las notas de cola (comparar si compensa subir de
+  Pro a Max para tener Cowork) ya no era cierta: Cowork se lanzó en enero de
+  2026 solo para Max, pero Anthropic amplió el acceso a Pro (20€/mes) después;
+  varias guías indexadas (DataCamp de abril y sitios tipo
+  coworkerai.io/claudecowork.im/appropia.com) siguen repitiendo el dato de
+  lanzamiento. El post se reorientó a esa corrección ("el precio real hoy es
+  20€, no 100€") como dato propio/síntesis GEO, sin fabricar experiencia
+  práctica con Cowork que Fran no tiene documentada. 1.566 palabras (objetivo
+  1.700), lint OK a la primera. Publicado y confirmado con `curl` (HTTP 200):
+  `franlledo.com/blog/claude-cowork-precio/`. 3 enlaces internos entrantes
+  añadidos desde `claude-para-solopreneurs`, `claude-code-sin-programar` y
+  `automatizacion-con-ia-para-solopreneurs`. Complicación menor: el repo web
+  estaba 1 commit por detrás de `origin/main` (push automático no relacionado
+  de republicación de un ensayo) cuando `publish-to-astro.py` intentó el
+  `git push`; el script falló alto tal y como se corrigió el 10/08 (ver
+  incidencias conocidas), y el `git rebase origin/main` + reintento manual
+  del push y del ping IndexNow lo resolvió sin conflictos. Cola vuelve a 0
+  `queued` (26 `written`, 1 `needs_review`). Informe completo:
+  `reports/2026-08-27-content-writer.md`. Ver bitácora 2026-08-27.
 - **Keyword-researcher, run miércoles 2026-08-26 (MODE: AUTO): semilla
   `claude para solopreneurs`, 1 item encolado.** Semilla elegida por
   `last_researched` más antiguo (2026-06-03, ~12 semanas), fuera de la
@@ -717,6 +737,9 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-08-27: content-writer run — `claude cowork precio` publicado, cola
+  vaciada (0 `queued`). Corrección de precio (Pro 20€, no Max 100€) frente a
+  las notas de cola, usada como dato propio GEO.
 - 2026-08-26: keyword-researcher run — semilla `claude para solopreneurs`
   (segunda vuelta), 9 keywords nuevas, 1 item encolado (`claude cowork
   precio`, gate de autoridad superado). Rompe la racha de 3 runs sin nada
@@ -757,6 +780,10 @@ Repo SEO:
 
 Repo web:
 
+- `097e6e8` (2026-08-27): seo: enlaces internos hacia claude-cowork-precio.
+- `35bb042` (2026-08-27): post: claude-cowork-precio (rebaseado sin
+  conflictos sobre un commit ajeno de republicación de ensayo que había
+  llegado a origin/main mientras tanto).
 - `2d24350` (2026-08-10): seo: enlaces internos hacia ganar-dinero-con-ia.
 - `6340ad4` (2026-08-10): post: ganar-dinero-con-ia (rebaseado sobre 6
   commits ajenos que habían llegado a origin/main mientras tanto: RSS de
