@@ -1,13 +1,28 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-27 (content-writer jueves: publicado `claude
-cowork precio`, cola vuelve a 0 `queued` — ver bitácora)
+Última actualización: 2026-08-29 (content-writer sábado: no-op, cola sin
+resembrar desde el 26/08 — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run sábado 2026-08-29 (MODE: AUTO): no-op, cola sin
+  items `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  `state/content-queue.json`: 27 items, 26 `written`, 1 `needs_review`, 0
+  `queued`. Causa: ningún keyword-researcher ha corrido desde el 26/08 (el
+  siguiente programado es el lunes 31/08); es justo lo que el informe del
+  27/08 anticipaba. No es un run fantasma (`git status` limpio al arrancar).
+  Sin cambios en `output/` ni en el repo web. **Primer no-op tras la racha
+  rota el 27/08** (la anterior había sido de 8 no-ops consecutivos,
+  08/08→25/08). Hallazgo aparte sin acción requerida: la entrada de
+  `state/agent-log.json` del 27/08 quedó mal etiquetada como `"message":
+  "no-op"` pese a que ese run sí publicó un post; causa identificada en
+  `coordinator.sh:93-102` (mira si queda algo sin commitear en *este* repo al
+  final, y el agente ya había commiteado durante el run). No se tocó
+  `coordinator.sh` (regla dura de no modificar scripts del coordinator desde
+  un run). Ver bitácora 2026-08-29.
 - **Content-writer, run jueves 2026-08-27 (MODE: AUTO): publicado `claude
   cowork precio`.** Único item `queued` (sembrado el 26/08). La investigación
   encontró que la premisa de las notas de cola (comparar si compensa subir de
@@ -441,12 +456,14 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 - **Publicación automática DESBLOQUEADA** (2026-07-03): `context/publishing.json`
   corregido a `~/Projects/franlledo-web` y publicado
   `/blog/funnel-de-captacion/` (build OK, IndexNow 200, 200 en producción).
-- El blog tiene **36 artículos publicados** en producción. Último:
-  `/blog/ganar-dinero-con-ia/` (2026-08-10, 1.821 palabras, PUBLISHED_LIVE,
-  HTTP 200, con dato propio citable y 3 enlaces internos entrantes).
-- Cola: **1 item `queued`** desde el 26/08 (`claude cowork precio`), tras 16
-  días en 0 (10/08 → 25/08, 8 no-ops consecutivos de content-writer). El
-  keyword-researcher del 17/08 conectó limpio con el pin
+- El blog tiene **37 artículos publicados** en producción. Último:
+  `/blog/claude-cowork-precio/` (2026-08-27, 1.566 palabras, PUBLISHED_LIVE,
+  HTTP 200, con dato propio/síntesis GEO y 3 enlaces internos entrantes).
+- Cola: **0 items `queued`** desde el 27/08 (el content-writer de ese día
+  consumió `claude cowork precio`, sembrado el 26/08). El content-writer del
+  sábado 29/08 salió en no-op esperado por falta de resiembra: ningún
+  keyword-researcher ha corrido desde el 26/08 (siguiente programado: lunes
+  31/08). El keyword-researcher del 17/08 conectó limpio con el pin
   `dataforseo-mcp-server@2.9.13`, investigó la última semilla nueva
   (`automatizar ventas`) y drenó a 0 el backlog del `Step 0: Bank sweep`
   (las 3 SERPs de banda media: vibe coding, copywriting, copywriting
@@ -460,9 +477,9 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   (170/mes, gate de autoridad superado), al detectar un producto nuevo de
   Anthropic (Claude Cowork) sin cobertura previa en el sitio. `agentes-ia-
   sin-codigo-para-emprendedores` sigue en `needs_review` (solapamiento con
-  dos posts de IA). El próximo content-writer programado (jueves 27/08)
-  debería consumir este item. Ver `state/content-queue.json` y bitácora
-  2026-08-26.
+  dos posts de IA). El keyword-researcher del lunes 31/08 debe resembrar la
+  cola para el próximo content-writer (martes 01/09). Ver
+  `state/content-queue.json` y bitácora 2026-08-29.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:

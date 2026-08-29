@@ -2704,3 +2704,68 @@ origin tras el rebase anterior).
   vuelve recurrente, valorar que `publish-to-astro.py` haga el `fetch` +
   `rebase` automáticamente antes de intentar el push en vez de fallar y
   requerir intervención manual.
+
+## 2026-08-29: content-writer, run sábado (MODE: AUTO) — no-op, cola sin resembrar desde el 26/08
+
+### Brief
+
+`pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2). `state/content-queue.json`:
+27 items, 26 `written`, 1 `needs_review` (`agentes-ia-sin-codigo-para-emprendedores`),
+0 `queued` — mismo conteo que tras el run del 27/08.
+
+### Causa
+
+Ningún keyword-researcher ha corrido desde el miércoles 26/08 (ese run sembró
+`claude cowork precio`, consumido por el content-writer del jueves 27/08). El
+ciclo lunes/miércoles no tiene ejecución entre el 26/08 y hoy; el siguiente
+run programado es el lunes 31/08. Es exactamente lo que el informe del 27/08
+anticipaba ("el próximo content-writer programado (sábado 29/08) saldrá en
+no-op salvo que el keyword-researcher del lunes 31/08 encole algo nuevo"). No
+es un run fantasma (`git status` limpio al arrancar, el run se disparó y
+ejecutó con normalidad). Sin cambios en `output/`, `state/content-queue.json`,
+`state/keyword-bank.json` ni en el repo web.
+
+Este es el **primer no-op** desde que `claude cowork precio` (27/08) rompió
+la racha de 8 no-ops consecutivos (08/08 → 25/08).
+
+### Hallazgo aparte: etiqueta engañosa en `state/agent-log.json` (sin acción)
+
+Revisando `state/agent-log.json` para confirmar el conteo de no-ops, la
+entrada del content-writer del 27/08 está registrada con `"message": "no-op"`
+pese a que ese run sí publicó `claude-cowork-precio` y commiteó en ambos
+repos. Causa identificada en `coordinator.sh:93-102`
+(`git_commit()`): decide "committed" vs "no-op" mirando si queda algo sin
+commitear en *este* repo al final del run; como el propio agente ya había
+hecho su commit `seo(content-writer): run 2026-08-27` durante el run (commit
+`e2490b3`, visible en `git log`), no quedaba nada pendiente y el coordinator
+etiquetó el run como "no-op" en el log. La duración (740s, frente a los
+120-150s típicos de un no-op genuino de cola vacía) ya delataba que hubo
+trabajo real. No es un fallo funcional (el commit y la publicación son
+reales y verificables), solo una etiqueta de log poco fiable. No se tocó
+`coordinator.sh` (regla dura: no modificar scripts del coordinator desde un
+run de content-writer). Si se audita `agent-log.json` contando "no-op" como
+proxy de "sin trabajo", cruzar con `duration_seconds` o con `git log` para no
+subcontar publicaciones reales. Queda a criterio de Fran si vale la pena
+ajustar la lógica de `git_commit()`/`log_run()` para que distinga "committed
+por el propio agente durante el run" de "no-op real".
+
+### Resultado
+
+- Sin cambios en `state/content-queue.json`, `state/keyword-bank.json`,
+  `output/` ni en el repo web.
+- Informe: `reports/2026-08-29-content-writer.md`.
+- `PROJECT_STATUS.md` actualizado: cabecera, bullet de resumen nuevo, bullet
+  de "Cola" refrescado (37 posts publicados, 0 `queued`).
+
+### Pendiente
+
+- El keyword-researcher del lunes 31/08 debe resembrar la cola para que el
+  content-writer del martes 01/09 tenga trabajo.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Seguimiento en GSC a 28 días de `ganar dinero con ia` y de `claude cowork
+  precio` sigue pendiente.
+- Opcional (no urgente): revisar si `coordinator.sh` debería distinguir
+  "committed por el agente durante el run" de "no-op real" en
+  `state/agent-log.json`, para que el campo `message` sea fiable sin cruzarlo
+  con `duration_seconds`.
