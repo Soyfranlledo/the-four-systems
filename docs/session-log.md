@@ -2840,3 +2840,65 @@ alcance de este agente).
 - Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
   (`needs_review` desde el 02/07).
 - Próximo refresh-recommender programado: 2026-10-01.
+
+## 2026-09-01: content-writer, run martes (MODE: AUTO) — no-op, causa de
+la cola vacía confirmada (auth failure del keyword-researcher del 31/08)
+
+### Brief
+
+Run programado (martes, jueves y sábado, 10:00). `pick-next-queue-item.py` →
+`NO_QUEUED_ITEMS` (exit 2). `state/content-queue.json`: 27 items, 26
+`written`, 1 `needs_review` (`agentes-ia-sin-codigo-para-emprendedores`), 0
+`queued` — mismo conteo que el no-op del 29/08.
+
+### Causa
+
+El informe del refresh-recommender de esta misma mañana (01/09) ya había
+encontrado en `state/agent-log.json` que el keyword-researcher programado
+del lunes 2026-08-31 (07:00) quedó registrado con `status: "error"`,
+`message: "auth failure"`, `duration_seconds: 0`, y dejó como pendiente
+comprobar si ese fallo era la causa de un eventual no-op de hoy. Confirmado:
+`duration_seconds: 0` significa que el chequeo de auth de `coordinator.sh`
+abortó el run antes siquiera de invocar el prompt, así que ese
+keyword-researcher nunca llegó a sembrar la cola. No es la inanición de
+backlog de bajo esfuerzo ya documentada (semillas agotadas, gate de
+autoridad, etc.): es un fallo de infraestructura que impidió que el agente
+se ejecutara.
+
+`claude auth status` en esta sesión vuelve a dar `loggedIn: true`
+(`fran@franlledo.com`, plan `max`), igual que en la sesión del
+refresh-recommender de esta mañana. El fallo del 31/08 parece transitorio,
+mismo patrón que el corte de 10 días 27/07→06/08 ya documentado en
+`AGENTS.md` (incidencias conocidas). Sin siembra exitosa desde el 26/08
+(`claude cowork precio`, consumido el 27/08), la cola lleva **6 días** a 0
+`queued`.
+
+No es un run fantasma: `git status` limpio al arrancar, `launchctl list`
+confirma el job `com.franlledo.seo-content-writer` disparado a las
+08:00:05Z (10:00 Europe/Madrid) como estaba programado, y el proceso
+`coordinator.sh content-writer` (PID activo, `ps` confirmado) es el que
+orquesta esta sesión. Sin cambios en `output/`, `state/content-queue.json`,
+`state/keyword-bank.json` ni en el repo web.
+
+### Resultado
+
+- Sin cambios en `state/content-queue.json`, `state/keyword-bank.json`,
+  `output/` ni en el repo web.
+- Informe: `reports/2026-09-01-content-writer.md`.
+- `PROJECT_STATUS.md` actualizado: cabecera, bullet de resumen nuevo, bullet
+  de "Cola" refrescado (27 items, 0 `queued`, próximo keyword-researcher
+  miércoles 03/09).
+
+### Pendiente
+
+- El keyword-researcher programado del miércoles 2026-09-02 debe resembrar
+  la cola. Si ese run también falla con `auth failure`, el patrón deja de
+  ser transitorio (sería la segunda vez consecutiva en el mismo slot
+  lunes/miércoles) y merece investigación directa de por qué `coordinator.sh`
+  pierde la sesión de `claude` entre ejecuciones de launchd, en vez de
+  asumir que se resuelve solo. No se tocó `coordinator.sh` desde este
+  agente (regla dura del prompt).
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Próximo content-writer programado: jueves 2026-09-03, condicionado a que
+  el keyword-researcher del miércoles 09-02 siembre algo antes.

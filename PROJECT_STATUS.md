@@ -1,13 +1,32 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-01 (refresh-recommender mensual: no-op, 55
-URLs evaluadas, 0 flags — ver bitácora)
+Última actualización: 2026-09-01 (content-writer martes: no-op, cola vacía
+por fallo de auth confirmado del keyword-researcher del 31/08 — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run martes 2026-09-01 (MODE: AUTO): no-op, cola vacía —
+  causa confirmada, no solo sospechada.** `pick-next-queue-item.py` →
+  `NO_QUEUED_ITEMS` (exit 2). `state/content-queue.json`: 27 items, 26
+  `written`, 1 `needs_review`, 0 `queued` — mismo conteo que el 29/08. Esta
+  sesión confirma la sospecha que dejó el informe del refresh-recommender de
+  esta misma mañana: el keyword-researcher programado del lunes 2026-08-31
+  falló con `status: "error"`, `message: "auth failure"`,
+  `duration_seconds: 0` (el check de auth de `coordinator.sh` abortó antes de
+  invocar el prompt), así que nunca sembró la cola. `claude auth status`
+  vuelve a dar `loggedIn: true` en esta sesión, igual que en la del
+  refresh-recommender, así que el fallo parece transitorio (mismo patrón que
+  el corte de 10 días 27/07→06/08), pero ha costado un ciclo completo: sin
+  siembra exitosa desde el 26/08, la cola lleva 6 días a 0 `queued`. No es un
+  run fantasma (`launchctl list` confirma el job disparado a su hora, y este
+  proceso es el `coordinator.sh` que lo orquesta). Sin cambios en `output/`
+  ni en el repo web. **Próxima acción fuera de este agente:** el
+  keyword-researcher del miércoles 2026-09-02 debe resembrar; si también
+  falla con `auth failure`, el patrón deja de ser transitorio. Informe:
+  `reports/2026-09-01-content-writer.md`. Ver bitácora 2026-09-01.
 - **Refresh-recommender, run mensual 2026-09-01: no-op, las 55 URLs
   evaluadas están sanas.** `scripts/refresh-scorer.py` (layer 1) barrió
   sitemap + video-sitemap, filtró a `/blog/` (55 URLs tras el filtro) y
@@ -483,10 +502,11 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   `/blog/claude-cowork-precio/` (2026-08-27, 1.566 palabras, PUBLISHED_LIVE,
   HTTP 200, con dato propio/síntesis GEO y 3 enlaces internos entrantes).
 - Cola: **0 items `queued`** desde el 27/08 (el content-writer de ese día
-  consumió `claude cowork precio`, sembrado el 26/08). El content-writer del
-  sábado 29/08 salió en no-op esperado por falta de resiembra: ningún
-  keyword-researcher ha corrido desde el 26/08 (siguiente programado: lunes
-  31/08). El keyword-researcher del 17/08 conectó limpio con el pin
+  consumió `claude cowork precio`, sembrado el 26/08), y sigue en 0 tras el
+  no-op del 01/09. El keyword-researcher del lunes 31/08 falló con `status:
+  "error"`, `message: "auth failure"` antes de sembrar nada (ver bullet de
+  resumen arriba), así que la cola lleva 6 días sin resiembra. El
+  keyword-researcher del 17/08 conectó limpio con el pin
   `dataforseo-mcp-server@2.9.13`, investigó la última semilla nueva
   (`automatizar ventas`) y drenó a 0 el backlog del `Step 0: Bank sweep`
   (las 3 SERPs de banda media: vibe coding, copywriting, copywriting
@@ -500,9 +520,9 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   (170/mes, gate de autoridad superado), al detectar un producto nuevo de
   Anthropic (Claude Cowork) sin cobertura previa en el sitio. `agentes-ia-
   sin-codigo-para-emprendedores` sigue en `needs_review` (solapamiento con
-  dos posts de IA). El keyword-researcher del lunes 31/08 debe resembrar la
-  cola para el próximo content-writer (martes 01/09). Ver
-  `state/content-queue.json` y bitácora 2026-08-29.
+  dos posts de IA). El keyword-researcher del miércoles 2026-09-02 debe
+  resembrar la cola para el próximo content-writer (jueves 03/09). Ver
+  `state/content-queue.json` y bitácora 2026-09-01.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:
