@@ -2769,3 +2769,74 @@ por el propio agente durante el run" de "no-op real".
   "committed por el agente durante el run" de "no-op real" en
   `state/agent-log.json`, para que el campo `message` sea fiable sin cruzarlo
   con `duration_seconds`.
+
+## 2026-09-01: refresh-recommender, run mensual — no-op, 55 URLs sanas, 0 flags
+
+### Brief
+
+Run programado (día 1 de cada mes, 07:00). Layer 1 (`scripts/refresh-scorer.py`)
+ya había corrido antes de que empezara mi turno: sitemap-index + video-sitemap
+(73 URLs), filtrado a `/blog/` (55), consulta GSC URL Inspection API por URL.
+Salida en `state/refresh-candidates.json` (`generated_at`
+2026-09-01T05:06:32Z): `urls_evaluated: 55`, `urls_flagged: 0`,
+`by_flag` con `not_indexed`, `index_warning`, `stale_12mo` y `aging` los
+cuatro en 0.
+
+### Clasificación (layer 2)
+
+Regla de descarte del prompt: "si `flags` está vacío, ignorar la URL". Las 55
+candidatas tienen `flags: []`, así que ninguna llega a clasificarse en
+`request_indexing` / `fix_canonical` / `refresh` / `audit_then_decide`. Todas
+en verdict `PASS`, `coverage_state: "Submitted and indexed"`,
+`indexing_state: INDEXING_ALLOWED`. La URL con más antigüedad sin refrescar
+(`funnel-de-conversion-etapas-que-importan`, 60 días) queda muy por debajo
+del umbral `aging` (305 días) y `stale_12mo` (365). Revisé
+`context/services.md` para el filtro de money pages: franlledo.com no vende
+nada directamente (productos en cazatarjetas.com, nunca enlazados desde el
+blog), así que `is_money_page` habría sido `false` en el 100% de haber
+candidatas.
+
+### `state/refresh-queue.json`
+
+El archivo previo (generado 2026-06-25) tenía 5 items `request_indexing` en
+estado `queued`: `mejor-modelo-de-negocio-online-para-empezar`,
+`etiqueta/email-marketing`, `claude-code-sin-programar`,
+`como-monetizar-una-newsletter`, `que-es-un-lead`. Las 5 aparecen hoy en
+`refresh-candidates.json` con `flags: []` (sanas), y ninguna estaba en
+`in_progress`/`completed`, así que no aplica la regla de preservación del
+prompt. Sobrescrito a `totals.total_actions: 0`, `items: []`.
+
+### Hallazgo aparte (sin acción de este agente)
+
+Revisando `state/agent-log.json` para el contexto de sesión, el
+keyword-researcher programado del lunes 2026-08-31 (07:00) está registrado
+con `status: "error"`, `message: "auth failure"`, `duration_seconds: 0` — no
+llegó a generar `reports/2026-08-31-keyword-researcher.md` (el chequeo de
+auth en `coordinator.sh:118` aborta antes de invocar el prompt, así que el
+`REPORT_FILE` nunca se crea). Mismo patrón que el corte de 10 días
+27/07→06/08 ya documentado en incidencias conocidas. `claude auth status` en
+esta sesión (01/09) devuelve `loggedIn: true`, así que a día de hoy la
+autenticación funciona; no puedo confirmar desde aquí si fue un fallo
+puntual o si sigue afectando al keyword-researcher programado. Si el
+content-writer del martes 01/09 (10:00, después de este run) sale en no-op,
+revisar primero si es por esta causa (auth) antes de asumir que es la
+inanición de backlog ya conocida por falta de keywords nuevas. No se tocó
+`coordinator.sh` ni se reintentó el run del keyword-researcher (fuera del
+alcance de este agente).
+
+### Resultado
+
+- `state/refresh-candidates.json`: 55 evaluadas, 0 flags (layer 1, ya
+  generado al empezar mi turno).
+- `state/refresh-queue.json`: sobrescrito, `total_actions: 0`.
+- Informe: `reports/2026-09-01-refresh-recommender.md`.
+- `PROJECT_STATUS.md` actualizado: cabecera, bullet de resumen nuevo con el
+  hallazgo de auth del keyword-researcher.
+
+### Pendiente
+
+- Vigilar si el content-writer del martes 01/09 sale en no-op por auth en
+  vez de por cola vacía.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Próximo refresh-recommender programado: 2026-10-01.

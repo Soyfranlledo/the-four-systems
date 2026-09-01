@@ -1,13 +1,36 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-08-29 (content-writer sábado: no-op, cola sin
-resembrar desde el 26/08 — ver bitácora)
+Última actualización: 2026-09-01 (refresh-recommender mensual: no-op, 55
+URLs evaluadas, 0 flags — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Refresh-recommender, run mensual 2026-09-01: no-op, las 55 URLs
+  evaluadas están sanas.** `scripts/refresh-scorer.py` (layer 1) barrió
+  sitemap + video-sitemap, filtró a `/blog/` (55 URLs tras el filtro) y
+  consultó GSC URL Inspection para cada una: **0 flags** en las 55
+  (`not_indexed`, `index_warning`, `stale_12mo`, `aging` todos en 0).
+  Verdict `PASS`, `coverage_state: "Submitted and indexed"`,
+  `indexing_state: INDEXING_ALLOWED` en el 100%. La más antigua sin refrescar,
+  `funnel-de-conversion-etapas-que-importan`, está en 60 días (muy por debajo
+  del umbral `aging` de 305). El `refresh-queue.json` anterior (generado
+  2026-06-25, 5 items `request_indexing` en `queued`) se sobrescribe a 0
+  items: ninguna de esas 5 URLs sigue flageada hoy y ninguna estaba en
+  `in_progress`/`completed`, así que no aplica la regla de preservación.
+  franlledo.com no tiene páginas comerciales propias (`context/services.md`:
+  los productos viven en cazatarjetas.com y nunca se enlazan desde el blog),
+  así que tampoco hay money pages que priorizar. Informe:
+  `reports/2026-09-01-refresh-recommender.md`. **Hallazgo aparte sin acción
+  de este agente:** `state/agent-log.json` registra el keyword-researcher
+  programado del lunes 2026-08-31 en `status: "error"`, `message: "auth
+  failure"` (mismo patrón que el corte del 27/07→06/08); la sesión actual
+  confirma `claude auth status` con `loggedIn: true`, así que parece
+  transitorio, pero si el content-writer del martes 01/09 también sale en
+  no-op por cola vacía, esta es la causa raíz a revisar primero (no la falta
+  de keywords). Ver bitácora 2026-09-01.
 - **Content-writer, run sábado 2026-08-29 (MODE: AUTO): no-op, cola sin
   items `queued`.** `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
   `state/content-queue.json`: 27 items, 26 `written`, 1 `needs_review`, 0
