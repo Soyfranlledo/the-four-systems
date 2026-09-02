@@ -1,13 +1,37 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-01 (content-writer martes: no-op, cola vacía
-por fallo de auth confirmado del keyword-researcher del 31/08 — ver bitácora)
+Última actualización: 2026-09-02 (keyword-researcher miércoles: seed
+"secuencias de email" agotado, 0 items nuevos a cola — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Keyword-researcher, run miércoles 2026-09-02 (MODE: AUTO): la auth ya no
+  falla, pero el seed asignado por rotación ("secuencias de email") resultó
+  agotado — 0 items nuevos a la cola.** Auth confirmada sana
+  (`claude auth status` → `loggedIn: true`), así que el fallo del
+  keyword-researcher del 31/08 fue efectivamente transitorio y no se repitió.
+  Bank sweep (Step 0) no tuvo nada que medir (0 candidatas). El seed elegido
+  por rotación (más antiguo sin refrescar, `secuencias de email`,
+  2026-06-08) confirmó con datos frescos lo que ya sospechaba desde esa
+  fecha: sin masa crítica de búsqueda en español (variantes nuevas entre 10 y
+  70 búsquedas/mes). `dataforseo_labs_google_keyword_ideas` repitió el
+  patrón de ruido de categoría ya documentado (50 resultados genéricos sobre
+  "email", descartados); se pivotó a `keyword_suggestions` +
+  `keyword_overview` sobre una lista curada a mano, patrón ya usado con éxito
+  en runs anteriores. 8 keywords nuevas al banco (332→340), todas priority 3;
+  5 duplicados detectados y descartados; ninguna alcanzó priority 1, así que
+  el gate de autoridad (Step 5b) no se ejecutó. **La cola sigue en 0
+  `queued`, ahora 6 días consecutivos.** No es un fallo de este run (siguió
+  el protocolo de rotación de semillas correctamente), pero la hambruna de
+  cola sigue sin resolverse. El próximo keyword-researcher programado (lunes
+  2026-09-07) tomará la siguiente semilla más antigua por rotación, "ia para
+  negocios pequeños" (2026-06-10), un tema más amplio con más probabilidad de
+  producir candidatas viables. Informe: `reports/2026-09-02-keyword-researcher.md`.
+  CSV: `output/keywords/2026-09-02-secuencias-de-email.csv`. Ver bitácora
+  2026-09-02.
 - **Content-writer, run martes 2026-09-01 (MODE: AUTO): no-op, cola vacía —
   causa confirmada, no solo sospechada.** `pick-next-queue-item.py` →
   `NO_QUEUED_ITEMS` (exit 2). `state/content-queue.json`: 27 items, 26

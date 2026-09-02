@@ -2902,3 +2902,93 @@ orquesta esta sesión. Sin cambios en `output/`, `state/content-queue.json`,
   (`needs_review` desde el 02/07).
 - Próximo content-writer programado: jueves 2026-09-03, condicionado a que
   el keyword-researcher del miércoles 09-02 siembre algo antes.
+
+## 2026-09-02: keyword-researcher, run miércoles (MODE: AUTO) — auth sana,
+seed "secuencias de email" agotado, 0 items nuevos a la cola
+
+### Brief
+
+Run programado (lunes y miércoles, 09:00). Primero verifiqué la incidencia
+abierta: `claude auth status` devuelve `loggedIn: true`
+(`fran@franlledo.com`, plan `max`), así que el fallo de auth del
+keyword-researcher del 31/08 no se repitió; parece haber sido transitorio
+como se sospechaba.
+
+### Bank sweep (Step 0)
+
+`scripts/pick-bank-gate-batch.py --limit 5` → exit 2, nada que medir. De las
+332 keywords del banco: 266 por debajo del suelo de volumen (100), 41 ya
+cubiertas por posts publicados, 15 fuera de las prioridades 1-2, 10 ya
+medidas por el gate de autoridad. Sin trabajo pendiente de sweep.
+
+### Selección de seed
+
+Sin `SEED_KEYWORD:` prepended, así que apliqué la regla de rotación: la
+semilla de `state/seed-keywords.txt` con `last_researched` más antiguo.
+Todas las semillas de la lista ya tenían fecha (ninguna virgen), y la más
+antigua era `secuencias de email` (2026-06-08, fuera de la ventana de dedup
+de 30 días). La escogí.
+
+### Fan-out (Step 1-3)
+
+`dataforseo_labs_google_keyword_ideas` sobre el seed completo repitió el
+patrón de ruido de categoría ya documentado en `AGENTS.md` (13/07, 15/07,
+20/07): 50 resultados genéricos sobre la palabra "email"
+(`email educamadrid`, `comprobar email`, `crear email gmail`...), ninguno
+relacionado con el tema real del seed. Los descarté todos por fuera de tema.
+`dataforseo_labs_google_related_keywords` devolvió vacío. El scraper de
+ChatGPT no produjo una descomposición útil (respondió pidiendo más contexto
+en vez de fan-out). Pivoté a `keyword_suggestions` y a una lista curada a
+mano sobre `keyword_overview` (variantes de bienvenida, automatización,
+lead nurturing, onboarding, email transaccional): de 65 candidatas
+enviadas, solo 11 tenían datos reales en DataForSEO, el resto no existe en
+su base (demanda no medible).
+
+### Resultado de la investigación
+
+Ninguna keyword nueva superó los 70 búsquedas/mes; la mayoría estaba en
+10-30, varias con tendencia -50% a -100%. Esto confirma con datos frescos lo
+que la entrada de banco del 2026-06-08 ya anotaba: el seed no tiene masa
+crítica de búsqueda en español. El clúster de valor real (`lead nurturing`,
+`marketing automation`) ya está publicado. La única keyword nueva con
+volumen decente, `que es el lead nurturing` (30/mes), resultó ya cubierta
+por `/blog/lead-nurturing-con-email-marketing/` (aparece en su
+`secondaryKeywords`), así que se marcó `covered_by` en vez de dejarla
+huérfana.
+
+8 keywords nuevas al banco (332→340), todas priority 3 (volumen
+insuficiente o ya cubiertas). 5 duplicados detectados y descartados
+(`secuencia de emails`, `email marketing automatizado`, `lead nurturing`
+identificados antes de intentar añadirlos; `correo de bienvenida` y `email
+de bienvenida` deduplicados en silencio por el script contra el mismo seed
+del 2026-06-08). Ninguna alcanzó priority 1, así que el gate de autoridad
+(Step 5b) no se ejecutó y no se gastó la llamada a `backlinks_bulk_ranks`
+(control de coste).
+
+### Resultado
+
+- `state/keyword-bank.json`: 332→340 keywords, `last_updated` a 2026-09-02,
+  `seeds_researched` actualizado para `secuencias de email`.
+- `state/content-queue.json`: sin cambios (0 items añadidos).
+- CSV: `output/keywords/2026-09-02-secuencias-de-email.csv`.
+- Dashboard HTML regenerado (`scripts/render-html-report.py`).
+- Informe: `reports/2026-09-02-keyword-researcher.md`.
+- `state/agent-log.json` actualizado (status `success`, seed `secuencias de
+  email`).
+- `PROJECT_STATUS.md` actualizado: cabecera y bullet de resumen nuevo.
+
+### Pendiente
+
+- La cola sigue en 0 `queued`, 6 días consecutivos desde el 26/08. No es un
+  fallo de este run (rotación de semillas seguida correctamente; el seed
+  asignado estaba genuinamente agotado), pero la hambruna de cola sigue sin
+  resolverse.
+- Próximo keyword-researcher programado: lunes 2026-09-07, seed por
+  rotación `ia para negocios pequeños` (última vez 2026-06-10) — tema más
+  amplio, con más probabilidad de producir candidatas P1 viables que
+  resuelvan la cola.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Próximo content-writer programado: jueves 2026-09-03, casi con certeza
+  otro no-op salvo que aparezca un item `queued` antes (ninguno lo hará
+  hasta el 07/09).
