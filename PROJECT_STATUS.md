@@ -1,13 +1,25 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-02 (keyword-researcher miércoles: seed
-"secuencias de email" agotado, 0 items nuevos a cola — ver bitácora)
+Última actualización: 2026-09-03 (content-writer jueves: no-op anticipado,
+cola en 0 `queued` desde hace 8 días — ver bitácora)
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run jueves 2026-09-03 (MODE: AUTO): no-op anticipado,
+  cola sin resembrar desde el 26/08 (8 días consecutivos).**
+  `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
+  `state/content-queue.json`: 27 items, 26 `written`, 1 `needs_review`, 0
+  `queued` — mismo conteo que los no-ops del 29/08 y 01/09. Causa ya
+  diagnosticada en la sesión anterior: el keyword-researcher del 31/08 falló
+  por `auth failure` y el del 02/09, aunque corrió sano, tuvo el seed
+  asignado por rotación (`secuencias de email`) agotado. No hay nada nuevo
+  que investigar; el próximo keyword-researcher (lunes 2026-09-07, seed `ia
+  para negocios pequeños`) es quien puede resolver la hambruna. Sin cambios
+  en `output/` ni en el repo web. Informe: `reports/2026-09-03-content-writer.md`.
+  Ver bitácora 2026-09-03.
 - **Keyword-researcher, run miércoles 2026-09-02 (MODE: AUTO): la auth ya no
   falla, pero el seed asignado por rotación ("secuencias de email") resultó
   agotado — 0 items nuevos a la cola.** Auth confirmada sana
@@ -526,27 +538,18 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   `/blog/claude-cowork-precio/` (2026-08-27, 1.566 palabras, PUBLISHED_LIVE,
   HTTP 200, con dato propio/síntesis GEO y 3 enlaces internos entrantes).
 - Cola: **0 items `queued`** desde el 27/08 (el content-writer de ese día
-  consumió `claude cowork precio`, sembrado el 26/08), y sigue en 0 tras el
-  no-op del 01/09. El keyword-researcher del lunes 31/08 falló con `status:
-  "error"`, `message: "auth failure"` antes de sembrar nada (ver bullet de
-  resumen arriba), así que la cola lleva 6 días sin resiembra. El
-  keyword-researcher del 17/08 conectó limpio con el pin
-  `dataforseo-mcp-server@2.9.13`, investigó la última semilla nueva
-  (`automatizar ventas`) y drenó a 0 el backlog del `Step 0: Bank sweep`
-  (las 3 SERPs de banda media: vibe coding, copywriting, copywriting
-  español), pero ningún candidato pasó el gate de autoridad (`Step 5b`). El
-  del 19/08 (primera segunda vuelta, `email marketing`) y el del 24/08
-  (segunda vuelta, `lanzamientos infoproductos`) tampoco dejaron nada
-  encolable: 15 keywords nuevas el 24/08, todas P3, 6 ya cubiertas por
-  `que-son-los-infoproductos` y `funnel-de-lanzamiento` (`covered_by`
-  corregido). El del 26/08 (segunda vuelta, semilla `claude para
-  solopreneurs`, la más antigua) sí encontró un P1: `claude cowork precio`
-  (170/mes, gate de autoridad superado), al detectar un producto nuevo de
-  Anthropic (Claude Cowork) sin cobertura previa en el sitio. `agentes-ia-
-  sin-codigo-para-emprendedores` sigue en `needs_review` (solapamiento con
-  dos posts de IA). El keyword-researcher del miércoles 2026-09-02 debe
-  resembrar la cola para el próximo content-writer (jueves 03/09). Ver
-  `state/content-queue.json` y bitácora 2026-09-01.
+  consumió `claude cowork precio`, sembrado el 26/08) — **8 días
+  consecutivos** a la fecha del no-op del 03/09. El keyword-researcher del
+  lunes 31/08 falló con `status: "error"`, `message: "auth failure"` antes
+  de sembrar nada; la auth se confirmó sana de nuevo el 02/09
+  (`claude auth status` → `loggedIn: true`), pero el seed asignado por
+  rotación ese día (`secuencias de email`) resultó agotado (0 items nuevos
+  encolables, 8 keywords P3 al banco). `agentes-ia-sin-codigo-para-
+  emprendedores` sigue en `needs_review` (solapamiento con dos posts de
+  IA). El keyword-researcher del lunes 2026-09-07 (seed por rotación `ia
+  para negocios pequeños`, tema más amplio) es quien puede resembrar la
+  cola; el content-writer del sábado 2026-09-05 será casi con certeza otro
+  no-op. Ver `state/content-queue.json` y bitácora 2026-09-02, 2026-09-03.
 - **Regla nueva de redacción:** todo post lleva `seoTitle` ≤47 caracteres con
   número/dato (el layout añade " — Fran Lledó", 13 car.). Exigido en
   `prompts/content-writer.md` y verificado por `scripts/lint-post.py` (Regla 8:

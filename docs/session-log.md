@@ -2992,3 +2992,51 @@ del 2026-06-08). Ninguna alcanzó priority 1, así que el gate de autoridad
 - Próximo content-writer programado: jueves 2026-09-03, casi con certeza
   otro no-op salvo que aparezca un item `queued` antes (ninguno lo hará
   hasta el 07/09).
+
+## 2026-09-03: content-writer, run jueves (MODE: AUTO) — no-op anticipado,
+cola en 0 `queued` desde hace 8 días
+
+### Brief
+
+Run programado (martes, jueves y sábado, 10:00). `pick-next-queue-item.py`
+→ `NO_QUEUED_ITEMS` (exit 2). `state/content-queue.json`: 27 items, 26
+`written`, 1 `needs_review` (`agentes-ia-sin-codigo-para-emprendedores`), 0
+`queued` — mismo conteo que los no-ops del 29/08 y del 01/09.
+
+### Causa
+
+Sin novedad que investigar: exactamente el escenario que la sesión del
+02/09 ya había anticipado en `PROJECT_STATUS.md`. Cadena completa: última
+siembra consumida el 27/08 (`claude cowork precio`); el keyword-researcher
+del 31/08 falló por `auth failure` sin sembrar; el del 02/09 corrió sano
+(`claude auth status` → `loggedIn: true`, confirmando que el fallo del
+31/08 fue transitorio) pero el seed que le tocó por rotación (`secuencias
+de email`) resultó agotado — 0 items nuevos encolables, 8 keywords P3 al
+banco, ninguna alcanzó priority 1. El próximo keyword-researcher
+programado, lunes 2026-09-07, toma la siguiente semilla por rotación (`ia
+para negocios pequeños`), más amplia y con más probabilidad de producir
+candidatas P1.
+
+No es un run fantasma: `git status` limpio al arrancar (working tree
+clean, 4 commits locales por delante de `origin/main`). Sin cambios en
+`output/`, `state/content-queue.json`, `state/keyword-bank.json` ni en el
+repo web.
+
+### Resultado
+
+- Sin cambios en `state/content-queue.json`, `state/keyword-bank.json`,
+  `output/` ni en el repo web.
+- Informe: `reports/2026-09-03-content-writer.md`.
+- `PROJECT_STATUS.md` actualizado: cabecera, bullet de resumen nuevo,
+  bullet de "Cola" refrescado (8 días consecutivos a 0 `queued`).
+
+### Pendiente
+
+- Cola: **8 días consecutivos** a 0 `queued` (26/08 → 03/09). Se resuelve
+  solo si el keyword-researcher del lunes 2026-09-07 encuentra candidatas
+  P1 con la semilla `ia para negocios pequeños`.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- Próximo content-writer programado: sábado 2026-09-05, casi con certeza
+  otro no-op (el keyword-researcher que podría resembrar es el del 07/09,
+  posterior a esa fecha).
