@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "period": "2026-09",
+  "status": "complete",
+  "signature": "0e9a91d962c5ab2dec8f3fb66723189c8094cafb21e2a0253eda825c95bafe5e",
+  "started_at": "2026-09-14T06:10:11.630Z",
+  "updated_at": "2026-09-14T06:22:18.425Z",
+  "summary": {
+    "planned": 48,
+    "measured": 48,
+    "failed": 0,
+    "with_sources": 38,
+    "unresolved": 0,
+    "cost_usd": 2.471085,
+    "unknown_cost_calls": 0,
+    "entities": {
+      "fran": {
+        "mentions": 2,
+        "mention_denominator": 48,
+        "citations": 4,
+        "citation_denominator": 48
+      },
+      "cazatarjetas": {
+        "mentions": 0,
+        "mention_denominator": 48,
+        "citations": 0,
+        "citation_denominator": 48
+      },
+      "ivan": {
+        "mentions": 4,
+        "mention_denominator": 48,
+        "citations": 4,
+        "citation_denominator": 48
+      },
+      "espabilismo": {
+        "mentions": 0,
+        "mention_denominator": 48,
+        "citations": 0,
+        "citation_denominator": 48
+      },
+      "incognito": {
+        "mentions": 0,
+        "mention_denominator": 48,
+        "citations": 0,
+        "citation_denominator": 48
+      }
+    },
+    "providers": [
+      {
+        "id": "chat_gpt",
+        "label": "ChatGPT",
+        "model": "gpt-5.5-2026-04-23",
+        "measured": 12,
+        "actual_models": [
+          "gpt-5.5-2026-04-23"
+        ],
+        "with_sources": 10,
+        "web_search_used": 10,
+        "entities": {
+          "fran": {
+            "mentions": 1,
+            "mention_denominator": 12,
+            "citations": 1,
+            "citation_denominator": 12
+          },
+          "cazatarjetas": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "ivan": {
+            "mentions": 1,
+            "mention_denominator": 12,
+            "citations": 1,
+            "citation_denominator": 12
+          },
+          "espabilismo": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "incognito": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          }
+        }
+      },
+      {
+        "id": "gemini",
+        "label": "Gemini",
+        "model": "gemini-3.8-flash",
+        "measured": 12,
+        "actual_models": [
+          "gemini-3.8-flash"
+        ],
+        "with_sources": 5,
+        "web_search_used": 5,
+        "entities": {
+          "fran": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "cazatarjetas": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "ivan": {
+            "mentions": 1,
+            "mention_denominator": 12,
+            "citations": 1,
+            "citation_denominator": 12
+          },
+          "espabilismo": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "incognito": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          }
+        }
+      },
+      {
+        "id": "claude",
+        "label": "Claude",
+        "model": "claude-sonnet-5",
+        "measured": 12,
+        "actual_models": [
+          "claude-sonnet-5"
+        ],
+        "with_sources": 11,
+        "web_search_used": 11,
+        "entities": {
+          "fran": {
+            "mentions": 1,
+            "mention_denominator": 12,
+            "citations": 1,
+            "citation_denominator": 12
+          },
+          "cazatarjetas": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "ivan": {
+            "mentions": 1,
+            "mention_denominator": 12,
+            "citations": 1,
+            "citation_denominator": 12
+          },
+          "espabilismo": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "incognito": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          }
+        }
+      },
+      {
+        "id": "perplexity",
+        "label": "Perplexity",
+        "model": "sonar-pro",
+        "measured": 12,
+        "actual_models": [
+          "sonar-pro"
+        ],
+        "with_sources": 12,
+        "web_search_used": 12,
+        "entities": {
+          "fran": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 2,
+            "citation_denominator": 12
+          },
+          "cazatarjetas": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "ivan": {
+            "mentions": 1,
+            "mention_denominator": 12,
+            "citations": 1,
+            "citation_denominator": 12
+          },
+          "espabilismo": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          },
+          "incognito": {
+            "mentions": 0,
+            "mention_denominator": 12,
+            "citations": 0,
+            "citation_denominator": 12
+          }
+        }
+      }
+    ],
+    "topics": [
+      {
+        "topic": "Email marketing",
+        "planned": 16,
+        "measured": 16,
+        "entities": {
+          "fran": {
+            "mentions": 1,
+            "mention_denominator": 16,
+            "citations": 2,
+            "citation_denominator": 16
+          },
+          "cazatarjetas": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "ivan": {
+            "mentions": 4,
+            "mention_denominator": 16,
+            "citations": 4,
+            "citation_denominator": 16
+          },
+          "espabilismo": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "incognito": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          }
+        }
+      },
+      {
+        "topic": "Infoproductos",
+        "planned": 16,
+        "measured": 16,
+        "entities": {
+          "fran": {
+            "mentions": 1,
+            "mention_denominator": 16,
+            "citations": 2,
+            "citation_denominator": 16
+          },
+          "cazatarjetas": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "ivan": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "espabilismo": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "incognito": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          }
+        }
+      },
+      {
+        "topic": "IA para solopreneurs",
+        "planned": 16,
+        "measured": 16,
+        "entities": {
+          "fran": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "cazatarjetas": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "ivan": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "espabilismo": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          },
+          "incognito": {
+            "mentions": 0,
+            "mention_denominator": 16,
+            "citations": 0,
+            "citation_denominator": 16
+          }
+        }
+      }
+    ],
+    "top_domains": [
+      {
+        "value": "ohmynewst.com",
+        "count": 6
+      },
+      {
+        "value": "franlledo.com",
+        "count": 4
+      },
+      {
+        "value": "ivanorange.com",
+        "count": 4
+      },
+      {
+        "value": "youtube.com",
+        "count": 4
+      },
+      {
+        "value": "code.claude.com",
+        "count": 3
+      },
+      {
+        "value": "digitalriders.com",
+        "count": 3
+      },
+      {
+        "value": "hotmart.com",
+        "count": 3
+      },
+      {
+        "value": "infoemprendedora.com",
+        "count": 3
+      },
+      {
+        "value": "juanmerodio.com",
+        "count": 3
+      },
+      {
+        "value": "mailrelay.com",
+        "count": 3
+      },
+      {
+        "value": "marketing4ecommerce.net",
+        "count": 3
+      },
+      {
+        "value": "acumbamail.com",
+        "count": 2
+      },
+      {
+        "value": "andresospina.co",
+        "count": 2
+      },
+      {
+        "value": "annaatencia.com",
+        "count": 2
+      },
+      {
+        "value": "axelcopy.com",
+        "count": 2
+      },
+      {
+        "value": "benchmarkemail.com",
+        "count": 2
+      },
+      {
+        "value": "blog.donweb.com",
+        "count": 2
+      },
+      {
+        "value": "borjagiron.com",
+        "count": 2
+      },
+      {
+        "value": "efficy.com",
+        "count": 2
+      },
+      {
+        "value": "emmallensa.com",
+        "count": 2
+      }
+    ],
+    "top_pages": [
+      {
+        "value": "https://www.ivanorange.com/curso-email-marketing/",
+        "count": 4
+      },
+      {
+        "value": "https://marketing4ecommerce.net/top-mejores-newsletters-marketing-y-comercio-electronico/",
+        "count": 3
+      },
+      {
+        "value": "https://andresospina.co/claude-code-para-marketing",
+        "count": 2
+      },
+      {
+        "value": "https://annaatencia.com/articulo-de-blog-3/",
+        "count": 2
+      },
+      {
+        "value": "https://borjagiron.com/mejores-newsletters-inteligencia-artificial/",
+        "count": 2
+      },
+      {
+        "value": "https://digitalriders.com/validar-idea-infoproducto/",
+        "count": 2
+      },
+      {
+        "value": "https://hotmart.com/es/blog/infoproductos",
+        "count": 2
+      },
+      {
+        "value": "https://iaenespanol.club/",
+        "count": 2
+      },
+      {
+        "value": "https://lorenabordonaba.substack.com/p/claude-code-sin-saber-programar",
+        "count": 2
+      },
+      {
+        "value": "https://much.moresubscribers.org/mejores-newsletters-espanol/",
+        "count": 2
+      },
+      {
+        "value": "https://networkingcontraelparo.com/2018/02/12/validar-ideas-de-infoproductos-exitosos/",
+        "count": 2
+      },
+      {
+        "value": "https://oinkmygod.com/blog/email-diario-metodo-seinfeld/",
+        "count": 2
+      },
+      {
+        "value": "https://pepemontoro.es/embudo-para-cursos-online/",
+        "count": 2
+      },
+      {
+        "value": "https://platzi.com/cursos/claude-code-no-programadores/automatiza-tareas-sin-saber-programar-co/",
+        "count": 2
+      },
+      {
+        "value": "https://soyirenegallardo.com/",
+        "count": 2
+      },
+      {
+        "value": "https://www.axelcopy.com/blog/mejores-newsletter-de-copywriting/",
+        "count": 2
+      },
+      {
+        "value": "https://www.benchmarkemail.com/es/blog/escribir-correo-ventas/",
+        "count": 2
+      },
+      {
+        "value": "https://www.efficy.com/es/ejemplos-correo-electronicos-ventas/",
+        "count": 2
+      },
+      {
+        "value": "https://www.gomigo.es/como-disenar-un-embudo-de-ventas-para-cursos-online-paso-a-paso",
+        "count": 2
+      },
+      {
+        "value": "https://www.infoemprendedora.com/validar-infoproducto-campana-email/",
+        "count": 2
+      }
+    ]
+  },
+  "report": "reports/ai-visibility/2026-09/report.md",
+  "data": "reports/ai-visibility/2026-09/run.json"
+}

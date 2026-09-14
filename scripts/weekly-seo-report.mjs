@@ -7,8 +7,8 @@
 // Diseño:
 // - GSC: totals esta semana vs semana anterior, top queries/pages.
 // - GA4: sessions por canal en la ventana actual.
-// - LLM tracking: para cada query objetivo, llama al ChatGPT scraper de DFS
-//   y comprueba si la respuesta cita franlledo.com / Fran Lledó / Cazatarjetas.
+// - IA: muestra mensual de 12 preguntas × 4 modelos, reusada entre informes
+//   semanales. Conserva respuestas y separa menciones de citas verificables.
 // - Competitor: pulls ranked_keywords para los 3 competidores directos.
 //
 // Ejecutar:
@@ -18,6 +18,7 @@
 //  del Dashboard project. Credenciales OAuth en <repo>/.env.local.)
 
 import { google } from "googleapis";
+import { weeklyVisibilitySection } from "./ai-visibility-report.mjs";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -30,25 +31,6 @@ const __dirname = dirname(__filename);
 const SITE_GSC = "sc-domain:franlledo.com";
 const GA4_PROPERTY = "properties/443567178";
 const SITE_DOMAIN = "franlledo.com";
-
-// Queries elegidas para que ChatGPT active web_search (mejores X 2026,
-// comparativas, recomendaciones). Las "explica concepto" no triggerean
-// web search en gpt-4o, así que no nos dicen si nos cita en el SERP que
-// ChatGPT Search consulta.
-// 8 queries: 6 categoriales + 2 brand discovery (Fran / Cazatarjetas).
-// Las primeras 6 miden si los LLMs encuentran a Fran cuando un usuario busca
-// expertise o referentes del nicho. Las 2 últimas confirman que al menos el
-// branded search lo devuelve correctamente.
-const LLM_QUERIES = [
-  "mejores blogs de email marketing en español 2026",
-  "expertos en embudos de venta para solopreneurs en español",
-  "newsletters diarias en español sobre marketing online",
-  "qué consultor contratar para email marketing en España",
-  "claude para solopreneurs y negocios online en español",
-  "cómo lanzar un infoproducto sin tener una lista grande",
-  "quién es Fran Lledó",
-  "qué es Cazatarjetas",
-];
 
 const COMPETITORS = [
   "ivanorange.com",
@@ -224,83 +206,6 @@ async function ga4Section(auth) {
   return out;
 }
 
-async function llmMentionsSection() {
-  // ChatGPT con web_search activado. Simula la experiencia de ChatGPT Search:
-  // el modelo busca en la web (Bing) y cita sources en las annotations.
-  // Endpoint: /ai_optimization/chat_gpt/llm_responses/live, modelo gpt-4o.
-  // Coste aproximado: ~$0.08 por query (×6 queries = ~$0.50 por report).
-  function extractFromResponse(data) {
-    const item = data?.tasks?.[0]?.result?.[0]?.items?.[0];
-    if (!item) return { text: "", urls: [] };
-    let text = "";
-    const urls = [];
-    for (const sec of item.sections || []) {
-      if (sec.text) text += " " + sec.text;
-      for (const a of sec.annotations || []) {
-        if (a.url) urls.push(a.url);
-      }
-    }
-    return { text: text.toLowerCase(), urls };
-  }
-
-  const competitorDomains = COMPETITORS.map((c) => c.toLowerCase());
-  const results = [];
-  for (const q of LLM_QUERIES) {
-    try {
-      const data = await dfs("/ai_optimization/chat_gpt/llm_responses/live", [
-        {
-          user_prompt: q,
-          model_name: "gpt-4o",
-          web_search: true,
-          language_code: "es",
-          location_name: "Spain",
-        },
-      ]);
-      const { text, urls } = extractFromResponse(data);
-      const mentionedDomain =
-        text.includes("franlledo.com") || urls.some((u) => u.toLowerCase().includes("franlledo.com"));
-      const mentionedBrand =
-        text.includes("fran lledó") || text.includes("fran lledo") || text.includes("cazatarjetas");
-      const competitorsCited = competitorDomains.filter((d) =>
-        urls.some((u) => u.toLowerCase().includes(d))
-      );
-      results.push({
-        q,
-        domain: mentionedDomain,
-        brand: mentionedBrand,
-        sourceCount: urls.length,
-        competitorsCited,
-        topUrls: urls.slice(0, 3),
-      });
-    } catch (e) {
-      results.push({ q, error: e.message.slice(0, 100) });
-    }
-  }
-  let out = `Queries enviadas a ChatGPT (gpt-4o) con web_search activo. Simulamos la búsqueda real de ChatGPT Search. "✓ brand" = la respuesta texto menciona "Fran Lledó" o "Cazatarjetas". "✓ domain" = ChatGPT enlazó franlledo.com como source. "src" = total de URLs citadas. "comp" = competidores directos citados.\n\n`;
-  out += `| Query | Brand | Domain | src | Competidores citados |\n|---|:-:|:-:|:-:|---|\n`;
-  for (const r of results) {
-    if (r.error) {
-      out += `| ${r.q.slice(0, 60)} | ERR | ERR | — | ${r.error.slice(0, 40)} |\n`;
-    } else {
-      const comp = r.competitorsCited.length ? r.competitorsCited.join(", ") : "—";
-      out += `| ${r.q.slice(0, 60)} | ${r.brand ? "✓" : "—"} | ${r.domain ? "✓" : "—"} | ${r.sourceCount} | ${comp} |\n`;
-    }
-  }
-  out += `\n#### Top URLs citadas por ChatGPT en estas queries\n\n`;
-  const allUrls = results.flatMap((r) => r.topUrls || []);
-  const urlCounts = new Map();
-  for (const u of allUrls) {
-    try {
-      const dom = new URL(u).hostname.replace(/^www\./, "");
-      urlCounts.set(dom, (urlCounts.get(dom) || 0) + 1);
-    } catch {}
-  }
-  const sortedDomains = [...urlCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
-  out += `| Dominio | Veces citado |\n|---|---:|\n`;
-  for (const [d, n] of sortedDomains) out += `| ${d} | ${n} |\n`;
-  return out;
-}
-
 async function competitorSection() {
   let out = "";
   for (const dom of COMPETITORS) {
@@ -346,7 +251,7 @@ async function main() {
   const [gsc, ga4, llm, comp] = await Promise.all([
     gscSection(auth).catch((e) => `ERROR: ${e.message}`),
     ga4Section(auth).catch((e) => `ERROR: ${e.message}`),
-    llmMentionsSection().catch((e) => `ERROR: ${e.message}`),
+    weeklyVisibilitySection().catch((e) => `Medición de IA no disponible: ${e.message}. No interpretar como ausencia de citas; revisar state/ai-visibility-latest.json para la última medición.`),
     competitorSection().catch((e) => `ERROR: ${e.message}`),
   ]);
 
@@ -364,7 +269,7 @@ ${gsc}
 
 ${ga4}
 
-## 3. LLM citation tracking
+## 3. Visibilidad en IA (medición mensual)
 
 ${llm}
 

@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "methodology_version": 1,
+  "market": "España / español",
+  "system_message": "Responde en español para una persona que trabaja por su cuenta en España.",
+  "max_output_tokens": 2048,
+  "max_cost_usd": 10,
+  "call_reserve_usd": 0.5,
+  "providers": [
+    {
+      "id": "chat_gpt",
+      "label": "ChatGPT",
+      "model": "gpt-5.5-2026-04-23"
+    },
+    {
+      "id": "gemini",
+      "label": "Gemini",
+      "model": "gemini-3.8-flash"
+    },
+    {
+      "id": "claude",
+      "label": "Claude",
+      "model": "claude-sonnet-5"
+    },
+    {
+      "id": "perplexity",
+      "label": "Perplexity",
+      "model": "sonar-pro"
+    }
+  ],
+  "entities": [
+    {
+      "id": "fran",
+      "label": "Fran Lledó",
+      "aliases": [
+        "Fran Lledó",
+        "Fran Lledo"
+      ],
+      "domains": [
+        "franlledo.com"
+      ],
+      "role": "principal"
+    },
+    {
+      "id": "cazatarjetas",
+      "label": "Cazatarjetas",
+      "aliases": [
+        "Cazatarjetas"
+      ],
+      "domains": [
+        "cazatarjetas.com"
+      ],
+      "role": "ecosistema"
+    },
+    {
+      "id": "ivan",
+      "label": "Iván Orange",
+      "aliases": [
+        "Iván Orange",
+        "Ivan Orange"
+      ],
+      "domains": [
+        "ivanorange.com"
+      ],
+      "role": "competidor"
+    },
+    {
+      "id": "espabilismo",
+      "label": "Espabilismo",
+      "aliases": [
+        "Espabilismo"
+      ],
+      "domains": [
+        "espabilismo.com"
+      ],
+      "role": "competidor"
+    },
+    {
+      "id": "incognito",
+      "label": "Copywriting de Incógnito",
+      "aliases": [
+        "Copywriting de Incógnito",
+        "Copywriting de Incognito",
+        "Luis Garau"
+      ],
+      "domains": [
+        "copywritingdeincognito.com"
+      ],
+      "role": "competidor"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "email-01",
+      "topic": "Email marketing",
+      "intent": "recomendacion",
+      "branded": false,
+      "text": "¿Qué newsletters en español recomiendas para aprender a vender servicios con email marketing si trabajo por mi cuenta?"
+    },
+    {
+      "id": "email-02",
+      "topic": "Email marketing",
+      "intent": "recomendacion",
+      "branded": false,
+      "text": "¿Qué profesionales de España enseñan a vender con un email diario a una lista pequeña?"
+    },
+    {
+      "id": "email-03",
+      "topic": "Email marketing",
+      "intent": "informacional",
+      "branded": false,
+      "text": "Tengo 500 suscriptores y vendo servicios por mi cuenta. ¿Cómo puedo conseguir ventas con mi newsletter sin quemar a la lista? Recomienda recursos en español."
+    },
+    {
+      "id": "email-04",
+      "topic": "Email marketing",
+      "intent": "informacional",
+      "branded": false,
+      "text": "¿Cómo escribir emails de venta que suenen personales y no agresivos? Busco ejemplos y guías en español para un negocio de una persona."
+    },
+    {
+      "id": "info-01",
+      "topic": "Infoproductos",
+      "intent": "recomendacion",
+      "branded": false,
+      "text": "¿Qué referentes en español recomiendas para aprender a lanzar un infoproducto con una lista de menos de 1000 suscriptores?"
+    },
+    {
+      "id": "info-02",
+      "topic": "Infoproductos",
+      "intent": "informacional",
+      "branded": false,
+      "text": "¿Cómo validar y vender mi primer infoproducto sin depender de las redes sociales? Busco guías prácticas en español."
+    },
+    {
+      "id": "info-03",
+      "topic": "Infoproductos",
+      "intent": "informacional",
+      "branded": false,
+      "text": "¿Qué secuencia de emails necesito para lanzar un curso a una lista pequeña? Recomienda ejemplos en español."
+    },
+    {
+      "id": "info-04",
+      "topic": "Infoproductos",
+      "intent": "recomendacion",
+      "branded": false,
+      "text": "¿Qué blogs o newsletters en español explican embudos de venta sencillos para profesionales que venden formación por su cuenta?"
+    },
+    {
+      "id": "ia-01",
+      "topic": "IA para solopreneurs",
+      "intent": "recomendacion",
+      "branded": false,
+      "text": "¿Qué referentes o newsletters en español enseñan a aplicar inteligencia artificial a un negocio de una sola persona?"
+    },
+    {
+      "id": "ia-02",
+      "topic": "IA para solopreneurs",
+      "intent": "informacional",
+      "branded": false,
+      "text": "¿Cómo usar Claude para escribir los emails y preparar los lanzamientos de mi negocio? Busco guías prácticas en español."
+    },
+    {
+      "id": "ia-03",
+      "topic": "IA para solopreneurs",
+      "intent": "informacional",
+      "branded": false,
+      "text": "¿Cómo automatizar tareas de marketing con Claude Code sin ser programador? Recomienda recursos en español para un profesional independiente."
+    },
+    {
+      "id": "ia-04",
+      "topic": "IA para solopreneurs",
+      "intent": "recomendacion",
+      "branded": false,
+      "text": "¿Qué recursos en español recomiendas para crear agentes de IA útiles para un negocio pequeño, con ejemplos reales?"
+    }
+  ]
+}

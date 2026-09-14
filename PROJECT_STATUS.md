@@ -1,13 +1,37 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-03 (content-writer jueves: no-op anticipado,
-cola en 0 `queued` desde hace 8 días — ver bitácora)
+Última actualización: 2026-09-14 (visibilidad en IA: muestra mensual de
+12 preguntas × 4 modelos integrada y primera medición completada).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Visibilidad en IA integrada (2026-09-14): 48/48 respuestas, 4 con citas a
+  franlledo.com, coste 2,471085 USD.** El informe semanal sustituye sus ocho
+  consultas a GPT-4o por una muestra mensual fija de 12 preguntas sin marca a
+  ChatGPT, Gemini, Claude y Perplexity. Fran y Cazatarjetas se miden por separado;
+  se guardan respuestas originales, modelos efectivos, costes y fuentes, sin
+  convertir errores en ceros. Conteo automático de nombre/alias: 2/48; revisión
+  manual detecta otras dos menciones con erratas de apellido en Perplexity.
+  Las 4 URLs citadas responden 200: tres artículos y `/suscribir/`, que ChatGPT
+  recomienda directamente. IA para solopreneurs queda en 0/16 citas en esta
+  muestra; no es una conclusión sobre toda la visibilidad del sitio.
+  `state/ai-visibility-config.json` fija el experimento y
+  `state/ai-visibility-latest.json` guarda el resumen. El job semanal existente
+  está cargado y renovará la muestra en su primera ejecución de octubre; durante
+  septiembre reutiliza los datos sin repetir consultas. No hay job nuevo.
+  Informe: `reports/ai-visibility/2026-09/report.md`; lectura y acciones:
+  `reports/ai-visibility/2026-09/analysis.md`; operación:
+  `docs/05-ai-visibility.md`. Validación: 12 pruebas locales, idempotencia sin
+  acceso a red, cuatro URLs en producción y ejecución del informe semanal completo.
+- **Incidencia ajena a la medición de IA, observada el 14/09:** el log registra
+  nuevamente `auth failure` en keyword-researcher (09/09) y content-writer
+  (10/09 y 12/09). La cola sigue en 0 `queued` (26 `written`, 1 `needs_review`).
+  Pendiente revisar la autenticación de Claude Code antes de atribuir la falta
+  de publicaciones solo a semillas agotadas. No se cambió autenticación ni el
+  coordinator en esta sesión; la nueva medición de IA llama a DataForSEO directamente.
 - **Content-writer, run jueves 2026-09-03 (MODE: AUTO): no-op anticipado,
   cola sin resembrar desde el 26/08 (8 días consecutivos).**
   `pick-next-queue-item.py` → `NO_QUEUED_ITEMS` (exit 2).
@@ -601,8 +625,11 @@ Histórico semanal (informe automático, semana 13-19 jun 2026):
 | Posición media | 17,1 | — | — |
 | Sesiones orgánicas (GA4) | 15 | 8 | 8 |
 
-GEO: ChatGPT reconoce "Fran Lledó" y "Cazatarjetas" en consultas directas,
-pero aún no cita franlledo.com en queries de nicho.
+GEO, medición 2026-09-14: 4/48 respuestas citan franlledo.com (ChatGPT 1/12,
+Claude 1/12, Perplexity 2/12, Gemini 0/12). Hay dos menciones por alias exacto y
+dos adicionales con erratas verificadas manualmente. Cazatarjetas queda a 0.
+Esta serie usa preguntas y modelos nuevos; no es comparable con el tracking
+anterior de ocho preguntas a GPT-4o. Ver `state/ai-visibility-latest.json`.
 
 ## CTR
 

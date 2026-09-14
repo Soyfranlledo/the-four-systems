@@ -5,7 +5,11 @@
   "description": "The Four Systems SEO agent para franlledo.com (GSC/GA4/LLM tracking + content pipeline).",
   "type": "module",
   "scripts": {
-    "weekly-report": "node scripts/weekly-seo-report.mjs"
+    "weekly-report": "node scripts/weekly-seo-report.mjs",
+    "ai-visibility:plan": "node scripts/ai-visibility-report.mjs --plan",
+    "ai-visibility": "node scripts/ai-visibility-report.mjs --collect",
+    "ai-visibility:render": "node scripts/ai-visibility-report.mjs --render",
+    "test:ai-visibility": "node --test scripts/ai-visibility.test.mjs"
   },
   "dependencies": {
     "googleapis": "^171.4.0"

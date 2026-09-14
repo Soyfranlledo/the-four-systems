@@ -2,7 +2,7 @@
 
 Sistema autónomo de investigación, publicación, auditoría y seguimiento SEO para
 `franlledo.com`. Este repositorio coordina los agentes; el sitio publicado vive
-en `~/Documents/Claude/franlledo-web`.
+en `/Users/franlledo/Projects/franlledo-web`.
 
 ## Empieza aquí
 
@@ -21,13 +21,31 @@ Antes de tocar nada:
 | `content-writer` | Investiga, redacta, lintea y publica | `output/posts/`, repo web |
 | `onsite-audit` | Revisa Lighthouse y SEO on-page | `state/onsite-audit.json` |
 | `refresh-recommender` | Comprueba indexación y decay | `state/refresh-candidates.json` |
-| Informe semanal | Compara GSC, GA4 y suscripciones | `reports/*-seo-weekly.md` |
+| Informe semanal | Compara GSC, GA4, suscripciones y visibilidad en IA | `reports/*-seo-weekly.md` |
+| Visibilidad en IA | 12 preguntas × 4 modelos, muestra mensual | `state/ai-visibility-config.json`, `state/ai-visibility-latest.json` |
 
 Todos se ejecutan mediante:
 
 ```bash
 ./coordinator.sh <keyword-researcher|content-writer|onsite-audit|refresh-recommender>
 ```
+
+## Visibilidad en IA
+
+El informe semanal incorpora una muestra mensual de 12 preguntas en español a
+ChatGPT, Gemini, Claude y Perplexity. Guarda las respuestas originales, separa
+las menciones de las citas con enlace y compara a Fran con Cazatarjetas y tres
+competidores. La primera ejecución de cada mes recoge la muestra; las siguientes
+reutilizan los resultados, sin volver a cobrar las mismas consultas.
+
+```bash
+npm run ai-visibility:plan    # revisar preguntas, modelos y umbral; sin API
+npm run ai-visibility         # recoger o completar este mes
+npm run ai-visibility:render  # recalcular desde originales; sin API
+npm run test:ai-visibility    # pruebas locales, sin API
+```
+
+Método, costes, archivos y recuperación: [docs/05-ai-visibility.md](docs/05-ai-visibility.md).
 
 ## Publicación
 
@@ -65,7 +83,7 @@ programación activa.
 python3 scripts/lint-post.py output/posts/YYYY-MM-DD-slug.md
 
 # Construir y validar el sitio publicado
-cd ~/Documents/Claude/franlledo-web
+cd /Users/franlledo/Projects/franlledo-web
 npm run build
 
 # Detectar URLs antiguas con fecha
@@ -82,6 +100,7 @@ node -e "const q=require('./state/content-queue.json'); console.log(q.items.filt
 - `docs/02-content-writer.md`: redacción y publicación.
 - `docs/03-onsite-audit.md`: auditoría.
 - `docs/04-refresh-recommender.md`: indexación y refresh.
+- `docs/05-ai-visibility.md`: medición mensual de presencia en IA.
 - `docs/session-log.md`: historial de sesiones y decisiones.
 
 ## Seguridad

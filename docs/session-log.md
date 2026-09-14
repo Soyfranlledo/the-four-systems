@@ -3040,3 +3040,61 @@ repo web.
 - Próximo content-writer programado: sábado 2026-09-05, casi con certeza
   otro no-op (el keyword-researcher que podría resembrar es el del 07/09,
   posterior a esa fecha).
+
+
+## 2026-09-14: medición de visibilidad en IA, integración y primera muestra
+
+Fran compartió la plantilla de DataForSEO y autorizó adaptar la metodología al
+informe existente: 12 preguntas sin marca, tres temas y cuatro proveedores.
+
+### Decisiones e implementación
+
+- Configuración versionada en `state/ai-visibility-config.json`: 12 preguntas
+  estables, cuatro modelos disponibles comprobados en la API y cinco entidades
+  separadas (Fran, Cazatarjetas y tres competidores del contexto).
+- Nuevo `scripts/ai-visibility-report.mjs` y funciones de métricas en
+  `scripts/lib/ai-visibility.mjs`. Recogida mensual con originales, ledger previo
+  a los POST, lock de proceso, reanudación sin repetir intentos, costes reales y
+  umbral de parada de 10 USD (reserva 0,50 USD por llamada; no es un tope exacto
+  de facturación). No depende de la autenticación de Claude Code ni cambia el MCP.
+- El informe semanal sustituye el tracking anterior por la muestra mensual.
+  Su job de launchd existente está cargado; no se añade otro. La primera
+  ejecución semanal de octubre renovará la muestra; el resto de septiembre
+  reutiliza la ya completada. No se enviaron mensajes ni se publicó en la web.
+- Se excluyen razonamientos del conteo, coincidencias falsas de dominio y
+  fuentes recuperadas pero no citadas por Perplexity. Se resuelven redirects de
+  grounding de Gemini. Errores y respuestas vacías son N/D. Fuentes no resueltas
+  impiden marcar ausencia de cita. Tendencias solo con muestras y modelos compatibles.
+- README actualizado (incluida la ruta web obsoleta) y operación documentada en
+  `docs/05-ai-visibility.md`. Credenciales y originales quedan fuera de Git.
+
+### Ejecución y evidencia
+
+Cuatro consultas iniciales (una por proveedor, 0,172982 USD) y continuación con
+44 nuevas, conservando las primeras. Resultado: **48/48 válidas, 2,471085 USD**, 38
+con fuentes y ningún redirect pendiente. Cuatro respuestas citan franlledo.com:
+ChatGPT 1, Claude 1, Perplexity 2, Gemini 0. Las cuatro URLs responden 200 sin
+redirección. Dos menciones por alias exacto; otras dos con errata en el apellido
+se documentan en el análisis manual sin alterar retroactivamente los alias.
+
+Informe completo: `reports/ai-visibility/2026-09/report.md`. Interpretación y
+siguientes acciones: `reports/ai-visibility/2026-09/analysis.md`. Originales,
+clasificación y comprobación de URLs en el mismo directorio. Informe semanal
+completo validado: `reports/2026-09-14-seo-weekly.md`. No se duplican aquí.
+
+Verificaciones: 12 pruebas de Node sobre casos de atribución, errores,
+comparabilidad y reanudación; comprobación de sintaxis; invocación de la sección
+semanal con `fetch` bloqueado (0 llamadas repetidas, coste y 48 celdas intactos);
+cuatro HEAD 200 en producción; informe semanal real sin errores en sus secciones.
+Commit manual de la sesión: `seo: integra medición mensual de visibilidad en IA`.
+
+### Pendiente
+
+- Comparar la muestra de octubre con esta primera referencia, sin interpretar
+  el cambio frente al antiguo GPT-4o como crecimiento.
+- Valorar revisión de las guías de IA existentes y fuentes editoriales concretas
+  señaladas en el análisis; no se encoló ni publicó contenido a partir de una
+  única muestra y no se contactó con terceros.
+- El log operativo mostró `auth failure` el 09/09 (researcher), 10/09 y 12/09
+  (writer); 0 items queued. Se deja visible en PROJECT_STATUS; esta tarea no
+  modifica autenticación ni resuelve la incidencia ajena al informe de IA.
