@@ -1,13 +1,32 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-14 (visibilidad en IA: muestra mensual de
-12 preguntas × 4 modelos integrada y primera medición completada).
+Última actualización: 2026-09-15 (tráfico web/blog consultado en GA4 y GSC;
+fuente sospechosa aislada en el análisis y cambio de consentimiento identificado).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Tráfico, consulta 2026-09-15 (16/08–12/09 vs 19/07–15/08): el SEO del
+  blog mejora, el total de GA4 requiere depuración.** Blog: 32→53 lectores
+  registrados, 41→57 páginas vistas, 12→24 clics de Google y 3.560→5.295
+  impresiones. Web completa: 30→41 clics de Google. GA4 bruto registra 322
+  sesiones, pero 93 proceden de `trafficheap.cc`, todas el 23/08 hacia `/`;
+  fuente sospechosa de referral spam. La consulta excluyéndola da **230 sesiones
+  frente a 303**, y 202 usuarios frente a 217. El blog no cambia con esa exclusión.
+  La comparación cruza el cambio de consentimiento del 03/09 (`b64aebe` web):
+  GA4 solo carga con aceptación de analytics; no inferir una caída equivalente
+  de visitas reales. Canal newsletter/email: 85→6 sesiones. Captación registrada:
+  23 eventos en ambos periodos, 15 usuarios frente a 17; son envíos, no altas
+  confirmadas. Informe y datos: `reports/2026-09-15-trafico-web-blog.md` y
+  `reports/2026-09-15-traffic-data.json`. No se cambiaron filtros de la cuenta
+  ni el informe automático; la exclusión es solo de esta consulta. Pendiente
+  incorporar ese criterio al reporting y revisar trazabilidad del canal email.
+- **Auth de agentes aún fallando:** researcher del 14/09 y writer del 15/09
+  vuelven a registrar `auth failure`; cola 0 `queued` (26 `written`, 1
+  `needs_review`). La mejora de clics no implica que la publicación automática
+  se haya recuperado. Sigue pendiente revisar esa autenticación.
 - **Visibilidad en IA integrada (2026-09-14): 48/48 respuestas, 4 con citas a
   franlledo.com, coste 2,471085 USD.** El informe semanal sustituye sus ocho
   consultas a GPT-4o por una muestra mensual fija de 12 preguntas sin marca a
@@ -585,6 +604,16 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   el sitemap.
 
 ## Rendimiento observado
+
+**Última medición (15/09/2026):** 28 días completos 16/08–12/09 frente a
+19/07–15/08, filtrando franlledo.com/www (sin subdominio de ensayos). Web:
+41 clics GSC (+36,7%), 5.522 impresiones (+45,5%). Blog: 24 clics (+100%),
+5.295 impresiones (+48,7%), posición media 13,52 frente a 17,57. GA4 del blog:
+53 lectores (+65,6%) y 57 vistas (+39%). GA4 web, excluyendo solo la fuente
+sospechosa trafficheap.cc: 230 sesiones (-24,1%) y 202 usuarios (-6,9%).
+La comparación GA4 cruza el cambio de consentimiento del 03/09 y no equivale a
+una medición completa de tráfico real. Detalle: `reports/2026-09-15-trafico-web-blog.md`.
+Las lecturas antiguas que siguen son históricas, no la fotografía actual.
 
 **Lectura fresca 28d (GSC, 2026-07-28) — 28 jun–25 jul vs 31 may–27 jun:**
 

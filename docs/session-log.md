@@ -3098,3 +3098,36 @@ Commit manual de la sesión: `seo: integra medición mensual de visibilidad en I
 - El log operativo mostró `auth failure` el 09/09 (researcher), 10/09 y 12/09
   (writer); 0 items queued. Se deja visible en PROJECT_STATUS; esta tarea no
   modifica autenticación ni resuelve la incidencia ajena al informe de IA.
+
+
+## 2026-09-15: consulta de visitas a la web y al blog
+
+Fran pidió conocer la evolución de las visitas. Consultadas GA4 y Search Console
+con las credenciales del proyecto, sin ejecutar consultas pagadas de visibilidad
+IA ni modificar cuentas o web. Periodos homogéneos de 28 días, 16/08–12/09 frente
+a 19/07–15/08, GSC con datos finales y host principal separado de Substack.
+
+Resultado: el blog mejora en lectores (32→53), vistas (41→57) y clics desde Google
+(12→24). La web registra 30→41 clics GSC. La cifra bruta de GA4 (322 sesiones)
+incluye 93 sesiones de trafficheap.cc el 23/08 a la portada, fuente sospechosa.
+Consulta separada excluyéndola: 230 sesiones frente a 303. Se usó el agregado
+filtrado de API, no la resta manual, ya que los segmentos de sesiones no son
+perfectamente aditivos. Blog sin cambios al excluirla.
+
+El commit web del 03/09 b64aebe hace que GA4 cargue solo con consentimiento:
+la comparación de Analytics cruza ese cambio y no permite equiparar caída medida
+con caída real. El canal newsletter/email pasa de 85 a 6 sesiones. Formularios:
+23 eventos en cada periodo, 15 usuarios actuales vs 17 previos; no se presentan
+como suscriptores confirmados. Fuente externa contrastada y métodos descritos en
+el informe, sin diagnosticar automáticamente cada sesión como bot.
+
+Informe: `reports/2026-09-15-trafico-web-blog.md`; respuestas agregadas:
+`reports/2026-09-15-traffic-data.json`. Scripts puntuales de consulta también en
+`reports/` (ignorados). Verificadas respuestas sin errores, periodos, filtros de
+hostname/ruta, denominadores y ausencia de flags de muestreo/umbral en metadatos.
+No se duplican aquí los rankings y tablas del informe.
+
+PROJECT_STATUS actualizado. Commit de documentación: `docs: actualiza tráfico web y blog de septiembre`.
+Pendiente: exclusión de la fuente sospechosa en informes recurrentes, revisión
+del canal email y autenticación de Claude Code. El log registra errores de auth
+también el 14/09 y 15/09; cola vacía. Esta consulta no cambió esos sistemas.
