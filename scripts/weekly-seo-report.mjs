@@ -243,10 +243,105 @@ async function competitorSection() {
 
 // ----- Main -----
 
+// --- 0. Salud del pipeline ---------------------------------------------------
+// El fallo de un agente programado es silencioso por diseño: coordinator.sh
+// escribe una línea en state/agent-log.json y sale con exit 1, que launchd
+// descarta. Del 2026-09-07 al 2026-09-22, trece runs consecutivos murieron por
+// auth caducada y nadie se enteró en 16 días. Este informe corre los lunes con
+// OAuth de Google, no con la CLI de claude, así que es inmune a ese fallo
+// concreto: es el sitio correcto para poner el centinela.
+function pipelineHealthSection() {
+  const AGENT_LOG = path.join(REPO_ROOT, "state", "agent-log.json");
+  const QUEUE = path.join(REPO_ROOT, "state", "content-queue.json");
+  const lines = [];
+
+  let log;
+  try {
+    log = JSON.parse(fs.readFileSync(AGENT_LOG, "utf8"));
+  } catch (e) {
+    return `ERROR: no se pudo leer state/agent-log.json (${e.message}). El centinela no ha podido comprobar nada; no interpretar como "todo correcto".`;
+  }
+
+  const now = Date.now();
+  const daysSince = (ts) => (now - new Date(ts).getTime()) / 86400000;
+
+  const recentErrors = log.filter((e) => {
+    const d = daysSince(e.timestamp);
+    return e.status === "error" && Number.isFinite(d) && d <= 7;
+  });
+
+  if (recentErrors.length === 0) {
+    lines.push("Errores de agentes (últimos 7 días): **0**.");
+  } else {
+    lines.push(`Errores de agentes (últimos 7 días): **${recentErrors.length}**.`);
+    lines.push("");
+    lines.push("| Fecha | Agente | Mensaje |");
+    lines.push("| --- | --- | --- |");
+    for (const e of recentErrors.slice(-15)) {
+      lines.push(`| ${String(e.timestamp).slice(0, 10)} | ${e.agent} | ${e.message} |`);
+    }
+    const authFails = recentErrors.filter((e) => String(e.message).includes("auth"));
+    if (authFails.length) {
+      lines.push("");
+      lines.push(
+        `**${authFails.length} fallo(s) de autenticación de la CLI.** Arreglo: ejecutar ` +
+          "`claude setup-token` y guardar el token en `.env.local` como `CLAUDE_CODE_OAUTH_TOKEN`."
+      );
+    }
+  }
+
+  lines.push("");
+
+  let lastWritten = null;
+  const counts = {};
+  try {
+    const q = JSON.parse(fs.readFileSync(QUEUE, "utf8"));
+    for (const it of q.items || []) {
+      counts[it.status] = (counts[it.status] || 0) + 1;
+      if (it.written_at && (!lastWritten || it.written_at > lastWritten)) lastWritten = it.written_at;
+    }
+  } catch (e) {
+    lines.push(`No se pudo leer content-queue.json: ${e.message}`);
+  }
+
+  if (lastWritten) {
+    const d = Math.floor(daysSince(lastWritten));
+    lines.push(
+      `Días desde la última publicación: **${d}**${d > 10 ? " (ATENCIÓN)" : ""} (${String(lastWritten).slice(0, 10)}).`
+    );
+  } else {
+    lines.push("Días desde la última publicación: sin dato (`written_at` vacío en toda la cola).");
+  }
+
+  const queued = counts.queued || 0;
+  const rest = Object.entries(counts)
+    .filter(([k]) => k !== "queued")
+    .map(([k, v]) => `${v} ${k}`)
+    .join(", ");
+  lines.push(`Cola: **${queued} queued**${rest ? `, ${rest}` : ""}.`);
+
+  if (queued === 0) {
+    lines.push("");
+    lines.push(
+      "Cola en 0: el próximo content-writer resembrará encadenando un keyword-researcher " +
+        "(preflight de cola en `coordinator.sh`). Si aun así sale no-op, la semilla de rotación está agotada."
+    );
+  }
+
+  return lines.join("\n");
+}
+
 async function main() {
   console.error(`Generating weekly report for ${fmt(lookbackStart)} → ${fmt(lookbackEnd)}...`);
   const auth = loadGoogleOAuth();
   fs.mkdirSync(REPORTS_DIR, { recursive: true });
+
+  let health;
+  try {
+    health = pipelineHealthSection();
+  } catch (e) {
+    health = `ERROR generando la sección de salud: ${e.message}`;
+  }
 
   const [gsc, ga4, llm, comp] = await Promise.all([
     gscSection(auth).catch((e) => `ERROR: ${e.message}`),
@@ -260,6 +355,10 @@ async function main() {
 
 Window: ${fmt(lookbackStart)} → ${fmt(lookbackEnd)} (vs prev: ${fmt(prevStart)} → ${fmt(prevEnd)})
 Generated: ${new Date().toISOString()}
+
+## 0. Salud del pipeline
+
+${health}
 
 ## 1. Google Search Console
 
