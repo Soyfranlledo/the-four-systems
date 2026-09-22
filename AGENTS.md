@@ -28,20 +28,34 @@ español del nicho. Fran lo considera su proyecto principal.
 ## Estado actual (resumen — el detalle vivo está en PROJECT_STATUS.md)
 
 - Proyecto **activo**, con runs automáticos programados varias veces por semana
-  (última actividad: finales de julio de 2026).
-- **35 artículos publicados** en producción. Último:
-  `/blog/que-es-una-landing-page/` (2026-07-21).
-- Cola de contenido: **0 items `queued`** (24 `written`, 1 `needs_review`).
-  El keyword-researcher debe resembrarla o el content-writer saldrá en no-op
-  (`NO_QUEUED_ITEMS`).
-- Diagnóstico 2026-07-28: el cuello de botella es **autoridad de dominio**, no
-  contenido (impresiones +47% en 28d, clics planos, posición media 18). Se
-  implementó un gate de winnability (`Step 5b`) en el keyword-researcher que
-  degrada a P2 las SERPs-muro donde la autoridad mediana del top-5 supera con
-  mucho la del sitio.
-- Incidencia abierta: dos runs programados (14/07 y 22/07) **no se dispararon**
-  sin dejar rastro en logs ni commits. Patrón sistémico de cron/launchd sin
-  investigar; revisar si ocurre una tercera vez.
+  (última actividad: 2026-09-22).
+- **37 artículos publicados** en producción. Último:
+  `/blog/claude-cowork-precio/` (2026-08-27).
+- Cola de contenido: **1 item `queued`** (`2026-09-22-ia-para-pymes`), 26
+  `written`, 1 `needs_review`. Si la ves a 0, el content-writer ya no sale en
+  no-op: desde 2026-09-22 encadena un keyword-researcher y reintenta (ver
+  Arquitectura).
+- **El rendimiento mejora (GSC, 28d al 19/09):** clics 24 → **53** (+121%),
+  impresiones 4.146 → 5.328 (+29%), posición media 16,1 → **12,8**. El
+  diagnóstico de julio ("impresiones suben, clics planos") ya no aplica. Mayor
+  margen sin explotar: `marketing-funnel-para-solopreneurs` (961 impresiones,
+  0 clics, posición 21,9) y `como-escribir-asuntos-de-email` (2.051
+  impresiones, CTR 0,29%).
+- Diagnóstico 2026-07-28, todavía vigente: el techo es **autoridad de dominio**,
+  no contenido. Se implementó un gate de winnability (`Step 5b`) en el
+  keyword-researcher que degrada a P2 las SERPs-muro donde la autoridad mediana
+  del top-5 supera con mucho la del sitio. Está funcionando:
+  `claude-cowork-precio`, encolado por ese gate, entró en posición 5,8 en menos
+  de un mes.
+- **Corte resuelto (2026-09-07 → 2026-09-22):** doce runs programados
+  consecutivos murieron por `auth failure` y el pipeline pasó 26 días sin
+  publicar. Es la **tercera racha** del mismo fallo (jun-jul, jul-ago, ago-sep):
+  25 runs programados perdidos por `auth failure` desde el 2026-06-23. Causa
+  raíz y blindaje en Gotchas ("Auth de la CLI en headless").
+- Incidencia abierta, distinta de la anterior: dos runs programados (14/07 y
+  22/07) **no se dispararon** sin dejar rastro en logs ni commits. Dos
+  ocurrencias apuntan a algo sistémico en launchd; revisar si ocurre una
+  tercera vez. No confundir con el corte de septiembre, que sí dejó rastro.
 
 Para la fotografía completa (rendimiento GSC, indexación, hitos pendientes),
 lee siempre `PROJECT_STATUS.md`.
@@ -170,8 +184,20 @@ navegación.
 
 Orquestación: `./coordinator.sh <agente>` (locking con timeout de 1h, logging a
 `state/agent-log.json`, git auto-commit `seo(<agente>): run <fecha>`,
-breadcrumbs de tutorial). Informe semanal: `scripts/weekly-seo-report.mjs`
-(GSC + GA4 + tracking de citas en LLMs + monitorización de competidores).
+breadcrumbs de tutorial). Desde 2026-09-22 añade tres cosas: exporta
+`CLAUDE_CODE_OAUTH_TOKEN` desde `.env.local` si está presente, avisa por
+notificación de macOS en las tres rutas de error, y hace un **preflight de cola
+para el content-writer**: si `pick-next-queue-item.py` no devuelve nada,
+encadena un keyword-researcher en el mismo proceso (reutilizando el lock;
+re-entrar por `./coordinator.sh` se auto-bloquearía) y reintenta, con guarda
+para no encadenar dos veces el mismo día. La invocación de la CLI vive en
+`run_agent_prompt()`.
+
+Informe semanal: `scripts/weekly-seo-report.mjs` (sección 0 de salud del
+pipeline + GSC + GA4 + tracking de citas en LLMs + monitorización de
+competidores). La sección 0 es el centinela del proyecto: corre con OAuth de
+Google, no con la CLI `claude`, así que sigue funcionando aunque los agentes
+estén caídos.
 
 Existe además un modo **interactivo** de cada sistema como skill de Claude Code
 en `.claude/skills/` (content-writer, keyword-researcher, onsite-audit,
@@ -285,6 +311,9 @@ la programación activa. Los logs stdout/stderr de launchd van a `/tmp/seo-*.std
 - **`.env.local`** (raíz, gitignored): `GOOGLE_OAUTH_CLIENT_ID`,
   `GOOGLE_OAUTH_CLIENT_SECRET`, `GOOGLE_OAUTH_REFRESH_TOKEN` — OAuth de Google
   para GSC/GA4, usada por `scripts/*.mjs` y `scripts/refresh-scorer.py`.
+  También `CLAUDE_CODE_OAUTH_TOKEN` — token de larga duración de la CLI
+  `claude` para los runs headless, generado con `claude setup-token`. Lo lee
+  `coordinator.sh` (parseando la línea, nunca con `source`).
 - **`.mcp.json`** (raíz, gitignored): credenciales del MCP DataForSEO
   (`DATAFORSEO_USERNAME`, `DATAFORSEO_PASSWORD`). Plantilla en
   `.mcp.json.example`.
@@ -354,13 +383,43 @@ Ningún secreto va jamás a documentación, informes ni commits.
 - **launchd y PATH:** launchd no carga nvm (shell no-interactivo). Los plists
   llevan PATH explícito apuntando al bin de la versión de node por defecto de
   nvm — **si actualizas node con nvm, actualiza esa ruta en los plists**. La
-  CLI `claude` se resuelve vía `~/.local/bin/claude` (symlink creado el
-  2026-06-25 porque solo existía el binario de la extensión de VSCode).
-- **Runs fantasma (incidencia abierta):** el 14/07 (content-writer) y el 22/07
-  (keyword-researcher) los runs programados no se dispararon — sin commit, sin
-  entrada en `state/agent-log.json`. Dos ocurrencias apuntan a algo sistémico
-  en launchd. Si ves una cola vacía o un item `queued` estancado varios días,
-  sospecha de esto y revisa `launchctl list` / los logs de `/tmp/seo-*`.
+  CLI `claude` se resuelve a `/opt/homebrew/bin/claude` (paquete npm
+  `@anthropic-ai/claude-code`). Ojo: `coordinator.sh:13` antepone
+  `/opt/homebrew/bin` al PATH heredado, así que gana ese binario pase lo que
+  pase — tenlo en cuenta si alguna vez quieres stubbearlo para probar. El
+  symlink `~/.local/bin/claude` (creado el 2026-06-25) apunta a una versión de
+  la extensión de VSCode que ya no existe: está roto y no lo usa nadie.
+- **Auth de la CLI en headless (corte 2026-09-07 → 2026-09-22):** doce runs
+  programados consecutivos murieron en el check de auth de `coordinator.sh` con
+  `duration_seconds: 0`. **No es un incidente aislado:** es la tercera racha
+  del mismo fallo (2026-06-23→07-01, 4 runs; 2026-07-27→08-06, 8 runs;
+  2026-08-31→09-22, 13 runs), **25 runs programados perdidos en total** desde
+  junio. Cada vez se resolvió sola porque alguien abrió una terminal, y cada
+  vez se anotó como transitoria. Causa raíz: el item del llavero
+  `Claude Code-credentials` solo lo usaba launchd en headless y **nunca se
+  refrescaba**, así que su refresh token caducó. **La trampa de diagnóstico:**
+  las notas del 01/09 y 02/09 lo dieron por transitorio porque comprobaron
+  `claude auth status` desde una terminal interactiva, que refresca el token al
+  usarlo — la foto se tomaba justo después de arreglarlo sin querer. Si ves
+  `auth failure` en el log, **no concluyas que está sano porque un
+  `claude auth status` manual dé `loggedIn: true`**: mira la fecha de
+  modificación del item del llavero y el patrón del log. Arreglo estructural:
+  `CLAUDE_CODE_OAUTH_TOKEN` en `.env.local` (`claude setup-token`), que no
+  depende de la sesión interactiva.
+- **El fallo de un run es silencioso por diseño:** `coordinator.sh` registra el
+  error en `state/agent-log.json` y sale con `exit 1`, que launchd descarta. Por
+  eso el corte anterior duró 16 días sin que nadie lo viera. Desde 2026-09-22
+  hay dos capas de detección: notificación de macOS en el momento (puede no
+  verse según permisos) y la sección 0 del informe semanal (fiable, corre los
+  lunes con OAuth de Google). Si tocas esas rutas de error, no las dejes mudas.
+- **Runs fantasma (incidencia abierta, distinta de la anterior):** el 14/07
+  (content-writer) y el 22/07 (keyword-researcher) los runs programados no se
+  dispararon — sin commit, sin entrada en `state/agent-log.json`. Dos
+  ocurrencias apuntan a algo sistémico en launchd. Si ves una cola vacía o un
+  item `queued` estancado varios días, sospecha de esto y revisa
+  `launchctl list` / los logs de `/tmp/seo-*`. Diferencia clave con el corte de
+  septiembre: aquel **sí** dejaba entrada en el log; un run fantasma no deja
+  ninguna.
 - **DataForSEO intermitente:** el MCP `dfs-mcp` estuvo caído del 17 al 30 de
   junio de 2026; los volúmenes/KD de esa ventana en `state/keyword-bank.json`
   son estimaciones por WebSearch, no datos de API. Además,
