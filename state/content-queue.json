@@ -950,10 +950,10 @@
     },
     {
       "id": "2026-09-22-ia-para-pymes",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-09-22T15:04:16Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-09-22T16:04:08Z",
+      "post_url": "https://franlledo.com/blog/ia-para-pymes/",
       "primary_keyword": "ia para pymes",
       "intent": "commercial",
       "volume": 90,
