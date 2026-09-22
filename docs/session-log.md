@@ -3249,6 +3249,14 @@ token caducó, cada run empezó a morir en `coordinator.sh:118` antes de invocar
 nada. El fallo es silencioso por diseño: una línea en un JSON y `exit 1`, que
 launchd descarta.
 
+No era un incidente aislado. Revisando el histórico completo de
+`state/agent-log.json` aparecen **tres rachas** del mismo fallo:
+2026-06-23→07-01 (4 runs programados), 2026-07-27→08-06 (8) y
+2026-08-31→09-22 (13). **25 runs programados perdidos por `auth failure` desde
+junio.** Cada racha se resolvió sola porque alguien abrió una terminal en algún
+momento, y cada una quedó anotada como transitoria. Eso es exactamente lo que
+`claude setup-token` corta de raíz.
+
 Aparte: el symlink `~/.local/bin/claude` apunta a una versión de la extensión
 de VSCode que ya no existe. No afecta a los runs (el PATH de los plists
 resuelve a `/opt/homebrew/bin/claude`, versión 2.1.278), pero está roto.
@@ -3323,3 +3331,89 @@ resuelve a `/opt/homebrew/bin/claude`, versión 2.1.278), pero está roto.
 - No verificado: que el aviso de `osascript` se vea de verdad bajo launchd
   (depende de permisos de notificaciones). El centinela semanal es la capa
   fiable; la notificación es un extra.
+
+## 2026-09-22: altas bot en los formularios de MailerLite — diagnóstico y rotación de IDs
+
+### Contexto
+
+Fran preguntó por unos "suscriptores fantasma" en el formulario de *Asuntos que
+se abren*, mencionando que un agente de otro proyecto lo había atribuido a un
+ataque relacionado con artículos del blog. No hay registro de ese análisis en
+ningún repo, así que se verificó desde cero contra la API de MailerLite (cuenta
+1064872, key del proyecto Dashboard, solo lectura salvo donde se indica).
+
+### Qué pasó de verdad
+
+**399 altas automatizadas el 17 y 18 de septiembre**, no 4 como decía la nota de
+memoria previa. Patrón `+km<hex><contador>` sobre direcciones reales de
+terceros, seguidas desde las 09:28 del 17 hasta las 19:26 del 18. 115 dominios
+receptores (muchas industriales alemanas) y **396 IPs distintas para 399 altas**.
+Es *subscription bombing*: un bot recorre formularios públicos dando de alta a
+víctimas. Las direcciones no son leads de nadie.
+
+Hay al menos dos patrones más: `+hp<hex>`, una alta diaria del 17 al 22 (seguía
+activo durante la sesión), y `+bcoldx` el día 17.
+
+**Dos correcciones sobre lo que se dijo al principio de la sesión:**
+
+- Las 398 altas del 15/06 **no eran un ataque**: son un import legítimo de
+  Substack (`source=import`, `origen=substack`, 656 registros en 36 minutos).
+- La atribución a "artículos del blog" no se sostiene: el blog incrusta el
+  formulario de newsletter, y la oleada entró por el del lead magnet.
+
+**Mecanismo, confirmado con evidencia:** las 399 tienen `origen` y `campana`
+vacíos, mientras que las altas legítimas de esos mismos días llevan valor
+(`PROSP`, `Documento embudos`). Esos campos los rellena `MailerLiteFormClient`,
+así que el navegador nunca cargó la web. Comprobado en vivo: un `curl` con solo
+`fields[email]` contra `assets.mailerlite.com/jsonp/1064872/forms/<id>/subscribe`
+devuelve `{"success":true}`. La validación de email y la casilla de
+consentimiento viven solo en JS y no intervienen.
+
+**Daño real: ninguno.** Ambos formularios tenían `double_optin: true`.
+Escaneados los **7.343 suscriptores activos: 0 con el patrón**. Todas las altas
+bot se quedaron en `unconfirmed`. Fran las borró a mano durante la sesión.
+
+### Acciones
+
+- **Rotados los dos IDs de formulario que usa franlledo.com** (commit `c50df2f`
+  del repo web, desplegado y verificado en producción):
+  newsletter `184373354165175805` → `199325656470783872`;
+  asuntos `189092774269682869` → `199325684573668805`.
+  Los viejos venían heredados de cazatarjetas y llevaban años circulando, que es
+  lo que los convierte en objetivo de un bot de replay.
+- Resultó barato porque **las 33 automatizaciones activas se disparan por
+  `subscriber_joins_group`, ninguna por formulario**: los formularios nuevos
+  asignan a los mismos grupos (`franlledo.com` y `Asuntos que se abren`) y la
+  entrega sigue funcionando sin tocar nada. Esto contradice la nota del
+  `CLAUDE.md` del repo web, que daba a entender que conservar los IDs era
+  necesario para no romper las automatizaciones.
+- Verificación antes de desplegar: POST real a los dos endpoints nuevos →
+  `{"success":true}`, suscriptor en el grupo correcto y en `unconfirmed`.
+  Pruebas borradas después (HTTP 204).
+
+### Hallazgos de la API de MailerLite
+
+- `POST /api/forms` **sí** permite crear formularios embebidos (requiere
+  `groups`) y heredan `double_optin: true`.
+- `PUT /api/forms/{id}` devuelve 200 pero **ignora `confirmation_thank_you_url`**.
+  Esa URL solo se cambia a mano en el panel.
+- Los formularios viejos tenían esa URL apuntando a
+  `cazatarjetas.com/roadmap100k-oto`. Se señaló como bug y se rectificó en la
+  misma sesión: puede ser venta cruzada deliberada, es decisión de Fran.
+
+### Decisión de Fran
+
+**Parar aquí.** Los 6 lead magnets restantes (`3-skills`, `7-casos`,
+`antifragil`, `asuntos`, `documento`, `errores`) se quedan con sus IDs viejos, y
+**en cazatarjetas.com no se toca nada**. Motivo del riesgo que se planteó: no se
+verificó si alguna landing de cazatarjetas incrusta esos formularios (su home
+usa otro ID, `161903346758715120`, pero no se revisaron todas). Tampoco se
+pausan ni borran los formularios viejos.
+
+### Pendiente (opcional, de Fran)
+
+- Fijar a mano la URL de confirmación de los dos formularios nuevos si quiere
+  algo distinto de la página por defecto de MailerLite.
+- Regla de detección que deja la rotación: desde hoy ninguna página de
+  franlledo.com referencia los IDs viejos, así que **cualquier alta que llegue
+  por ellos es ilegítima por definición**, sin mirar el patrón del email.

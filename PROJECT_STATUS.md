@@ -1,13 +1,29 @@
 # Estado del proyecto SEO
 
 Última actualización: 2026-09-22 (sesión con Fran: causa raíz de la auth
-confirmada y corregida, pipeline blindado con tres cambios; antes, run del
-keyword-researcher que resembró la cola).
+confirmada y corregida con tres cambios en el pipeline; altas bot en MailerLite
+diagnosticadas y IDs de formulario rotados; antes, run del keyword-researcher
+que resembró la cola).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
+
+- **Altas bot en los formularios, contenidas y cortadas (2026-09-22).** 399
+  altas automatizadas el 17-18/09 (*subscription bombing*: `+km<hex><contador>`,
+  396 IPs distintas, 115 dominios de terceros), más un goteo diario `+hp` que
+  seguía activo. Entraban por POST directo al endpoint público de MailerLite,
+  sin cargar la web: las 399 tienen `origen`/`campana` vacíos y un `curl` con
+  solo `fields[email]` devuelve `{"success":true}`. **Daño real: ninguno** —
+  `double_optin: true` en ambos formularios y **0 coincidencias en los 7.343
+  activos**. Se rotaron los dos IDs que usa franlledo.com (commit `c50df2f` del
+  repo web, verificado en producción); barato porque las 33 automatizaciones se
+  disparan por `subscriber_joins_group`, no por formulario. **Decisión de Fran:
+  parar ahí** — los otros 6 lead magnets se quedan con sus IDs viejos y en
+  cazatarjetas.com no se toca nada. Regla que deja la rotación: ninguna página
+  de franlledo.com referencia ya los IDs viejos, así que cualquier alta por
+  ellos es ilegítima por definición. Ver bitácora 2026-09-22 (tercera entrada).
 
 - **Causa raíz de la auth confirmada y corregida (2026-09-22).** No era
   transitoria: el item del llavero `Claude Code-credentials` (creado
@@ -17,7 +33,11 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   porque comprobaban `claude auth status` desde una terminal interactiva, que
   refresca el token al usarlo: la foto se tomaba justo después de arreglarlo
   sin querer. Comprobado antes de tocar nada en esta sesión: `loggedIn: false`.
-  Fran ejecutó `claude login` y quedó sano. **Tres cambios en el pipeline**
+  Fran ejecutó `claude login` y quedó sano. **No era un incidente aislado:** el
+  log guarda tres rachas del mismo fallo (2026-06-23→07-01, 4 runs;
+  2026-07-27→08-06, 8; 2026-08-31→09-22, 13), **25 runs programados perdidos
+  por `auth failure` desde junio**. Cada una se resolvió sola al abrir alguien
+  una terminal, y cada una se anotó como transitoria. **Tres cambios en el pipeline**
   (commit `e7e9ea8`): (1) `coordinator.sh` exporta `CLAUDE_CODE_OAUTH_TOKEN`
   desde `.env.local`, para que los cron no dependan de una sesión interactiva;
   (2) `notify()` avisa por macOS en las tres rutas de error y el informe
