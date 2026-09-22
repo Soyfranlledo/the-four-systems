@@ -20,3 +20,18 @@ vender cursos online
 prompts para negocio
 monetizar con ia
 automatizar ventas
+# Semillas nuevas 2026-09-22. Motivo: de los 38 posts publicados, 32 caen en
+# tres clústers ya saturados (email marketing 11, embudos 11, IA/agentes 10),
+# que es por lo que las segundas vueltas venían saliendo con 0 items encolables
+# (17/08, 19/08, 24/08, 02/09 y el run de hoy sobre "lista de suscriptores").
+# Estas cinco apuntan a temas declarados en site-config.md con cobertura cero o
+# casi cero. La primera es la de más valor: "SEO y contenido como canal de
+# captación" está en alcance, tiene 0 posts, y es el único tema donde Fran tiene
+# un dato propio y extraíble que ningún competidor puede copiar (este mismo
+# sistema de agentes y sus métricas reales de GSC), que es justo lo que piden
+# las reglas GEO de redacción.
+seo para solopreneurs
+poner precio a un infoproducto
+tripwire y oferta de entrada
+bloqueo del emprendedor
+contenido con ia sin que suene a ia

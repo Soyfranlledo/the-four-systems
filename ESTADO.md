@@ -1,7 +1,7 @@
 ---
 proyecto: SEO franlledo
 prefijo: SEO
-siguiente_id: 17
+siguiente_id: 18
 estado_proyecto: activo
 responsable: Fran
 personas: agentes programados (keyword-researcher, content-writer, refresh-recommender); GSC, GA4, DataForSEO
@@ -27,7 +27,6 @@ ultima_sync_pm: 2026-09-22
 | SEO-005 | Excluir trafficheap.cc de los informes recurrentes y revisar la trazabilidad del canal email (85→6 sesiones) | P2 | — | Agente | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c81af994fca4a62ed8cca) |
 | SEO-006 | Generar imágenes OG para los 21 posts con og-default.jpg e integrar generate-og.mjs en el pipeline | P2 | — | Agente | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c81108881ec41809d75a6) |
 | SEO-007 | Decidir qué hacer con el artículo de agentes de IA sin código: retirarlo, fusionarlo o replantearlo | P2 | — | Fran | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c814db818dc78fbe2ea31) |
-| SEO-008 | Añadir semillas nuevas a state/seed-keywords.txt fuera del temario cubierto (12 sin segunda vuelta) | P2 | — | Fran | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c8127a65bef226c00799f) |
 | SEO-009 | Instruir al researcher para comprobar anuncios recientes de Anthropic/OpenAI por semilla antes de darla por agotada | P2 | — | Agente | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c814ab255ff1588d65564) |
 | SEO-010 | Comparar la muestra de visibilidad IA de octubre con la referencia de septiembre (48/48, 2,47 USD) | P2 | 2026-10-07 | Agente | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c810f894cd461ee1c649c) |
 | SEO-011 | Decidir si merece la pena revisar las guías de IA y las fuentes del informe de visibilidad de septiembre | P3 | — | Fran | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c81e6a249e5f19e4d776d) |
@@ -44,7 +43,6 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - **SEO-005** — Nota: PROJECT_STATUS.md:24-25; session-log 15-sep.
 - **SEO-006** — Necesita: Playwright en el repo franlledo-web. Nota: PROJECT_STATUS.md:818-820.
 - **SEO-007** — Por qué: es el único contenido que queda marcado como pendiente de revisión y bloquea cerrar la auditoría del blog. Nota: PROJECT_STATUS.md:831-832.
-- **SEO-008** — Nota: PROJECT_STATUS.md:853-861; bajó de 14 a 12 tras la segunda vuelta de `ia para negocios pequeños` (22/09).
 - **SEO-009** — Nota: PROJECT_STATUS.md:855-861.
 - **SEO-010** — Nota: session-log 14-sep §Pendiente; job semanal ya cargado.
 - **SEO-011** — Por qué: el informe propone cambios editoriales y hay que decidir si se ejecutan o se descartan, para no dejarlo en el aire. Nota: session-log 14-sep.
@@ -55,6 +53,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 |---|---|---|---|---|
 | SEO-012 | Medición mensual de visibilidad en IA integrada (48/48) y consulta de tráfico GA4+GSC (blog 12→24 clics) | 2026-09-15 | commits 40fc130, 9aada86 | [↗](https://www.notion.so/3e3b9c50d57c81bb89d4c43a892256a2) |
 | SEO-001 | Causa raíz de la auth confirmada (token del llavero caducado por no refrescarse nunca en headless) y pipeline blindado: token de larga duración, centinela en el informe semanal y encadenado researcher→writer | 2026-09-22 | commit e7e9ea8; docs/session-log.md 22-sep | [↗](https://app.notion.com/p/3deb9c50d57c8165b023e0a9121408e7) |
+| SEO-008 | Añadidas 5 semillas nuevas a seed-keywords.txt en temas de cobertura cero (SEO como canal, pricing, tripwire, bloqueo, contenido con IA) | 2026-09-22 | state/seed-keywords.txt; docs/session-log.md 22-sep | [↗](https://app.notion.com/p/3deb9c50d57c8127a65bef226c00799f) |
 | SEO-015 | Altas bot en MailerLite diagnosticadas (399 el 17-18/09, subscription bombing; 0 confirmadas de 7.343 activos gracias al doble opt-in) e IDs de formulario rotados | 2026-09-22 | commit c50df2f del repo web; docs/session-log.md 22-sep | — |
 | SEO-002 | Resembrada la cola con 1 item queued (`ia para pymes`, gate de autoridad superado) tras 17 días de auth failure | 2026-09-22 | reports/2026-09-22-keyword-researcher.md; state/content-queue.json | [↗](https://app.notion.com/p/3deb9c50d57c815fa982df9cc9a172e8) |
 
