@@ -3131,3 +3131,92 @@ PROJECT_STATUS actualizado. Commit de documentación: `docs: actualiza tráfico 
 Pendiente: exclusión de la fuente sospechosa en informes recurrentes, revisión
 del canal email y autenticación de Claude Code. El log registra errores de auth
 también el 14/09 y 15/09; cola vacía. Esta consulta no cambió esos sistemas.
+
+
+## 2026-09-22: keyword-researcher, run programado (MODE: AUTO) — pipeline
+desatascado, seed `ia para negocios pequeños`, 1 item encolado
+
+### Brief
+
+Run programado (lunes y miércoles, 09:00; este llegó un martes, fuera de
+horario habitual, lo que sugiere un reintento manual o de `launchd` tras el
+fallo de las 14:57 UTC del mismo día). `state/agent-log.json` registra `auth
+failure` en prácticamente todos los runs programados entre el 2026-09-05 y
+hoy (17 días), incluido un keyword-researcher fallido dos horas antes de
+este mismo run. Este es el primero que pasa el check de `coordinator.sh` en
+todo ese tramo. No se tocó nada de autenticación en esta sesión: se deja
+constancia en `PROJECT_STATUS.md` y en `ESTADO.md` (SEO-001) para que se
+investigue la causa raíz si vuelve a fallar.
+
+### Workflow ejecutado
+
+- **Step 0 (bank sweep):** `pick-bank-gate-batch.py --limit 5` → exit 2, 0
+  candidatas que medir (340 en banco antes de este run: 274 bajo volumen
+  100, 41 cubiertas, 15 fuera de prioridades 1-2, 10 ya medidas).
+- **Seed:** `ia para negocios pequeños`, la más antigua sin refrescar
+  (primera vez 2026-06-10; el intento de segunda vuelta del 07/09 nunca se
+  ejecutó por el corte de auth).
+- **SITE_RANK:** 227 (`backlinks_bulk_ranks`, coincide con la última
+  medición del 28/07).
+- **Fan-out:** 150 variaciones únicas evaluadas. `keyword_ideas` sobre el
+  seed completo repitió el patrón de ruido de categoría ya documentado (100
+  resultados, mayoría ajena al negocio: coches de segunda mano, GTA V, Sims
+  4); `related_keywords` devolvió vacío. Pivotado a dos lotes curados a mano
+  vía `keyword_overview` (40 candidatos tipo "ia para pymes/autónomos/
+  emprendedores") y a `keyword_suggestions` sobre el único candidato con
+  volumen real (`ia para pymes`). 8 duplicados del banco descartados
+  (incluido el propio seed y `ganar dinero con ia`, ya publicado).
+- **Ganadora:** `ia para pymes` (90/mes, commercial) pasa el gate de
+  autoridad `Step 5b`: SERP con un AI Overview grande (cita BBVA, Google
+  Workspace, SoftDoit, Upliora, Consultores IA); excluyendo
+  `workspace.google.com` (mega-superficie), el top-5 orgánico real es BBVA
+  (rank 452), SoftDoit (326), `internacional.camaramadrid.es` (187),
+  Formacom (172) y Anaya Multimedia (279) — mediana 279, muy por debajo del
+  umbral SITE_RANK+200 (427), con 2 rivales desplazables. Encolada como
+  `2026-09-22-ia-para-pymes`.
+- **Aviso dejado en la nota de cola y en el banco:** la SERP está dominada
+  por comparativas de herramientas (SoftDoit "9 mejores IA", Upliora "12
+  mejores herramientas") que `site-config.md` prohíbe; el ángulo obligatorio
+  es el playbook práctico de Fran, no un listicle. Además, el volumen medio
+  de 12 meses (90) esconde una tendencia descendente real: el último mes
+  (agosto 2026) fue 40, con -43% mensual / -56% trimestral / -20% anual. Si
+  sigue cayendo, no debería volver a encolarse una variante de este cluster.
+- Un segundo candidato con volumen nominal en el umbral
+  (`inteligencia artificial en los negocios`, 50/mes) se dejó en P2 sin
+  gastar el gate: su promedio de 12 meses está inflado por un pico anómalo
+  de marzo 2026 (260/mes); los últimos 3 meses reales son 10/mes.
+- 11 keywords nuevas al banco (340→351). 9 en P3 por volumen insuficiente o
+  encaje débil de audiencia (incluidas variantes de intención "agencia/
+  consultoría de IA para pymes", fuera del ICP de solopreneur, y una entrada
+  en portugués mal detectada como española).
+- Con este run, 5 de las 17 semillas de `state/seed-keywords.txt` tienen ya
+  una segunda vuelta completa (`email marketing`, `lanzamientos
+  infoproductos`, `claude para solopreneurs`, `secuencias de email`, `ia
+  para negocios pequeños`); quedan 12 solo con su primera investigación.
+
+### Resultado
+
+- `state/keyword-bank.json`: 351 keywords (11 nuevas), `last_updated`
+  2026-09-22.
+- `state/content-queue.json`: 28 items, 1 `queued` (`2026-09-22-ia-para-
+  pymes`), 26 `written`, 1 `needs_review`.
+- CSV: `output/keywords/2026-09-22-ia-para-negocios-pequenos.csv`.
+- Informe: `reports/2026-09-22-keyword-researcher.md`.
+- Dashboard HTML regenerado (`output/keywords/dashboard.html` y snapshot del
+  día).
+- `PROJECT_STATUS.md` actualizado: cabecera, bullet de resumen nuevo, hito 7
+  refrescado (12 semillas pendientes de segunda vuelta en vez de 14), commit
+  relevante añadido.
+
+### Pendiente
+
+- Confirmar que el desbloqueo de autenticación no fue un caso aislado: vigilar
+  el próximo run programado (content-writer, jueves 2026-09-24).
+- El content-writer puede consumir `ia para pymes` en su próximo run; recordar
+  el ángulo obligatorio (no listicle de herramientas) y el aviso de tendencia
+  de volumen descendente.
+- Sigue en pie la decisión sobre `agentes-ia-sin-codigo-para-emprendedores`
+  (`needs_review` desde el 02/07).
+- 12 semillas de `state/seed-keywords.txt` siguen sin una segunda vuelta
+  reciente; Fran puede valorar añadir semillas nuevas fuera del temario ya
+  cubierto.

@@ -1,12 +1,51 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-15 (tráfico web/blog consultado en GA4 y GSC;
-fuente sospechosa aislada en el análisis y cambio de consentimiento identificado).
+Última actualización: 2026-09-22 (keyword-researcher, primer run que pasa el
+check de auth desde el 2026-09-05; seed `ia para negocios pequeños`, 1 item
+encolado).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
+
+- **Pipeline desatascado (2026-09-22): el bloqueo de autenticación de 17 días
+  (2026-09-05 → 2026-09-22) parece resuelto.** `state/agent-log.json` registra
+  `auth failure` en casi todos los runs programados de ese periodo (última
+  ocurrencia: keyword-researcher de hoy a las 14:57 UTC, dos horas antes de
+  este run). Este run es el primero que pasa el check de `coordinator.sh` en
+  ese tramo; no se tocó nada de autenticación en esta sesión, así que la
+  causa raíz de por qué empezó a fallar el 05/09 ni de por qué se resolvió
+  hoy sigue sin investigar (ver `ESTADO.md` SEO-001). Vigilar el próximo run
+  programado (content-writer, jueves 2026-09-24) para confirmar que no fue
+  un caso aislado.
+- **Keyword-researcher, run martes 2026-09-22 (MODE: AUTO), seed `ia para
+  negocios pequeños`: 1 item encolado (`ia para pymes`, gate de autoridad
+  superado).** Bank sweep (Step 0): 0 candidatas que medir. Fan-out del seed:
+  150 variaciones únicas evaluadas, 8 duplicados del banco, resto mayormente
+  ruido de categoría (coches de segunda mano, GTA V, Sims 4) vía
+  `keyword_ideas`; pivotado a listas curadas por `keyword_overview` +
+  `keyword_suggestions`, patrón ya usado con éxito en runs anteriores.
+  **`ia para pymes`** (90/mes, commercial) pasa el gate `Step 5b`: mediana
+  top-5 279 vs umbral SITE_RANK(227)+200=427, con 2 rivales desplazables
+  (`internacional.camaramadrid.es` rank 187, `formacom.es` rank 172). SERP
+  dominada por un AI Overview (cita BBVA, Google Workspace, SoftDoit,
+  Upliora) y por comparativas de herramientas fuera de alcance por
+  site-config; el ángulo obligatorio en la nota de cola es el playbook
+  práctico de Fran, no un listicle. **Aviso de tendencia:** el volumen medio
+  de 12 meses es 90 pero el último mes real (agosto 2026) fue 40, con
+  tendencia claramente descendente (-43% mensual, -56% trimestral, -20%
+  anual); si sigue cayendo, no debería volver a encolarse una variante de
+  este cluster. Un segundo candidato con volumen nominal en el umbral
+  (`inteligencia artificial en los negocios`, 50/mes) se dejó en P2 sin
+  gastar el gate porque su promedio está inflado por un pico anómalo de
+  marzo 2026 (260/mes); los últimos 3 meses reales son 10/mes constante. 11
+  keywords nuevas al banco (351 total). Esta era la semilla más antigua sin
+  refrescar (primera vez 2026-06-10); con el run de hoy, 5 de las 17
+  semillas tienen ya una segunda vuelta completa, quedan 12 solo con su
+  primera investigación. Informe completo:
+  `reports/2026-09-22-keyword-researcher.md`. CSV:
+  `output/keywords/2026-09-22-ia-para-negocios-pequenos.csv`.
 
 - **Tráfico, consulta 2026-09-15 (16/08–12/09 vs 19/07–15/08): el SEO del
   blog mejora, el total de GA4 requiere depuración.** Blog: 32→53 lectores
@@ -849,14 +888,20 @@ Zona horaria del equipo: `Europe/Madrid`.
    Cowork) desde la última vez que se investigó esa semilla (01/06) y
    perseguir ese sub-cluster con `keyword_suggestions` en vez de repetir
    `keyword_ideas`/`related_keywords` sobre la frase genérica, que seguía
-   devolviendo ruido o contenido ya cubierto. Sigue sin resolverse el
-   problema de fondo: **quedan 14 semillas sin una segunda vuelta reciente**
-   y no todas tendrán un lanzamiento de producto reciente que perseguir. Fran
-   debería seguir valorando añadir semillas nuevas a
-   `state/seed-keywords.txt` fuera del temario ya cubierto, y/o instruir al
-   researcher para que compruebe rutinariamente anuncios de producto
-   recientes de Anthropic/OpenAI relevantes a cada semilla antes de
-   descartarla como agotada.
+   devolviendo ruido o contenido ya cubierto. **Cuarta segunda vuelta con
+   resultado 2026-09-02** (`secuencias de email`): 0 encolables, seed
+   confirmada agotada. **Quinta segunda vuelta con resultado 2026-09-22**
+   (`ia para negocios pequeños`, tras el corte de auth que impidió el
+   intento del 07/09): 1 item encolado (`ia para pymes`), no por un producto
+   nuevo sino por pivotar de la frase genérica del seed a una lista curada de
+   variantes "ia para pymes/autónomos/emprendedores" vía `keyword_overview` +
+   `keyword_suggestions`. Sigue sin resolverse el problema de fondo:
+   **quedan 12 semillas sin una segunda vuelta reciente** y no todas tendrán
+   un lanzamiento de producto reciente que perseguir. Fran debería seguir
+   valorando añadir semillas nuevas a `state/seed-keywords.txt` fuera del
+   temario ya cubierto, y/o instruir al researcher para que compruebe
+   rutinariamente anuncios de producto recientes de Anthropic/OpenAI
+   relevantes a cada semilla antes de descartarla como agotada.
 7b. ~~Content-writer: revisar por qué no corrió el martes 2026-07-14~~ —
    **cerrado 2026-07-21**: ambos items que quedaron pendientes de esa
    incidencia (`que-es-el-copywriting`, `que-es-una-landing-page`) están
@@ -880,6 +925,11 @@ Zona horaria del equipo: `Europe/Madrid`.
 
 Repo SEO:
 
+- 2026-09-22: keyword-researcher run — primer run que pasa el check de auth
+  desde el 05/09 (17 días de `auth failure` en el log). Seed `ia para
+  negocios pequeños` (segunda vuelta), 11 keywords nuevas, 1 item encolado
+  (`ia para pymes`, gate de autoridad superado, aviso de tendencia de
+  volumen en declive).
 - 2026-08-27: content-writer run — `claude cowork precio` publicado, cola
   vaciada (0 `queued`). Corrección de precio (Pro 20€, no Max 100€) frente a
   las notas de cola, usada como dato propio GEO.

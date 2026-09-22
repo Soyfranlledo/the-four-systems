@@ -406,3 +406,8 @@ Ningún secreto va jamás a documentación, informes ni commits.
   `franlledo.com/ensayos/` (ver invariante 5).
 - **Dashboard project (Google Cloud)** — el proyecto OAuth cuyas credenciales
   usa `refresh-scorer.py` y los scripts `.mjs` para GSC/GA4.
+
+
+## Estado del proyecto para el Project Manager
+
+Este proyecto tiene un `ESTADO.md` en la raíz (formato: `~/Projects/Project Manager/docs/plantilla-estado.md`). **Al cerrar cada sesión**: añade lo pendiente, mueve a «Hechas» lo cerrado con su evidencia, sube `actualizado`, no reutilices IDs, sin secretos (solo punteros). No toques la columna `Notion` ni la sección «Del PM»: son del PM.

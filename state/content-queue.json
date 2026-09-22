@@ -947,6 +947,39 @@
         "https://support.claude.com/es/articles/13345190-comienza-con-claude-cowork"
       ],
       "notes": "Producto nuevo de Anthropic (Claude Cowork, agente de escritorio integrado en la app de Claude), sin cobertura previa en el sitio: ni claude-para-solopreneurs.md (2026-06-01, actualizado 07/08) ni ningun otro post mencionan 'cowork'. Vol 170/mes commercial (tendencia -34% trimestral, aun sana). Gate Step 5b PASA: mediana top-5 rank 382 vs SITE_RANK 227 (umbral 427), dos rivales desplazables (coworkerai.io rank 213, appropia.com rank 102). La variante puramente informacional 'que es claude cowork' (vol 210) SI choca con el muro (mediana 466, dominada por Xataka/DataCamp/Wired/soporte oficial de Anthropic) asi que no es el primary keyword, pero su respuesta va como primera seccion del post. Angulo diferenciador obligatorio (dato propio + opinion, no un resumen mas de lo que ya hicieron Xataka/DataCamp/Wired): Fran ya usa Claude a diario para email marketing, SEO y decisiones (ver /blog/claude-para-solopreneurs/, enlazar); el post tiene que responder, desde esa experiencia real, si el salto de precio de Pro ($20) a Max ($100-200) para acceder a Cowork compensa para un negocio de una sola persona, o si Claude Projects (que ya usa y ya cubrio en el post anterior) resuelve el 90% del caso de uso sin pagar el extra. Cubrir en el fan_out_cluster: que es Cowork y en que se diferencia de Claude Projects/Claude Code, planes y precio real (Pro/Max/Team), si el free lo incluye (no), y veredicto honesto para un solopreneur. Nunca enlazar a producto de pago propio; el CTA sigue siendo <EmailCapture />."
+    },
+    {
+      "id": "2026-09-22-ia-para-pymes",
+      "status": "queued",
+      "queued_at": "2026-09-22T15:04:16Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "ia para pymes",
+      "intent": "commercial",
+      "volume": 90,
+      "kd": null,
+      "fan_out_cluster": [
+        "herramientas de ia para pymes",
+        "ia para atencion al cliente",
+        "automatizar tareas administrativas con ia",
+        "ia para marketing y redes sociales en un negocio peque\u00f1o",
+        "cual es la mejor ia para una pyme",
+        "ia para autonomos"
+      ],
+      "suggested_slug": "ia-para-pymes",
+      "suggested_title": "IA para pymes: que usar primero sin perder tiempo ni dinero",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "/blog/automatizacion-con-ia-para-solopreneurs/",
+        "/blog/agentes-de-ia-para-solopreneurs/",
+        "/blog/claude-code-sin-programar/",
+        "/blog/claude-cowork-precio/"
+      ],
+      "external_authority_candidates": [
+        "https://www.bbva.com/es/empresas/ia-para-pymes-casos-practicos-y-consejos-esenciales/",
+        "https://workspace.google.com/intl/es/resources/ai-for-small-business/"
+      ],
+      "notes": "Angulo obligatorio: NO listicle de herramientas (la SERP ya esta saturada de comparativas -SoftDoit \"9 mejores IA para pymes y autonomos\", Upliora \"12 mejores herramientas\"- y site-config prohibe reviews comparativas). Playbook practico de Fran: que usa el mismo para automatizar tareas de negocio (Claude Code, agentes, Claude Cowork ya cubiertos en otros posts) aplicado al lector de pyme/autonomo. Dato propio citable recomendado: ejemplo real de una tarea administrativa o de atencion al cliente automatizada en su propio negocio o el de un cliente de consultoria, con tiempo ahorrado. Aviso de tendencia: volumen medio 12 meses 90/mes pero el ultimo mes real (agosto 2026) fue 40; vigilar si se sostiene tras publicar."
     }
   ]
 }
