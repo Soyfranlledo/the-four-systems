@@ -1,13 +1,45 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-22 (keyword-researcher, primer run que pasa el
-check de auth desde el 2026-09-05; seed `ia para negocios pequeños`, 1 item
-encolado).
+Última actualización: 2026-09-22 (sesión con Fran: causa raíz de la auth
+confirmada y corregida, pipeline blindado con tres cambios; antes, run del
+keyword-researcher que resembró la cola).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
+
+- **Causa raíz de la auth confirmada y corregida (2026-09-22).** No era
+  transitoria: el item del llavero `Claude Code-credentials` (creado
+  2026-05-07) solo lo usaba launchd en modo headless y nunca se refrescaba, así
+  que su refresh token caducó y los runs morían en `coordinator.sh:118` con
+  `duration_seconds: 0`. Las notas del 01/09 y 02/09 lo daban por transitorio
+  porque comprobaban `claude auth status` desde una terminal interactiva, que
+  refresca el token al usarlo: la foto se tomaba justo después de arreglarlo
+  sin querer. Comprobado antes de tocar nada en esta sesión: `loggedIn: false`.
+  Fran ejecutó `claude login` y quedó sano. **Tres cambios en el pipeline**
+  (commit `e7e9ea8`): (1) `coordinator.sh` exporta `CLAUDE_CODE_OAUTH_TOKEN`
+  desde `.env.local`, para que los cron no dependan de una sesión interactiva;
+  (2) `notify()` avisa por macOS en las tres rutas de error y el informe
+  semanal gana una **sección 0 "Salud del pipeline"** (errores de 7 días, días
+  desde la última publicación, estado de cola) que garantiza detección en menos
+  de una semana; (3) el content-writer, con la cola vacía, **encadena un
+  keyword-researcher** en el mismo proceso y reintenta, en vez de salir en
+  no-op. Probado en copia aislada con la CLI stubbeada. **Pendiente de Fran:
+  ejecutar `claude setup-token` y guardar el token en `.env.local`**; hasta
+  entonces los runs siguen colgando de la sesión interactiva recién renovada.
+  Ver bitácora 2026-09-22 (segunda entrada).
+- **Rendimiento en Google, la mejor ventana del proyecto (GSC, 23/08-19/09 vs
+  26/07-22/08):** clics 24 → **53** (+121%), impresiones 4.146 → **5.328**
+  (+29%), CTR 0,58% → 0,99%, posición media 16,1 → **12,8**. El diagnóstico de
+  julio ("impresiones suben, clics planos") ya no aplica. Motores:
+  `vibe-coding-en-espanol` (4→12 clics, posición 9,2) y `claude-cowork-precio`,
+  publicado el 27/08 y ya en **posición 5,8** con 304 impresiones en menos de
+  un mes (el gate de winnability del Step 5b funcionó). Mayor margen sin
+  explotar: `marketing-funnel-para-solopreneurs` (961 impresiones, **0 clics**,
+  posición 21,9) y `como-escribir-asuntos-de-email` (2.051 impresiones, 6
+  clics, CTR 0,29%). Aviso: esta mejora es contenido de julio y agosto
+  madurando, no producción nueva; el pipeline llevaba 26 días sin publicar.
 
 - **Pipeline desatascado (2026-09-22): el bloqueo de autenticación de 17 días
   (2026-09-05 → 2026-09-22) parece resuelto.** `state/agent-log.json` registra

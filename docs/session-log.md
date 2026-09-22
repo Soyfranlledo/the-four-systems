@@ -3220,3 +3220,106 @@ investigue la causa raíz si vuelve a fallar.
 - 12 semillas de `state/seed-keywords.txt` siguen sin una segunda vuelta
   reciente; Fran puede valorar añadir semillas nuevas fuera del temario ya
   cubierto.
+
+## 2026-09-22: sesión con Fran — causa raíz de la auth y blindaje del pipeline
+
+### Contexto
+
+Fran preguntó cómo iba el SEO de la web. Al revisar el estado antes de
+responder apareció lo importante: el rendimiento en Google es el mejor del
+proyecto, pero el pipeline de publicación llevaba 16 días parado y el informe
+de estado lo daba por transitorio.
+
+### Diagnóstico: la auth no era transitoria
+
+`state/agent-log.json` registraba **doce runs programados consecutivos** con
+`auth failure` y `duration_seconds: 0`, del 2026-09-07 al 2026-09-22. Las
+entradas anteriores de esta bitácora (01/09, 02/09) lo habían clasificado como
+transitorio porque `claude auth status` daba `loggedIn: true` al comprobarlo.
+
+Esa comprobación era engañosa: se hacía desde una terminal interactiva, que
+refresca el token al usarlo. La foto se tomaba justo después de arreglarlo sin
+querer. Comprobado en esta sesión antes de tocar nada, la CLI daba
+`loggedIn: false`, `authMethod: "none"`.
+
+Causa real: el item del llavero `Claude Code-credentials` se creó el
+2026-05-07 y solo lo usaba launchd en modo headless. Los tokens se renuevan al
+usarlos de forma interactiva; este no se renovaba nunca. Cuando el refresh
+token caducó, cada run empezó a morir en `coordinator.sh:118` antes de invocar
+nada. El fallo es silencioso por diseño: una línea en un JSON y `exit 1`, que
+launchd descarta.
+
+Aparte: el symlink `~/.local/bin/claude` apunta a una versión de la extensión
+de VSCode que ya no existe. No afecta a los runs (el PATH de los plists
+resuelve a `/opt/homebrew/bin/claude`, versión 2.1.278), pero está roto.
+
+### Rendimiento (GSC, 28 días: 23/08-19/09 vs 26/07-22/08)
+
+- Clics 24 → **53** (+121%), impresiones 4.146 → **5.328** (+29%),
+  CTR 0,58% → **0,99%**, posición media 16,1 → **12,8**.
+- Motores: `vibe-coding-en-espanol` (4→12 clics, posición 9,2) y
+  `claude-cowork-precio`, publicado el 27/08, ya en **posición 5,8** con 304
+  impresiones en menos de un mes. El gate de winnability del Step 5b funcionó.
+- Sin explotar: `marketing-funnel-para-solopreneurs` (961 impresiones, **0
+  clics**, posición 21,9) y `como-escribir-asuntos-de-email` (2.051
+  impresiones, 6 clics, CTR 0,29%). Son las dos mayores bolsas de margen.
+- El diagnóstico de julio ("impresiones suben, clics planos") ya no aplica.
+
+### Acciones
+
+- Fran ejecutó `claude login` (flujo OAuth de navegador; no lo hace el agente).
+  Credenciales escritas a las 16:58:03. El `./coordinator.sh
+  keyword-researcher` que lanzó a las 16:57:17 falló por 46 segundos de
+  carrera, no por un fallo real; esa entrada de `auth failure` en el log es
+  espuria.
+- Relanzado el researcher, que resembró la cola. Detalle en la entrada
+  anterior de esta misma fecha.
+- **Tres cambios en el pipeline** (commit `e7e9ea8`):
+  1. `coordinator.sh` exporta `CLAUDE_CODE_OAUTH_TOKEN` desde `.env.local` si
+     está presente, para que los runs de launchd no dependan de una sesión
+     OAuth interactiva. Se parsea la línea en vez de hacer `source`, para no
+     ejecutar el fichero ni meter las credenciales de Google en el entorno de
+     la CLI. El token lo genera `claude setup-token`.
+  2. `notify()` lanza aviso de macOS en las tres rutas de error (auth, layer 1
+     del refresh-recommender, exit code del agente). Y `weekly-seo-report.mjs`
+     gana una **sección 0 "Salud del pipeline"**: errores de los últimos 7
+     días, días desde la última publicación y estado de la cola. El informe
+     semanal corre con OAuth de Google, no con la CLI, así que es inmune a
+     este fallo concreto: es el sitio correcto para el centinela. Detección
+     garantizada en menos de 7 días.
+  3. El content-writer deja de morir con la cola vacía: preflight con
+     `pick-next-queue-item.py` y, si no hay items, encadena un
+     keyword-researcher **en el mismo proceso** (reutilizando el lock; volver
+     a entrar por `./coordinator.sh` se auto-bloquearía) y reintenta. Guarda
+     de mismo día para no repetir la semilla de rotación. La invocación de la
+     CLI se extrae a `run_agent_prompt()` y `log_run()` acepta agente/report
+     explícitos para que el log refleje los dos agentes.
+
+### Verificación
+
+- `bash -n` y `node --check` OK. Diff revisado línea a línea contra copia
+  previa: el preámbulo `MODE: AUTO` se conserva literal.
+- Las tres ramas del preflight probadas en una **copia aislada del repo** con
+  la CLI stubbeada: sin siembra (no-op con motivo correcto), con siembra
+  (continúa al writer), y researcher ya corrido hoy (no encadena). El log
+  encadenado se etiqueta como `keyword-researcher | chained from
+  content-writer`.
+- Comprobado que `[[ ... ]] && x=...` no mata el script bajo `set -e`.
+- Sección 0 renderizada contra el estado real: saca los 6 fallos de auth de la
+  última semana y los 26 días sin publicar.
+- Nota del primer intento de test: el stub no ganaba el PATH porque
+  `coordinator.sh:13` antepone `/opt/homebrew/bin`, así que arrancó la CLI
+  real. Se abortó, se mató el proceso huérfano y se verificó que el repo real
+  quedaba intacto. El test definitivo parchea el PATH solo en la copia.
+
+### Pendiente
+
+- **Fran: ejecutar `claude setup-token`** y guardar el valor en `.env.local`
+  como `CLAUDE_CODE_OAUTH_TOKEN`. Hasta entonces los runs siguen colgando de
+  la sesión interactiva que se acaba de renovar, con el mismo modo de fallo.
+- Confirmar el jueves 24/09 que el content-writer programado corre sano y
+  consume `ia para pymes`.
+- Rehacer o borrar el symlink roto `~/.local/bin/claude`.
+- No verificado: que el aviso de `osascript` se vea de verdad bajo launchd
+  (depende de permisos de notificaciones). El centinela semanal es la capa
+  fiable; la notificación es un extra.
