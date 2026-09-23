@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "site": "franlledo.com",
-  "last_updated": "2026-09-22",
+  "last_updated": "2026-09-23",
   "seeds_researched": [
     {
       "seed": "embudos de venta",
@@ -78,6 +78,10 @@
     {
       "seed": "seo para solopreneurs",
       "last_researched": "2026-09-22"
+    },
+    {
+      "seed": "poner precio a un infoproducto",
+      "last_researched": "2026-09-23"
     }
   ],
   "keywords": [
@@ -5252,10 +5256,10 @@
       "covered_by": null,
       "discovered": "2026-09-22",
       "source": "dataforseo_labs_google_keyword_overview",
-      "serp_checked": false,
-      "serp_median_top5": null,
-      "serp_min_rank": null,
-      "notes": "Termino en ingles buscado en Espana, mismo SERP que 'seo para ia'. KD 48 supera el umbral P1 informacional (35). Se cubre como seccion de apoyo dentro del post de 'seo para ia', no como pieza propia."
+      "serp_checked": true,
+      "serp_median_top5": 430,
+      "serp_min_rank": 155,
+      "notes": "Termino en ingles buscado en Espana, mismo SERP que 'seo para ia'. KD 48 supera el umbral P1 informacional (35). Se cubre como seccion de apoyo dentro del post de 'seo para ia', no como pieza propia. SERP wall: median top-5 rank 430 vs site 227, no displaceable target — GEO-citation candidate."
     },
     {
       "keyword": "ia para seo",
@@ -5409,6 +5413,108 @@
       "serp_median_top5": null,
       "serp_min_rank": null,
       "notes": "Representa un microcluster definicional (variantes 'para que sirve el seo', 'para que sirve seo', 'que es seo y para que sirve', todas ~50/mes, KD 23-32). Por debajo del umbral de volumen informacional (100/mes) individualmente; es sobre SEO clasico, no sobre GEO, asi que no encaja en el fan_out_cluster de 'seo para ia'. Candidato a pieza propia si el volumen agregado se confirma en una proxima vuelta."
+    },
+    {
+      "keyword": "como poner precio a mis servicios",
+      "seed": "poner precio a un infoproducto",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": 1.77,
+      "priority": 3,
+      "fan_out_parent": "poner precio a un infoproducto",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen muy por debajo del umbral (10/mes). Aparcada, no encolable."
+    },
+    {
+      "keyword": "cuanto cobrar por consultoria",
+      "seed": "poner precio a un infoproducto",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "poner precio a un infoproducto",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen muy por debajo del umbral comercial (>=50). Aparcada."
+    },
+    {
+      "keyword": "cuanto cobrar por un curso",
+      "seed": "poner precio a un infoproducto",
+      "intent": "informational",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "poner precio a un infoproducto",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen muy por debajo del umbral (10/mes). Aparcada."
+    },
+    {
+      "keyword": "cuanto cobrar por un curso online",
+      "seed": "poner precio a un infoproducto",
+      "intent": "commercial",
+      "volume": 10,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "poner precio a un infoproducto",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Volumen muy por debajo del umbral comercial (>=50). Aparcada."
+    },
+    {
+      "keyword": "precio de un ebook",
+      "seed": "poner precio a un infoproducto",
+      "intent": "commercial",
+      "volume": 110,
+      "kd": 11,
+      "cpc": 0.15,
+      "priority": 2,
+      "fan_out_parent": "poner precio a un infoproducto",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Cumple umbral de volumen/KD pero encaje de audiencia dudoso: competition HIGH, rank medio de dominios en top (94.8) y CPC 0.15 apuntan a intencion generica de comprador de ebooks (libros/lectura), no a un creador fijando el precio de su propio infoproducto. Degradada a P2 por posible desajuste de intencion, no por autoridad. No encolar sin verificar SERP real primero."
+    },
+    {
+      "keyword": "como calcular el precio de un curso",
+      "seed": "poner precio a un infoproducto",
+      "intent": "informational",
+      "volume": null,
+      "kd": null,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "poner precio a un infoproducto",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_overview",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null,
+      "notes": "Sin datos de volumen en DataForSEO (posible variante demasiado especifica). Aparcada."
     }
   ]
 }
