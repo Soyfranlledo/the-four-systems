@@ -3417,3 +3417,50 @@ pausan ni borran los formularios viejos.
 - Regla de detección que deja la rotación: desde hoy ninguna página de
   franlledo.com referencia los IDs viejos, así que **cualquier alta que llegue
   por ellos es ilegítima por definición**, sin mirar el patrón del email.
+
+## 2026-09-23: token headless configurado y primer run programado sano
+
+### Contexto
+
+Continuación de la sesión del 22/09. Quedaba pendiente SEO-013: los runs
+seguían colgando de la sesión interactiva que Fran renovó ayer con
+`claude login`, que es justo la que caduca sin avisar.
+
+### Acciones
+
+- Fran ejecutó `claude setup-token` (token de larga duración, 1 año) y lo
+  guardó en `.env.local` con `read -s`, para que el valor no pasara por el
+  historial de la shell ni por el chat. El agente no ve el token en ningún
+  momento.
+- Verificado por tres caminos, sin exponer el valor:
+  1. `claude auth status` con `HOME` temporal y limpio, sin ninguna sesión
+     guardada donde apoyarse → `loggedIn: true`, `authMethod: "oauth_token"`.
+     Esto descarta que estuviera pasando por la sesión del llavero.
+  2. El bloque de parseo de `coordinator.sh` aislado → exporta la variable
+     correctamente y con el prefijo esperado.
+  3. Confirmado que **no** arrastra `GOOGLE_OAUTH_*` al entorno, que era el
+     motivo de parsear la línea en vez de hacer `source .env.local`.
+- Descartada una falsa alarma propia: la longitud del valor (62 caracteres)
+  hizo sospechar truncamiento porque la salida de `setup-token` ocupaba dos
+  líneas en pantalla. La prueba con `HOME` limpio demuestra que el token está
+  completo.
+
+### Estado del pipeline
+
+- **Run programado del 2026-09-23 a las 09:00: sano** (267s, commit). Primer
+  run automático que funciona desde el 05/09. Semilla por rotación: `poner
+  precio a un infoproducto`, 0 items encolados con motivo razonado (ruido de
+  categoría de DataForSEO sobre la palabra "precio"; de 49 variantes curadas
+  solo 6 tenían datos y casi todas a 10/mes). El agente recomienda cubrir el
+  tema como sección de apoyo dentro de una pieza de lanzamiento de
+  infoproductos, no como post propio.
+- Cola: 1 item (`2026-09-22-seo-para-ia`, 320/mes, KD 0). El content-writer
+  del jueves 24/09 debería consumirlo.
+- De las 5 semillas añadidas ayer quedan 3 sin estrenar: `tripwire y oferta de
+  entrada`, `bloqueo del emprendedor`, `contenido con ia sin que suene a ia`.
+
+### Pendiente
+
+- Confirmar el jueves 24/09 que el content-writer programado publica
+  `seo-para-ia` y que, al quedar la cola a 0, el encadenado researcher→writer
+  entra por primera vez en producción.
