@@ -90,6 +90,10 @@
     {
       "seed": "bloqueo del emprendedor",
       "last_researched": "2026-09-23"
+    },
+    {
+      "seed": "contenido con ia sin que suene a ia",
+      "last_researched": "2026-09-23"
     }
   ],
   "keywords": [
@@ -5639,6 +5643,40 @@
       "discovered": "2026-09-23",
       "source": "dataforseo_labs_google_keyword_suggestions",
       "notes": "Volumen minimo (10/mes) y KD 47 relativamente alto para ese volumen: mala relacion coste/beneficio como primary keyword. Cubierto como subtema dentro de 'miedo al fracaso en tu negocio' (fan_out_cluster). Se aparca en banco.",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null
+    },
+    {
+      "keyword": "crear contenido con ia",
+      "seed": "contenido con ia sin que suene a ia",
+      "intent": "informational",
+      "volume": 70,
+      "kd": null,
+      "cpc": 1.88,
+      "priority": 3,
+      "fan_out_parent": "contenido con ia sin que suene a ia",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Mismo cluster (core_keyword 'ia para crear contenido') que la entrada parcada el 2026-06-10 bajo el seed 'ia para negocios pequenos' (entonces vol 30, ahora 70 con tendencia +75% interanual). Generico, sin KD medible, intencion informational/transactional segun variante. Parcialmente cubierto por infoproductos-con-ia y claude-para-solopreneurs. No hay angulo diferenciado de 'que no suene a ia' en la demanda real: se aparca junto a su entrada hermana.",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null
+    },
+    {
+      "keyword": "como crear contenido con ia",
+      "seed": "contenido con ia sin que suene a ia",
+      "intent": "informational",
+      "volume": 20,
+      "kd": null,
+      "cpc": 6.37,
+      "priority": 3,
+      "fan_out_parent": "contenido con ia sin que suene a ia",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Volumen minimo (20/mes) pese a tendencia +100% interanual. Variante how-to del mismo cluster generico que 'crear contenido con ia'. Se aparca, no se encola.",
       "serp_checked": false,
       "serp_median_top5": null,
       "serp_min_rank": null
