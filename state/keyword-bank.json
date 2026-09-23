@@ -86,6 +86,10 @@
     {
       "seed": "tripwire y oferta de entrada",
       "last_researched": "2026-09-23"
+    },
+    {
+      "seed": "bloqueo del emprendedor",
+      "last_researched": "2026-09-23"
     }
   ],
   "keywords": [
@@ -5570,6 +5574,74 @@
       "serp_median_top5": null,
       "serp_min_rank": null,
       "notes": "Termino en ingles, 10/mo en es/Spain. Sin masa critica."
+    },
+    {
+      "keyword": "parálisis por análisis",
+      "seed": "bloqueo del emprendedor",
+      "intent": "informational",
+      "volume": 720,
+      "kd": 0,
+      "cpc": null,
+      "priority": 1,
+      "fan_out_parent": "bloqueo del emprendedor",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Termino generico de psicologia/productividad (no lleva 'emprendedor') pero coincide exactamente con el subtema en scope 'paralisis, ejecucion, foco' de site-config. SERP dominado por sitios de psicologia genericos (psicologiaymente, alavareyes, facilethings, mariaclararuiz, clavei), ninguno con angulo de negocio: hueco real para un post que aterrice el concepto en decisiones de negocio (pricing, lanzamientos, contratar) con ejemplos propios de Fran. Diferenciacion obligatoria para no ser un post generico mas de autoayuda (regla Step 4). SERP gate (run 2026-09-23): median top-5 rank 311 vs site 227 (umbral muro 427), target desplazable en top5 (mariaclararuiz.com rank 178). Pasa el gate, sigue P1.",
+      "serp_checked": true,
+      "serp_median_top5": 311,
+      "serp_min_rank": 92
+    },
+    {
+      "keyword": "miedo al fracaso",
+      "seed": "bloqueo del emprendedor",
+      "intent": "informational",
+      "volume": 210,
+      "kd": 0,
+      "cpc": 0.93,
+      "priority": 1,
+      "fan_out_parent": "bloqueo del emprendedor",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Termino generico de psicologia (no lleva 'emprendedor') pero coincide con el subtema en scope 'miedo' de site-config. SERP dominado por psicologos/coaches genericos (areahumana, esthermipsicologa, neuroscenter, randstad, psicologiaanagarciarey), ninguno con angulo de negocio: hueco real para el miedo al fracaso especifico de tomar decisiones de negocio (lanzar, subir precios, despedir a un cliente). Diferenciacion obligatoria (regla Step 4). SERP gate (run 2026-09-23): median top-5 rank 184 vs site 227 (umbral muro 427), targets desplazables en top5 (psicologiaanagarciarey.com rank 77, esthermipsicologa.com rank 172, neuroscenter.com rank 184). Pasa el gate, sigue P1.",
+      "serp_checked": true,
+      "serp_median_top5": 184,
+      "serp_min_rank": 72
+    },
+    {
+      "keyword": "perfeccionismo paralizante",
+      "seed": "bloqueo del emprendedor",
+      "intent": "informational",
+      "volume": 20,
+      "kd": null,
+      "cpc": null,
+      "priority": 2,
+      "fan_out_parent": "bloqueo del emprendedor",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Angulo fuerte (una de las causas de bloqueo del emprendedor citadas por el AI Overview de ChatGPT para la semilla) pero volumen por debajo del umbral P1 (100). Cubierto parcialmente como subtema dentro de 'paralisis por analisis en tu negocio' (fan_out_cluster). No se encola como post independiente.",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null
+    },
+    {
+      "keyword": "miedo a emprender",
+      "seed": "bloqueo del emprendedor",
+      "intent": "informational",
+      "volume": 10,
+      "kd": 47,
+      "cpc": null,
+      "priority": 3,
+      "fan_out_parent": "bloqueo del emprendedor",
+      "covered_by": null,
+      "discovered": "2026-09-23",
+      "source": "dataforseo_labs_google_keyword_suggestions",
+      "notes": "Volumen minimo (10/mes) y KD 47 relativamente alto para ese volumen: mala relacion coste/beneficio como primary keyword. Cubierto como subtema dentro de 'miedo al fracaso en tu negocio' (fan_out_cluster). Se aparca en banco.",
+      "serp_checked": false,
+      "serp_median_top5": null,
+      "serp_min_rank": null
     }
   ]
 }

@@ -1011,6 +1011,77 @@
         "https://arxiv.org/abs/2311.09735"
       ],
       "notes": "Angulo obligatorio y diferenciador: este mismo proyecto (seo-franlledo) mide visibilidad en IA generativa mes a mes con datos reales (informe 2026-09: 48/48 respuestas evaluadas en ChatGPT/Gemini/Claude/Perplexity, coste 2.47 USD, 4 URLs citadas verificadas con curl). Usar esos datos propios como prueba de parte, no repetir el resumen generico que ya da el AI Overview de Google para esta misma keyword (definicion GEO, entidades, E-E-A-T, respuestas directas: eso ya esta cubierto en la SERP, hay que aportar algo que la IA no puede resumir). NO escribir como agencia que vende servicios de GEO (site-config: el blog nunca vende directo, solo capta email). Volumen estable 210-390/mes en 12 meses, +133% interanual: tema en crecimiento real, no pico puntual."
+    },
+    {
+      "id": "2026-09-23-paralisis-por-analisis-emprendedor",
+      "status": "queued",
+      "queued_at": "2026-09-23T09:53:37Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "parálisis por análisis",
+      "secondary_keywords": [
+        "cómo salir de la parálisis por análisis",
+        "perfeccionismo paralizante",
+        "regla del 70% para decidir"
+      ],
+      "intent": "informational",
+      "volume": 720,
+      "kd": 0,
+      "fan_out_cluster": [
+        "parálisis por análisis",
+        "cómo salir de la parálisis por análisis",
+        "parálisis por análisis en el trabajo",
+        "exceso de opciones al tomar decisiones",
+        "miedo al error al decidir",
+        "regla del 70% para tomar decisiones",
+        "perfeccionismo paralizante"
+      ],
+      "suggested_slug": "paralisis-por-analisis-emprendedor",
+      "suggested_title": "Parálisis por análisis: por qué tu negocio no avanza aunque curres cada día",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/mentalidad-para-emprender/",
+        "https://franlledo.com/blog/que-son-los-infoproductos/"
+      ],
+      "external_authority_candidates": [
+        "https://es.wikipedia.org/wiki/Par%C3%A1lisis_del_an%C3%A1lisis",
+        "https://www.inesem.es/revistadigital/orientacion-laboral/paralisis-por-analisis"
+      ],
+      "notes": "KD 0, vol 720: la mejor relacion volumen/dificultad vista en meses. SERP top-10 entero es psicologia generica (coaches, centros de psicologia), cero angulo de negocio: la oportunidad GEO es justo esa, ser la unica pagina que trata la paralisis por analisis como problema de decisiones de negocio (pricing, lanzar, contratar) en vez de duda existencial generica. Dato propio obligatorio (regla de redaccion): usar una decision real de Fran que se retraso por sobre-analisis y el coste que tuvo. Enlazar con mentalidad-para-emprender (ya menciona 'originalidad prematura' y el Regret Minimization Framework, pero sin nombrar el concepto): diferenciar explicitamente, no duplicar."
+    },
+    {
+      "id": "2026-09-23-miedo-al-fracaso-emprendedor",
+      "status": "queued",
+      "queued_at": "2026-09-23T09:53:37Z",
+      "written_at": null,
+      "post_url": null,
+      "primary_keyword": "miedo al fracaso",
+      "secondary_keywords": [
+        "miedo a emprender",
+        "miedo al fracaso emprendedor",
+        "cómo superar el miedo al fracaso"
+      ],
+      "intent": "informational",
+      "volume": 210,
+      "kd": 0,
+      "fan_out_cluster": [
+        "miedo al fracaso",
+        "miedo al fracaso emprendedor",
+        "cómo superar el miedo al fracaso",
+        "miedo a emprender",
+        "miedo al fracaso causas",
+        "por qué tenemos miedo al fracaso"
+      ],
+      "suggested_slug": "miedo-al-fracaso-emprendedor",
+      "suggested_title": "Miedo al fracaso al emprender: de qué tienes miedo en realidad",
+      "target_word_count": 1800,
+      "internal_link_targets": [
+        "https://franlledo.com/blog/mentalidad-para-emprender/"
+      ],
+      "external_authority_candidates": [
+        "https://www.randstad.es/contenidos360/desarrollo-profesional/miedo-al-fracaso/"
+      ],
+      "notes": "KD 0, vol 210. SERP top-10 es integramente psicologia/RRHH generica sin angulo de negocio: mismo hueco GEO que parálisis por análisis. Diferenciar de mentalidad-para-emprender (que ya usa el Regret Minimization Framework de Bezos de pasada): este post debe ir mas concreto, con los miedos especificos de un solopreneur (subir precios, publicar el primer post, lanzar sin validar) y no repetir el framework de Bezos como eje central. Dato propio obligatorio: un fracaso real de Fran y que paso despues."
     }
   ]
 }
