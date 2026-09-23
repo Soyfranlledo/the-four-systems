@@ -3464,3 +3464,46 @@ seguían colgando de la sesión interactiva que Fran renovó ayer con
 - Confirmar el jueves 24/09 que el content-writer programado publica
   `seo-para-ia` y que, al quedar la cola a 0, el encadenado researcher→writer
   entra por primera vez en producción.
+
+### Añadido el mismo 2026-09-23: colchón de cola y token truncado
+
+**Token headless: falso positivo de verificación.** El token guardado por la
+mañana estaba **truncado** (62 caracteres; la salida de `setup-token` ocupa dos
+líneas en pantalla y solo se copió la primera). Se detectó porque tres runs
+consecutivos murieron en 4-5 segundos con `401 OAuth access token is invalid`.
+
+La verificación que se había dado por buena era insuficiente: **`claude auth
+status` no llama a la API**, solo comprueba que la variable existe y tiene
+forma de token, así que devolvió `loggedIn: true` / `authMethod: "oauth_token"`
+sobre un token inservible. La sospecha correcta (62 caracteres son pocos) se
+levantó y se descartó apoyándose en esa prueba inválida.
+
+Agravante: al estar en `.env.local`, `coordinator.sh` exportaba el token roto y
+**pisaba la sesión del llavero que sí funciona**, así que el writer del 24/09
+habría fallado. Mitigado en el momento comentando la línea; los runs vuelven a
+la sesión interactiva, que tiene semanas de margen. Reabierto como SEO-018.
+
+**Regla para el futuro:** un token de la CLI solo se da por bueno tras un run
+real sin `401`. Nunca con `claude auth status`.
+
+**Colchón de cola conseguido: de 1 a 3 items.** Resultado de las 5 semillas
+añadidas el 22/09:
+
+| Semilla | Resultado |
+| --- | --- |
+| `seo para solopreneurs` | `seo para ia` (320/mes, KD 0) |
+| `poner precio a un infoproducto` | 0 — tema real, volumen insuficiente en español |
+| `tripwire y oferta de entrada` | 0 — anglicismo copado por Minecraft, ciberseguridad y cine |
+| `bloqueo del emprendedor` | **`parálisis por análisis` (720/mes, KD 0) y `miedo al fracaso` (210/mes, KD 0)** |
+| `contenido con ia sin que suene a ia` | 0 — término generativo de ChatGPT, no búsqueda real |
+
+**Aprendizaje operativo:** dos semillas (`bloqueo del emprendedor`, `contenido
+con ia sin que suene a ia`) no tenían volumen medible **como frase literal**,
+pero la primera produjo las dos mejores keywords del proyecto porque el agente
+buscó las búsquedas reales que hay detrás del concepto. Las semillas funcionan
+como disparadores de concepto, no como keywords: no hace falta que la semilla
+tenga volumen, hace falta que apunte a un territorio con demanda.
+
+Las dos ganadoras caen en los dos huecos identificados por análisis de
+cobertura el 22/09 (SEO como canal, 0 posts; mentalidad, 1 post). El método de
+elegir semillas por hueco de cobertura queda validado.
