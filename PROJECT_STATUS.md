@@ -1,15 +1,27 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-22 (sesión con Fran: causa raíz de la auth
-confirmada y corregida con tres cambios en el pipeline; altas bot en MailerLite
-diagnosticadas y IDs de formulario rotados; antes, run del keyword-researcher
-que resembró la cola).
+Última actualización: 2026-09-24 (run programado del content-writer, MODE:
+AUTO: publicado `seo-para-ia`, primer ciclo completo desde la resiembra del
+22/09 sin intervención manual).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Content-writer, run jueves 2026-09-24 (MODE: AUTO): publicado `seo para
+  ia`.** Cogió el único item `queued` (`2026-09-22-seo-para-ia`, sembrado por
+  el keyword-researcher del 23/09). Ángulo obligatorio de la nota de cola
+  cumplido: en vez de repetir el resumen genérico de GEO que ya da el AI
+  Overview de Google, el post usa como dato propio la medición real de
+  visibilidad en IA de este mismo proyecto (informe 2026-09: 4 de 48
+  respuestas citaron franlledo.com, 8,3%, desglose por proveedor). 1.658
+  palabras (objetivo 1.800), 6/6 variantes del fan-out cubiertas, lint OK a la
+  primera. Publicado en `/blog/seo-para-ia/` (HTTP 200 confirmado tras la
+  ventana normal de deploy de Coolify). 3 enlaces internos entrantes añadidos
+  desde `ia-para-pymes`, `automatizacion-con-ia-para-solopreneurs` y
+  `vibe-coding-en-espanol`. Cola vuelve a **0 `queued`**. Informe completo:
+  `reports/2026-09-24-content-writer.md`. Ver bitácora 2026-09-24.
 - **Altas bot en los formularios, contenidas y cortadas (2026-09-22).** 399
   altas automatizadas el 17-18/09 (*subscription bombing*: `+km<hex><contador>`,
   396 IPs distintas, 115 dominios de terceros), más un goteo diario `+hp` que

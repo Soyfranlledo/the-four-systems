@@ -983,10 +983,10 @@
     },
     {
       "id": "2026-09-22-seo-para-ia",
-      "status": "queued",
+      "status": "written",
       "queued_at": "2026-09-22T16:25:00Z",
-      "written_at": null,
-      "post_url": null,
+      "written_at": "2026-09-24T08:13:01Z",
+      "post_url": "https://franlledo.com/blog/seo-para-ia/",
       "primary_keyword": "seo para ia",
       "intent": "informational",
       "volume": 320,

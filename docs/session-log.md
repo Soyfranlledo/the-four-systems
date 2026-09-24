@@ -3507,3 +3507,74 @@ tenga volumen, hace falta que apunte a un territorio con demanda.
 Las dos ganadoras caen en los dos huecos identificados por análisis de
 cobertura el 22/09 (SEO como canal, 0 posts; mentalidad, 1 post). El método de
 elegir semillas por hueco de cobertura queda validado.
+
+## 2026-09-24: content-writer — publicado `seo-para-ia`, primer ciclo completo sin intervención manual
+
+### Contexto
+
+Run programado del content-writer (MODE: AUTO). Cerraba el ciclo abierto el
+22/09: keyword-researcher resembró la cola con `seo para ia` (320/mes, KD 0),
+el run del 23/09 no añadió nada nuevo a la cola (`poner precio a un
+infoproducto` sin volumen), y este era el primer content-writer programado
+tras el token headless truncado del 23/09 (mitigado comentando la línea en
+`.env.local`, runs siguen colgando de la sesión del llavero).
+
+### Selección y brief
+
+`pick-next-queue-item.py` devolvió `2026-09-22-seo-para-ia` como único
+`queued`. Auto-scan de `experience-notes.md` sin coincidencias temáticas
+(SEO/GEO no tiene historia previa documentada): **research-only mode**, sin
+frases de experiencia personal fabricadas.
+
+La nota de cola pedía explícitamente un ángulo diferenciador: usar como dato
+propio citable la medición real de visibilidad en IA de este mismo proyecto
+(informe `reports/ai-visibility/2026-09/`) en vez de repetir el resumen
+genérico de GEO que ya da el AI Overview de Google para esa keyword. Se sacaron
+cifras exactas de `state/ai-visibility-latest.json`: 48 preguntas medidas en
+ChatGPT/Gemini/Claude/Perplexity, 4 citas a franlledo.com (8,3%), coste 2,47
+USD, desglose por proveedor (Perplexity 12/12 con fuentes, Claude 11/12,
+ChatGPT 10/12, Gemini 5/12) y el hallazgo de 0/16 citas en el bloque "IA para
+solopreneurs".
+
+### Investigación
+
+6 fuentes externas, todas verificadas con `WebFetch` directo al original (no
+solo al snippet de búsqueda), evitando agregadores de estadísticas sin
+metodología propia: el paper original de GEO (`arxiv.org/abs/2311.09735`, hasta
+40% de mejora de visibilidad), dos estudios de Ahrefs sobre citas de ChatGPT
+(1,4M prompts; top 1.000 citas, 67% no replicables por una marca pequeña), el
+estudio de Ahrefs sobre caída de CTR con AI Overviews (34,5% sobre 300k
+keywords), el dato de Similarweb vía TechCrunch (AI Overviews del 15% al 43%
+de búsquedas en un año) y la documentación oficial de Google Search Central,
+que confirma que **no hacen falta ficheros ni markup especiales** (como
+`llms.txt`) para aparecer en AI Overviews o AI Mode. Esta última fuente se usó
+para desmontar de forma explícita el hype de `llms.txt` en el post, en línea
+con la voz "sin humo" del sitio.
+
+### Borrador, lint y publicación
+
+1.658 palabras (objetivo 1.800, dentro del ±15%), 6/6 variantes del
+`fan_out_cluster` cubiertas sin ninguna descartada. `lint-post.py` → **LINT OK
+a la primera** (ratio de cápsulas 5/7 = 71%, dentro del rango 55-75% que exige
+el linter; Three Kings resuelto con la cabeza de keyword "para ia" en título,
+primer párrafo y 4 H2). Publicado con `publish-to-astro.py`:
+`PUBLISHED_LIVE https://franlledo.com/blog/seo-para-ia/`, build previo OK,
+IndexNow 200. Primer `curl` de verificación dio HTTP 404 (ventana normal de
+deploy de Coolify, ya documentada en otras sesiones); confirmado HTTP 200 tras
+~45s con reintentos cada 15s. Cola marcada `written` con la URL publicada y
+vuelve a **0 `queued`**.
+
+### Enlaces internos entrantes
+
+3 añadidos, uno por post, en párrafo nuevo o al final de uno existente, nunca
+en el primer párrafo ni en un encabezado: `ia-para-pymes.md`,
+`automatizacion-con-ia-para-solopreneurs.md`, `vibe-coding-en-espanol.md`.
+Build del repo web verificado OK tras los tres cambios. Commit `bcf555a`
+(`seo: enlaces internos hacia seo-para-ia`), pusheado a `main`.
+
+### Resultado
+
+Primer ciclo completo keyword-researcher → content-writer → publicación que se
+resuelve de punta a punta sin que nadie abra una terminal a mano, desde que se
+blindó la autenticación headless el 22/09. Informe completo:
+`reports/2026-09-24-content-writer.md`. `ESTADO.md` actualizado (SEO-019).

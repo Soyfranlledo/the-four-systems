@@ -60,7 +60,7 @@ def main() -> int:
     tmp = tempfile.NamedTemporaryFile(
         mode="w", dir=QUEUE.parent, prefix=".tmp-queue-", suffix=".json", delete=False
     )
-    json.dump(data, tmp, indent=2)
+    json.dump(data, tmp, indent=2, ensure_ascii=False)
     tmp.write("\n")
     tmp.close()
     os.replace(tmp.name, QUEUE)

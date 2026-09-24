@@ -1,13 +1,13 @@
 ---
 proyecto: SEO franlledo
 prefijo: SEO
-siguiente_id: 19
+siguiente_id: 20
 estado_proyecto: activo
 responsable: Fran
 personas: agentes programados (keyword-researcher, content-writer, refresh-recommender); GSC, GA4, DataForSEO
-actualizado: 2026-09-23
-actualizado_por: Agente (sesión con Fran: cola con colchón; token headless pendiente de rehacer)
-ultima_sync_pm: 2026-09-23
+actualizado: 2026-09-24
+actualizado_por: Agente (run automático content-writer jueves: publicado seo-para-ia, enlaces internos entrantes)
+ultima_sync_pm: 2026-09-24
 ---
 
 # ESTADO — SEO franlledo
@@ -19,7 +19,7 @@ ultima_sync_pm: 2026-09-23
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
-| SEO-018 | Rehacer `claude setup-token` copiando el token ENTERO (ocupa dos líneas en pantalla) y verificarlo con un run real, no con `claude auth status` | P2 | — | Fran | [ ] | — |
+| SEO-018 | Rehacer `claude setup-token` copiando el token ENTERO (ocupa dos líneas en pantalla) y verificarlo con un run real, no con `claude auth status` | P2 | — | Fran | [ ] | [↗](https://www.notion.so/3e5b9c50d57c81178381ec2f9aad832e) |
 | SEO-016 | Fijar a mano la URL de confirmación de los dos formularios nuevos de MailerLite (la API ignora el campo) | P3 | — | Fran | [ ] | [↗](https://www.notion.so/3e4b9c50d57c81d4895bf7a6e7c5cae5) |
 | SEO-014 | Rehacer o borrar el symlink roto ~/.local/bin/claude (apunta a una extensión de VSCode que ya no existe) | P3 | — | Fran | [ ] | [↗](https://www.notion.so/3e4b9c50d57c81d28debdd4540ae1cf0) |
 | SEO-003 | Ejecutar en GSC las solicitudes de indexación manuales en el orden de la tabla «Indexación» (P1: URL vieja de marketing-funnel) | P1 | — | Fran | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c81f4a6bed03509d79775) |
@@ -35,7 +35,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
-- **SEO-018** — El token guardado el 23/09 estaba truncado (62 caracteres) y daba `401 OAuth access token is invalid` en cada run. Ya está comentado en `.env.local`, así que los runs vuelven a la sesión del llavero, que funciona y da semanas de margen. Aviso: `claude auth status` NO valida el token contra la API, solo comprueba que la variable existe; un token roto pasa esa prueba. Verificar siempre con un run real. Nota: docs/session-log.md 23-sep.
+- **SEO-018** — Nota: El token guardado el 23/09 estaba truncado (62 caracteres) y daba `401 OAuth access token is invalid` en cada run. Ya está comentado en `.env.local`, así que los runs vuelven a la sesión del llavero, que funciona y da semanas de margen. Aviso: `claude auth status` NO valida el token contra la API, solo comprueba que la variable existe; un token roto pasa esa prueba. Verificar siempre con un run real. Nota: docs/session-log.md 23-sep.
 - **SEO-016** — Nota: Opcional. Los formularios nuevos (199325656470783872 y 199325684573668805) no tienen URL de agradecimiento, así que usan la página por defecto de MailerLite. Los viejos apuntaban a una OTO de cazatarjetas; puede ser venta cruzada deliberada, lo decide Fran. Panel → Forms → ajustes de double opt-in. Nota: docs/session-log.md 22-sep (tercera entrada).
 - **SEO-014** — Nota: Cosmético, no afecta a los runs: el PATH de los plists resuelve a /opt/homebrew/bin/claude. Nota: docs/session-log.md 22-sep.
 - **SEO-003** — Necesita: Google Search Console. Nota: PROJECT_STATUS.md:815-817; manual de Fran.
@@ -51,6 +51,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
+| SEO-019 | Content-writer programado del jueves: publicado `seo-para-ia` (GEO), consumiendo el item que resembró la cola el 22/09; primer ciclo completo researcher→writer→publicación sin intervención manual desde el corte de auth | 2026-09-24 | https://franlledo.com/blog/seo-para-ia/; commit bcf555a (repo web); reports/2026-09-24-content-writer.md | — |
 | SEO-012 | Medición mensual de visibilidad en IA integrada (48/48) y consulta de tráfico GA4+GSC (blog 12→24 clics) | 2026-09-15 | commits 40fc130, 9aada86 | [↗](https://www.notion.so/3e3b9c50d57c81bb89d4c43a892256a2) |
 | SEO-001 | Causa raíz de la auth confirmada (token del llavero caducado por no refrescarse nunca en headless) y pipeline blindado: token de larga duración, centinela en el informe semanal y encadenado researcher→writer | 2026-09-22 | commit e7e9ea8; docs/session-log.md 22-sep | [↗](https://app.notion.com/p/3deb9c50d57c8165b023e0a9121408e7) |
 | SEO-013 | Fontanería del token headless lista y probada en coordinator.sh (parseo correcto, sin arrastrar credenciales de Google). El token en sí quedó truncado y se reabre como SEO-018 | 2026-09-23 | coordinator.sh cabecera; docs/session-log.md 23-sep | [↗](https://www.notion.so/3e4b9c50d57c81168971df0bcfb1c9ec) |
