@@ -1,14 +1,26 @@
 # Estado del proyecto SEO
 
 Última actualización: 2026-09-25 (sesión interactiva: corregido el conteo de
-altas de GA4 en el informe semanal y añadida la tasa de conversión visitante →
-lead; consulta de tráfico orgánico y conversión).
+altas de GA4 en el informe semanal, tasa de conversión visitante → lead, y
+cajetín de newsletter dentro de los posts del blog en el repo web, sin push).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Cajetín de newsletter dentro de los posts del blog (2026-09-25, repo
+  web, commit local SIN push).** Diagnóstico: el cajetín final no tiene bug;
+  el blog recibe ~40 usuarios/mes en GA4 y solo el 21% llega al final del
+  post, donde están todos los puntos de captura (1 alta desde posts en 90
+  días, dentro de lo normal para ese volumen). Cambio: variante `card` de
+  `EmailCapture` recolocada por JS justo tras la lista de «En 30 segundos»
+  (o tras la intro en los 14 posts antiguos sin ese bloque), con
+  `campana = blog-<slug>-resumen` para medirla frente al cajetín final. Se
+  desaconsejó adelantar el popup a 3 s (intersticial intrusivo en móvil).
+  Build y capturas verificadas. **Pendiente: push a `main` del repo web
+  cuando Fran lo pida** (despliega en 1-2 min). Ver bitácora 2026-09-25
+  (segunda entrada).
 - **Informe semanal: el conteo de altas de GA4 estaba roto y ya está
   corregido (2026-09-25).** `ga4Section()` solo filtraba `newsletter_signup`,
   pero la home y las squeeze pages emiten `lead_magnet_signup`, así que la

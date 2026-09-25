@@ -3638,3 +3638,65 @@ sección, mientras GA4 registraba 18-20 usuarios con alta cada 28 días.
 
 - Verificar el lunes 28/09 que el informe semanal programado muestra la tabla
   de conversión con datos (primera ejecución real tras el cambio).
+
+## 2026-09-25 (segunda entrada): cajetín de newsletter dentro de los posts del blog
+
+### Diagnóstico previo
+
+Fran preguntó qué le pasaba al cajetín de los posts. Verificado en producción
+y en GA4: no hay bug. El formulario se renderiza y funciona (2 `form_start`,
+1 alta en 90 días); lo que pasa es que el blog recibe ~40 usuarios/mes en GA4
+(121 en 90 días) y solo 26 de ellos (21%) llegan al final del post, que es
+donde están todos los puntos de captura (teaser tras el texto, sidebar,
+popup a los 10 s, cajetín final). Con 121 lectores, 1 alta está dentro del
+0,5-2% habitual de un CTA de final de post. Cuello de botella: volumen y
+posición, no el cajetín. Fran propuso adelantar el popup a 3 s; se desaconsejó
+(modal a pantalla completa en móvil nada más llegar desde Google = intersticial
+intrusivo según Google, sobre las páginas y el tráfico que este proyecto
+intenta hacer crecer; ganancia estimada: +1 alta/trimestre). Se recomendó y
+Fran aceptó meter un cajetín dentro del texto, tras «En 30 segundos».
+
+### Cambio en el repo web (`franlledo-web`)
+
+- `src/components/EmailCapture.astro`: nueva variante `card` (tarjeta
+  compacta con la estética del teaser: fondo `surface-alt`, borde rojo a la
+  izquierda, botón «Quiero recibirlos»). Sin `id` fijo (el `boxed` del final
+  conserva `mlb2-39729067`), título en `<p>` para no alterar los H2 del
+  artículo, y colocación propia: `campana = blog-<slug>-resumen` (MailerLite)
+  y `recurso = newsletter-resumen` (parámetro del evento `newsletter_signup`
+  en GA4), para comparar con el cajetín final.
+- `src/pages/blog/[...slug].astro`: host oculto con `<EmailCapture
+  variant="card" />` y script inline que lo mueve justo después de la lista
+  del H2 «En 30 segundos» (regex `30 segundos|tl;dr`, tolera un párrafo entre
+  H2 y lista). Posts antiguos: tras la cita «TL;DR» si existe antes del primer
+  H2 (3 posts); si no hay resumen (11 posts que arrancan directamente con H2 y
+  3 con párrafos de intro), tras la introducción: antes del primer H2 si hay
+  párrafos delante, si no antes del segundo H2. Exige 4+ H2 para no coincidir
+  con el teaser (que va antes del H2 del medio). Si JS no se ejecuta, queda
+  oculto y el post sigue con el cajetín del final.
+- Verificación: `npm run build` OK (66 páginas), un solo `mlb2-39729067` por
+  post, cuatro `<form>` por post, sitemap sin URLs con fecha. Capturas con
+  Chrome headless sobre `astro preview` a 390 y 1440 px en tres tipos de post
+  (con «En 30 segundos», con cita «TL;DR», sin resumen): en los tres la
+  tarjeta cae donde debe. Chrome headless no baja de ~500 px de ventana, así
+  que las capturas «móvil» salen recortadas por la derecha; no es de la web.
+- Commit en el repo web: `seo: cajetín de newsletter tras "En 30 segundos" en
+  los posts` (EmailCapture.astro, [...slug].astro, CLAUDE.md). **Sin push**:
+  pendiente de que Fran lo pida (cada push a `main` despliega en producción en
+  1-2 min). El `CLAUDE.md` del repo web tenía un cambio pendiente del PM (la
+  sección ESTADO) que se ha dejado fuera del commit y sigue en el working
+  tree; `ESTADO.md` del repo web (untracked, del PM) actualizado con FLW-012.
+
+### Cómo medirlo
+
+En 3-4 semanas: en GA4, eventos `newsletter_signup` por `pagePath /blog/*`
+(la tabla nueva del informe semanal los lista por página); en MailerLite,
+suscriptores con `campana` terminado en `-resumen` frente a `blog-<slug>` a
+secas. Si el de dentro del texto convierte y el del final no, plantear
+retirar el teaser de mitad de post para no acumular tres reclamos.
+
+### Pendiente
+
+- Push del repo web cuando Fran lo pida.
+- Lunes 28/09: comprobar que el informe semanal muestra la tabla de
+  conversión con datos.
