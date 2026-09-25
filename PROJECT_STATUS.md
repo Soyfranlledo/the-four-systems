@@ -1,14 +1,27 @@
 # Estado del proyecto SEO
 
-Última actualización: 2026-09-24 (run programado del content-writer, MODE:
-AUTO: publicado `seo-para-ia`, primer ciclo completo desde la resiembra del
-22/09 sin intervención manual).
+Última actualización: 2026-09-25 (sesión interactiva: corregido el conteo de
+altas de GA4 en el informe semanal y añadida la tasa de conversión visitante →
+lead; consulta de tráfico orgánico y conversión).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
 
 ## Resumen
 
+- **Informe semanal: el conteo de altas de GA4 estaba roto y ya está
+  corregido (2026-09-25).** `ga4Section()` solo filtraba `newsletter_signup`,
+  pero la home y las squeeze pages emiten `lead_magnet_signup`, así que la
+  sección decía "0 signups" cada lunes. Ahora cuenta los dos eventos y añade
+  una tabla de conversión visitante → lead (ventana semanal y 28 días, global
+  y de la home) y otra de altas por página. Cifras de referencia al 25/09
+  (GA4, solo usuarios con cookies aceptadas): conversión global 28d 18/142 =
+  12,7% (90d 7,3%); home 28d 3/65 = 4,6% (90d 4,0%); el cajetín de los posts
+  del blog convirtió 1 usuario en 90 días, el trabajo lo hacen `/documento/`,
+  la home y `/7-casos/` alimentadas desde LinkedIn y YouTube. Orgánico (GSC
+  28d): 52 clics, +79%, posición 12,3; en GA4 plano en ~35 sesiones/mes.
+  Verificar el lunes 28/09 que el informe programado saca la tabla con datos.
+  Ver bitácora 2026-09-25.
 - **Content-writer, run jueves 2026-09-24 (MODE: AUTO): publicado `seo para
   ia`.** Cogió el único item `queued` (`2026-09-22-seo-para-ia`, sembrado por
   el keyword-researcher del 23/09). Ángulo obligatorio de la nota de cola

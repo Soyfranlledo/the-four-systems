@@ -142,48 +142,81 @@ async function gscSection(auth) {
 
 async function ga4Section(auth) {
   const ga = google.analyticsdata({ version: "v1beta", auth });
+  const windowRange = [{ startDate: fmt(lookbackStart), endDate: fmt(today) }];
+  const d28Start = new Date(today);
+  d28Start.setDate(d28Start.getDate() - 27);
+  const range28 = [{ startDate: fmt(d28Start), endDate: fmt(today) }];
 
-  const [byChannel, daily, signupsByChannel] = await Promise.all([
-    ga.properties.runReport({
-      property: GA4_PROPERTY,
-      requestBody: {
-        dateRanges: [{ startDate: fmt(lookbackStart), endDate: fmt(today) }],
-        dimensions: [{ name: "sessionDefaultChannelGroup" }],
-        metrics: [
-          { name: "sessions" },
-          { name: "totalUsers" },
-          { name: "screenPageViews" },
-        ],
-        orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
-      },
+  // Los formularios de la web disparan DOS eventos distintos (ver
+  // MailerLiteFormClient.astro en el repo web): `newsletter_signup` lo emite
+  // EmailCapture (posts, contacto, proyectos, índice del blog) y
+  // `lead_magnet_signup` lo emite LeadMagnetForm (home ×2 y todas las squeeze
+  // pages: /documento/, /asuntos/, /7-casos/...). Hasta 2026-09-25 aquí solo se
+  // contaba el primero y el informe decía "0 signups" todas las semanas.
+  const SIGNUP_EVENTS = ["newsletter_signup", "lead_magnet_signup"];
+  const signupFilter = {
+    filter: { fieldName: "eventName", inListFilter: { values: SIGNUP_EVENTS } },
+  };
+  const homeFilter = {
+    filter: { fieldName: "pagePath", stringFilter: { matchType: "EXACT", value: "/" } },
+  };
+  const report = (requestBody) => ga.properties.runReport({ property: GA4_PROPERTY, requestBody });
+  const metric = (r, i = 0) => Number(r.data.rows?.[0]?.metricValues?.[i]?.value || 0);
+  const pct = (num, den) => (den ? `${((num / den) * 100).toFixed(1)}%` : "n/a");
+
+  // Conversión visitante → lead: usuarios que envían un formulario / usuarios
+  // totales. Un filtro de dimensión sin esa dimensión en `dimensions` es
+  // válido en la Data API y devuelve el agregado. GA4 solo ve a quien acepta
+  // cookies, así que los absolutos están infracontados; la tasa es fiable
+  // porque numerador y denominador salen del mismo grupo.
+  const conversion = async (dateRanges) => {
+    const [total, signups, homeViews, homeSignups] = await Promise.all([
+      report({ dateRanges, metrics: [{ name: "totalUsers" }, { name: "sessions" }] }),
+      report({ dateRanges, metrics: [{ name: "totalUsers" }, { name: "eventCount" }], dimensionFilter: signupFilter }),
+      report({ dateRanges, metrics: [{ name: "totalUsers" }], dimensionFilter: homeFilter }),
+      report({
+        dateRanges,
+        metrics: [{ name: "totalUsers" }, { name: "eventCount" }],
+        dimensionFilter: { andGroup: { expressions: [signupFilter, homeFilter] } },
+      }),
+    ]);
+    return {
+      users: metric(total), sessions: metric(total, 1),
+      leads: metric(signups), submits: metric(signups, 1),
+      homeUsers: metric(homeViews), homeLeads: metric(homeSignups), homeSubmits: metric(homeSignups, 1),
+    };
+  };
+
+  const [byChannel, daily, signupsByChannel, signupsByPage, convWindow, conv28] = await Promise.all([
+    report({
+      dateRanges: windowRange,
+      dimensions: [{ name: "sessionDefaultChannelGroup" }],
+      metrics: [{ name: "sessions" }, { name: "totalUsers" }, { name: "screenPageViews" }],
+      orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
     }),
-    ga.properties.runReport({
-      property: GA4_PROPERTY,
-      requestBody: {
-        dateRanges: [{ startDate: fmt(lookbackStart), endDate: fmt(today) }],
-        dimensions: [{ name: "date" }],
-        metrics: [{ name: "sessions" }, { name: "screenPageViews" }],
-        orderBys: [{ dimension: { dimensionName: "date" } }],
-      },
+    report({
+      dateRanges: windowRange,
+      dimensions: [{ name: "date" }],
+      metrics: [{ name: "sessions" }, { name: "screenPageViews" }],
+      orderBys: [{ dimension: { dimensionName: "date" } }],
     }),
-    ga.properties.runReport({
-      property: GA4_PROPERTY,
-      requestBody: {
-        dateRanges: [{ startDate: fmt(lookbackStart), endDate: fmt(today) }],
-        dimensions: [
-          { name: "sessionDefaultChannelGroup" },
-          { name: "landingPagePlusQueryString" },
-        ],
-        metrics: [{ name: "eventCount" }, { name: "totalUsers" }],
-        dimensionFilter: {
-          filter: {
-            fieldName: "eventName",
-            stringFilter: { matchType: "EXACT", value: "newsletter_signup" },
-          },
-        },
-        orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
-      },
+    report({
+      dateRanges: windowRange,
+      dimensions: [{ name: "sessionDefaultChannelGroup" }, { name: "landingPagePlusQueryString" }],
+      metrics: [{ name: "eventCount" }, { name: "totalUsers" }],
+      dimensionFilter: signupFilter,
+      orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
     }),
+    report({
+      dateRanges: range28,
+      dimensions: [{ name: "pagePath" }, { name: "eventName" }],
+      metrics: [{ name: "eventCount" }, { name: "totalUsers" }],
+      dimensionFilter: signupFilter,
+      orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+      limit: 15,
+    }),
+    conversion(windowRange),
+    conversion(range28),
   ]);
 
   let out = `### Sessions by channel (${fmt(lookbackStart)} → today)\n\n| Channel | Sessions | Users | Pageviews |\n|---|---:|---:|---:|\n`;
@@ -196,11 +229,29 @@ async function ga4Section(auth) {
     const date = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
     out += `| ${date} | ${row.metricValues[0].value} | ${row.metricValues[1].value} |\n`;
   }
-  out += `\n### Newsletter signups by channel\n\n| Channel | Landing page | Signups | Users |\n|---|---|---:|---:|\n`;
+
+  out += `\n### Conversión visitante → lead\n\n`;
+  out += `Eventos contados: ${SIGNUP_EVENTS.map((e) => `\`${e}\``).join(" + ")}. `;
+  out += `Lead = usuario que envía al menos un formulario; "home" = formulario enviado en \`/\`. `;
+  out += `Solo usuarios que aceptan cookies: absolutos infracontados, tasas fiables.\n\n`;
+  out += `| Ventana | Usuarios | Sesiones | Leads | Envíos | Tasa | Ven la home | Leads en home | Tasa home |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|\n`;
+  for (const [label, c] of [[`${fmt(lookbackStart)} → hoy`, convWindow], [`28 días (${fmt(d28Start)} → hoy)`, conv28]]) {
+    out += `| ${label} | ${c.users} | ${c.sessions} | ${c.leads} | ${c.submits} | **${pct(c.leads, c.users)}** | ${c.homeUsers} | ${c.homeLeads} | **${pct(c.homeLeads, c.homeUsers)}** |\n`;
+  }
+
+  out += `\n### Altas por canal y landing page (${fmt(lookbackStart)} → hoy)\n\n| Channel | Landing page | Signups | Users |\n|---|---|---:|---:|\n`;
   for (const row of signupsByChannel.data.rows || []) {
     out += `| ${row.dimensionValues[0].value} | ${row.dimensionValues[1].value} | ${row.metricValues[0].value} | ${row.metricValues[1].value} |\n`;
   }
   if (!(signupsByChannel.data.rows || []).length) {
+    out += `| — | — | 0 | 0 |\n`;
+  }
+
+  out += `\n### Altas por página donde se envía el formulario (28 días)\n\n| Page | Event | Signups | Users |\n|---|---|---:|---:|\n`;
+  for (const row of signupsByPage.data.rows || []) {
+    out += `| ${row.dimensionValues[0].value} | ${row.dimensionValues[1].value} | ${row.metricValues[0].value} | ${row.metricValues[1].value} |\n`;
+  }
+  if (!(signupsByPage.data.rows || []).length) {
     out += `| — | — | 0 | 0 |\n`;
   }
   return out;

@@ -3578,3 +3578,63 @@ Primer ciclo completo keyword-researcher → content-writer → publicación que
 resuelve de punta a punta sin que nadie abra una terminal a mano, desde que se
 blindó la autenticación headless el 22/09. Informe completo:
 `reports/2026-09-24-content-writer.md`. `ESTADO.md` actualizado (SEO-019).
+
+## 2026-09-25: informe semanal — corregido el conteo de altas de GA4 y añadida la conversión visitante → lead
+
+### Contexto
+
+Fran preguntó si atrae tráfico orgánico y cuál es la conversión de visitante a
+lead (email dejado en cualquier cajetín), en toda la web y en la home. Al
+consultar GA4 con la Data API se vio que `ga4Section()` de
+`scripts/weekly-seo-report.mjs` filtraba solo `newsletter_signup`, pero
+`LeadMagnetForm.astro` del repo web (home ×2 y todas las squeeze pages:
+`/documento/`, `/asuntos/`, `/7-casos/`...) emite `lead_magnet_signup`.
+Resultado: el informe decía "0 signups" cada lunes desde que existe la
+sección, mientras GA4 registraba 18-20 usuarios con alta cada 28 días.
+
+### Cambios
+
+- `ga4Section()`: filtro `inListFilter` con ambos eventos. Nueva tabla
+  "Conversión visitante → lead" para la ventana semanal y para 28 días
+  (usuarios, sesiones, leads, envíos, tasa; y lo mismo restringido a
+  `pagePath = /` para la home). Nueva tabla "Altas por página donde se envía
+  el formulario (28 días)" con el evento. La tabla por canal y landing page se
+  mantiene, ya con el filtro corregido. Comentario en el código explicando el
+  origen del bug.
+- Probado ejecutando solo la sección GA4 (harness en el scratchpad que
+  reutiliza el script, sin DataForSEO ni escritura de informe). Salida
+  verificada: ventana 16/09 → 25/09: 38 usuarios, 9 leads (23,7%); 28 días:
+  131 usuarios, 16 leads (12,2%); home 28 días: 59 usuarios, 2 leads (3,4%).
+- Commit `seo: informe semanal cuenta lead_magnet_signup y añade conversión a
+  lead`. Sin push.
+
+### Cifras de referencia consultadas (2026-09-25; no van al informe)
+
+- **GSC 28d (26/08 → 22/09):** 52 clics (+79% vs 29), 5.310 impresiones
+  (+23%), posición 12,3 (antes 15,8). GA4 orgánico plano en ~35 sesiones/mes
+  desde junio, 19% de las sesiones del último mes; el tráfico total cayó a la
+  mitad respecto al periodo anterior por la desaparición de un pico de referral
+  (102) y otro de email (48), que dependen de los empujones de Fran.
+- **Conversión GA4 (usuarios con alta / usuarios):** 28d 18/142 = 12,7%; 28d
+  anteriores 20/325 = 6,2%; 90d 53/730 = 7,3%. Dónde convierten (90d,
+  usuarios): `/documento/` 25, home 16, `/7-casos/` 10, `/asuntos/` 6,
+  `/asuntos-que-se-abren/` 4. **El cajetín `EmailCapture` de los posts
+  convirtió 1 usuario en 90 días.** Por canal (90d): Organic Social 27%,
+  Organic Video 30%, Organic Search 4,7% (4/85), Direct 4%.
+- **Home:** 28d 3/65 = 4,6%; 90d 16/398 = 4,0%. Por canal 90d: directo 9/239
+  (3,8%), orgánico 3/43 (7%), referral 2/104 (1,9%). El orgánico de la home es
+  marca ("fran lledo"): 16 clics en 28d en posición 5,4.
+- **MailerLite (absolutos confirmados):** 17 altas activas nuevas desde
+  formularios web en 28d (11 el periodo anterior, 43 en 90d) + 53 por API
+  (flujo de LinkedIn, no cajetines). Las altas bot del 17-18/09 no aparecen
+  entre las activas. El formulario viejo `franlledo.com` (10/04 → 22/09,
+  compartido por home, posts, soy y suscribir) acumuló 41 altas.
+- **Caveat:** GA4 solo carga si el visitante acepta cookies; los absolutos
+  están infracontados, las tasas son fiables (mismo grupo en numerador y
+  denominador). Cross-check: usuarios que ven `/falta-confirmar/` en 28d = 19
+  frente a 18 con evento de alta.
+
+### Pendiente
+
+- Verificar el lunes 28/09 que el informe semanal programado muestra la tabla
+  de conversión con datos (primera ejecución real tras el cambio).

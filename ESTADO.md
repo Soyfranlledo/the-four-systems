@@ -1,12 +1,12 @@
 ---
 proyecto: SEO franlledo
 prefijo: SEO
-siguiente_id: 20
+siguiente_id: 21
 estado_proyecto: activo
 responsable: Fran
 personas: agentes programados (keyword-researcher, content-writer, refresh-recommender); GSC, GA4, DataForSEO
-actualizado: 2026-09-24
-actualizado_por: Agente (run automático content-writer jueves: publicado seo-para-ia, enlaces internos entrantes)
+actualizado: 2026-09-25
+actualizado_por: Agente (sesión interactiva: bug del conteo de altas en el informe semanal corregido; consulta de tráfico orgánico y conversión a lead)
 ultima_sync_pm: 2026-09-24
 ---
 
@@ -51,6 +51,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
+| SEO-020 | Informe semanal: corregido el conteo de altas de GA4 (solo contaba `newsletter_signup`; la home y las squeeze pages emiten `lead_magnet_signup`, así que decía 0 cada lunes) y añadida la tasa de conversión visitante → lead, global y de la home | 2026-09-25 | scripts/weekly-seo-report.mjs; docs/session-log.md 25-sep | — |
 | SEO-019 | Content-writer programado del jueves: publicado `seo-para-ia` (GEO), consumiendo el item que resembró la cola el 22/09; primer ciclo completo researcher→writer→publicación sin intervención manual desde el corte de auth | 2026-09-24 | https://franlledo.com/blog/seo-para-ia/; commit bcf555a (repo web); reports/2026-09-24-content-writer.md | — |
 | SEO-012 | Medición mensual de visibilidad en IA integrada (48/48) y consulta de tráfico GA4+GSC (blog 12→24 clics) | 2026-09-15 | commits 40fc130, 9aada86 | [↗](https://www.notion.so/3e3b9c50d57c81bb89d4c43a892256a2) |
 | SEO-001 | Causa raíz de la auth confirmada (token del llavero caducado por no refrescarse nunca en headless) y pipeline blindado: token de larga duración, centinela en el informe semanal y encadenado researcher→writer | 2026-09-22 | commit e7e9ea8; docs/session-log.md 22-sep | [↗](https://app.notion.com/p/3deb9c50d57c8165b023e0a9121408e7) |
