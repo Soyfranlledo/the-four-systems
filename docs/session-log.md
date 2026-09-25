@@ -3692,8 +3692,8 @@ Fran aceptó meter un cajetín dentro del texto, tras «En 30 segundos».
 - Commit en el repo web (amend del anterior, nunca pusheado): `seo: cajetín
   del lead magnet del post tras "En 30 segundos"` (LeadMagnetInline.astro,
   [...slug].astro, CLAUDE.md §Lead magnets pasa de DOS a TRES piezas
-  automáticas). **Sin push**: pendiente de que Fran lo pida (cada push a
-  `main` despliega en producción en 1-2 min). El `CLAUDE.md` del repo web
+  automáticas). Pusheado y desplegado a petición de Fran (ver «Despliegue»
+  más abajo). El `CLAUDE.md` del repo web
   tenía un cambio pendiente del PM (la sección ESTADO) que se ha dejado fuera
   del commit y sigue en el working tree; `ESTADO.md` del repo web (untracked,
   del PM) actualizado con FLW-012.
@@ -3707,8 +3707,18 @@ a `blog-<slug>` a secas (sidebar/popup). Si el del texto convierte y el
 popup no, plantear retirar el popup (y el teaser de mitad de post) para no
 acumular reclamos.
 
+### Despliegue
+
+Fran pidió el push. `816b7d9` pusheado a `main` del repo web; Coolify
+desplegó en ~45 s. Verificado en producción: `/blog/seo-para-ia/` sirve el
+host del cajetín, cuatro `<form>`, tres con `recurso = 7-casos` y uno con
+`campana = blog-seo-para-ia-resumen`; `/blog/como-escribir-asuntos-de-email/`
+con tres `asuntos-que-se-abren`; ambos y el post con cita «TL;DR» en HTTP
+200. Los commits de documentación de este repo siguen sin push.
+
 ### Pendiente
 
-- Push del repo web cuando Fran lo pida.
 - Lunes 28/09: comprobar que el informe semanal muestra la tabla de
   conversión con datos.
+- En 3-4 semanas: comparar el cajetín del texto (`campana` `-resumen`) con
+  sidebar/popup (SEO-022).

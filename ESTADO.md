@@ -1,12 +1,12 @@
 ---
 proyecto: SEO franlledo
 prefijo: SEO
-siguiente_id: 23
+siguiente_id: 24
 estado_proyecto: activo
 responsable: Fran
 personas: agentes programados (keyword-researcher, content-writer, refresh-recommender); GSC, GA4, DataForSEO
 actualizado: 2026-09-25
-actualizado_por: Agente (sesión interactiva: bug del informe semanal corregido; cajetín del lead magnet del post dentro del texto en el repo web, pendiente de push)
+actualizado_por: Agente (sesión interactiva: bug del informe semanal corregido; cajetín del lead magnet del post dentro del texto, desplegado en producción)
 ultima_sync_pm: 2026-09-24
 ---
 
@@ -19,7 +19,7 @@ ultima_sync_pm: 2026-09-24
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
-| SEO-022 | Hacer push a `main` del repo web del commit «cajetín del lead magnet del post tras "En 30 segundos"» (despliega en producción en 1-2 min) y, en 3-4 semanas, comparar en GA4/MailerLite el cajetín del texto (`campana` `-resumen`) con sidebar/popup | P2 | — | Fran | [ ] | — |
+| SEO-022 | En 3-4 semanas (≈ 2026-10-20), comparar en GA4 (`lead_magnet_signup` por página) y MailerLite (`campana` `-resumen` vs `blog-<slug>`) el cajetín del texto con sidebar/popup, y decidir si sobra el popup o el teaser | P2 | 2026-10-20 | Agente | [ ] | — |
 | SEO-018 | Rehacer `claude setup-token` copiando el token ENTERO (ocupa dos líneas en pantalla) y verificarlo con un run real, no con `claude auth status` | P2 | — | Fran | [ ] | [↗](https://www.notion.so/3e5b9c50d57c81178381ec2f9aad832e) |
 | SEO-016 | Fijar a mano la URL de confirmación de los dos formularios nuevos de MailerLite (la API ignora el campo) | P3 | — | Fran | [ ] | [↗](https://www.notion.so/3e4b9c50d57c81d4895bf7a6e7c5cae5) |
 | SEO-014 | Rehacer o borrar el symlink roto ~/.local/bin/claude (apunta a una extensión de VSCode que ya no existe) | P3 | — | Fran | [ ] | [↗](https://www.notion.so/3e4b9c50d57c81d28debdd4540ae1cf0) |
@@ -52,6 +52,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
+| SEO-023 | Cajetín del lead magnet dentro del post pusheado y verificado en producción (Coolify, ~45 s): 3 posts comprobados, 4 formularios, mismo recurso en sidebar/popup/texto | 2026-09-25 | commit 816b7d9 del repo web; https://franlledo.com/blog/seo-para-ia/ | — |
 | SEO-021 | Diagnóstico del cajetín de los posts (sin bug: volumen y posición) y cajetín del lead magnet del post dentro del texto tras «En 30 segundos» implementado en el repo web (`LeadMagnetInline.astro`, mismo recurso/copy/form que sidebar y popup, recolocación por JS, verificado con build y capturas) | 2026-09-25 | repo web: LeadMagnetInline.astro, pages/blog/[...slug].astro, commit local; docs/session-log.md 25-sep (2.ª entrada) | — |
 | SEO-020 | Informe semanal: corregido el conteo de altas de GA4 (solo contaba `newsletter_signup`; la home y las squeeze pages emiten `lead_magnet_signup`, así que decía 0 cada lunes) y añadida la tasa de conversión visitante → lead, global y de la home | 2026-09-25 | scripts/weekly-seo-report.mjs; docs/session-log.md 25-sep | — |
 | SEO-019 | Content-writer programado del jueves: publicado `seo-para-ia` (GEO), consumiendo el item que resembró la cola el 22/09; primer ciclo completo researcher→writer→publicación sin intervención manual desde el corte de auth | 2026-09-24 | https://franlledo.com/blog/seo-para-ia/; commit bcf555a (repo web); reports/2026-09-24-content-writer.md | — |

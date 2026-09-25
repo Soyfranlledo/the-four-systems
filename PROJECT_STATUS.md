@@ -2,7 +2,7 @@
 
 Última actualización: 2026-09-25 (sesión interactiva: corregido el conteo de
 altas de GA4 en el informe semanal, tasa de conversión visitante → lead, y
-cajetín del lead magnet del post dentro del texto en el repo web, sin push).
+cajetín del lead magnet del post dentro del texto, desplegado en producción).
 
 Este documento es la fotografía operativa para comenzar una sesión. El detalle
 histórico está en [`docs/session-log.md`](docs/session-log.md).
@@ -10,7 +10,7 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
 ## Resumen
 
 - **Cajetín del lead magnet del post dentro del texto (2026-09-25, repo
-  web, commit local SIN push).** Diagnóstico: el cajetín final no tiene bug;
+  web, EN PRODUCCIÓN).** Diagnóstico: el cajetín final no tiene bug;
   el blog recibe ~40 usuarios/mes en GA4 y solo el 21% llega al final del
   post, donde están todos los puntos de captura (1 alta desde posts en 90
   días, dentro de lo normal para ese volumen). Cambio: nuevo
@@ -20,9 +20,10 @@ histórico está en [`docs/session-log.md`](docs/session-log.md).
   justo tras la lista de «En 30 segundos» (o tras la intro en los 14 posts
   antiguos sin ese bloque), con `campana = blog-<slug>-resumen` para medirlo
   frente a sidebar/popup. Se desaconsejó adelantar el popup a 3 s
-  (intersticial intrusivo en móvil). Build y capturas verificadas.
-  **Pendiente: push a `main` del repo web cuando Fran lo pida** (despliega en
-  1-2 min). Ver bitácora 2026-09-25 (segunda entrada).
+  (intersticial intrusivo en móvil). Build y capturas verificadas; commit
+  `816b7d9` pusheado y verificado en producción (tres posts, 4 formularios,
+  mismo recurso en las tres piezas). Medir en 3-4 semanas (SEO-022). Ver
+  bitácora 2026-09-25 (segunda entrada).
 - **Informe semanal: el conteo de altas de GA4 estaba roto y ya está
   corregido (2026-09-25).** `ga4Section()` solo filtraba `newsletter_signup`,
   pero la home y las squeeze pages emiten `lead_magnet_signup`, así que la
