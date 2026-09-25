@@ -6,7 +6,7 @@ estado_proyecto: activo
 responsable: Fran
 personas: agentes programados (keyword-researcher, content-writer, refresh-recommender); GSC, GA4, DataForSEO
 actualizado: 2026-09-25
-actualizado_por: Agente (sesión interactiva: bug del informe semanal corregido; cajetín de newsletter dentro de los posts en el repo web, pendiente de push)
+actualizado_por: Agente (sesión interactiva: bug del informe semanal corregido; cajetín del lead magnet del post dentro del texto en el repo web, pendiente de push)
 ultima_sync_pm: 2026-09-24
 ---
 
@@ -19,7 +19,7 @@ ultima_sync_pm: 2026-09-24
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
-| SEO-022 | Hacer push a `main` del repo web del commit «cajetín de newsletter tras "En 30 segundos"» (despliega en producción en 1-2 min) y, en 3-4 semanas, comparar en GA4/MailerLite el cajetín del resumen (`campana` `-resumen`) con el del final | P2 | — | Fran | [ ] | — |
+| SEO-022 | Hacer push a `main` del repo web del commit «cajetín del lead magnet del post tras "En 30 segundos"» (despliega en producción en 1-2 min) y, en 3-4 semanas, comparar en GA4/MailerLite el cajetín del texto (`campana` `-resumen`) con sidebar/popup | P2 | — | Fran | [ ] | — |
 | SEO-018 | Rehacer `claude setup-token` copiando el token ENTERO (ocupa dos líneas en pantalla) y verificarlo con un run real, no con `claude auth status` | P2 | — | Fran | [ ] | [↗](https://www.notion.so/3e5b9c50d57c81178381ec2f9aad832e) |
 | SEO-016 | Fijar a mano la URL de confirmación de los dos formularios nuevos de MailerLite (la API ignora el campo) | P3 | — | Fran | [ ] | [↗](https://www.notion.so/3e4b9c50d57c81d4895bf7a6e7c5cae5) |
 | SEO-014 | Rehacer o borrar el symlink roto ~/.local/bin/claude (apunta a una extensión de VSCode que ya no existe) | P3 | — | Fran | [ ] | [↗](https://www.notion.so/3e4b9c50d57c81d28debdd4540ae1cf0) |
@@ -52,7 +52,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
-| SEO-021 | Diagnóstico del cajetín de los posts (sin bug: volumen y posición) y cajetín de newsletter dentro del texto tras «En 30 segundos» implementado en el repo web (variante `card` + recolocación por JS, verificado con build y capturas) | 2026-09-25 | repo web: EmailCapture.astro, pages/blog/[...slug].astro, commit local; docs/session-log.md 25-sep (2.ª entrada) | — |
+| SEO-021 | Diagnóstico del cajetín de los posts (sin bug: volumen y posición) y cajetín del lead magnet del post dentro del texto tras «En 30 segundos» implementado en el repo web (`LeadMagnetInline.astro`, mismo recurso/copy/form que sidebar y popup, recolocación por JS, verificado con build y capturas) | 2026-09-25 | repo web: LeadMagnetInline.astro, pages/blog/[...slug].astro, commit local; docs/session-log.md 25-sep (2.ª entrada) | — |
 | SEO-020 | Informe semanal: corregido el conteo de altas de GA4 (solo contaba `newsletter_signup`; la home y las squeeze pages emiten `lead_magnet_signup`, así que decía 0 cada lunes) y añadida la tasa de conversión visitante → lead, global y de la home | 2026-09-25 | scripts/weekly-seo-report.mjs; docs/session-log.md 25-sep | — |
 | SEO-019 | Content-writer programado del jueves: publicado `seo-para-ia` (GEO), consumiendo el item que resembró la cola el 22/09; primer ciclo completo researcher→writer→publicación sin intervención manual desde el corte de auth | 2026-09-24 | https://franlledo.com/blog/seo-para-ia/; commit bcf555a (repo web); reports/2026-09-24-content-writer.md | — |
 | SEO-012 | Medición mensual de visibilidad en IA integrada (48/48) y consulta de tráfico GA4+GSC (blog 12→24 clics) | 2026-09-15 | commits 40fc130, 9aada86 | [↗](https://www.notion.so/3e3b9c50d57c81bb89d4c43a892256a2) |
